@@ -13,7 +13,7 @@ mongoose
   .then(() => console.log('Database Connected'))
   .catch(err => console.log('Error', err))
 
-const publicPath = path.join(__dirname, '..', 'public');
+const publicPath = path.join(__dirname, 'client', 'public');
 const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
