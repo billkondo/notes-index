@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
+import 'bootstrap/dist/css/bootstrap.css';
 import './styles/styles.scss';
 
 ReactDOM.render(
-  <h1> Oi </h1>,
-  document.getElementById('app'));
+  <App />,
+  document.getElementById('root'));

@@ -1,0 +1,57 @@
+#tags {
+  #tags-header {
+    display: grid;
+    grid-template-rows: 1fr; 
+    grid-template-columns: 1fr 1fr;
+
+    padding: $small-font;
+    font-size: $small-font;
+
+    #title {
+      font-family: "Merriweather";
+      display: grid;
+      align-items: center;
+      font-size: $medium-font;
+    }
+
+    #write-menu {
+      display: grid;
+      grid-template-columns: 80% 20%;
+      justify-items: center;
+      align-items: center;
+
+      #add {
+        align-self: center;
+        justify-self: end;
+
+        height: $medium-font;
+        width: $medium-font;
+        font-size: $small-font;
+
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        border-radius: $small-button-radius;
+
+        color: gainsboro;
+        background-color: green; 
+      }
+
+      #add:hover {
+        opacity: 0.7;
+      }
+
+      #add:active {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
+  #tags-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: $small-font;
+    grid-gap: $small-gap;
+  }
+}

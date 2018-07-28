@@ -1,0 +1,92 @@
+#note-add-page {
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 5vh;
+
+  #note-add {
+    position: relative;
+    background-color: lightsteelblue;
+    width: 40vw;
+    min-height: 50vh;
+    display: grid;
+    grid-template-rows: 1fr 2fr 3fr 3fr 3fr 1fr;
+    border-radius: $extra-small-font; 
+
+    #header {
+      font-size: $medium-font;
+      display: grid;
+      
+      #header-title {
+        align-self: start;
+        justify-self: center;
+        font-family: "Merriweather";
+        padding: $small-font;
+      }
+      
+      #exit {
+        position: absolute;
+        right: 0;
+       
+        height: $medium-font;
+        width: $medium-font;
+        font-size: $small-font;
+        background-color: lightcoral;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        cursor: pointer;
+        border-radius: $small-button-radius; 
+      }
+
+      #exit:hover {
+        opacity: 0.8;
+      }
+    }
+
+    #note-title {
+      align-self: center;
+      justify-self: start;
+      padding: $small-font;
+      font-family: "Merriweather";
+      font-size: $medium-font;
+
+      input {
+        min-width: 10vw;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+
+    #note-description {
+      padding: $small-font;
+
+      #description {
+        font-family: "Merriweather";
+        display: block;
+        font-size: $medium-font;
+      }
+    }
+
+    #commentaries {
+      #commentaries-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        color: #28a745;
+        padding: $small-font;
+        font-size: $medium-font;
+
+        #commentaries-header-title {
+          color: black;
+        }
+
+        #commentaries-add {
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+}

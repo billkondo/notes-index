@@ -48,6 +48,13 @@ table {
 	border-spacing: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
+$large-font: 3vh;
+$medium-font: 2vh;
+$small-font: 1.6vh;
+$extra-small-font: 1.2vh;
+
+$small-button-radius: 0.5vh;
+
+$thin-border: 0.05em;
+
+$small-gap: 0.3vh;

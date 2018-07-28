@@ -22,6 +22,9 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
+const notes = require('./routes/api/notes');
+app.use('/api/notes', notes);
+
 app.listen(port, () => {
   console.log(`SERVER is ON on port ${port}`);
 });
