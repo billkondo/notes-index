@@ -28,13 +28,32 @@ class Note extends React.Component {
       }
     });
 
+  addComment = () => {
+    this.setState((prevState) => {
+      return ({
+        commentaries: prevState.commentaries.concat([""])
+      });
+    })
+  }
+
+  writeComment = (event, id) => {
+    const newComment = event.target.value;
+    this.setState((prevState) => {
+      let array = prevState.commentaries;
+      array[id] = newComment;
+      return ({
+        commentaries: array
+      });
+    })
+  }
+
   submit = () => {
-    console.log(this.state);
+    
   }
 
   render() {
     return (
-      <div id="note-add-page">        
+      <div id="note-add-page">
         <div id="note-add">
           <Header />
 
@@ -42,9 +61,9 @@ class Note extends React.Component {
 
           <Description description={this.state.description} enterDescription={this.enterDescription} />
 
-          <Commentaries />
+          <Commentaries commentaries={this.state.commentaries} addComment={this.addComment} writeComment={this.writeComment} />
 
-           <Tags addTag={this.addTag} tags={this.state.tags} />
+          <Tags addTag={this.addTag} tags={this.state.tags} />
 
           <Button color="success" onClick={this.submit}> Create </Button>
 

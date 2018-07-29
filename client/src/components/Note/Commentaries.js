@@ -8,11 +8,17 @@ class Commentaries extends React.Component {
 
         <div id="commentaries-header">
           <div id="commentaries-header-title">Commentaries</div>
-          <div id="commentaries-add"> <i className="fas fa-plus" /> </div>
+          <div id="commentaries-add" onClick={this.props.addComment} > <i className="fas fa-plus" /> </div>
         </div>
 
         <div id="commentaries-box">
-          
+          { 
+            this.props.commentaries.map((value, index) => {
+              return (
+                <Commentary key={index} comment={value} id={index} writeComment={this.props.writeComment} />
+              );
+            })
+          }
         </div>
 
         <div className="separator">

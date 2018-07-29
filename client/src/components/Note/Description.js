@@ -8,7 +8,14 @@ class Description extends React.Component {
 
         <div id="description">
           <div className="form-group">
-            <textarea className="form-control" rows="3" placeholder="Description" id="description-text"></textarea>
+            <textarea 
+              className="form-control" 
+              rows="3" 
+              placeholder="Description" 
+              id="description-text" 
+              value={this.props.description} 
+              onChange={this.props.enterDescription}
+            />
           </div>
         </div>
 
