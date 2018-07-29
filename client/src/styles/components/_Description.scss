@@ -1,0 +1,22 @@
+#note-description {
+  padding: $small-font;
+
+  #title {
+    font-family: "Merriweather";
+    display: block;
+    font-size: $medium-font;
+  }
+  
+  #description {
+    margin-top: $extra-small-font; 
+
+    #description-text {
+      font-size: $small-font;
+    }
+
+    textarea {
+      resize: none;
+      font-family: "Merriweather";
+    }
+  }
+}

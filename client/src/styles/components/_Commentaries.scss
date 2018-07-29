@@ -1,0 +1,40 @@
+#commentaries {
+  padding: $small-font;
+
+  #commentaries-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    font-size: $medium-font;
+    font-family: "Merriweather";
+
+    align-items: center;
+
+
+    #commentaries-add {
+      justify-self: start;
+
+      height: $medium-font;
+      width: $medium-font;
+      font-size: $small-font;
+
+      display: grid;
+      justify-items: center;
+      align-items: center;
+
+      background-color: green; 
+      color: gainsboro;
+      cursor: pointer;
+      border-radius: $small-button-radius;
+    }
+
+    #commentaries-add:active {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  #commentaries-box {
+    padding: $small-font;
+  }
+}

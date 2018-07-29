@@ -1,13 +1,17 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
+import Header from './Header';
+import Title from './Title';
+import Description from './Description';
+import Commentaries from './Commentaries';
 import Tags from './Tags';
 
 class Note extends React.Component {
   state = {
     title: "",
     description: "",
-    commentaries: [], 
+    commentaries: [],
     tags: []
   }
 
@@ -17,56 +21,30 @@ class Note extends React.Component {
   enterDescription = (event) =>
     this.setState({ description: event.target.value });
 
-  submit = () => {
-    console.log(this.state);
-  }
-
-  addTag = (tag) => 
+  addTag = (tag) =>
     this.setState((prevState) => {
       return {
         tags: prevState.tags.concat([tag])
       }
     });
 
+  submit = () => {
+    console.log(this.state);
+  }
+
   render() {
     return (
-      <div id="note-add-page">
+      <div id="note-add-page">        
         <div id="note-add">
-          <div id="header">
-            <div id="header-title"> Create Note </div>
+          <Header />
 
-            <div id="exit">
-              <i className="fas fa-times" />
-            </div>
-          </div>
+          <Title title={this.state.title} enterTitle={this.enterTitle} />
 
-          <div id="note-title">
-            <label>
-              {"Title "}
+          <Description description={this.state.description} enterDescription={this.enterDescription} />
 
-              <input type="text" value={this.state.title} onChange={this.enterTitle} />
-            </label>
-          </div>
+          <Commentaries />
 
-          <div id="note-description">
-            <label id="description"> Description </label>
-
-            <input type="text" value={this.state.description} onChange={this.enterDescription} />
-          </div>
-
-          <div id="commentaries">
-
-            <div id="commentaries-header">
-              <div id="commentaries-header-title">Commentaries</div>
-              <div id="commentaries-add"> <i className="fas fa-plus-circle" /> </div>
-            </div>
-
-            <div id="commentaries-box">
-            </div>
-
-          </div>
-
-          <Tags addTag={this.addTag} tags={this.state.tags} />
+           <Tags addTag={this.addTag} tags={this.state.tags} />
 
           <Button color="success" onClick={this.submit}> Create </Button>
 

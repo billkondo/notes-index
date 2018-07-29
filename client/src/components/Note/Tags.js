@@ -26,6 +26,11 @@ class Tags extends React.Component {
     }
   }
 
+  handleEnter = (event) => {
+    if (event.key === 'Enter')
+      this.submitTag();
+  }
+
   render() {
     return (
       <div id="tags">
@@ -35,7 +40,7 @@ class Tags extends React.Component {
           <div id="write-menu">
             <InputGroup>
               <InputGroupAddon addonType="prepend"> # </InputGroupAddon>
-              <Input placeholder="tag" onChange={this.enterTag} value={this.state.value} />
+              <Input placeholder="tag" onChange={this.enterTag} value={this.state.value} onKeyPress={this.handleEnter} />
             </InputGroup>
 
             <div id="add" onClick={this.submitTag}> <i className="fas fa-plus" /> </div>

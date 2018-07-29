@@ -6,7 +6,7 @@ class Tag extends React.Component {
   }
   render() {
     return (
-      <div id="tag">
+      <div className="tag">
         {this.props.tag}
       </div>
     );

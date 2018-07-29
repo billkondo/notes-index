@@ -1,0 +1,30 @@
+#header {
+  font-size: $medium-font;
+  display: grid;
+  
+  #header-title {
+    align-self: start;
+    justify-self: center;
+    font-family: "Shrikhand";
+    padding: $small-font;
+  }
+  
+  #exit {
+    position: absolute;
+    right: 0;
+   
+    height: $medium-font;
+    width: $medium-font;
+    font-size: $small-font;
+    background-color: lightcoral;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    border-radius: $small-button-radius; 
+  }
+
+  #exit:hover {
+    opacity: 0.8;
+  }
+}
