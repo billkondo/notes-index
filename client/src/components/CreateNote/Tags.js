@@ -1,27 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 import BoxTag from './BoxTag';
 
+import {
+  addNewTag
+} from '../../actions/create-note';
 
-class Tags extends React.Component {
+
+class TagsPresent extends React.Component {
   state = {
     tag: "",
-    value: ""
   }
 
   enterTag = (event) =>
     this.setState({
-      tag: event.target.value,
-      value: event.target.value
+      tag: event.target.value
     });
 
   submitTag = () => {
     if (this.state.tag) {
       this.props.addTag(this.state.tag);
       this.setState({
-        tag: "",
-        value: ""
+        tag: ""
       });
     }
   }
@@ -40,7 +42,7 @@ class Tags extends React.Component {
           <div id="write-menu">
             <InputGroup>
               <InputGroupAddon addonType="prepend"> # </InputGroupAddon>
-              <Input placeholder="tag" onChange={this.enterTag} value={this.state.value} onKeyPress={this.handleEnter} />
+              <Input placeholder="tag" onChange={this.enterTag} value={this.state.tag} onKeyPress={this.handleEnter} />
             </InputGroup>
 
             <div id="add" onClick={this.submitTag}> <i className="fas fa-plus" /> </div>
@@ -53,5 +55,14 @@ class Tags extends React.Component {
     );
   }
 }
+
+const Tags = connect(
+  (state) => ({
+    tags: state.createNote.tags
+  }),
+  (dispatch) => ({
+    addTag: (newTag) => dispatch(addNewTag(newTag))
+  })
+)(TagsPresent);
 
 export default Tags;

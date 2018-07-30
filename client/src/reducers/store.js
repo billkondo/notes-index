@@ -8,4 +8,8 @@ const store = createStore(combineReducers({
   createNote: createNoteReducer
 }));
 
+store.subscribe(() => {
+  console.log(store.getState());
+})
+
 export default store;
