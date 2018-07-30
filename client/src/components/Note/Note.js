@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Button } from 'reactstrap';
 
 import Header from './Header';
@@ -48,7 +49,21 @@ class Note extends React.Component {
   }
 
   submit = () => {
-    
+    console.log(this.state);
+    axios
+      .post('/api/notes', this.state)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          title: "",
+          description: "",
+          commentaries: [],
+          tags: []
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {

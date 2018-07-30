@@ -50,8 +50,8 @@ module.exports = (env) => {
         ]
     },
     plugins: [
-      CSSExtract,
-      new ClearWebpackPlugin([path.join(__dirname, 'public', 'dist')])
+      CSSExtract
+      // new ClearWebpackPlugin([path.join(__dirname, 'public', 'dist')])
     ],
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
