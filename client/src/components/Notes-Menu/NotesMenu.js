@@ -6,27 +6,26 @@ import CreateNote from '../CreateNote/CreateNote';
 import Functions from './Functions';
 import UserNotes from './UserNotes';
 
-class NotesMenuPresent extends React.Component {
-  state = {
-    notes: []
-  }
+import {
+  loadMenuNotes
+} from '../../actions/notes-menu';
 
+class NotesMenuPresent extends React.Component {
   componentDidMount() {
     axios
       .get('/api/notes')
-      .then(res => this.setState({ notes: res.data }))
+      .then(res => this.props.load(res.data))
       .catch(err => console.log(err));
   }
 
   render() {
     return (
       <div id="notes-menu">
-        {this.props.createNote && <CreateNote /> }
+        {this.props.createNote && <CreateNote />}
+
         <div id="notes-menu-title"> Your Notes </div>
-
         <Functions />
-
-        <UserNotes notes={this.state.notes} />
+        <UserNotes notes={this.props.notes} />
       </div>
     );
   }
@@ -34,10 +33,11 @@ class NotesMenuPresent extends React.Component {
 
 const NotesMenu = connect(
   (state) => ({
-    createNote: state.notesMenu.createNote
-  }), 
+    createNote: state.notesMenu.createNote, 
+    notes: state.notesMenu.notes
+  }),
   (dispatch) => ({
-
+    load: (notes) => dispatch(loadMenuNotes(notes))
   })
 )(NotesMenuPresent)
 

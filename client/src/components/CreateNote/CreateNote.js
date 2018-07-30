@@ -9,19 +9,27 @@ import Description from './Description';
 import Commentaries from './Commentaries';
 import Tags from './Tags';
 
-class Note extends React.Component {
+import {
+  closeCreateNote,
+  loadMenuNotes
+} from '../../actions/notes-menu';
+
+import {
+  resetNote
+} from '../../actions/create-note';
+
+class NotePresent extends React.Component {
   submit = () => {
-    console.log(this.state);
     axios
-      .post('/api/notes', this.state)
+      .post('/api/notes', this.props.note)
       .then(res => {
-        console.log(res);
-        this.setState({
-          title: "",
-          description: "",
-          commentaries: [],
-          tags: []
-        })
+        axios.get('/api/notes').
+          then(newRes => {
+            this.props.load(newRes.data);
+            this.props.close();
+            this.props.reset();
+          })
+          .catch(err => console.log(err))
       })
       .catch(err => {
         console.log(err);
@@ -44,5 +52,16 @@ class Note extends React.Component {
     );
   }
 }
+
+const Note = connect(
+  (state) => ({
+    note: state.createNote
+  }),
+  (dispatch) => ({
+    close: () => dispatch(closeCreateNote()),
+    reset: () => dispatch(resetNote()),
+    load: (notes) => dispatch(loadMenuNotes(notes))
+  })
+)(NotePresent);
 
 export default Note;

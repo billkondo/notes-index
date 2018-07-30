@@ -3,7 +3,8 @@ import {
   CREATE_NOTE_ENTER_DESCRIPTION,
   CREATE_NOTE_ADD_COMMENT,
   CREATE_NOTE_WRITE_COMMENT,
-  CREATE_NOTE_ADD_TAG 
+  CREATE_NOTE_ADD_TAG,
+  CREATE_NOTE_RESET 
 } from '../types/types';
 
 const enterNewTitle = (newTitle) => {
@@ -41,10 +42,17 @@ const addNewTag = (newTag) => {
   });
 }
 
+const resetNote = () => {
+  return ({
+    type: CREATE_NOTE_RESET
+  });
+}
+
 export {
   enterNewTitle, 
   enterNewDescription,
   addNewComment,
   writeNewComment, 
-  addNewTag
+  addNewTag,
+  resetNote
 }

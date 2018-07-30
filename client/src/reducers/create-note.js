@@ -3,7 +3,8 @@ import {
   CREATE_NOTE_ENTER_DESCRIPTION,
   CREATE_NOTE_ADD_COMMENT,
   CREATE_NOTE_WRITE_COMMENT,
-  CREATE_NOTE_ADD_TAG 
+  CREATE_NOTE_ADD_TAG,
+  CREATE_NOTE_RESET
 } from '../types/types';
 
 const defaultState = {
@@ -47,6 +48,9 @@ const createNoteReducer = (state = defaultState, action) => {
         ...state, 
         tags: state.tags.concat(action.newTag)
       }
+
+    case CREATE_NOTE_RESET:
+      return defaultState;
 
     default:
       return state;
