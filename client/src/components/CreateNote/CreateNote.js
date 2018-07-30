@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 
 import Header from './Header';
@@ -68,8 +69,8 @@ class Note extends React.Component {
 
   render() {
     return (
-      <div id="note-add-page">
-        <div id="note-add">
+      <div id="create-note-add-page">
+        <div id="create-note-add">
           <Header />
 
           <Title title={this.state.title} enterTitle={this.enterTitle} />

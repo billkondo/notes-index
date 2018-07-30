@@ -3,7 +3,8 @@ const router = express.Router();
 const Note = require('../../models/note');
 
 router.get('/', (req, res) => {
-  
+  Note.find()
+    .then(notes => res.json(notes));
 });
 
 router.post('/', (req, res) => {

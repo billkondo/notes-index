@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
+// Routers
+const notes = require('./routes/api/notes');
+app.use('/api/notes', notes);
+
 const db = require('./config/keys').mongoURI;
 
 mongoose
@@ -21,9 +25,6 @@ app.use(express.static(publicPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
-
-const notes = require('./routes/api/notes');
-app.use('/api/notes', notes);
 
 app.listen(port, () => {
   console.log(`SERVER is ON on port ${port}`);

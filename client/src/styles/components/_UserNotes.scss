@@ -1,0 +1,6 @@
+#user-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: $large-font;  
+  margin-top: $medium-font;
+}

@@ -1,0 +1,3 @@
+const ENTER_CREATE_NOTE = "ENTER_CRETE_NOTE";
+
+export { ENTER_CREATE_NOTE };

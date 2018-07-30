@@ -1,0 +1,60 @@
+.note-display {
+  height: 400px;
+  width: 20vw;
+  background: lightgray;
+  border-radius: $small-font;
+
+  padding: $small-font;
+
+  display: grid;
+
+  .note-display-header {
+    display: grid;
+
+    align-self: start;
+
+    grid-template-columns: 1fr 1fr;
+
+    .note-display-title {
+      font-size: $medium-font;
+      font-family: "Merriweather";
+
+      align-self: center;
+      justify-self: start;
+    }
+
+    .controls {
+      align-self: center;
+      justify-self: end;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      grid-gap: $small-font;
+      align-items: center;
+
+      .edit, .view {
+        font-size: $small-font;
+        cursor: pointer;   
+      }
+
+      .edit {
+        justify-self: end;
+      }
+
+      .view {
+        justify-self: start;
+      }
+
+      .edit:hover, .view:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .description {
+    font-family: "Comfortaa";
+    font-size: $medium-font;
+  }
+}

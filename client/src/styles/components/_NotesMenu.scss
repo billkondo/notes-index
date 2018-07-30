@@ -1,0 +1,12 @@
+#notes-menu {
+  display: grid;
+  justify-items: center;
+  align-items: start;
+
+  margin-bottom: $large-font;
+  
+  #notes-menu-title {
+    font-size: $large-font;
+    font-family: "Shrikhand";
+  }
+}
