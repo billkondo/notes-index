@@ -1,4 +1,4 @@
-#heaeder-view {
+#header-view {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -7,13 +7,25 @@
     justify-self: start;
     font-size: $medium-font;
     font-family: "Merriweather";
+    padding: $small-font;
   }
 
   #exit {
     align-self: start;
     justify-self: end;
-    font-size: $medium-font;
+    height: $medium-font;
+    width: $medium-font;
+    font-size: $small-font;
     background-color: lightcoral;
-    border-radius: $extra-small-font; 
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border-radius: $small-button-radius;
+    cursor: pointer;
+  }
+
+  #exit:hover {
+    opacity: 0.8;
   }
 }

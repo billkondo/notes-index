@@ -2,7 +2,8 @@ import {
   ENTER_CREATE_NOTE,
   CLOSE_CREATE_NOTE, 
   NOTES_MENU_LOAD,
-  NOTE_MENU_ENTER_VIEW
+  NOTE_MENU_ENTER_VIEW,
+  NOTE_MENU_EXIT_VIEW
 } from '../types/types';
 
 const defaultState = {
@@ -35,6 +36,12 @@ const notesMenuReducer = (state = defaultState, action) => {
       return {
         ...state, 
        viewNote: true
+      }
+
+    case NOTE_MENU_EXIT_VIEW:
+      return {
+        ...state, 
+        viewNote: false
       }
 
     default: 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Commentary = (props) => (
-  <div id="commentary">
+  <div className="commentary">
     <div className="form-group">
       <textarea
         className="form-control comment"
