@@ -1,7 +1,8 @@
 import { 
   ENTER_CREATE_NOTE,
   CLOSE_CREATE_NOTE, 
-  NOTES_MENU_LOAD
+  NOTES_MENU_LOAD,
+  NOTE_MENU_ENTER_VIEW
 } from '../types/types';
 
 const enterCreateNote = () => {
@@ -23,8 +24,15 @@ const loadMenuNotes = (notes) => {
   })
 }
 
+const enterView = () => {
+  return ({
+    type: NOTE_MENU_ENTER_VIEW, 
+  })
+}
+
 export { 
   enterCreateNote, 
   closeCreateNote,
-  loadMenuNotes
+  loadMenuNotes, 
+  enterView
 };

@@ -2,10 +2,12 @@ import { createStore, combineReducers } from 'redux';
 
 import notesMenuReducer from './notes-menu';
 import createNoteReducer from './create-note';
+import viewNoteReducer from './view-note';
 
 const store = createStore(combineReducers({
   notesMenu: notesMenuReducer,
-  createNote: createNoteReducer
+  createNote: createNoteReducer, 
+  viewNote: viewNoteReducer
 }));
 
 store.subscribe(() => {

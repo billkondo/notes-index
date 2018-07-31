@@ -1,12 +1,14 @@
 import { 
   ENTER_CREATE_NOTE,
   CLOSE_CREATE_NOTE, 
-  NOTES_MENU_LOAD
+  NOTES_MENU_LOAD,
+  NOTE_MENU_ENTER_VIEW
 } from '../types/types';
 
 const defaultState = {
   createNote: false,
-  notes: []
+  notes: [], 
+  viewNote: false
 }
 
 const notesMenuReducer = (state = defaultState, action) => {
@@ -27,6 +29,12 @@ const notesMenuReducer = (state = defaultState, action) => {
       return {
         ...state,
         notes: action.notes
+      }
+
+    case NOTE_MENU_ENTER_VIEW: 
+      return {
+        ...state, 
+       viewNote: true
       }
 
     default: 

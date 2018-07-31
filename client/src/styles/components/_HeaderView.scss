@@ -1,0 +1,19 @@
+#heaeder-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  #title {
+    align-self: center;
+    justify-self: start;
+    font-size: $medium-font;
+    font-family: "Merriweather";
+  }
+
+  #exit {
+    align-self: start;
+    justify-self: end;
+    font-size: $medium-font;
+    background-color: lightcoral;
+    border-radius: $extra-small-font; 
+  }
+}

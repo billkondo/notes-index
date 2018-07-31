@@ -1,17 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div id="header">
-        <div id="header-title"> Create Note </div>
+import {
+  closeCreateNote
+} from '../../actions/notes-menu';
 
-        <div id="exit">
-          <i className="fas fa-times" />
-        </div>
-      </div>
-    );
-  }
-}
+const HeaderPresent = (props) => (
+  <div id="header">
+    <div id="header-title"> Create Note </div>
+
+    <div id="exit" onClick={props.close}>
+      <i className="fas fa-times" />
+    </div>
+  </div>
+);
+
+const Header = connect(
+  (state) => ({}),
+  (dispatch) => ({
+    close: () => dispatch(closeCreateNote())
+  })
+)(HeaderPresent);
+
 
 export default Header;

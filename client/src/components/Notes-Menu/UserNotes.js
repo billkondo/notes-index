@@ -1,21 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import NoteDisplay from './NoteDisplay';
 
-class UserNotes extends React.Component {
-  render() {
-    return (
-      <div id="user-notes">
-        {
-          this.props.notes.map((value, index) => {
-            return (
-              <NoteDisplay key={index} note={value} />
-            );
-          })
-        }
-      </div>
-    );
-  }
-}
+const UserNotesPresent = (props) => (
+  <div id="user-notes">
+    {
+      props.notes.map((value, index) => {
+        return (
+          <NoteDisplay key={index} note={value} id={index} />
+        );
+      })
+    }
+  </div>
+);
+
+const UserNotes = connect(
+  (state) => ({
+    notes: state.notesMenu.notes
+  })
+)(UserNotesPresent)
 
 export default UserNotes;
