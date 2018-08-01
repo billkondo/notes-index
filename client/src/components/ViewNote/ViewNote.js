@@ -3,6 +3,7 @@ import React from 'react';
 import HeaderView from './HeaderView';
 import DescriptionView from './DescriptionView';
 import CommentariesView from './CommentariesView';
+import FooterView from './FooterView';
 
 class ViewNote extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class ViewNote extends React.Component {
         <HeaderView />
         <DescriptionView />
         <CommentariesView />
+        <FooterView />
       </div>
     );
   }

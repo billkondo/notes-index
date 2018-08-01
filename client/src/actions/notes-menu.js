@@ -2,8 +2,9 @@ import {
   ENTER_CREATE_NOTE,
   CLOSE_CREATE_NOTE, 
   NOTES_MENU_LOAD,
-  NOTE_MENU_ENTER_VIEW,
-  NOTE_MENU_EXIT_VIEW
+  NOTES_MENU_ENTER_VIEW,
+  NOTES_MENU_EXIT_VIEW,
+  NOTES_MENU_DELETE_NOTE
 } from '../types/types';
 
 const enterCreateNote = () => {
@@ -27,13 +28,20 @@ const loadMenuNotes = (notes) => {
 
 const enterView = () => {
   return ({
-    type: NOTE_MENU_ENTER_VIEW, 
+    type: NOTES_MENU_ENTER_VIEW, 
   })
 }
 
 const exitView = () => {
   return ({
-    type: NOTE_MENU_EXIT_VIEW
+    type: NOTES_MENU_EXIT_VIEW
+  })
+}
+
+const deleteNote = (_id) => {
+  return ({
+    type: NOTES_MENU_DELETE_NOTE,
+    _id
   })
 }
 
@@ -42,5 +50,6 @@ export {
   closeCreateNote,
   loadMenuNotes, 
   enterView, 
-  exitView
+  exitView,
+  deleteNote
 };

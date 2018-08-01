@@ -3,7 +3,8 @@ const router = express.Router();
 const Note = require('../../models/note');
 
 router.get('/', (req, res) => {
-  Note.find()
+  Note
+    .find()
     .then(notes => res.json(notes));
 });
 
@@ -16,6 +17,17 @@ router.post('/', (req, res) => {
   });
 
   newNote.save().then(item => res.json(item));
+});
+
+router.delete('/:_id', (req, res) => {
+  Note
+    .findOneAndRemove(req.params._id)
+    .exec()
+    .then(doc => {
+      if (!doc) { return res.status(404).end(); }
+      return res.status(204).end();
+    })
+    .catch(err => next(err));
 });
 
 module.exports = router;

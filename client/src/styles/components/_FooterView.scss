@@ -1,0 +1,20 @@
+#footer-view {
+  align-self: end;
+
+  padding: $small-font;
+  
+  display: grid;
+  align-items: center;
+
+  grid-template-columns: 1fr 1fr;
+  font-size: $medium-font;
+
+  #trash {
+    justify-self: end;
+    cursor: pointer;
+  }
+
+  #trash:hover {
+    opacity: 0.8;
+  }
+}
