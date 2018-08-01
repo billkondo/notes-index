@@ -4,7 +4,8 @@ import {
   NOTES_MENU_LOAD,
   NOTES_MENU_ENTER_VIEW,
   NOTES_MENU_EXIT_VIEW,
-  NOTES_MENU_DELETE_NOTE
+  NOTES_MENU_DELETE_NOTE,
+  NOTES_MENU_ADD_NOTE
 } from '../types/types';
 
 const defaultState = {
@@ -45,11 +46,17 @@ const notesMenuReducer = (state = defaultState, action) => {
         viewNote: false
       }
 
-    case NOTES_MENU_DELETE_NOTE:
+    case NOTES_MENU_DELETE_NOTE: 
       return {
         ...state,
         notes:  state.notes.filter(note => note._id !== action._id)
       }
+
+    case NOTES_MENU_ADD_NOTE:
+    return {
+      ...state, 
+      notes: state.notes.concat(action.note)
+    }
 
     default: 
       return state;

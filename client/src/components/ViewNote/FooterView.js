@@ -6,30 +6,43 @@ import { Button } from 'reactstrap';
 
 import { exitView, deleteNote } from '../../actions/notes-menu';
 
-const FooterViewPresent = (props) => (
-  <div id="footer-view">
-    <Button color="secondary" id="tagsButton"> Tags </Button>
-    <i className="fas fa-trash-alt" id="trash" onClick={() => props.deleteNote(props._id)} />
-  </div>
-);
+class FooterViewPresent extends React.Component {
+  state = {
+    open: true
+  }
+
+  prepareToDelete = () => {
+    if (!this.state.open)
+      return;
+
+    this.setState({ open: false });
+
+    axios
+      .delete(`/api/notes/${this.props._id}`)
+      .then(() => {
+        this.props.delete(this.props._id);
+        this.props.exit();
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div id="footer-view">
+        <Button color="secondary" id="tagsButton"> Tags </Button>
+        <i className="fas fa-trash-alt" id="trash" onClick={this.prepareToDelete} />
+      </div>
+    );
+  }
+}
 
 const FooterView = connect(
   (state) => ({
     _id: state.viewNote.note._id
   }),
   (dispatch) => ({
-    deleteNote: (_id) => {
-      const deleteNotePromise = (_id) => new Promise((resolve, reject) => {
-        dispatch(deleteNote(_id));
-        resolve(true);
-      });
-
-      axios.delete(`/api/notes/${_id}`)
-        .then(() => {
-          deleteNotePromise(_id).then(() => dispatch(exitView()));
-        })
-        .catch(err => console.log(err))
-    }
+    delete: (_id) => dispatch(deleteNote(_id)),
+    exit: () => dispatch(exitView())
   })
 )(FooterViewPresent);
 

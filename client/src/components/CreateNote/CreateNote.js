@@ -11,7 +11,7 @@ import Tags from './Tags';
 
 import {
   closeCreateNote,
-  loadMenuNotes
+  addNote
 } from '../../actions/notes-menu';
 
 import {
@@ -19,21 +19,24 @@ import {
 } from '../../actions/create-note';
 
 class NotePresent extends React.Component {
+  state = {
+    open: true
+  }
+
   submit = () => {
+    if (!this.state.open)
+      return;
+
+    this.setState({ open: false });
+
     axios
       .post('/api/notes', this.props.note)
-      .then(res => {
-        axios.get('/api/notes').
-          then(newRes => {
-            this.props.load(newRes.data);
-            this.props.close();
-            this.props.reset();
-          })
-          .catch(err => console.log(err))
+      .then(() => {
+        this.props.add(this.props.note)
+        this.props.close();
+        this.props.reset();
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -60,7 +63,7 @@ const Note = connect(
   (dispatch) => ({
     close: () => dispatch(closeCreateNote()),
     reset: () => dispatch(resetNote()),
-    load: (notes) => dispatch(loadMenuNotes(notes))
+    add: (note) => dispatch(addNote(note))
   })
 )(NotePresent);
 

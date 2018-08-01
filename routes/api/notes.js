@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:_id', (req, res) => {
   Note
-    .findOneAndRemove(req.params._id)
+    .findOneAndRemove({ _id: req.params._id })
     .exec()
     .then(doc => {
       if (!doc) { return res.status(404).end(); }
