@@ -11,12 +11,16 @@ const NoteDisplayPresent = (props) => {
       .then(() => props.toEnterView())
   }
 
+  const prepareToEnterEditNote = () => {
+
+  }
+
   return (
     <div className="note-display">
       <div className="note-display-header">
         <div className="note-display-title"> {props.note.title} </div>
         <div className="controls">
-          <div className="edit"> <i className="fas fa-edit" /> </div>
+          <div className="edit" onClick={prepareToEnterEditNote}> <i className="fas fa-edit" /> </div>
           <div className="view" onClick={prepareToEnterViewNote}> <i className="fas fa-eye" /> </div>
         </div>
       </div>
@@ -34,8 +38,7 @@ const NoteDisplay = connect(
   }),
   (dispatch) => ({
     loadView: (note) => new Promise((resolve, reject) => {
-      dispatch(viewNoteLoad(note));
-      resolve(true);
+      resolve(dispatch(viewNoteLoad(note)));
     }),
     toEnterView: () => dispatch(enterView())
   })

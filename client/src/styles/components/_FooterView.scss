@@ -7,14 +7,9 @@
   align-items: center;
 
   grid-template-columns: 1fr 1fr;
-  font-size: $medium-font;
-
-  #trash {
-    justify-self: end;
-    cursor: pointer;
-  }
-
-  #trash:hover {
-    opacity: 0.8;
+  font-size: $medium-font; 
+  
+  #tagsButton {
+    grid-column: 2/3;
   }
 }

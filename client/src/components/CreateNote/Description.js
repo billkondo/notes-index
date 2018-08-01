@@ -10,8 +10,7 @@ const DescriptionProject = (props) => (
       <div className="form-group">
         <textarea
           className="form-control"
-          rows="3"
-          placeholder="Description"
+          rows="4"
           id="description-text"
           value={props.description}
           onChange={(e) => props.enterDescription(e.target.value)}

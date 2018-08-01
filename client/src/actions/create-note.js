@@ -4,7 +4,8 @@ import {
   CREATE_NOTE_ADD_COMMENT,
   CREATE_NOTE_WRITE_COMMENT,
   CREATE_NOTE_ADD_TAG,
-  CREATE_NOTE_RESET 
+  CREATE_NOTE_RESET,
+  CREATE_NOTE_DELETE_COMMENT 
 } from '../types/types';
 
 const enterNewTitle = (newTitle) => {
@@ -21,13 +22,14 @@ const enterNewDescription = (newDescription) => {
   });
 }
 
-const addNewComment = (newComment) => {
+const addComment = (newComment) => {
   return ({
-    type: CREATE_NOTE_ADD_COMMENT
+    type: CREATE_NOTE_ADD_COMMENT,
+    newComment
   });
 }
 
-const writeNewComment = (newComment, id) => {
+const writeComment = (newComment, id) => {
   return ({
     type: CREATE_NOTE_WRITE_COMMENT,
     newComment, 
@@ -48,11 +50,19 @@ const resetNote = () => {
   });
 }
 
+const deleteComment = (index) => {
+  return ({
+    type: CREATE_NOTE_DELETE_COMMENT,
+    index
+  })
+}
+
 export {
   enterNewTitle, 
   enterNewDescription,
-  addNewComment,
-  writeNewComment, 
+  addComment,
+  writeComment, 
   addNewTag,
-  resetNote
+  resetNote,
+  deleteComment
 }

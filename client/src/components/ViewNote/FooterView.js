@@ -11,26 +11,25 @@ class FooterViewPresent extends React.Component {
     open: true
   }
 
-  prepareToDelete = () => {
-    if (!this.state.open)
-      return;
+  // prepareToDelete = () => {
+  //   if (!this.state.open)
+  //     return;
 
-    this.setState({ open: false });
+  //   this.setState({ open: false });
 
-    axios
-      .delete(`/api/notes/${this.props._id}`)
-      .then(() => {
-        this.props.delete(this.props._id);
-        this.props.exit();
-      })
-      .catch(err => console.log(err));
-  }
+  //   axios
+  //     .delete(`/api/notes/${this.props._id}`)
+  //     .then(() => {
+  //       this.props.delete(this.props._id);
+  //       this.props.exit();
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   render() {
     return (
       <div id="footer-view">
         <Button color="secondary" id="tagsButton"> Tags </Button>
-        <i className="fas fa-trash-alt" id="trash" onClick={this.prepareToDelete} />
       </div>
     );
   }

@@ -1,0 +1,16 @@
+#edit-note-page {
+  display: grid;
+  justify-items: center;
+  align-items: start;
+
+  margin-bottom: $large-font;
+
+  #edit-note {
+    margin-top: 5vh;
+    background-color: lightgrey;
+    width: 40vw;
+    min-height: 50vh;
+    display: grid;
+    border-radius: $extra-small-font; 
+  }
+}

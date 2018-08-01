@@ -33,7 +33,7 @@
         justify-items: center;
         border-radius: $small-button-radius;
 
-        color: gainsboro;
+        color: white;
         background-color: green; 
       }
 
@@ -44,6 +44,11 @@
       #add:active {
         position: relative;
         top: 2px;
+      }
+
+      .input-group-text {
+        background: darkred;
+        color: white;
       }
     }
   }
