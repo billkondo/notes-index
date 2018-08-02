@@ -5,6 +5,8 @@ import DescriptionView from './DescriptionView';
 import CommentariesView from './CommentariesView';
 import FooterView from './FooterView';
 
+import BackView from './BackView';
+
 import FlipCard from '@kennethormandy/react-flipcard';
 
 class ViewNote extends React.Component {
@@ -12,14 +14,12 @@ class ViewNote extends React.Component {
     flipped: false
   }
 
-  flipSide = () => {
-    console.log('click');
+  flipSide = () => 
     this.setState((prevState) => {
       return {
         flipped: !prevState.flipped
       }
     })
-  }
 
   render() {
     return (
@@ -34,6 +34,7 @@ class ViewNote extends React.Component {
 
           <div className="view-note">
             <HeaderView />
+            <BackView flipSide={this.flipSide} />
           </div>
         </FlipCard>
       </div>

@@ -1,0 +1,24 @@
+#back-view {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  padding: $small-font;
+
+  #tags-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: $large-font;
+    display: grid;
+  }
+
+  #flip-back {
+    font-size: $medium-font;
+    align-self: end;
+    color: darkred;
+  }
+
+  #flip-back:hover {
+    opacity: 0.8;
+  }
+}

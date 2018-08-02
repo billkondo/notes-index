@@ -1,0 +1,12 @@
+.tag-view {
+  font-size: $medium-font;
+  background: darkred;
+  color: white;
+  font-family: "Merriweather";
+  border-radius: $small-button-radius;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
