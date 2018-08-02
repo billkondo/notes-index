@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
+import '@kennethormandy/react-flipcard/dist/Flipcard.css';
 import './styles/styles.scss';
 import store from './reducers/store';
 

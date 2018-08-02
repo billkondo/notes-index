@@ -1,9 +1,15 @@
-#view-note {
+#view-page {
+  width: 40vw;
+  min-height: 50vh;
+  margin-top: 5vh; 
+  margin-bottom: 5vh; 
+}
+
+.view-note {
   width: 40vw;
   min-height: 50vh;
   background: lightgrey;
-  margin-top: 5vh; 
-
+  
   border-radius: $extra-small-font;
   display: grid;
 }

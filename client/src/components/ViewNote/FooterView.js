@@ -6,6 +6,7 @@ import { Button } from 'reactstrap';
 
 import { exitView, deleteNote } from '../../actions/notes-menu';
 
+
 class FooterViewPresent extends React.Component {
   state = {
     open: true
@@ -29,7 +30,7 @@ class FooterViewPresent extends React.Component {
   render() {
     return (
       <div id="footer-view">
-        <Button color="secondary" id="tagsButton"> Tags </Button>
+        <Button color="secondary" id="tagsButton" onClick={this.props.flipSide}> Tags </Button>
       </div>
     );
   }

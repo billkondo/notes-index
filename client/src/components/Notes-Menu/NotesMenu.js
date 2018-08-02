@@ -3,9 +3,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import CreateNote from '../CreateNote/CreateNote';
-import Functions from './Functions';
-import UserNotes from './UserNotes';
 import ViewNote from '../ViewNote/ViewNote';
+import Menu from './Menu';
 
 import {
   loadMenuNotes
@@ -19,16 +18,16 @@ class NotesMenuPresent extends React.Component {
       .catch(err => console.log(err));
   }
 
+  renderPage = () => {
+    if (this.props.createNote) return <CreateNote />
+    if (this.props.viewNote) return <ViewNote />
+    return <Menu />
+  }
+
   render() {
     return (
       <div id="notes-menu">
-        {this.props.createNote && <CreateNote />}
-
-        {this.props.viewNote && <ViewNote />}
-
-        <div id="notes-menu-title"> Your Notes </div>
-        <Functions />
-        <UserNotes />
+        {this.renderPage()}
       </div>
     );
   }
