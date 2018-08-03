@@ -1,11 +1,19 @@
+import {
+  VIEW_NOTE_LOAD
+} from '../types/types';
+
 const defaultState = {
-  note: {}, 
-  _id: -1,
-  index: -1
+  note: {}
 }
 
 const editNoteReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case VIEW_NOTE_LOAD:
+      return {
+        ...state, 
+        note: action.note
+      }
+
     default: 
       return state;
   }

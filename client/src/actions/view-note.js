@@ -11,4 +11,4 @@ const viewNoteLoad = (note) => {
 
 export {
   viewNoteLoad
-}
+};

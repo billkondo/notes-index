@@ -5,13 +5,15 @@ import {
   NOTES_MENU_ENTER_VIEW,
   NOTES_MENU_EXIT_VIEW,
   NOTES_MENU_DELETE_NOTE,
-  NOTES_MENU_ADD_NOTE
+  NOTES_MENU_ADD_NOTE,
+  NOTES_MENU_ENTER_EDIT
 } from '../types/types';
 
 const defaultState = {
   createNote: false,
   notes: [], 
-  viewNote: false
+  viewNote: false,
+  editNote: false
 }
 
 const notesMenuReducer = (state = defaultState, action) => {
@@ -53,10 +55,16 @@ const notesMenuReducer = (state = defaultState, action) => {
       }
 
     case NOTES_MENU_ADD_NOTE:
-    return {
-      ...state, 
-      notes: state.notes.concat(action.note)
-    }
+      return {
+        ...state, 
+        notes: state.notes.concat(action.note)
+      }
+
+    case NOTES_MENU_ENTER_EDIT: 
+      return {
+        ...state, 
+        editNote: true
+      }
 
     default: 
       return state;

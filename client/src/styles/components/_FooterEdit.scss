@@ -1,0 +1,15 @@
+#footer-edit {
+  align-self: end;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  #trash {
+    cursor: pointer;
+    color: darkred;
+
+    justify-self: center;
+    align-self: center;
+    font-size: $medium-font;
+  }
+}

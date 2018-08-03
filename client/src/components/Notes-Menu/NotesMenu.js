@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import CreateNote from '../CreateNote/CreateNote';
 import ViewNote from '../ViewNote/ViewNote';
+import EditNote from '../EditNote/EditNote';
 import Menu from './Menu';
 
 import {
@@ -21,6 +22,7 @@ class NotesMenuPresent extends React.Component {
   renderPage = () => {
     if (this.props.createNote) return <CreateNote />
     if (this.props.viewNote) return <ViewNote />
+    if (this.props.editNote) return <EditNote />
     return <Menu />
   }
 
@@ -37,7 +39,8 @@ const NotesMenu = connect(
   (state) => ({
     createNote: state.notesMenu.createNote, 
     notes: state.notesMenu.notes, 
-    viewNote: state.notesMenu.viewNote
+    viewNote: state.notesMenu.viewNote,
+    editNote: state.notesMenu.editNote
   }),
   (dispatch) => ({
     load: (notes) => dispatch(loadMenuNotes(notes))

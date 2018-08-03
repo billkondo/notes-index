@@ -20,5 +20,15 @@
     display: grid;
     grid-template-rows: 0.5fr 1fr auto auto auto $large-font;
     border-radius: $extra-small-font; 
+
+    #create-button {
+      box-sizing: content-box;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      height: $large-font;
+      font-size: $small-font;
+      padding: 0;
+    }
   }
 }

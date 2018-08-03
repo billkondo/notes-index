@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { enterView } from '../../actions/notes-menu';
+import { enterView, enterEdit } from '../../actions/notes-menu';
 import { viewNoteLoad } from '../../actions/view-note';
+import { editNoteLoad } from '../../actions/edit-note';
 
 const NoteDisplayPresent = (props) => {
   const prepareToEnterViewNote = () => {
@@ -12,7 +13,9 @@ const NoteDisplayPresent = (props) => {
   }
 
   const prepareToEnterEditNote = () => {
-
+    props
+      .loadEdit(props.note)
+      .then(() => props.toEnterEdit())
   }
 
   return (
@@ -33,14 +36,16 @@ const NoteDisplayPresent = (props) => {
 }
 
 const NoteDisplay = connect(
-  (state) => ({
-    idViewNote: state.notesMenu.idViewNote
-  }),
+  (state) => ({}),
   (dispatch) => ({
     loadView: (note) => new Promise((resolve, reject) => {
       resolve(dispatch(viewNoteLoad(note)));
     }),
-    toEnterView: () => dispatch(enterView())
+    loadEdit: (note) => new Promise((resolve, reject) => {
+      resolve(dispatch(editNoteLoad(note)));
+    }),
+    toEnterView: () => dispatch(enterView()),
+    toEnterEdit: () => dispatch(enterEdit())
   })
 )(NoteDisplayPresent);
 
