@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Components
 import Tag from './Tag';
 
 class BoxTag extends React.Component {
@@ -12,6 +13,7 @@ class BoxTag extends React.Component {
               <Tag
                 key={index}
                 tag={key}
+                index={index}
               />
             );
           })

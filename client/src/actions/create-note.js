@@ -5,7 +5,8 @@ import {
   CREATE_NOTE_WRITE_COMMENT,
   CREATE_NOTE_ADD_TAG,
   CREATE_NOTE_RESET,
-  CREATE_NOTE_DELETE_COMMENT 
+  CREATE_NOTE_DELETE_COMMENT,
+  CREATE_NOTE_DELETE_TAG 
 } from '../types/types';
 
 const enterNewTitle = (newTitle) => {
@@ -54,7 +55,14 @@ const deleteComment = (index) => {
   return ({
     type: CREATE_NOTE_DELETE_COMMENT,
     index
-  })
+  });
+}
+
+const deleteTag = (index) => {
+  return ({
+    type: CREATE_NOTE_DELETE_TAG,
+    index
+  });
 }
 
 export {
@@ -64,5 +72,6 @@ export {
   writeComment, 
   addNewTag,
   resetNote,
-  deleteComment
+  deleteComment,
+  deleteTag
 }

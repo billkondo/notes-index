@@ -5,7 +5,8 @@ import {
   CREATE_NOTE_WRITE_COMMENT,
   CREATE_NOTE_ADD_TAG,
   CREATE_NOTE_RESET,
-  CREATE_NOTE_DELETE_COMMENT
+  CREATE_NOTE_DELETE_COMMENT,
+  CREATE_NOTE_DELETE_TAG
 } from '../types/types';
 
 const defaultState = {
@@ -57,6 +58,12 @@ const createNoteReducer = (state = defaultState, action) => {
       return {
         ...state,
         commentaries: state.commentaries.filter((comment, index) => index !== action.index)
+      }
+
+    case CREATE_NOTE_DELETE_TAG:
+      return {
+        ...state, 
+        tags: state.tags.filter((tag, index) => index !== action.index)
       }
 
     default:

@@ -1,0 +1,20 @@
+.exit-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: $medium-font;
+  width: $medium-font;
+  font-size: $small-font;
+  background: $exit-color;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  color: black;
+
+  border-radius: $small-button-radius;
+}
+
+.exit-button:hover {
+  opacity: 0.75;
+}

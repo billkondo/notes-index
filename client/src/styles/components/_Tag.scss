@@ -1,7 +1,8 @@
 .tag {
+  position: relative;
   font-size: $small-font;
   padding: $extra-small-font;
-  background-color: darkred;
+  background-color: $tag-color;
   color: white;
   border-radius: $small-button-radius;
   

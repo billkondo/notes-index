@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
+// Components
 import BoxTag from './BoxTag';
 
+// Functions
 import {
   addNewTag
 } from '../../actions/create-note';
