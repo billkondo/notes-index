@@ -1,19 +1,14 @@
 @import './base/base';
 @import './base/bootstrap';
 @import './components/BackView.scss';
-@import './components/Commentaries';
 @import './components/CommentariesView';
-@import './components/Commentary';
 @import './components/CommentView';
-@import './components/CreateNote';
-@import './components/Description';
 @import './components/DescriptionView';
 @import './components/EditNote';
-@import './components/ExitButton';
+@import './components/Buttons/ExitButton';
 @import './components/FooterEdit';
 @import './components/FooterView';
 @import './components/Functions';
-@import './components/Header';
 @import './components/HeaderView';
 @import './components/Menu';
 @import './components/NoteDisplay';
@@ -22,6 +17,13 @@
 @import './components/Tag';
 @import './components/Tags';
 @import './components/TagView';
-@import './components/Title';
 @import './components/UserNotes';
 @import './components/ViewNote';
+
+// Create Note Styles 
+@import './components/CreateNote/Commentaries';
+@import './components/CreateNote/Commentary';
+@import './components/CreateNote/CreateNote';
+@import './components/CreateNote/Description';
+@import './components/CreateNote/Header';
+@import './components/CreateNote/Title';

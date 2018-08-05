@@ -1,0 +1,11 @@
+#header {
+  font-size: $medium-font;
+  display: grid;
+  
+  #header-title {
+    align-self: start;
+    justify-self: center;
+    font-family: "Shrikhand";
+    padding: $small-font;
+  } 
+}

@@ -3,12 +3,15 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 
+
+// Components
 import Header from './Header';
 import Title from './Title';
 import Description from './Description';
 import Commentaries from './Commentaries';
 import Tags from './Tags';
 
+// Functions
 import {
   closeCreateNote,
   addNote

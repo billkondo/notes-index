@@ -1,4 +1,5 @@
 .tag {
+  box-sizing: border-box;
   position: relative;
   font-size: $small-font;
   padding: $extra-small-font;
@@ -9,4 +10,11 @@
   display: grid;
   align-items: center;
   justify-items: center;
+
+  border: $thin-border solid lightgrey; 
+}
+
+.tag:hover {
+  border: $thin-border solid black;
+  background: #353839;
 }
