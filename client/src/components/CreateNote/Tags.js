@@ -4,6 +4,7 @@ import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 // Components
 import BoxTag from './BoxTag';
+import AddButton from '../Buttons/AddButton';
 
 // Functions
 import {
@@ -47,7 +48,7 @@ class TagsPresent extends React.Component {
               <Input placeholder="tag" onChange={this.enterTag} value={this.state.tag} onKeyPress={this.handleEnter} />
             </InputGroup>
 
-            <div id="add" onClick={this.submitTag}> <i className="fas fa-plus" /> </div>
+            <AddButton click={this.submitTag} />
           </div>
         </div>
 

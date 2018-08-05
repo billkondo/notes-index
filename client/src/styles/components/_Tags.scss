@@ -19,33 +19,7 @@
       grid-template-columns: 80% 20%;
       justify-items: center;
       align-items: center;
-
-      #add {
-        align-self: center;
-        justify-self: center;
-
-        height: $medium-font;
-        width: $medium-font;
-        font-size: $small-font;
-
-        display: grid;
-        align-items: center;
-        justify-items: center;
-        border-radius: $small-button-radius;
-
-        color: white;
-        background-color: green; 
-      }
-
-      #add:hover {
-        opacity: 0.7;
-      }
-
-      #add:active {
-        position: relative;
-        top: 2px;
-      }
-
+      
       .input-group-text {
         background: $tag-color;
         color: white;

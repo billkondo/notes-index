@@ -2,19 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Commentary from './Commentary';
 
+// Components
+import AddButton from '../Buttons/AddButton';
+
+// Functions
 import {
   addComment,
   writeComment,
   deleteComment
 } from '../../actions/create-note';
 
-class CommentariesPresent extends React.Component {
+class CommentariesUI extends React.Component {
   render() {
     return (
       <div id="commentaries">
         <div id="commentaries-header">
           <div id="commentaries-header-title">Commentaries</div>
-          <div id="commentaries-add" onClick={this.props.add} > <i className="fas fa-plus" /> </div>
+          <AddButton click={this.props.add} />
         </div>
 
         <div id="commentaries-box">
@@ -50,6 +54,6 @@ const Commentaries = connect(
     write: (newComment, id) => dispatch(writeComment(newComment, id)),
     delete: (index) => dispatch(deleteComment(index))
   })
-)(CommentariesPresent)
+)(CommentariesUI)
 
 export default Commentaries;
