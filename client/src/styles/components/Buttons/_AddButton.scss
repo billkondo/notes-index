@@ -1,0 +1,24 @@
+.add-button {
+  background: $add-color;
+  height: $medium-font;
+  width: $medium-font;
+  font-size: $small-font;
+
+  color: white;
+  
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  border-radius: $small-button-radius; 
+  cursor: pointer;
+}
+
+.add-button:hover {
+  opacity: 0.75;
+}
+
+.add-button:active {
+  position: relative;
+  top: 1px;
+}
