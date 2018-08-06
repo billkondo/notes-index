@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 // Components
 import ExitButton from '../Buttons/ExitButton';
 
-// Functions
-import { deleteTag } from '../../actions/create-note';
+/*
 
-class TagUI extends React.Component {
+  Function: Render a tag
+  Props:
+    - tag
+    - delete(): a function to delete the tag 
+
+*/
+
+class Tag extends React.Component {
   state = {
     mouseOn: false
   }
@@ -19,20 +25,14 @@ class TagUI extends React.Component {
     return (
       <div className="tag" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         {this.props.tag}
+
         {
           this.state.mouseOn && 
-          <ExitButton click={() => this.props.delete(this.props.index)} />
+          <ExitButton click={this.props.delete}/>
         }
       </div>
     );
   }
 }
-
-const Tag = connect(
-  (state) => ({}),
-  (dispatch) => ({
-    delete: (index) => dispatch(deleteTag(index))
-  })
-)(TagUI);
 
 export default Tag;

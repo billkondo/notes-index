@@ -12,7 +12,7 @@ import {
 } from '../../actions/create-note';
 
 
-class TagsPresent extends React.Component {
+class TagsUI extends React.Component {
   state = {
     tag: "",
   }
@@ -52,7 +52,7 @@ class TagsPresent extends React.Component {
           </div>
         </div>
 
-        <BoxTag tags={this.props.tags}/>
+        <BoxTag />
 
       </div>
     );
@@ -60,12 +60,10 @@ class TagsPresent extends React.Component {
 }
 
 const Tags = connect(
-  (state) => ({
-    tags: state.createNote.tags
-  }),
+  (state) => ({}),
   (dispatch) => ({
     addTag: (newTag) => dispatch(addNewTag(newTag))
   })
-)(TagsPresent);
+)(TagsUI);
 
 export default Tags;

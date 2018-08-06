@@ -1,7 +1,7 @@
 .commentary {
+  position: relative;
   display: grid;
 
-  grid-template-columns: auto $large-font;
   align-items: center;
   margin-bottom: $small-font;
 
@@ -9,15 +9,6 @@
     font-size: $small-font;
     font-family: "Merriweather";
     resize: none;
-  }
-  
-  .exit {
-    color: darkred;
-    font-size: $small-font;
-    justify-self: center;
-  }
-
-  .exit:hover {
-    opacity: 0.5;
+    padding: $medium-font;
   }
 }
