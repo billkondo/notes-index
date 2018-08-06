@@ -1,12 +1,14 @@
 .note-display {
-  height: 400px;
-  width: 20vw;
+  height: 300px;
+  width: 15vw;
   background: lightgray;
   border-radius: $small-font;
 
   padding: $small-font;
 
   display: grid;
+
+  grid-template-rows: $large-font auto;
 
   .note-display-header {
     display: grid;
@@ -56,5 +58,6 @@
   .description {
     font-family: "Comfortaa";
     font-size: $medium-font;
+    padding: $medium-font;
   }
 }

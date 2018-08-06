@@ -1,6 +1,11 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 class ExitButton extends React.Component {
+  static = {
+    click: propTypes.func.isRequired
+  }
+
   render() {
     return (
       <div className="exit-button" onClick={this.props.click}>

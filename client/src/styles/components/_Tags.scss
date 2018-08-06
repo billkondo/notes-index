@@ -16,8 +16,9 @@
 
     #write-menu {
       display: grid;
-      grid-template-columns: 80% 20%;
-      justify-items: center;
+      grid-template-columns: auto auto;
+      grid-gap: $small-font;
+      justify-items: end;
       align-items: center;
       
       .input-group-text {
