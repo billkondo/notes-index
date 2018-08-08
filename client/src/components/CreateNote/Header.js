@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-// Components
+import propTypes from 'prop-types';
 import ExitButton from '../Buttons/ExitButton';
 
-// Functions
 import {
   closeCreateNote
 } from '../../actions/notes-menu';
 
-const HeaderPresent = (props) => (
+const HeaderUI = (props) => (
   <div id="header">
     <div id="header-title"> Create Note </div>
 
@@ -17,12 +15,16 @@ const HeaderPresent = (props) => (
   </div>
 );
 
+HeaderUI.propTypes = {
+  close: propTypes.func.isRequired
+}
+
 const Header = connect(
   (state) => ({}),
   (dispatch) => ({
     close: () => dispatch(closeCreateNote())
   })
-)(HeaderPresent);
+)(HeaderUI);
 
 
 export default Header;

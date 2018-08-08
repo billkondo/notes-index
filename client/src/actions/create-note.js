@@ -9,28 +9,28 @@ import {
   CREATE_NOTE_DELETE_TAG 
 } from '../types/types';
 
-const enterNewTitle = (newTitle) => {
+export const enterNewTitle = (newTitle) => {
   return ({
     type: CREATE_NOTE_ENTER_TITLE, 
     title: newTitle
   });
 }
 
-const enterNewDescription = (newDescription) => {
+export const changeDescription = (newDescription) => {
   return ({
     type: CREATE_NOTE_ENTER_DESCRIPTION, 
     description: newDescription
   });
 }
 
-const addComment = (newComment) => {
+export const addComment = (newComment) => {
   return ({
     type: CREATE_NOTE_ADD_COMMENT,
     newComment
   });
 }
 
-const writeComment = (newComment, id) => {
+export const writeComment = (newComment, id) => {
   return ({
     type: CREATE_NOTE_WRITE_COMMENT,
     newComment, 
@@ -38,40 +38,29 @@ const writeComment = (newComment, id) => {
   });
 }
 
-const addNewTag = (newTag) => {
+export const addNewTag = (newTag) => {
   return ({
     type: CREATE_NOTE_ADD_TAG, 
     newTag
   });
 }
 
-const resetNote = () => {
+export const resetNote = () => {
   return ({
     type: CREATE_NOTE_RESET
   });
 }
 
-const deleteComment = (index) => {
+export const deleteComment = (index) => {
   return ({
     type: CREATE_NOTE_DELETE_COMMENT,
     index
   });
 }
 
-const deleteTag = (index) => {
+export const deleteTag = (index) => {
   return ({
     type: CREATE_NOTE_DELETE_TAG,
     index
   });
-}
-
-export {
-  enterNewTitle, 
-  enterNewDescription,
-  addComment,
-  writeComment, 
-  addNewTag,
-  resetNote,
-  deleteComment,
-  deleteTag
 }

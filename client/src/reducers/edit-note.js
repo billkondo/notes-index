@@ -1,6 +1,6 @@
 import {
-  VIEW_NOTE_LOAD
-} from '../types/types';
+  LOAD_NOTE
+} from '../types/edit-note';
 
 const defaultState = {
   note: {}
@@ -8,7 +8,7 @@ const defaultState = {
 
 const editNoteReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case VIEW_NOTE_LOAD:
+    case LOAD_NOTE:
       return {
         ...state, 
         note: action.note

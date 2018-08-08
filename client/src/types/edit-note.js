@@ -1,0 +1,1 @@
+export const LOAD_NOTE = "LOAD_NOTE"; 

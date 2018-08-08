@@ -1,38 +1,54 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Editor, EditorState } from 'draft-js';
+import propTypes from 'prop-types';
 
 import { enterView, enterEdit } from '../../actions/notes-menu';
 import { viewNoteLoad } from '../../actions/view-note';
-import { editNoteLoad } from '../../actions/edit-note';
+import { loadNoteOnEditMode } from '../../actions/edit-note';
 
-const NoteDisplayPresent = (props) => {
-  const prepareToEnterViewNote = () => {
-    props
-      .loadView(props.note)
-      .then(() => props.toEnterView())
+class NoteDisplayUI extends React.Component {
+  state = {
+    editState: EditorState.createEmpty()
   }
 
-  const prepareToEnterEditNote = () => {
-    props
-      .loadEdit(props.note)
-      .then(() => props.toEnterEdit())
+  static propsTypes = {
+    note: propTypes.object.isRequired
   }
 
-  return (
-    <div className="note-display">
-      <div className="note-display-header">
-        <div className="note-display-title"> {props.note.title} </div>
-        <div className="controls">
-          <div className="edit" onClick={prepareToEnterEditNote}> <i className="fas fa-edit" /> </div>
-          <div className="view" onClick={prepareToEnterViewNote}> <i className="fas fa-eye" /> </div>
+  prepareToEnterViewNote = () => {
+    this.props
+      .loadView(this.props.note)
+      .then(() => this.props.toEnterView())
+  }
+
+  prepareToEnterEditNote = () => {
+    this.props
+      .loadEdit(this.props.note)
+      .then(() => this.props.toEnterEdit())
+  }
+
+  onClick = () => this.setState({ editorState });
+
+  render() {
+    console.log(this.props.note.description);
+
+    return (
+      <div className="note-display">
+        <div className="note-display-header">
+          <div className="note-display-title"> {this.props.note.title} </div>
+          <div className="controls">
+            <div className="edit" onClick={this.prepareToEnterEditNote}> <i className="fas fa-edit" /> </div>
+            <div className="view" onClick={this.prepareToEnterViewNote}> <i className="fas fa-eye" /> </div>
+          </div>
+        </div>
+
+        <div className="description">
+          <Editor editorState={this.state.editState} />
         </div>
       </div>
-
-      <div className="description">
-        {props.note.description}
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 const NoteDisplay = connect(
@@ -42,11 +58,11 @@ const NoteDisplay = connect(
       resolve(dispatch(viewNoteLoad(note)));
     }),
     loadEdit: (note) => new Promise((resolve, reject) => {
-      resolve(dispatch(editNoteLoad(note)));
+      resolve(dispatch(loadNoteOnEditMode(note)));
     }),
     toEnterView: () => dispatch(enterView()),
     toEnterEdit: () => dispatch(enterEdit())
   })
-)(NoteDisplayPresent);
+)(NoteDisplayUI);
 
 export default NoteDisplay;

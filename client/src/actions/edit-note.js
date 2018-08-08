@@ -1,14 +1,10 @@
 import {
-  EDIT_NOTE_LOAD
-} from '../types/types';
+  LOAD_NOTE
+} from '../types/edit-note';
 
-const editNoteLoad = (note) => {
+export const loadNoteOnEditMode = (note) => {
   return ({
-    type: EDIT_NOTE_LOAD, 
+    type: LOAD_NOTE,  
     note
   })
 }
-
-export {
-  editNoteLoad
-};

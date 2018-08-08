@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 class ExitButton extends React.Component {
-  static = {
+  static propTypes = {
     click: propTypes.func.isRequired
   }
 

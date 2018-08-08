@@ -1,3 +1,5 @@
+import  { EditorState } from 'draft-js';
+
 import { 
   CREATE_NOTE_ENTER_TITLE, 
   CREATE_NOTE_ENTER_DESCRIPTION,
@@ -11,7 +13,7 @@ import {
 
 const defaultState = {
   title: "", 
-  description: "",
+  description: EditorState.createEmpty(),
   commentaries: [], 
   tags: []
 }

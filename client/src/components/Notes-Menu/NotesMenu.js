@@ -11,7 +11,7 @@ import {
   loadMenuNotes
 } from '../../actions/notes-menu';
 
-class NotesMenuPresent extends React.Component {
+class NotesMenuUI extends React.Component {
   componentDidMount() {
     axios
       .get('/api/notes')
@@ -45,6 +45,6 @@ const NotesMenu = connect(
   (dispatch) => ({
     load: (notes) => dispatch(loadMenuNotes(notes))
   })
-)(NotesMenuPresent)
+)(NotesMenuUI)
 
 export default NotesMenu;

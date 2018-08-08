@@ -4,8 +4,6 @@
 @import './components/CommentariesView';
 @import './components/CommentView';
 @import './components/DescriptionView';
-@import './components/EditNote';
-@import './components/FooterEdit';
 @import './components/FooterView';
 @import './components/Functions';
 @import './components/HeaderView';
@@ -30,3 +28,7 @@
 @import './components/CreateNote/Description';
 @import './components/CreateNote/Header';
 @import './components/CreateNote/Title';
+
+// Edit Note Styles
+@import './components/EditNote/Note';
+@import './components/EditNote/Footer';

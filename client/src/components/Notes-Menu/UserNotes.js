@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import NoteDisplay from './NoteDisplay';
 
-const UserNotesPresent = (props) => (
+const UserNotesUI = (props) => (
   <div id="user-notes">
     {
       props.notes.map((value, index) => {
@@ -19,6 +19,6 @@ const UserNotes = connect(
   (state) => ({
     notes: state.notesMenu.notes
   })
-)(UserNotesPresent)
+)(UserNotesUI)
 
 export default UserNotes;

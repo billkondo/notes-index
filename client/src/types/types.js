@@ -20,6 +20,3 @@ export const CREATE_NOTE_DELETE_TAG = "CREATE_NOTE_DELETE_TAG";
 
 // View Note
 export const VIEW_NOTE_LOAD = "VIEW_NOTE_LOAD";
-
-// Edit Note
-export const EDIT_NOTE_LOAD = "EDIT_NOTE_LOAD";

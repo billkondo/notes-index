@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
-import { enterNewDescription } from '../../actions/create-note';
+import { changeDescription } from '../../actions/create-note';
 
 class Header extends React.Component {
   getStyle = (flag) => {
-    console.log(flag);
     if (!flag)
       return {}
 
@@ -36,13 +35,12 @@ const Separator = () => (
 
 class DescriptionUI extends React.Component {
   state = {
-    editorState: EditorState.createEmpty(),
     isBold: false,
     isItalic: false,
     editorFocus: false
   }
 
-  onChange = (editorState) => this.setState({ editorState });
+  onChange = (newDescription) => this.props.enterDescription(newDescription);
 
   onBoldClick = (e) => {
     if (!this.state.editorFocus)
@@ -50,16 +48,16 @@ class DescriptionUI extends React.Component {
 
     e.preventDefault();
     this.setState((prevState) => ({ isBold: !prevState.isBold }));
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+    this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'BOLD'));
   }
 
   onItalicClick = (e) => {
     if (!this.state.editorFocus)
       return;
     
-      e.preventDefault();
+    e.preventDefault();
     this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'));
+    this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
   }
 
   onFocus = () => this.setState({ editorFocus: true });
@@ -75,8 +73,8 @@ class DescriptionUI extends React.Component {
           isItalic={this.state.isItalic} 
         />
 
-        <div className="description" ref={editor => this.editor = editor} onFocus={this.onFocus} onBlur={this.onBlur} >
-          <Editor editorState={this.state.editorState} onChange={this.onChange} />
+        <div className="description" onFocus={this.onFocus} onBlur={this.onBlur} >
+          <Editor editorState={this.props.description} onChange={this.onChange} />
         </div>
 
         <Separator />
@@ -86,9 +84,11 @@ class DescriptionUI extends React.Component {
 }
 
 const Description = connect(
-  (state) => ({}),
+  (state) => ({
+    description: state.createNote.description
+  }),
   (dispatch) => ({
-    enterDescription: (newDescription) => dispatch(enterNewDescription(newDescription))
+    enterDescription: (newDescription) => dispatch(changeDescription(newDescription))
   })
 )(DescriptionUI);
 
