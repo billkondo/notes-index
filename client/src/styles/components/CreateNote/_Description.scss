@@ -1,6 +1,5 @@
 #note-description {
   padding: $small-font;
-
   display: grid;
 
   .header-description {
@@ -12,6 +11,7 @@
 
     .title {
       justify-self: start;
+
       font-family: "Merriweather";
       font-size: $medium-font;
     }
@@ -35,12 +35,22 @@
         justify-items: center;
         cursor: pointer;
       }
+
+      .button:hover {
+        opacity: 0.75;
+      }
+
+      .button:active {
+        position: relative;
+        top: 1px;
+      }
     }
   }
   
   .description {
     background: white;
     padding: $small-font;
+    font-size: $medium-font;
     margin-top: $extra-small-font; 
     border-radius: $small-button-radius;
   }

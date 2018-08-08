@@ -1,62 +1,92 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TextEditor from '../Editor/TextEditor';
+import { Editor, EditorState, RichUtils } from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
-// Functions
 import { enterNewDescription } from '../../actions/create-note';
 
-// class DescriptionUI extends React.Component {
-//   render() {
-//     return (
-//       <div id="note-description">
-//         <div id="title"> Description </div>
+class Header extends React.Component {
+  getStyle = (flag) => {
+    console.log(flag);
+    if (!flag)
+      return {}
 
-//         <div id="description">
-//           <div className="form-group">
-//             <textarea
-//               className="form-control"
-//               rows="4"
-//               id="description-text"
-//               value={props.description}
-//               onChange={(e) => props.enterDescription(e.target.value)}
-//             />
-//           </div>
-//         </div>
+    return {
+      background: "#353839",
+      color: "white"
+    }
+  }
 
-//         <div className="separator">
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (<div className="header-description">
+      <div className="title"> Description </div>
+      <div className="button-container">
+        <i className="fas fa-bold button" onMouseDown={this.props.onBoldClick} style={this.getStyle(this.props.isBold)} />
+        <i className="fas fa-italic button" onMouseDown={this.props.onItalicClick} style={this.getStyle(this.props.isItalic)} />
+      </div>
+    </div>
+    );
+  }
+}
+
+const Separator = () => (
+  <div className="separator">
+  </div>
+);
 
 class DescriptionUI extends React.Component {
+  state = {
+    editorState: EditorState.createEmpty(),
+    isBold: false,
+    isItalic: false,
+    editorFocus: false
+  }
+
+  onChange = (editorState) => this.setState({ editorState });
+
+  onBoldClick = (e) => {
+    if (!this.state.editorFocus)
+      return;
+
+    e.preventDefault();
+    this.setState((prevState) => ({ isBold: !prevState.isBold }));
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  }
+
+  onItalicClick = (e) => {
+    if (!this.state.editorFocus)
+      return;
+    
+      e.preventDefault();
+    this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'));
+  }
+
+  onFocus = () => this.setState({ editorFocus: true });
+  onBlur = () => this.setState({ editorFocus: false })
+
   render() {
     return (
       <div id="note-description">
-        <div className="header-description">
-          <div className="title"> Description </div>
-          <div className="button-container">
-            <i className="fas fa-bold button" /> 
-            <i className="fas fa-italic button" /> 
-          </div>
+        <Header 
+          onBoldClick={this.onBoldClick} 
+          onItalicClick={this.onItalicClick} 
+          isBold={this.state.isBold} 
+          isItalic={this.state.isItalic} 
+        />
+
+        <div className="description" ref={editor => this.editor = editor} onFocus={this.onFocus} onBlur={this.onBlur} >
+          <Editor editorState={this.state.editorState} onChange={this.onChange} />
         </div>
 
-        <div className="description">
-          <TextEditor />
-        </div>
-
-        <div className="separator">
-        </div>
+        <Separator />
       </div>
     );
   }
 }
 
 const Description = connect(
-  (state) => ({
-    description: state.createNote.description
-  }),
+  (state) => ({}),
   (dispatch) => ({
     enterDescription: (newDescription) => dispatch(enterNewDescription(newDescription))
   })

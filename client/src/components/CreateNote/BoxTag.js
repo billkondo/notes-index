@@ -14,14 +14,12 @@ class BoxTagUI extends React.Component {
   }
   render() {
     return (
-      <div 
-        className="box-tag" 
-      >
+      <div className="box-tag">
         {
           this.props.tags.map((key, index) => {
             return (
               <Tag
-                key={index}
+                key={key}
                 tag={key}
                 delete={() => this.props.delete(index)}
               />
