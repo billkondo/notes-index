@@ -5,10 +5,10 @@
   align-items: center;
   margin-bottom: $small-font;
 
-  .comment {
-    font-size: $small-font;
-    font-family: "Merriweather";
-    resize: none;
-    padding: $medium-font;
-  }
+  background: white;
+  padding: $small-font;
+  font-size: $medium-font;
+  margin-top: $extra-small-font; 
+  border-radius: $small-button-radius;
+  font-family: 'Merriweather';
 }

@@ -1,4 +1,5 @@
-import  { EditorState } from 'draft-js';
+import { EditorState } from 'draft-js';
+import { stringifyContent } from '../components/Editor/EditorCustom';
 
 import { 
   WRITE_TITLE,
@@ -14,7 +15,7 @@ import {
 const defaultState = {
   title: "", 
   description: EditorState.createEmpty(),
-  commentaries: [], 
+  commentaries: [], // Array of Strings, each String will be a stringfied object 
   tags: []
 }
 
@@ -35,7 +36,7 @@ const createNoteReducer = (state = defaultState, action) => {
     case ADD_COMMENT:
       return {
         ...state, 
-        commentaries: state.commentaries.concat([""])
+        commentaries: state.commentaries.concat([stringifyContent(EditorState.createEmpty().getCurrentContent())])
       }
 
     case WRITE_COMMENT: 
