@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { InputGroup, Input } from 'reactstrap';
+import propTypes from 'prop-types';
 
-import { enterNewTitle } from '../../actions/create-note';
+import { writeTitle } from '../../actions/create-note';
 
 const TitlePresent = (props) => (
   <div id="note-title">
@@ -11,7 +12,7 @@ const TitlePresent = (props) => (
 
       <div id="enterTitle">
         <InputGroup>
-          <Input type="text" value={props.title} onChange={(e) => props.enterTitle(e.target.value)} />
+          <Input type="text" value={props.title} onChange={(e) => props.writeTitle(e.target.value)} />
         </InputGroup>
       </div>
     </div>
@@ -21,12 +22,17 @@ const TitlePresent = (props) => (
   </div>
 );
 
+TitlePresent.propTypes = {
+  title: propTypes.string,
+  writeTitle: propTypes.func
+}
+
 const Title = connect(
   (state) => ({
     title: state.createNote.title
   }),
   (dispatch) => ({
-    enterTitle: (newTitle) => dispatch(enterNewTitle(newTitle))
+    writeTitle: (newTitle) => dispatch(writeTitle(newTitle))
   })
 )(TitlePresent);
 

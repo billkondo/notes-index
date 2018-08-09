@@ -1,66 +1,67 @@
 import { 
-  CREATE_NOTE_ENTER_TITLE, 
-  CREATE_NOTE_ENTER_DESCRIPTION,
-  CREATE_NOTE_ADD_COMMENT,
-  CREATE_NOTE_WRITE_COMMENT,
-  CREATE_NOTE_ADD_TAG,
-  CREATE_NOTE_RESET,
-  CREATE_NOTE_DELETE_COMMENT,
-  CREATE_NOTE_DELETE_TAG 
-} from '../types/types';
+  WRITE_TITLE,
+  WRITE_DESCRIPTION, 
+  ADD_COMMENT, 
+  WRITE_COMMENT,
+  ADD_TAG,
+  RESET_NOTE,
+  DELETE_COMMENT, 
+  DELETE_TAG
+} from '../types/create-note';
 
-export const enterNewTitle = (newTitle) => {
+export const writeTitle = (newTitle) => {
   return ({
-    type: CREATE_NOTE_ENTER_TITLE, 
+    type: WRITE_TITLE, 
     title: newTitle
   });
 }
 
-export const changeDescription = (newDescription) => {
+export const writeDescription = (newDescription) => {
   return ({
-    type: CREATE_NOTE_ENTER_DESCRIPTION, 
+    type: WRITE_DESCRIPTION, 
     description: newDescription
   });
 }
 
 export const addComment = (newComment) => {
   return ({
-    type: CREATE_NOTE_ADD_COMMENT,
+    type: ADD_COMMENT,
     newComment
   });
 }
 
 export const writeComment = (newComment, id) => {
   return ({
-    type: CREATE_NOTE_WRITE_COMMENT,
+    type: WRITE_COMMENT,
     newComment, 
     id
   });
 }
 
-export const addNewTag = (newTag) => {
+export const addTag = (newTag) => {
   return ({
-    type: CREATE_NOTE_ADD_TAG, 
+    type: ADD_TAG, 
     newTag
   });
 }
 
 export const resetNote = () => {
   return ({
-    type: CREATE_NOTE_RESET
+    type: RESET_NOTE
   });
 }
 
 export const deleteComment = (index) => {
   return ({
-    type: CREATE_NOTE_DELETE_COMMENT,
+    type: DELETE_COMMENT,
     index
   });
 }
 
 export const deleteTag = (index) => {
   return ({
-    type: CREATE_NOTE_DELETE_TAG,
+    type: DELETE_TAG,
     index
   });
 }
+

@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Editor, EditorState } from 'draft-js';
 import propTypes from 'prop-types';
+import { parseContent } from '../Editor/EditorCustom';
 
 import { enterView, enterEdit } from '../../actions/notes-menu';
 import { viewNoteLoad } from '../../actions/view-note';
 import { loadNoteOnEditMode } from '../../actions/edit-note';
 
 class NoteDisplayUI extends React.Component {
-  state = {
-    editState: EditorState.createEmpty()
-  }
-
   static propsTypes = {
     note: propTypes.object.isRequired
   }
@@ -31,8 +28,6 @@ class NoteDisplayUI extends React.Component {
   onClick = () => this.setState({ editorState });
 
   render() {
-    console.log(this.props.note.description);
-
     return (
       <div className="note-display">
         <div className="note-display-header">
@@ -44,7 +39,7 @@ class NoteDisplayUI extends React.Component {
         </div>
 
         <div className="description">
-          <Editor editorState={this.state.editState} />
+          <Editor editorState={EditorState.createWithContent(parseContent(this.props.note.description))} readOnly={true}/>
         </div>
       </div>
     );

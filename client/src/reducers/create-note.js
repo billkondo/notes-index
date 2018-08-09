@@ -1,15 +1,15 @@
 import  { EditorState } from 'draft-js';
 
 import { 
-  CREATE_NOTE_ENTER_TITLE, 
-  CREATE_NOTE_ENTER_DESCRIPTION,
-  CREATE_NOTE_ADD_COMMENT,
-  CREATE_NOTE_WRITE_COMMENT,
-  CREATE_NOTE_ADD_TAG,
-  CREATE_NOTE_RESET,
-  CREATE_NOTE_DELETE_COMMENT,
-  CREATE_NOTE_DELETE_TAG
-} from '../types/types';
+  WRITE_TITLE,
+  WRITE_DESCRIPTION, 
+  ADD_COMMENT, 
+  WRITE_COMMENT,
+  ADD_TAG,
+  RESET_NOTE,
+  DELETE_COMMENT, 
+  DELETE_TAG
+} from '../types/create-note';
 
 const defaultState = {
   title: "", 
@@ -20,25 +20,25 @@ const defaultState = {
 
 const createNoteReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case CREATE_NOTE_ENTER_TITLE:
+    case WRITE_TITLE:
       return {
         ...state,
         title: action.title
       }
 
-    case CREATE_NOTE_ENTER_DESCRIPTION:
+    case WRITE_DESCRIPTION:
       return {
         ...state, 
         description: action.description
       }
 
-    case CREATE_NOTE_ADD_COMMENT:
+    case ADD_COMMENT:
       return {
         ...state, 
         commentaries: state.commentaries.concat([""])
       }
 
-    case CREATE_NOTE_WRITE_COMMENT: 
+    case WRITE_COMMENT: 
       return {
         ...state,
         commentaries: state.commentaries.map((value, index) => {
@@ -47,22 +47,22 @@ const createNoteReducer = (state = defaultState, action) => {
         })
       }
 
-    case CREATE_NOTE_ADD_TAG:
+    case ADD_TAG:
       return {
         ...state, 
         tags: state.tags.concat(action.newTag)
       }
 
-    case CREATE_NOTE_RESET:
+    case RESET_NOTE:
       return defaultState;
 
-    case CREATE_NOTE_DELETE_COMMENT:
+    case DELETE_COMMENT:
       return {
         ...state,
         commentaries: state.commentaries.filter((comment, index) => index !== action.index)
       }
 
-    case CREATE_NOTE_DELETE_TAG:
+    case DELETE_TAG:
       return {
         ...state, 
         tags: state.tags.filter((tag, index) => index !== action.index)

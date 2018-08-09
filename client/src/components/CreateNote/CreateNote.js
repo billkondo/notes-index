@@ -2,16 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
+import { stringifyContent } from '../Editor/EditorCustom';
 
-
-// Components
 import Header from './Header';
 import Title from './Title';
 import Description from './Description';
 import Commentaries from './Commentaries';
 import Tags from './Tags';
 
-// Functions
 import {
   closeCreateNote,
   addNote
@@ -23,7 +21,7 @@ import {
 
 class NotePresent extends React.Component {
   state = {
-    open: true
+    open: true // Avoid double clicks
   }
 
   submit = () => {
@@ -32,10 +30,19 @@ class NotePresent extends React.Component {
 
     this.setState({ open: false });
 
+    console.log(this.props);
+
+    const newNote = {
+      title: this.props.note.title,
+      description: stringifyContent(this.props.note.description.getCurrentContent()),  
+      commentaries: this.props.note.commentaries, 
+      tags: this.props.note.tags
+    }
+
     axios
-      .post('/api/notes', this.props.note)
+      .post('/api/notes', newNote)
       .then(() => {
-        this.props.add(this.props.note)
+        this.props.add(newNote)
         this.props.close();
         this.props.reset();
       })

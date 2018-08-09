@@ -2,31 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
+import Header from './HeaderFromDescription';
 
-import { changeDescription } from '../../actions/create-note';
-
-class Header extends React.Component {
-  getStyle = (flag) => {
-    if (!flag)
-      return {}
-
-    return {
-      background: "#353839",
-      color: "white"
-    }
-  }
-
-  render() {
-    return (<div className="header-description">
-      <div className="title"> Description </div>
-      <div className="button-container">
-        <i className="fas fa-bold button" onMouseDown={this.props.onBoldClick} style={this.getStyle(this.props.isBold)} />
-        <i className="fas fa-italic button" onMouseDown={this.props.onItalicClick} style={this.getStyle(this.props.isItalic)} />
-      </div>
-    </div>
-    );
-  }
-}
+import { writeDescription } from '../../actions/create-note';
 
 const Separator = () => (
   <div className="separator">
@@ -40,7 +18,7 @@ class DescriptionUI extends React.Component {
     editorFocus: false
   }
 
-  onChange = (newDescription) => this.props.enterDescription(newDescription);
+  onChange = (newDescription) => this.props.writeDescription(newDescription);
 
   onBoldClick = (e) => {
     if (!this.state.editorFocus)
@@ -54,7 +32,7 @@ class DescriptionUI extends React.Component {
   onItalicClick = (e) => {
     if (!this.state.editorFocus)
       return;
-    
+
     e.preventDefault();
     this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
     this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
@@ -66,11 +44,11 @@ class DescriptionUI extends React.Component {
   render() {
     return (
       <div id="note-description">
-        <Header 
-          onBoldClick={this.onBoldClick} 
-          onItalicClick={this.onItalicClick} 
-          isBold={this.state.isBold} 
-          isItalic={this.state.isItalic} 
+        <Header
+          onBoldClick={this.onBoldClick}
+          onItalicClick={this.onItalicClick}
+          isBold={this.state.isBold}
+          isItalic={this.state.isItalic}
         />
 
         <div className="description" onFocus={this.onFocus} onBlur={this.onBlur} >
@@ -88,7 +66,7 @@ const Description = connect(
     description: state.createNote.description
   }),
   (dispatch) => ({
-    enterDescription: (newDescription) => dispatch(changeDescription(newDescription))
+    writeDescription: (newDescription) => dispatch(writeDescription(newDescription))
   })
 )(DescriptionUI);
 
