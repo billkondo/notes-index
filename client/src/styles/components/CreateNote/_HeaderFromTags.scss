@@ -1,0 +1,28 @@
+#tags-header {
+  display: grid;
+  grid-template-rows: 1fr; 
+  grid-template-columns: 1fr 1fr;
+
+  padding: $small-font;
+  font-size: $small-font;
+
+  #title {
+    font-family: "Merriweather";
+    display: grid;
+    align-items: center;
+    font-size: $medium-font;
+  }
+
+  #write-menu {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: $small-font;
+    justify-items: end;
+    align-items: center;
+    
+    .input-group-text {
+      background: $tag-color;
+      color: white;
+    }
+  }
+}

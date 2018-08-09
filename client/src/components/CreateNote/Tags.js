@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
-// Components
-import BoxTag from './BoxTag';
-import AddButton from '../Buttons/AddButton';
+import HeaderFromTags from './HeaderFromTags';
+import TagsContainer from './TagsContainer';
 
-// Functions
 import {
-  addNewTag
+  addTag
 } from '../../actions/create-note';
 
 
@@ -17,7 +14,7 @@ class TagsUI extends React.Component {
     tag: "",
   }
 
-  enterTag = (event) =>
+  writeTag = (event) =>
     this.setState({
       tag: event.target.value
     });
@@ -39,20 +36,14 @@ class TagsUI extends React.Component {
   render() {
     return (
       <div id="tags">
-        <div id="tags-header">
-          <div id="title"> Tags </div>
+        <HeaderFromTags
+          tag={this.state.tag}
+          writeTag={this.writeTag}
+          submitTag={this.submitTag}
+          handleEnter={this.handleEnter}
+        />
 
-          <div id="write-menu">
-            <InputGroup>
-              <InputGroupAddon addonType="prepend"> # </InputGroupAddon>
-              <Input placeholder="tag" onChange={this.enterTag} value={this.state.tag} onKeyPress={this.handleEnter} />
-            </InputGroup>
-
-            <AddButton click={this.submitTag} />
-          </div>
-        </div>
-
-        <BoxTag />
+        <TagsContainer />
 
       </div>
     );
@@ -62,7 +53,7 @@ class TagsUI extends React.Component {
 const Tags = connect(
   (state) => ({}),
   (dispatch) => ({
-    addTag: (newTag) => dispatch(addNewTag(newTag))
+    addTag: (newTag) => dispatch(addTag(newTag))
   })
 )(TagsUI);
 

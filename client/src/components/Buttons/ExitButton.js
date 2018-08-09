@@ -8,7 +8,7 @@ class ExitButton extends React.Component {
 
   render() {
     return (
-      <div className="exit-button" onClick={this.props.click}>
+      <div className="exit-button" onClick={this.props.click} >
         <i className="fas fa-times" />
       </div>
     );

@@ -57,10 +57,11 @@
 
   .description {
     font-family: "Comfortaa";
-    font-size: $medium-font;
+    font-size: $small-font;
     padding: $medium-font;
     margin: $medium-font;
     background: darkgray;
     border-radius: $small-font;
+    overflow: hidden;
   }
 }

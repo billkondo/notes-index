@@ -1,33 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-// Components
+import propTypes from 'prop-types';
 import ExitButton from '../Buttons/ExitButton';
 
-/*
-
-  Function: Render a tag
-  Props:
-    - tag
-    - delete(): a function to delete the tag 
-
-*/
-
 class Tag extends React.Component {
-  state = {
-    mouseOn: false
+  static propTypes = {
+    tag: propTypes.string,
+    delete: propTypes.func
   }
 
-  mouseEnter = () => this.setState({ mouseOn: true });
-  mouseLeave = () => this.setState({ mouseOn: false });
+  state = {
+    mouseOver: false
+  }
+
+  onMouseOver = () => {
+    if (!this.state.mouseOver) {
+      this.setState({ mouseOver: true })
+    }
+  }
+
+  onMouseEnter = () => this.setState({ mouseOver: true });
+  onMouseLeave = () => this.setState({ mouseOver: false });
 
   render() {
     return (
-      <div className="tag" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+      <div className="tag" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onMouseOver={this.onMouseOver}>
         {this.props.tag}
 
         {
-          this.state.mouseOn && 
+          this.state.mouseOver && 
           <ExitButton click={this.props.delete}/>
         }
       </div>

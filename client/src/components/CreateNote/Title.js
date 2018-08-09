@@ -5,14 +5,14 @@ import propTypes from 'prop-types';
 
 import { writeTitle } from '../../actions/create-note';
 
-const TitlePresent = (props) => (
+const TitleUI = ({ title, writeTitle }) => (
   <div id="note-title">
     <div id="header">
       <div id="title"> Title </div>
 
       <div id="enterTitle">
         <InputGroup>
-          <Input type="text" value={props.title} onChange={(e) => props.writeTitle(e.target.value)} />
+          <Input type="text" value={title} onChange={(e) => writeTitle(e.target.value)} />
         </InputGroup>
       </div>
     </div>
@@ -22,7 +22,7 @@ const TitlePresent = (props) => (
   </div>
 );
 
-TitlePresent.propTypes = {
+TitleUI.propTypes = {
   title: propTypes.string,
   writeTitle: propTypes.func
 }
@@ -34,6 +34,6 @@ const Title = connect(
   (dispatch) => ({
     writeTitle: (newTitle) => dispatch(writeTitle(newTitle))
   })
-)(TitlePresent);
+)(TitleUI);
 
 export default Title;
