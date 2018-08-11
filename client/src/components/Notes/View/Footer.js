@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { Button } from 'reactstrap';
 
-import { exitView, deleteNote } from '../../actions/notes-menu';
+import { exitView, deleteNote } from '../../../actions/notes-menu';
 
 
 class FooterViewPresent extends React.Component {

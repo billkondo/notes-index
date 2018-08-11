@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NoteDisplay from './NoteDisplay';
+import NoteCard from './NoteCard';
 
-const UserNotesUI = (props) => (
+const ContainerNotesUI = (props) => (
   <div id="user-notes">
     {
       props.notes.map((value, index) => {
         return (
-          <NoteDisplay key={index} note={value} id={index} />
+          <NoteCard key={index} note={value} id={index} />
         );
       })
     }
   </div>
 );
 
-const UserNotes = connect(
+const ContainerNotes = connect(
   (state) => ({
     notes: state.notesMenu.notes
   })
-)(UserNotesUI)
+)(ContainerNotesUI)
 
-export default UserNotes;
+export default ContainerNotes;

@@ -2,12 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import CreateNote from '../CreateNote/CreateNote';
-import ViewNote from '../ViewNote/ViewNote';
-import EditNote from '../EditNote/EditNote';
-import Menu from './Menu';
-
-import { CSSTransition } from 'react-transition-group';
+import Create from './Create/Create';
+import ViewFront from './View/ViewFront';
+import Edit from './Edit/Edit';
+import Menu from './Main/Menu';
 
 import {
   loadMenuNotes
@@ -22,25 +20,17 @@ class NotesMenuUI extends React.Component {
   }
 
   renderPage = () => {
-    if (this.props.createNote) return <CreateNote />
-    if (this.props.viewNote) return <ViewNote />
-    if (this.props.editNote) return <EditNote />
+    if (this.props.createNote) return <Create />
+    if (this.props.viewNote) return <ViewFront />
+    if (this.props.editNote) return <Edit />
     return <Menu />
   }
 
   render() {
     return (
-      <CSSTransition
-        in={true}
-        timeout={1000}
-        classNames={"myFade"}
-      >
-        {(status) => (
-          <div id="notes-menu" className={`myFade myFade-${status}`}>
-            {this.renderPage()}
-          </div>
-        )}
-      </CSSTransition>
+      <div id="notes-menu" className={`myFade myFade-${status}`}>
+        {this.renderPage()}
+      </div>
     );
   }
 }

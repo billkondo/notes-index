@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Commentary from './Commentary';
 
-import AddButton from '../Buttons/AddButton';
+import AddButton from '../../Buttons/AddButton';
 
 import {
   addComment,
   writeComment,
   deleteComment
-} from '../../actions/create-note';
+} from '../../../actions/create-note';
 
 class CommentariesUI extends React.Component {
   render() {

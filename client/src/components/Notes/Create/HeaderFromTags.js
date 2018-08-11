@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import AddButton from '../Buttons/AddButton';
+import AddButton from '../../Buttons/AddButton';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 const HeaderFromTags = ({ tag, writeTag, handleEnter, submitTag}) => (

@@ -3,10 +3,10 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 
-import { parseContent, stringifyContent } from '../Editor/EditorCustom';
-import ExitButton from '../Buttons/ExitButton';
+import { parseContent, stringifyContent } from '../../Editor/EditorCustom';
+import ExitButton from '../../Buttons/ExitButton';
 
-import { writeComment } from '../../actions/create-note';
+import { writeComment } from '../../../actions/create-note';
 
 class CommentaryUI extends React.Component {
   static propTypes = {

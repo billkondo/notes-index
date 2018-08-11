@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { enterCreateNote } from '../../actions/notes-menu';
+import { enterCreateNote } from '../../../actions/notes-menu';
 import { Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';;
 
-const FunctionPresent = (props) => (
+const ContainersFunctionsUI = (props) => (
   <div id="functions" >
     <Button onClick={props.createNewNote} > Create </Button>
   </div>
 );
 
-const Function = connect(
+const ContainersFunctions = connect(
   (state) => ({}),
   (dispatch) => ({
     createNewNote: () => dispatch(enterCreateNote())
   })
-)(FunctionPresent);
+)(ContainersFunctionsUI);
 
-export default Function;
+export default ContainersFunctions;

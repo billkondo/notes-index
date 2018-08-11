@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TagView extends React.Component {
+class Tag extends React.Component {
   render() {
     return (
       <div className="tag-view">
@@ -10,4 +10,4 @@ class TagView extends React.Component {
   }
 }
 
-export default TagView;
+export default Tag;

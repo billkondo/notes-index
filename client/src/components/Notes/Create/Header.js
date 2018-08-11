@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import ExitButton from '../Buttons/ExitButton';
+import ExitButton from '../../Buttons/ExitButton';
 
 import {
   closeCreateNote
-} from '../../actions/notes-menu';
+} from '../../../actions/notes-menu';
 
 const HeaderUI = (props) => (
   <div id="header">

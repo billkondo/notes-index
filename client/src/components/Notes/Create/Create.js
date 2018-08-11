@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { stringifyContent } from '../Editor/EditorCustom';
+import { stringifyContent } from '../../Editor/EditorCustom';
 
 import Header from './Header';
 import Title from './Title';
@@ -15,13 +15,13 @@ import { CSSTransition } from 'react-transition-group';
 import {
   closeCreateNote,
   addNote
-} from '../../actions/notes-menu';
+} from '../../../actions/notes-menu';
 
 import {
   resetNote
-} from '../../actions/create-note';
+} from '../../../actions/create-note';
 
-class NotePresent extends React.Component {
+class CreateUI extends React.Component {
   state = {
     open: true // Avoid double clicks
   }
@@ -73,7 +73,7 @@ class NotePresent extends React.Component {
   }
 }
 
-const Note = connect(
+const Create = connect(
   (state) => ({
     note: state.createNote,
     in: state.notesMenu.createNote
@@ -83,6 +83,6 @@ const Note = connect(
     reset: () => dispatch(resetNote()),
     add: (note) => dispatch(addNote(note))
   })
-)(NotePresent);
+)(CreateUI);
 
-export default Note;
+export default Create;

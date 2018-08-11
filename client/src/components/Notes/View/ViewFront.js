@@ -1,15 +1,15 @@
 import React from 'react';
 
-import HeaderView from './HeaderView';
-import DescriptionView from './DescriptionView';
-import CommentariesView from './CommentariesView';
-import FooterView from './FooterView';
+import Header from './Header';
+import Description from './Description';
+import Commentaries from './Commentaries';
+import Footer from './Footer';
 
-import BackView from './BackView';
+import ViewBack from './ViewBack';
 
 import FlipCard from '@kennethormandy/react-flipcard';
 
-class ViewNote extends React.Component {
+class ViewFront extends React.Component {
   state = {
     flipped: false
   }
@@ -26,15 +26,15 @@ class ViewNote extends React.Component {
       <div id="view-page">
         <FlipCard flipped={this.state.flipped}>
           <div className="view-note">
-            <HeaderView />
-            <DescriptionView />
-            <CommentariesView />
-            <FooterView flipSide={this.flipSide} />
+            <Header />
+            <Description />
+            <Commentaries />
+            <Footer flipSide={this.flipSide} />
           </div>
 
           <div className="view-note">
-            <HeaderView />
-            <BackView flipSide={this.flipSide} />
+            <Header />
+            <ViewBack flipSide={this.flipSide} />
           </div>
         </FlipCard>
       </div>
@@ -42,4 +42,4 @@ class ViewNote extends React.Component {
   }
 }
 
-export default ViewNote;
+export default ViewFront;

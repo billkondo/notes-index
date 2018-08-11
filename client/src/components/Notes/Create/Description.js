@@ -4,7 +4,7 @@ import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Header from './HeaderFromDescription';
 
-import { writeDescription } from '../../actions/create-note';
+import { writeDescription } from '../../../actions/create-note';
 
 const Separator = () => (
   <div className="separator">

@@ -4,7 +4,7 @@ import FlipMove from 'react-flip-move';
 
 import Tag from './Tag';
 
-import { deleteTag } from '../../actions/create-note';
+import { deleteTag } from '../../../actions/create-note';
 
 class BoxTagUI extends React.Component {
   render() {

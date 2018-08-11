@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Editor, EditorState } from 'draft-js';
 import propTypes from 'prop-types';
-import { parseContent } from '../Editor/EditorCustom';
+import { parseContent } from '../../Editor/EditorCustom';
 
-import { enterView, enterEdit } from '../../actions/notes-menu';
-import { viewNoteLoad } from '../../actions/view-note';
-import { loadNoteOnEditMode } from '../../actions/edit-note';
+import { enterView, enterEdit } from '../../../actions/notes-menu';
+import { viewNoteLoad } from '../../../actions/view-note';
+import { loadNoteOnEditMode } from '../../../actions/edit-note';
 
-class NoteDisplayUI extends React.Component {
+class NoteCardUI extends React.Component {
   static propsTypes = {
     note: propTypes.object.isRequired
   }
@@ -46,7 +46,7 @@ class NoteDisplayUI extends React.Component {
   }
 }
 
-const NoteDisplay = connect(
+const NoteCard = connect(
   (state) => ({}),
   (dispatch) => ({
     loadView: (note) => new Promise((resolve, reject) => {
@@ -58,6 +58,6 @@ const NoteDisplay = connect(
     toEnterView: () => dispatch(enterView()),
     toEnterEdit: () => dispatch(enterEdit())
   })
-)(NoteDisplayUI);
+)(NoteCardUI);
 
-export default NoteDisplay;
+export default NoteCard;

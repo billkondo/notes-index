@@ -6,7 +6,7 @@ import TagsContainer from './TagsContainer';
 
 import {
   addTag
-} from '../../actions/create-note';
+} from '../../../actions/create-note';
 
 
 class TagsUI extends React.Component {

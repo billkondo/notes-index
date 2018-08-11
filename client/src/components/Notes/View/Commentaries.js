@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentView from './CommentView';
+import Comment from './Comment';
 
-const CommentViewUI = ({ commentaries }) => (
+const CommentariesUI = ({ commentaries }) => (
   <div id="commentaries-view">
     {
       commentaries.map((value, index) => {
         return (
-          <CommentView comment={value} key={index} />
+          <Comment comment={value} key={index} />
         );
       })
     }
   </div>
 );
 
-const CommentariesView = connect(
+const Commentaries = connect(
   (state) => ({
     commentaries: state.viewNote.note.commentaries
   })
-)(CommentViewUI);
+)(CommentariesUI);
 
-export default CommentariesView;
+export default Commentaries;

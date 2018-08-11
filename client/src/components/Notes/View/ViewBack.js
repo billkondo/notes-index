@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TagView from './TagView';
+import Tag from './Tag';
 
-class BackViewPresent extends React.Component {
+class BackViewUI extends React.Component {
   render() {
     return (
       <div id="back-view">
@@ -10,7 +10,7 @@ class BackViewPresent extends React.Component {
           {
             this.props.tags.map((value, index) => {
               return (
-                <TagView key={index} tag={value}/>
+                <Tag key={index} tag={value}/>
               );
             })
           }
@@ -25,6 +25,6 @@ const BackView = connect(
   (state) => ({
     tags: state.viewNote.note.tags
   })
-)(BackViewPresent);
+)(BackViewUI);
 
 export default BackView;

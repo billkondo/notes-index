@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Header';
-import FooterEdit from './FooterEdit';
+import FooterEdit from './Footer';
 
 import {
   
-} from '../../actions/edit-note';
+} from '../../../actions/edit-note';
 
 
-class EditNote extends React.Component {
+class Edit extends React.Component {
   render() {
     return (
       <div id="edit-note-page">
@@ -20,4 +20,4 @@ class EditNote extends React.Component {
   }
 };
 
-export default EditNote;
+export default Edit;

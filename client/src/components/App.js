@@ -1,12 +1,12 @@
 import React from 'react';
 
-import NotesMenu from './Notes-Menu/NotesMenu';
+import Routes from './Notes/Routes';
 
 class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <NotesMenu />
+        <Routes />
       </div>
     );
   }

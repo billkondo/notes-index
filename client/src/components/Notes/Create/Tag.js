@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ExitButton from '../Buttons/ExitButton';
+import ExitButton from '../../Buttons/ExitButton';
 
 class Tag extends React.Component {
   static propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ExitButton from '../Buttons/ExitButton';
-import { exitEdit } from '../../actions/notes-menu';
+import ExitButton from '../../Buttons/ExitButton';
+import { exitEdit } from '../../../actions/notes-menu';
 
 const HeaderUI = ({ exitEdit }) => (
   <div id="edit-note-header">

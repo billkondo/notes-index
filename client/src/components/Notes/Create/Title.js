@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { InputGroup, Input } from 'reactstrap';
 import propTypes from 'prop-types';
 
-import { writeTitle } from '../../actions/create-note';
+import { writeTitle } from '../../../actions/create-note';
 
 const TitleUI = ({ title, writeTitle }) => (
   <div id="note-title">

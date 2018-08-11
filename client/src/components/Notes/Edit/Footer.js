@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from 'reactstrap';
 
-class FooterEdit extends React.Component {
+class Footer extends React.Component {
   render() {
     return (
       <div id="footer-edit">
@@ -15,4 +15,4 @@ class FooterEdit extends React.Component {
   }
 }
 
-export default FooterEdit;
+export default Footer;
