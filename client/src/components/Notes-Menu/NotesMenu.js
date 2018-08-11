@@ -7,6 +7,8 @@ import ViewNote from '../ViewNote/ViewNote';
 import EditNote from '../EditNote/EditNote';
 import Menu from './Menu';
 
+import { CSSTransition } from 'react-transition-group';
+
 import {
   loadMenuNotes
 } from '../../actions/notes-menu';
@@ -28,17 +30,25 @@ class NotesMenuUI extends React.Component {
 
   render() {
     return (
-      <div id="notes-menu">
-        {this.renderPage()}
-      </div>
+      <CSSTransition
+        in={true}
+        timeout={1000}
+        classNames={"myFade"}
+      >
+        {(status) => (
+          <div id="notes-menu" className={`myFade myFade-${status}`}>
+            {this.renderPage()}
+          </div>
+        )}
+      </CSSTransition>
     );
   }
 }
 
 const NotesMenu = connect(
   (state) => ({
-    createNote: state.notesMenu.createNote, 
-    notes: state.notesMenu.notes, 
+    createNote: state.notesMenu.createNote,
+    notes: state.notesMenu.notes,
     viewNote: state.notesMenu.viewNote,
     editNote: state.notesMenu.editNote
   }),

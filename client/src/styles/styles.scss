@@ -1,8 +1,9 @@
+@import './base/animations';
 @import './base/base';
 @import './base/bootstrap';
+
 @import './components/BackView.scss';
 @import './components/CommentariesView';
-@import './components/CommentView';
 @import './components/DescriptionView';
 @import './components/FooterView';
 @import './components/Functions';
@@ -34,3 +35,6 @@
 // Edit Note Styles
 @import './components/EditNote/Note';
 @import './components/EditNote/Footer';
+
+// View Note Styles
+@import './components/ViewNote/CommentView';

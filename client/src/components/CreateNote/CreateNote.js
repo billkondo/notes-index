@@ -10,6 +10,8 @@ import Description from './Description';
 import Commentaries from './Commentaries';
 import Tags from './Tags';
 
+import { CSSTransition } from 'react-transition-group';
+
 import {
   closeCreateNote,
   addNote
@@ -51,24 +53,30 @@ class NotePresent extends React.Component {
 
   render() {
     return (
-      <div id="create-note-add-page">
-        <div id="create-note-add">
-          <Header />
-          <Title />
-          <Description />
-          <Commentaries />
-          <Tags />
-          <Button color="success" onClick={this.submit} id="create-button"> Create </Button>
+      <CSSTransition
+        in={this.props.in}
+        timeout={1000}
+      >
+        <div id="create-note-add-page">
+          <div id="create-note-add">
+            <Header />
+            <Title />
+            <Description />
+            <Commentaries />
+            <Tags />
+            <Button color="success" onClick={this.submit} id="create-button"> Create </Button>
 
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     );
   }
 }
 
 const Note = connect(
   (state) => ({
-    note: state.createNote
+    note: state.createNote,
+    in: state.notesMenu.createNote
   }),
   (dispatch) => ({
     close: () => dispatch(closeCreateNote()),

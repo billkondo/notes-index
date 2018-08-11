@@ -6,7 +6,8 @@ import {
   NOTES_MENU_EXIT_VIEW,
   NOTES_MENU_DELETE_NOTE,
   NOTES_MENU_ADD_NOTE,
-  NOTES_MENU_ENTER_EDIT
+  NOTES_MENU_ENTER_EDIT,
+  NOTES_MENU_EXIT_EDIT
 } from '../types/types';
 
 const defaultState = {
@@ -64,6 +65,12 @@ const notesMenuReducer = (state = defaultState, action) => {
       return {
         ...state, 
         editNote: true
+      }
+
+    case NOTES_MENU_EXIT_EDIT:
+      return {
+        ...state,
+        editNote: false
       }
 
     default: 

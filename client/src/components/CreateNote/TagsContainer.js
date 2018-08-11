@@ -14,7 +14,7 @@ class BoxTagUI extends React.Component {
           this.props.tags.map((key, index) => {
             return (
               <Tag
-                key={key}
+                key={index}
                 tag={key}
                 delete={() => this.props.delete(index)}
               />

@@ -6,67 +6,63 @@ import {
   NOTES_MENU_EXIT_VIEW,
   NOTES_MENU_DELETE_NOTE,
   NOTES_MENU_ADD_NOTE,
-  NOTES_MENU_ENTER_EDIT
+  NOTES_MENU_ENTER_EDIT,
+  NOTES_MENU_EXIT_EDIT
 } from '../types/types';
 
-const enterCreateNote = () => {
+export const enterCreateNote = () => {
   return ({
     type: ENTER_CREATE_NOTE
   });
 }
 
-const closeCreateNote = () => {
+export const closeCreateNote = () => {
   return ({
     type: CLOSE_CREATE_NOTE
   })
 }
 
-const loadMenuNotes = (notes) => {
+export const loadMenuNotes = (notes) => {
   return ({
     type: NOTES_MENU_LOAD,
     notes
   })
 }
 
-const enterView = () => {
+export const enterView = () => {
   return ({
     type: NOTES_MENU_ENTER_VIEW, 
   })
 }
 
-const exitView = () => {
+export const exitView = () => {
   return ({
     type: NOTES_MENU_EXIT_VIEW
   })
 }
 
-const deleteNote = (_id) => {
+export const deleteNote = (_id) => {
   return ({
     type: NOTES_MENU_DELETE_NOTE,
     _id
   })
 }
 
-const addNote = (note) => {
+export const addNote = (note) => {
   return ({
     type: NOTES_MENU_ADD_NOTE, 
     note
   })
 }
 
-const enterEdit = () => {
+export const enterEdit = () => {
   return ({
     type: NOTES_MENU_ENTER_EDIT
   })
 }
 
-export { 
-  enterCreateNote, 
-  closeCreateNote,
-  loadMenuNotes, 
-  enterView, 
-  exitView,
-  deleteNote, 
-  addNote, 
-  enterEdit
-};
+export const exitEdit = () => {
+  return ({
+    type: NOTES_MENU_EXIT_EDIT
+  })
+}
