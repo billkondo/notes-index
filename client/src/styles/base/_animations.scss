@@ -1,8 +1,8 @@
-.myFade-enter {
+.myFade-appear {
   opacity: 0;
 }
 
-.myFade-enter-active {
+.myFade-appear-active {
   opacity: 1;
-  transition: opacity 1000ms ease-out;
+  transition: opacity 500ms ease-out;
 }

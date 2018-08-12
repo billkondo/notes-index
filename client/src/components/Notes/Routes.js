@@ -28,9 +28,9 @@ class RoutesUI extends React.Component {
 
   render() {
     return (
-      <div id="routes">
-        {this.renderPage()}
-      </div>
+        <div id="routes">
+          {this.renderPage()}
+        </div>
     );
   }
 }

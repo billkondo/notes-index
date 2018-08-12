@@ -17,4 +17,5 @@
 .tag-create:hover {
   border: $thin-border solid black;
   background: #353839;
+  transition: all 700ms ease-out;
 }

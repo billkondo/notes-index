@@ -5,6 +5,7 @@ import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@kennethormandy/react-flipcard/dist/Flipcard.css';
 import './styles/styles.scss';
+import 'animate.css';
 import store from './reducers/store';
 
 ReactDOM.render(

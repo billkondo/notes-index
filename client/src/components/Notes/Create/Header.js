@@ -7,16 +7,24 @@ import {
   closeCreateNote
 } from '../../../actions/notes-menu';
 
-const HeaderUI = (props) => (
-  <div id="header-create">
-    <div id="header-title"> Create Note </div>
+const HeaderUI = (props) => {
+  const click = () => {
+    props.closeMenu();
+    setTimeout(() => props.close(), 500);
+  }
 
-    <ExitButton click={props.close} />
-  </div>
-);
+  return (
+    <div id="header-create">
+      <div id="header-title"> Create Note </div>
+
+      <ExitButton click={click} />
+    </div>
+  );
+}
 
 HeaderUI.propTypes = {
-  close: propTypes.func.isRequired
+  close: propTypes.func.isRequired,
+  closeMenu: propTypes.func
 }
 
 const Header = connect(
