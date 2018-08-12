@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
+import { Editor, EditorState, convertToRaw } from 'draft-js';
 
 import { parseContent, stringifyContent } from '../../Editor/EditorCustom';
 import ExitButton from '../../Buttons/ExitButton';
@@ -18,7 +18,7 @@ class CommentaryUI extends React.Component {
     focus: false,
     editorState: EditorState.createEmpty()
   }
-  
+
   onFocus = () => this.setState({ focus: true });
 
   onBlur = () => {
@@ -29,7 +29,7 @@ class CommentaryUI extends React.Component {
 
   click = () => {
     this.props.deleteComment(this.props.index);
-    this.onBlur();
+    this.setState({ focus: false });
   }
 
   outsideClick = (e) => {
@@ -45,6 +45,11 @@ class CommentaryUI extends React.Component {
 
   componentDidMount() {
     this.setState({ editorState: EditorState.createWithContent(parseContent(this.props.commentContentState)) });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (stringifyContent(this.state.editorState.getCurrentContent()) !== nextProps.commentContentState)
+      this.setState({ editorState: EditorState.createWithContent(parseContent(nextProps.commentContentState)) });
   }
 
   componentWillUnmount() {
