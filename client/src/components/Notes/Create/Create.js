@@ -57,8 +57,8 @@ class CreateUI extends React.Component {
         in={this.props.in}
         timeout={1000}
       >
-        <div id="create-note-add-page">
-          <div id="create-note-add">
+        <div id="create-page">
+          <div id="create-add">
             <Header />
             <Title />
             <Description />

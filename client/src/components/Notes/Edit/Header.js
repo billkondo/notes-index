@@ -4,7 +4,7 @@ import ExitButton from '../../Buttons/ExitButton';
 import { exitEdit } from '../../../actions/notes-menu';
 
 const HeaderUI = ({ exitEdit }) => (
-  <div id="edit-note-header">
+  <div id="header-edit">
     <div id="title"> Edit Note </div>
     <ExitButton click={exitEdit}/>
   </div>

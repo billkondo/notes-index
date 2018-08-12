@@ -11,7 +11,7 @@ import {
   loadMenuNotes
 } from '../../actions/notes-menu';
 
-class NotesMenuUI extends React.Component {
+class RoutesUI extends React.Component {
   componentDidMount() {
     axios
       .get('/api/notes')
@@ -28,14 +28,14 @@ class NotesMenuUI extends React.Component {
 
   render() {
     return (
-      <div id="notes-menu" className={`myFade myFade-${status}`}>
+      <div id="routes">
         {this.renderPage()}
       </div>
     );
   }
 }
 
-const NotesMenu = connect(
+const Routes = connect(
   (state) => ({
     createNote: state.notesMenu.createNote,
     notes: state.notesMenu.notes,
@@ -45,6 +45,6 @@ const NotesMenu = connect(
   (dispatch) => ({
     load: (notes) => dispatch(loadMenuNotes(notes))
   })
-)(NotesMenuUI)
+)(RoutesUI)
 
-export default NotesMenu;
+export default Routes;

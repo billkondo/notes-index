@@ -1,4 +1,4 @@
-.tag {
+.tag-create {
   box-sizing: border-box;
   position: relative;
   font-size: $small-font;
@@ -14,7 +14,7 @@
   border: $thin-border solid lightgrey; 
 }
 
-.tag:hover {
+.tag-create:hover {
   border: $thin-border solid black;
   background: #353839;
 }

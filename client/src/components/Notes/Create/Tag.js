@@ -23,7 +23,7 @@ class Tag extends React.Component {
 
   render() {
     return (
-      <div className="tag" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onMouseOver={this.onMouseOver}>
+      <div className="tag-create" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onMouseOver={this.onMouseOver}>
         {this.props.tag}
 
         {

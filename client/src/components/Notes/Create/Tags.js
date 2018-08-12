@@ -35,7 +35,7 @@ class TagsUI extends React.Component {
 
   render() {
     return (
-      <div id="tags">
+      <div id="tags-create">
         <HeaderFromTags
           tag={this.state.tag}
           writeTag={this.writeTag}

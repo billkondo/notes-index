@@ -13,7 +13,7 @@ import {
 class CommentariesUI extends React.Component {
   render() {
     return (
-      <div id="commentaries">
+      <div id="commentaries-create">
         <div id="commentaries-header">
           <div id="commentaries-header-title">Commentaries</div>
           <AddButton click={this.props.addComment} />

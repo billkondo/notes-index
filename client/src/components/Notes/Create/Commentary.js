@@ -53,7 +53,7 @@ class CommentaryUI extends React.Component {
 
   render() {
     return (
-      <div className="commentary" onFocus={this.onFocus} ref={node => this.node = node}>
+      <div className="commentary-create" onFocus={this.onFocus} ref={node => this.node = node}>
         <Editor editorState={this.state.editorState} onChange={this.onChange} />
 
         {

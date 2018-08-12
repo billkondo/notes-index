@@ -4,7 +4,7 @@ import AddButton from '../../Buttons/AddButton';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 const HeaderFromTags = ({ tag, writeTag, handleEnter, submitTag}) => (
-  <div id="tags-header">
+  <div id="tags-header-create">
     <div id="title"> Tags </div>
 
     <div id="write-menu">

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import NoteCard from './NoteCard';
 
 const ContainerNotesUI = (props) => (
-  <div id="user-notes">
+  <div id="container-notes">
     {
       props.notes.map((value, index) => {
         return (

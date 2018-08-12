@@ -29,7 +29,7 @@ class NoteCardUI extends React.Component {
 
   render() {
     return (
-      <div className="note-display">
+      <div className="note-card">
         <div className="note-display-header">
           <div className="note-display-title"> {this.props.note.title} </div>
           <div className="controls">

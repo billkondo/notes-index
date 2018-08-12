@@ -1,4 +1,4 @@
-#create-note-add-page {
+#create-page {
   display: grid;
   justify-items: center;
   align-items: start;
@@ -10,7 +10,7 @@
     border-bottom: $thin-border solid black;
   }
 
-  #create-note-add {
+  #create-add {
     margin-top: 5vh;
 
     position: relative;

@@ -8,7 +8,7 @@ import {
 } from '../../../actions/notes-menu';
 
 const HeaderUI = (props) => (
-  <div id="header">
+  <div id="header-create">
     <div id="header-title"> Create Note </div>
 
     <ExitButton click={props.close} />

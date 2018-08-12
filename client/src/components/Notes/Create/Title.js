@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import { writeTitle } from '../../../actions/create-note';
 
 const TitleUI = ({ title, writeTitle }) => (
-  <div id="note-title">
+  <div id="title-create">
     <div id="header">
       <div id="title"> Title </div>
 

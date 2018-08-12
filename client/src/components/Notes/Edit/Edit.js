@@ -10,7 +10,7 @@ import {
 class Edit extends React.Component {
   render() {
     return (
-      <div id="edit-note-page">
+      <div id="edit-page">
         <div id="edit-note">
           <Header />
           <FooterEdit />

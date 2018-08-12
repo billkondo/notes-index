@@ -5,7 +5,7 @@ import Tag from './Tag';
 class BackViewUI extends React.Component {
   render() {
     return (
-      <div id="back-view">
+      <div id="view-back">
         <div id="tags-view">
           {
             this.props.tags.map((value, index) => {

@@ -2,39 +2,41 @@
 @import './base/base';
 @import './base/bootstrap';
 
-@import './components/BackView.scss';
-@import './components/CommentariesView';
-@import './components/DescriptionView';
-@import './components/FooterView';
-@import './components/Functions';
-@import './components/HeaderView';
-@import './components/Menu';
-@import './components/NoteDisplay';
-@import './components/Notes';
-@import './components/NotesMenu';
-@import './components/Tag';
-@import './components/Tags';
-@import './components/TagView';
-@import './components/UserNotes';
-@import './components/ViewNote';
+// Main Styles
+@import './components/Notes/Main/ContainerFunctions';
+@import './components/Notes/Main/ContainerNotes';
+@import './components/Notes/Main/Menu';
+@import './components/Notes/Main/NoteCard';
+
+// Routes Styles
+@import './components/Notes/Routes';
 
 // Buttons Styles
 @import './components/Buttons/AddButton';
 @import './components/Buttons/ExitButton';
 
 // Create Note Styles 
-@import './components/CreateNote/Commentaries';
-@import './components/CreateNote/Commentary';
-@import './components/CreateNote/CreateNote';
-@import './components/CreateNote/Description';
-@import './components/CreateNote/Header';
-@import './components/CreateNote/HeaderFromDescription';
-@import './components/CreateNote/HeaderFromTags';
-@import './components/CreateNote/Title';
+@import './components/Notes/Create/Commentaries';
+@import './components/Notes/Create/Commentary';
+@import './components/Notes/Create/Create';
+@import './components/Notes/Create/Description';
+@import './components/Notes/Create/Header';
+@import './components/Notes/Create/HeaderFromDescription';
+@import './components/Notes/Create/HeaderFromTags';
+@import './components/Notes/Create/Tag';
+@import './components/Notes/Create/Tags';
+@import './components/Notes/Create/Title';
 
 // Edit Note Styles
-@import './components/EditNote/Note';
-@import './components/EditNote/Footer';
+@import './components/Notes/Edit/Edit';
+@import './components/Notes/Edit/Footer';
 
 // View Note Styles
-@import './components/ViewNote/CommentView';
+@import './components/Notes/View/Comment';
+@import './components/Notes/View/Commentaries';
+@import './components/Notes/View/Description';
+@import './components/Notes/View/Footer';
+@import './components/Notes/View/Header';
+@import './components/Notes/View/Tag';
+@import './components/Notes/View/ViewBack';
+@import './components/Notes/View/ViewFront';

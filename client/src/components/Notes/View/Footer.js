@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 import { exitView, deleteNote } from '../../../actions/notes-menu';
 
 
-class FooterViewPresent extends React.Component {
+class FooterUI extends React.Component {
   state = {
     open: true
   }
@@ -30,13 +30,13 @@ class FooterViewPresent extends React.Component {
   render() {
     return (
       <div id="footer-view">
-        <Button color="secondary" id="tagsButton" onClick={this.props.flipSide}> Tags </Button>
+        <Button color="secondary" id="tags-button" onClick={this.props.flipSide}> Tags </Button>
       </div>
     );
   }
 }
 
-const FooterView = connect(
+const Footer = connect(
   (state) => ({
     _id: state.viewNote.note._id
   }),
@@ -44,6 +44,6 @@ const FooterView = connect(
     delete: (_id) => dispatch(deleteNote(_id)),
     exit: () => dispatch(exitView())
   })
-)(FooterViewPresent);
+)(FooterUI);
 
-export default FooterView;
+export default Footer;

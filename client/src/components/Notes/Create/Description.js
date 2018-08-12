@@ -43,7 +43,7 @@ class DescriptionUI extends React.Component {
 
   render() {
     return (
-      <div id="note-description">
+      <div id="description-create">
         <Header
           onBoldClick={this.onBoldClick}
           onItalicClick={this.onItalicClick}
