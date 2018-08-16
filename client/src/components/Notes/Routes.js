@@ -19,28 +19,25 @@ class RoutesUI extends React.Component {
       .catch(err => console.log(err));
   }
 
-  renderPage = () => {
-    if (this.props.createNote) return <Create />
-    if (this.props.viewNote) return <ViewFront />
-    if (this.props.editNote) return <Edit />
-    return <Menu />
-  }
-
   render() {
     return (
-        <div id="routes">
-          {this.renderPage()}
-        </div>
+      <div id="routes">
+        {this.props.renderMenu && <Menu />}
+        {this.props.renderCreate && <Create />}
+        {this.props.renderEdit && <Edit />}
+        {this.props.renderView && <ViewFront />}
+      </div>
     );
   }
 }
 
 const Routes = connect(
   (state) => ({
-    createNote: state.notesMenu.createNote,
+    renderMenu: state.notesRoutes.renderMenu,
+    renderCreate: state.notesRoutes.renderCreate,
+    renderEdit: state.notesRoutes.renderEdit, 
+    renderView: state.notesRoutes.renderView,
     notes: state.notesMenu.notes,
-    viewNote: state.notesMenu.viewNote,
-    editNote: state.notesMenu.editNote
   }),
   (dispatch) => ({
     load: (notes) => dispatch(loadMenuNotes(notes))

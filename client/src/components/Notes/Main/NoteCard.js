@@ -4,7 +4,9 @@ import { Editor, EditorState } from 'draft-js';
 import propTypes from 'prop-types';
 import { parseContent } from '../../Editor/EditorCustom';
 
-import { enterView, enterEdit } from '../../../actions/notes-menu';
+import { enterEdit, enterView, exitMenu } from '../../../actions/notes-routes';
+import { exitNotesMenu, enterNotesView, enterNotesEdit } from '../../../actions/css-transitions';
+
 import { viewNoteLoad } from '../../../actions/view-note';
 import { loadNoteOnEditMode } from '../../../actions/edit-note';
 
@@ -16,13 +18,13 @@ class NoteCardUI extends React.Component {
   prepareToEnterViewNote = () => {
     this.props
       .loadView(this.props.note)
-      .then(() => this.props.toEnterView())
+      .then(() => this.props.transitionMenuToView())
   }
 
   prepareToEnterEditNote = () => {
     this.props
       .loadEdit(this.props.note)
-      .then(() => this.props.toEnterEdit())
+      .then(() => this.props.transitionMenuToEdit())
   }
 
   onClick = () => this.setState({ editorState });
@@ -39,7 +41,7 @@ class NoteCardUI extends React.Component {
         </div>
 
         <div className="description">
-          <Editor editorState={EditorState.createWithContent(parseContent(this.props.note.description))} readOnly={true}/>
+          <Editor editorState={EditorState.createWithContent(parseContent(this.props.note.description))} readOnly={true} />
         </div>
       </div>
     );
@@ -55,8 +57,24 @@ const NoteCard = connect(
     loadEdit: (note) => new Promise((resolve, reject) => {
       resolve(dispatch(loadNoteOnEditMode(note)));
     }),
-    toEnterView: () => dispatch(enterView()),
-    toEnterEdit: () => dispatch(enterEdit())
+    transitionMenuToView: () => {
+      dispatch(exitNotesMenu());
+
+      setTimeout(() => {
+        dispatch(enterNotesView());
+        dispatch(exitMenu());
+        dispatch(enterView());
+      }, 500);
+    },
+    transitionMenuToEdit: () => {
+      dispatch(exitNotesMenu());
+
+      setTimeout(() => {
+        dispatch(enterNotesEdit());
+        dispatch(exitMenu());
+        dispatch(enterEdit());
+      }, 500);
+    }
   })
 )(NoteCardUI);
 

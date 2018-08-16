@@ -24,10 +24,7 @@ import {
 class CreateUI extends React.Component {
   state = {
     open: true, // Avoid double clicks
-    in: true
   }
-
-  closeMenu = () => this.setState({ in: false })
 
   submit = () => {
     if (!this.state.open)
@@ -52,25 +49,27 @@ class CreateUI extends React.Component {
       .catch(err => console.log(err))
   }
 
+  exitTransition = () => this.setState({ cssTransition: false })
+
   render() {
     return (
       <CSSTransition
-        in={this.state.in}
+        in={ this.props.transitionCreate }
         timeout={{
-          appear: 1000,
+          appear: 800,
           exit: 500
         }}
         appear={true}
         classNames={{
           appear: "animated",
           exit: "animated",
-          appearActive: "fadeIn", 
+          appearActive: "zoomIn fast", 
           exitActive: "fadeOut faster"
         }}
       >
         <div id="create-page">
           <div id="create-add">
-            <Header closeMenu={this.closeMenu}/>
+            <Header />
             <Title />
             <Description />
             <Commentaries />
@@ -86,7 +85,8 @@ class CreateUI extends React.Component {
 
 const Create = connect(
   (state) => ({
-    note: state.createNote
+    note: state.createNote,
+    transitionCreate: state.cssTransitions.notesCreate
   }),
   (dispatch) => ({
     close: () => dispatch(closeCreateNote()),

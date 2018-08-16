@@ -4,33 +4,38 @@ import propTypes from 'prop-types';
 import ExitButton from '../../Buttons/ExitButton';
 
 import {
-  closeCreateNote
-} from '../../../actions/notes-menu';
+  exitCreate,
+  enterMenu
+} from '../../../actions/notes-routes';
 
-const HeaderUI = (props) => {
-  const click = () => {
-    props.closeMenu();
-    setTimeout(() => props.close(), 500);
-  }
+import {
+  enterNotesMenu,
+  exitNotesCreate
+} from '../../../actions/css-transitions';
 
-  return (
-    <div id="header-create">
-      <div id="header-title"> Create Note </div>
-
-      <ExitButton click={click} />
-    </div>
-  );
-}
+const HeaderUI = ({ transitionCreateToMenu }) => (
+  <div id="header-create">
+    <div id="header-title"> Create Note </div>
+    <ExitButton click={transitionCreateToMenu} />
+  </div>
+);
 
 HeaderUI.propTypes = {
-  close: propTypes.func.isRequired,
-  closeMenu: propTypes.func
+  transitionCreateToMenu: propTypes.func.isRequired
 }
 
 const Header = connect(
   (state) => ({}),
   (dispatch) => ({
-    close: () => dispatch(closeCreateNote())
+    transitionCreateToMenu: () => {
+      dispatch(exitNotesCreate());
+
+      setTimeout(() => {
+        dispatch(enterNotesMenu());
+        dispatch(exitCreate());
+        dispatch(enterMenu());
+      }, 500);
+    }
   })
 )(HeaderUI);
 
