@@ -4,8 +4,8 @@ import ExitButton from '../../Buttons/ExitButton';
 
 class Tag extends React.Component {
   static propTypes = {
-    tag: propTypes.string,
-    delete: propTypes.func
+    tag: propTypes.string.isRequired,
+    deleteTag: propTypes.func.isRequired
   }
 
   state = {
@@ -28,7 +28,7 @@ class Tag extends React.Component {
 
         {
           this.state.mouseOver && 
-          <ExitButton click={this.props.delete}/>
+          <ExitButton click={this.props.deleteTag}/>
         }
       </div>
     );

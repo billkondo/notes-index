@@ -1,49 +1,47 @@
 import React from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
-import { Button } from 'reactstrap';
+// import { exitView, deleteNote } from '../../../actions/notes-menu';
 
-import { exitView, deleteNote } from '../../../actions/notes-menu';
+// state = {
+//   open: true
+// }
+
+// prepareToDelete = () => {
+//   if (!this.state.open)
+//     return;
+
+//   this.setState({ open: false });
+
+//   axios
+//     .delete(`/api/notes/${this.props._id}`)
+//     .then(() => {
+//       this.props.delete(this.props._id);
+//       this.props.exit();
+//     })
+//     .catch(err => console.log(err));
+// }
 
 
-class FooterUI extends React.Component {
-  state = {
-    open: true
-  }
+const Footer = ({ flipSide }) => (
+  <div className="footer-view">
+    <div className="flip-button" onClick={flipSide}> <i className="fas fa-undo" /> </div>
+  </div>
+);
 
-  // prepareToDelete = () => {
-  //   if (!this.state.open)
-  //     return;
-
-  //   this.setState({ open: false });
-
-  //   axios
-  //     .delete(`/api/notes/${this.props._id}`)
-  //     .then(() => {
-  //       this.props.delete(this.props._id);
-  //       this.props.exit();
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  render() {
-    return (
-      <div id="footer-view">
-        <Button color="secondary" id="tags-button" onClick={this.props.flipSide}> Tags </Button>
-      </div>
-    );
-  }
+Footer.propTypes = {
+  flipSide: propTypes.func.isRequired
 }
 
-const Footer = connect(
-  (state) => ({
-    _id: state.viewNote.note._id
-  }),
-  (dispatch) => ({
-    delete: (_id) => dispatch(deleteNote(_id)),
-    exit: () => dispatch(exitView())
-  })
-)(FooterUI);
+
+// const Footer = connect(
+//   (state) => ({
+//     _id: state.viewNote.note._id
+//   }),
+//   (dispatch) => ({
+//     delete: (_id) => dispatch(deleteNote(_id)),
+//     exit: () => dispatch(exitView())
+//   })
+// )(FooterUI);
 
 export default Footer;

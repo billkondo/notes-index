@@ -1,0 +1,17 @@
+#view-page {
+  width: 40vw;
+  min-height: 50vh;
+  margin-top: 5vh; 
+  margin-bottom: 5vh; 
+
+  .view-note {
+    position: relative;
+    width: 40vw;
+    min-height: 50vh;
+    background: lightgrey;
+    
+    border-radius: $extra-small-font;
+    display: grid;
+    grid-template-rows: auto;
+  }
+}

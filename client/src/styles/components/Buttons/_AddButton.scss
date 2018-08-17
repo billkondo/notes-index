@@ -17,7 +17,9 @@
 }
 
 .add-button:hover {
-  opacity: 0.75;
+  transition: all 200ms ease-out;
+  background: green;
+  color: #FEFEFE;
 }
 
 .add-button:active {

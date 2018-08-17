@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import Create from './Create/Create';
-import ViewFront from './View/ViewFront';
+import View from './View/View';
 import Edit from './Edit/Edit';
 import Menu from './Main/Menu';
 
@@ -25,7 +25,7 @@ class RoutesUI extends React.Component {
         {this.props.renderMenu && <Menu />}
         {this.props.renderCreate && <Create />}
         {this.props.renderEdit && <Edit />}
-        {this.props.renderView && <ViewFront />}
+        {this.props.renderView && <View />}
       </div>
     );
   }

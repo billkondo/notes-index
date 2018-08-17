@@ -12,18 +12,14 @@ import Tags from './Tags';
 
 import { CSSTransition } from 'react-transition-group';
 
-import {
-  closeCreateNote,
-  addNote
-} from '../../../actions/notes-menu';
-
-import {
-  resetNote
-} from '../../../actions/create-note';
+import { addNote } from '../../../actions/notes-menu';
+import { resetNote } from '../../../actions/create-note';
+import { exitCreate, enterMenu } from '../../../actions/notes-routes';
+import { exitNotesCreate, enterNotesMenu } from '../../../actions/css-transitions';
 
 class CreateUI extends React.Component {
   state = {
-    open: true, // Avoid double clicks
+    open: true // Avoid double clicks
   }
 
   submit = () => {
@@ -42,14 +38,14 @@ class CreateUI extends React.Component {
     axios
       .post('/api/notes', newNote)
       .then(() => {
-        this.props.add(newNote)
-        this.props.close();
-        this.props.reset();
-      })
+        this.props.add(newNote);
+        this.props.transitionCreateToMenu();
+        setTimeout(() => {
+          this.props.reset();
+        }, 500);
+      })  
       .catch(err => console.log(err))
   }
-
-  exitTransition = () => this.setState({ cssTransition: false })
 
   render() {
     return (
@@ -89,7 +85,15 @@ const Create = connect(
     transitionCreate: state.cssTransitions.notesCreate
   }),
   (dispatch) => ({
-    close: () => dispatch(closeCreateNote()),
+    transitionCreateToMenu: () => {
+      dispatch(exitNotesCreate());
+
+      setTimeout(() => {
+        dispatch(enterNotesMenu());
+        dispatch(exitCreate());
+        dispatch(enterMenu());
+      }, 500);
+    },
     reset: () => dispatch(resetNote()),
     add: (note) => dispatch(addNote(note))
   })

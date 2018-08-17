@@ -1,4 +1,7 @@
-#footer-view {
+.footer-view {
+  box-sizing: content-box;
+  height: $large-font;
+  position: relative;
   align-self: end;
 
   padding: $small-font;
@@ -6,11 +9,17 @@
   display: grid;
   align-items: center;
 
-  grid-template-columns: 1fr 1fr;
   font-size: $medium-font; 
-  
-  #tags-button {
-    grid-column: 2/3;
-    background: darkred;
+
+  .flip-button {
+    align-self: end;
+    justify-self: center;
+    color: $exit-color;
+    cursor: pointer;
+  }
+
+  .flip-button:hover {
+    color: red;
+    transition: all 200ms ease-out;
   }
 }

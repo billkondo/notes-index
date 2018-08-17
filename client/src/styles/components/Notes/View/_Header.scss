@@ -1,6 +1,7 @@
 #header-view {
+  box-sizing: content-box;
+  height: $large-font;
   display: grid;
-  grid-template-columns: 1fr 1fr;
 
   #title {
     align-self: start;
@@ -8,23 +9,7 @@
     font-size: $medium-font;
     font-family: "Merriweather";
     padding: $small-font;
-  }
-
-  #exit {
-    align-self: start;
-    justify-self: end;
-    height: $medium-font;
-    width: $medium-font;
-    font-size: $small-font;
-    background-color: lightcoral;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    border-radius: $small-button-radius;
-    cursor: pointer;
-  }
-
-  #exit:hover {
-    opacity: 0.8;
+    font-weight: bold;
+    text-decoration: underline;
   }
 }

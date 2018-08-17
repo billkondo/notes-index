@@ -18,5 +18,7 @@
 }
 
 .exit-button:hover {
-  opacity: 0.75;
+  transition: all 200ms ease-out;
+  background: red;
+  color: #1B1B1B;
 }

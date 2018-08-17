@@ -1,38 +1,47 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FlipMove from 'react-flip-move';
+
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Tag from './Tag';
 
 import { deleteTag } from '../../../actions/create-note';
 
-class BoxTagUI extends React.Component {
-  render() {
-    return (
-      <div className="tags-container">
-        {
-          this.props.tags.map((key, index) => {
-            return (
-              <Tag
-                key={index}
-                tag={key}
-                delete={() => this.props.delete(index)}
-              />
-            );
-          })
-        }
-      </div>
-    );
-  }
-}
+const TagsContainerUI = ({ tags, deleteTag }) => (
+  <TransitionGroup className="tags-container">
+    {
+      tags.map((key, index) => {
+        return (
+          <CSSTransition
+            key={key}
+            timeout={800}
+            classNames={{
+              enter: "animated",
+              enterActive: "fadeIn fast",
+              exit: "animated",
+              exitActive: "fadeOutUp fast"
+            }}
+            appear={true}
+          >
+            <Tag
+              key={key}
+              tag={key}
+              deleteTag={() => deleteTag(index)}
+            />
+          </CSSTransition>
+        );
+      })
+    }
+  </TransitionGroup>
+);
 
-const BoxTag = connect(
+const TagsContainer = connect(
   (state) => ({
     tags: state.createNote.tags
   }),
   (dispatch) => ({
-    delete: (index) => dispatch(deleteTag(index))
+    deleteTag: (index) => dispatch(deleteTag(index))
   })
-)(BoxTagUI)
+)(TagsContainerUI)
 
-export default BoxTag
+export default TagsContainer

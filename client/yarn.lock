@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@kennethormandy/react-flipcard@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@kennethormandy/react-flipcard/-/react-flipcard-0.4.3.tgz#e378149a0cff2bacb83979fdb0b5e8c758c39222"
-
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
