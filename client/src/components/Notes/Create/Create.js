@@ -12,7 +12,7 @@ import Tags from './Tags';
 
 import { CSSTransition } from 'react-transition-group';
 
-import { addNote } from '../../../actions/notes-menu';
+import { addNote } from '../../../actions/notes-data';
 import { resetNote } from '../../../actions/create-note';
 import { exitCreate, enterMenu } from '../../../actions/notes-routes';
 import { exitNotesCreate, enterNotesMenu } from '../../../actions/css-transitions';
@@ -38,7 +38,7 @@ class CreateUI extends React.Component {
     axios
       .post('/api/notes', newNote)
       .then(() => {
-        this.props.add(newNote);
+        this.props.addNote(newNote);
         this.props.transitionCreateToMenu();
         setTimeout(() => {
           this.props.reset();
@@ -95,7 +95,7 @@ const Create = connect(
       }, 500);
     },
     reset: () => dispatch(resetNote()),
-    add: (note) => dispatch(addNote(note))
+    addNote: (note) => dispatch(addNote(note))
   })
 )(CreateUI);
 

@@ -17,7 +17,7 @@ const ContainerNotesUI = (props) => (
 
 const ContainerNotes = connect(
   (state) => ({
-    notes: state.notesMenu.notes
+    notes: state.notesData.notes
   })
 )(ContainerNotesUI)
 

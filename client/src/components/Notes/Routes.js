@@ -7,15 +7,13 @@ import View from './View/View';
 import Edit from './Edit/Edit';
 import Menu from './Main/Menu';
 
-import {
-  loadMenuNotes
-} from '../../actions/notes-menu';
+import { loadNotes } from '../../actions/notes-data';
 
 class RoutesUI extends React.Component {
   componentDidMount() {
     axios
       .get('/api/notes')
-      .then(res => this.props.load(res.data))
+      .then(res => this.props.loadNotes(res.data))
       .catch(err => console.log(err));
   }
 
@@ -37,10 +35,10 @@ const Routes = connect(
     renderCreate: state.notesRoutes.renderCreate,
     renderEdit: state.notesRoutes.renderEdit, 
     renderView: state.notesRoutes.renderView,
-    notes: state.notesMenu.notes,
+    notes: state.notesData.notes,
   }),
   (dispatch) => ({
-    load: (notes) => dispatch(loadMenuNotes(notes))
+    loadNotes: (notes) => dispatch(loadNotes(notes))
   })
 )(RoutesUI)
 

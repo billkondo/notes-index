@@ -7,7 +7,7 @@ import { exitEdit, enterMenu } from '../../../actions/notes-routes';
 
 const HeaderUI = ({ transitionEditToMenu }) => (
   <div id="header-edit">
-    <div id="title"> Edit Note </div>
+    <div id="header-title"> Edit Note </div>
     <ExitButton click={transitionEditToMenu} />
   </div>
 );

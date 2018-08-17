@@ -1,28 +1,28 @@
 import {  
-  NOTES_MENU_LOAD,
-  NOTES_MENU_DELETE_NOTE,
-  NOTES_MENU_ADD_NOTE
-} from '../types/types';
+  LOAD_NOTES, 
+  DELETE_NOTE, 
+  ADD_NOTE
+} from '../types/notes-data';
 
 const defaultState = {
   notes: []
 }
 
-const notesMenuReducer = (state = defaultState, action) => {
+const notesDataReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case NOTES_MENU_LOAD:
+    case LOAD_NOTES:
       return {
         ...state,
         notes: action.notes
       }
 
-    case NOTES_MENU_DELETE_NOTE: 
+    case DELETE_NOTE: 
       return {
         ...state,
         notes:  state.notes.filter(note => note._id !== action._id)
       }
 
-    case NOTES_MENU_ADD_NOTE:
+    case ADD_NOTE:
       return {
         ...state, 
         notes: state.notes.concat(action.note)
@@ -33,4 +33,4 @@ const notesMenuReducer = (state = defaultState, action) => {
   }
 }
 
-export default notesMenuReducer;
+export default notesDataReducer;
