@@ -6,3 +6,4 @@ export const ADD_TAG = "ADD_TAG";
 export const RESET_NOTE = "RESET_NOTE";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const DELETE_TAG = "DELETE_TAG";
+export const LOAD_NOTE = "LOAD_NOTE";

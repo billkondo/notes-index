@@ -8,7 +8,7 @@ import {
   addComment,
   writeComment,
   deleteComment
-} from '../../../actions/create-note';
+} from '../../../actions/notes-operations';
 
 class CommentariesUI extends React.Component {
   render() {
@@ -45,7 +45,7 @@ class CommentariesUI extends React.Component {
 
 const Commentaries = connect(
   (state) => ({
-    commentaries: state.createNote.commentaries
+    commentaries: state.notesOperations.commentaries
   }),
   (dispatch) => ({
     addComment: () => dispatch(addComment()),

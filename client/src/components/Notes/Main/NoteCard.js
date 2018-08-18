@@ -8,7 +8,7 @@ import { enterEdit, enterView, exitMenu } from '../../../actions/notes-routes';
 import { exitNotesMenu, enterNotesView, enterNotesEdit } from '../../../actions/css-transitions';
 
 import { viewNoteLoad } from '../../../actions/view-note';
-import { loadNoteOnEditMode } from '../../../actions/edit-note';
+import { loadNote } from '../../../actions/notes-operations';
 
 class NoteCardUI extends React.Component {
   static propsTypes = {
@@ -55,7 +55,7 @@ const NoteCard = connect(
       resolve(dispatch(viewNoteLoad(note)));
     }),
     loadEdit: (note) => new Promise((resolve, reject) => {
-      resolve(dispatch(loadNoteOnEditMode(note)));
+      resolve(dispatch(loadNote(note)));
     }),
     transitionMenuToView: () => {
       dispatch(exitNotesMenu());

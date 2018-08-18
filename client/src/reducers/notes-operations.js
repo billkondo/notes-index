@@ -1,25 +1,26 @@
 import { EditorState } from 'draft-js';
 import { stringifyContent } from '../components/Editor/EditorCustom';
 
-import { 
+import {
   WRITE_TITLE,
-  WRITE_DESCRIPTION, 
-  ADD_COMMENT, 
+  WRITE_DESCRIPTION,
+  ADD_COMMENT,
   WRITE_COMMENT,
   ADD_TAG,
   RESET_NOTE,
-  DELETE_COMMENT, 
-  DELETE_TAG
-} from '../types/create-note';
+  DELETE_COMMENT,
+  DELETE_TAG,
+  LOAD_NOTE
+} from '../types/notes-operations';
 
 const defaultState = {
-  title: "", 
+  title: "",
   description: EditorState.createEmpty(),
   commentaries: [], // Array of Strings, each String will be a stringfied object 
   tags: []
 }
 
-const createNoteReducer = (state = defaultState, action) => {
+const notesOperationsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case WRITE_TITLE:
       return {
@@ -29,17 +30,17 @@ const createNoteReducer = (state = defaultState, action) => {
 
     case WRITE_DESCRIPTION:
       return {
-        ...state, 
+        ...state,
         description: action.description
       }
 
     case ADD_COMMENT:
       return {
-        ...state, 
+        ...state,
         commentaries: state.commentaries.concat([stringifyContent(EditorState.createEmpty().getCurrentContent())])
       }
 
-    case WRITE_COMMENT: 
+    case WRITE_COMMENT:
       return {
         ...state,
         commentaries: state.commentaries.map((value, index) => {
@@ -50,7 +51,7 @@ const createNoteReducer = (state = defaultState, action) => {
 
     case ADD_TAG:
       return {
-        ...state, 
+        ...state,
         tags: state.tags.concat(action.newTag)
       }
 
@@ -65,8 +66,16 @@ const createNoteReducer = (state = defaultState, action) => {
 
     case DELETE_TAG:
       return {
-        ...state, 
+        ...state,
         tags: state.tags.filter((tag, index) => index !== action.index)
+      }
+
+    case LOAD_NOTE:
+      return {
+        title: action.title,
+        description: action.description,
+        commentaries: action.commentaries,
+        tags: action.tags
       }
 
     default:
@@ -74,4 +83,4 @@ const createNoteReducer = (state = defaultState, action) => {
   }
 }
 
-export default createNoteReducer;
+export default notesOperationsReducer;

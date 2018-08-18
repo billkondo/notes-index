@@ -4,7 +4,7 @@ import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Header from './HeaderFromDescription';
 
-import { writeDescription } from '../../../actions/create-note';
+import { writeDescription } from '../../../actions/notes-operations';
 
 const Separator = () => (
   <div className="separator">
@@ -63,7 +63,7 @@ class DescriptionUI extends React.Component {
 
 const Description = connect(
   (state) => ({
-    description: state.createNote.description
+    description: state.notesOperations.description
   }),
   (dispatch) => ({
     writeDescription: (newDescription) => dispatch(writeDescription(newDescription))

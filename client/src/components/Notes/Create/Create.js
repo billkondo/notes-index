@@ -13,7 +13,7 @@ import Tags from './Tags';
 import { CSSTransition } from 'react-transition-group';
 
 import { addNote } from '../../../actions/notes-data';
-import { resetNote } from '../../../actions/create-note';
+import { resetNote } from '../../../actions/notes-operations';
 import { exitCreate, enterMenu } from '../../../actions/notes-routes';
 import { exitNotesCreate, enterNotesMenu } from '../../../actions/css-transitions';
 
@@ -81,7 +81,7 @@ class CreateUI extends React.Component {
 
 const Create = connect(
   (state) => ({
-    note: state.createNote,
+    note: state.notesOperations,
     transitionCreate: state.cssTransitions.notesCreate
   }),
   (dispatch) => ({

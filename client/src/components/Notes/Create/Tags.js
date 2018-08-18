@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import HeaderFromTags from './HeaderFromTags';
 import TagsContainer from './TagsContainer';
 
-import {
-  addTag
-} from '../../../actions/create-note';
-
+import { addTag } from '../../../actions/notes-operations';
 
 class TagsUI extends React.Component {
   state = {

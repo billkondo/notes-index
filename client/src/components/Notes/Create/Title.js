@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { InputGroup, Input } from 'reactstrap';
 import propTypes from 'prop-types';
 
-import { writeTitle } from '../../../actions/create-note';
+import { writeTitle } from '../../../actions/notes-operations';
 
 const TitleUI = ({ title, writeTitle }) => (
   <div id="title-create">
@@ -29,7 +29,7 @@ TitleUI.propTypes = {
 
 const Title = connect(
   (state) => ({
-    title: state.createNote.title
+    title: state.notesOperations.title
   }),
   (dispatch) => ({
     writeTitle: (newTitle) => dispatch(writeTitle(newTitle))

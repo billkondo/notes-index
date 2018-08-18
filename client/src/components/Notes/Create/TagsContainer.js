@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Tag from './Tag';
 
-import { deleteTag } from '../../../actions/create-note';
+import { deleteTag } from '../../../actions/notes-operations';
 
 const TagsContainerUI = ({ tags, deleteTag }) => (
   <TransitionGroup className="tags-container">
@@ -37,7 +37,7 @@ const TagsContainerUI = ({ tags, deleteTag }) => (
 
 const TagsContainer = connect(
   (state) => ({
-    tags: state.createNote.tags
+    tags: state.notesOperations.tags
   }),
   (dispatch) => ({
     deleteTag: (index) => dispatch(deleteTag(index))
