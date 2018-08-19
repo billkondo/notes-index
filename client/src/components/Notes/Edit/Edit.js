@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Header from './Header';
-import Title from '../Create/Title';
+import Title from '../Operations/Title';
+import Descriptin from '../Operations/Description';
+import Commentaries from '../Operations/Commentaries';
+import Tags from '../Operations/Tags';
 import Footer from './Footer';
 
 import { CSSTransition } from 'react-transition-group';
@@ -26,6 +29,9 @@ const EditUI = ({ cssTransition }) => (
       <div id="edit-note">
         <Header />
         <Title />
+        <Descriptin />
+        
+        <Tags />
         <Footer />
       </div>
     </div>

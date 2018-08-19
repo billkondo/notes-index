@@ -15,17 +15,19 @@
 @import './components/Buttons/AddButton';
 @import './components/Buttons/ExitButton';
 
+// Notes Operations Styles
+@import './components/Notes/Operations/Commentaries';
+@import './components/Notes/Operations/Commentary';
+@import './components/Notes/Operations/Description';
+@import './components/Notes/Operations/HeaderFromDescription';
+@import './components/Notes/Operations/HeaderFromTags';
+@import './components/Notes/Operations/Tag';
+@import './components/Notes/Operations/Tags';
+@import './components/Notes/Operations/Title';
+
 // Create Note Styles 
-@import './components/Notes/Create/Commentaries';
-@import './components/Notes/Create/Commentary';
 @import './components/Notes/Create/Create';
-@import './components/Notes/Create/Description';
 @import './components/Notes/Create/Header';
-@import './components/Notes/Create/HeaderFromDescription';
-@import './components/Notes/Create/HeaderFromTags';
-@import './components/Notes/Create/Tag';
-@import './components/Notes/Create/Tags';
-@import './components/Notes/Create/Title';
 
 // Edit Note Styles
 @import './components/Notes/Edit/Edit';

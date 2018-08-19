@@ -46,7 +46,7 @@ ViewBackUI.propTypes = {
 
 const ViewBack = connect(
   (state) => ({
-    tags: state.viewNote.note.tags
+    tags: state.notesOperations.tags
   })
 )(ViewBackUI);
 

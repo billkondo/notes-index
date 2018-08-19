@@ -11,7 +11,7 @@ const DescriptionUI = ({ description }) => (
 
 const Description = connect(
   (state) => ({
-    description: state.viewNote.note.description
+    description: state.notesOperations.description
   })
 )(DescriptionUI)
 

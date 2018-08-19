@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Header from './HeaderFromDescription';
 
@@ -42,6 +42,8 @@ class DescriptionUI extends React.Component {
   onBlur = () => this.setState({ editorFocus: false })
 
   render() {
+    console.log(this.props.description);
+    
     return (
       <div id="description-create">
         <Header

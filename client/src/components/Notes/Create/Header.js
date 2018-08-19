@@ -13,6 +13,10 @@ import {
   exitNotesCreate
 } from '../../../actions/css-transitions';
 
+import {
+  resetNote
+} from '../../../actions/notes-operations';
+
 const HeaderUI = ({ transitionCreateToMenu }) => (
   <div id="header-create">
     <div id="header-title"> Create Note </div>
@@ -34,6 +38,7 @@ const Header = connect(
         dispatch(enterNotesMenu());
         dispatch(exitCreate());
         dispatch(enterMenu());
+        dispatch(resetNote());
       }, 500);
     }
   })

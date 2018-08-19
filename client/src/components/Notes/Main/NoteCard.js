@@ -7,7 +7,6 @@ import { parseContent } from '../../Editor/EditorCustom';
 import { enterEdit, enterView, exitMenu } from '../../../actions/notes-routes';
 import { exitNotesMenu, enterNotesView, enterNotesEdit } from '../../../actions/css-transitions';
 
-import { viewNoteLoad } from '../../../actions/view-note';
 import { loadNote } from '../../../actions/notes-operations';
 
 class NoteCardUI extends React.Component {
@@ -17,13 +16,13 @@ class NoteCardUI extends React.Component {
 
   prepareToEnterViewNote = () => {
     this.props
-      .loadView(this.props.note)
+      .loadNote(this.props.note)
       .then(() => this.props.transitionMenuToView())
   }
 
   prepareToEnterEditNote = () => {
     this.props
-      .loadEdit(this.props.note)
+      .loadNote(this.props.note)
       .then(() => this.props.transitionMenuToEdit())
   }
 
@@ -51,10 +50,7 @@ class NoteCardUI extends React.Component {
 const NoteCard = connect(
   (state) => ({}),
   (dispatch) => ({
-    loadView: (note) => new Promise((resolve, reject) => {
-      resolve(dispatch(viewNoteLoad(note)));
-    }),
-    loadEdit: (note) => new Promise((resolve, reject) => {
+    loadNote: (note) => new Promise((resolve, reject) => {
       resolve(dispatch(loadNote(note)));
     }),
     transitionMenuToView: () => {

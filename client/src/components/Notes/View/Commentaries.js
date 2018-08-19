@@ -16,7 +16,7 @@ const CommentariesUI = ({ commentaries }) => (
 
 const Commentaries = connect(
   (state) => ({
-    commentaries: state.viewNote.note.commentaries
+    commentaries: state.notesOperations.commentaries
   })
 )(CommentariesUI);
 

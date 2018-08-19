@@ -50,11 +50,6 @@
       .view {
         justify-self: start;
       }
-
-      .edit:hover, .view:hover {
-        transition: all 400ms linear;
-        transform: scale(1.2);
-      }
     }
   }
 

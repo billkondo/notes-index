@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Editor, EditorState, convertToRaw } from 'draft-js';
+import { Editor, EditorState } from 'draft-js';
 
 import { parseContent, stringifyContent } from '../../Editor/EditorCustom';
 import ExitButton from '../../Buttons/ExitButton';

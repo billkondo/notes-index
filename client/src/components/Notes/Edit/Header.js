@@ -4,6 +4,7 @@ import ExitButton from '../../Buttons/ExitButton';
 
 import { exitNotesEdit, enterNotesMenu } from '../../../actions/css-transitions';
 import { exitEdit, enterMenu } from '../../../actions/notes-routes';
+import { resetNote } from '../../../actions/notes-operations';
 
 const HeaderUI = ({ transitionEditToMenu }) => (
   <div id="header-edit">
@@ -11,7 +12,6 @@ const HeaderUI = ({ transitionEditToMenu }) => (
     <ExitButton click={transitionEditToMenu} />
   </div>
 );
-
 
 const Header = connect(
   (state) => ({}),
@@ -23,6 +23,7 @@ const Header = connect(
         dispatch(enterNotesMenu());
         dispatch(exitEdit());
         dispatch(enterMenu());
+        dispatch(resetNote());
       }, 500);
     }
   })

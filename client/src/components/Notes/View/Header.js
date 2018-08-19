@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import ExitButton from '../../Buttons/ExitButton';
 import { exitNotesView, enterNotesMenu } from '../../../actions/css-transitions';
 import { exitView, enterMenu } from '../../../actions/notes-routes';
+import { resetNote } from '../../../actions/notes-operations';
 
 const HeaderUI = ({ title, transitionViewToMenu }) => (
   <div id="header-view">
@@ -20,7 +21,7 @@ HeaderUI.propTypes = {
 
 const Header = connect(
   (state) => ({
-    title: state.viewNote.note.title
+    title: state.notesOperations.title
   }),
   (dispatch) => ({
     transitionViewToMenu: () => {
@@ -30,6 +31,7 @@ const Header = connect(
         dispatch(enterNotesMenu());
         dispatch(exitView());
         dispatch(enterMenu());
+        dispatch(resetNote());
       }, 500);
     }
   })

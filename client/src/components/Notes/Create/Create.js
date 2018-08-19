@@ -5,10 +5,10 @@ import { Button } from 'reactstrap';
 import { stringifyContent } from '../../Editor/EditorCustom';
 
 import Header from './Header';
-import Title from './Title';
-import Description from './Description';
-import Commentaries from './Commentaries';
-import Tags from './Tags';
+import Title from '../Operations/Title';
+import Description from '../Operations/Description';
+import Commentaries from '../Operations/Commentaries';
+import Tags from '../Operations/Tags';
 
 import { CSSTransition } from 'react-transition-group';
 
