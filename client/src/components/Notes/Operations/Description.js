@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Editor, RichUtils } from 'draft-js';
+import { Editor, RichUtils, EditorState } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Header from './HeaderFromDescription';
+import CustomEditor from '../../Editor/CustomEditor';
 
 import { writeDescription } from '../../../actions/notes-operations';
 
@@ -18,32 +19,28 @@ class DescriptionUI extends React.Component {
     editorFocus: false
   }
 
-  onChange = (newDescription) => this.props.writeDescription(newDescription);
+  // onBoldClick = (e) => {
+  //   if (!this.state.editorFocus)
+  //     return;
 
-  onBoldClick = (e) => {
-    if (!this.state.editorFocus)
-      return;
+  //   e.preventDefault();
+  //   this.setState((prevState) => ({ isBold: !prevState.isBold }));
+  //   this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'BOLD'));
+  // }
 
-    e.preventDefault();
-    this.setState((prevState) => ({ isBold: !prevState.isBold }));
-    this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'BOLD'));
-  }
+  // onItalicClick = (e) => {
+  //   if (!this.state.editorFocus)
+  //     return;
 
-  onItalicClick = (e) => {
-    if (!this.state.editorFocus)
-      return;
-
-    e.preventDefault();
-    this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
-    this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
-  }
+  //   e.preventDefault();
+  //   this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
+  //   this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
+  // }
 
   onFocus = () => this.setState({ editorFocus: true });
   onBlur = () => this.setState({ editorFocus: false })
 
   render() {
-    console.log(this.props.description);
-    
     return (
       <div id="description-create">
         <Header
@@ -53,8 +50,8 @@ class DescriptionUI extends React.Component {
           isItalic={this.state.isItalic}
         />
 
-        <div className="description" onFocus={this.onFocus} onBlur={this.onBlur} >
-          <Editor editorState={this.props.description} onChange={this.onChange} />
+        <div className="description">
+          <CustomEditor contentState={this.props.description} saveFunction={this.props.writeDescription}/>
         </div>
 
         <Separator />

@@ -1,5 +1,5 @@
 import { EditorState } from 'draft-js';
-import { stringifyContent } from '../components/Editor/EditorCustom';
+import { stringifyContent } from '../components/Editor/CustomEditor';
 
 import {
   WRITE_TITLE,
@@ -15,7 +15,7 @@ import {
 
 const defaultState = {
   title: "",
-  description: EditorState.createEmpty(),
+  description: stringifyContent(EditorState.createEmpty().getCurrentContent()),
   commentaries: [], // Array of Strings, each String will be a stringfied object 
   tags: []
 }

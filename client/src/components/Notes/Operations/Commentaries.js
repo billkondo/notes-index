@@ -25,7 +25,7 @@ class CommentariesUI extends React.Component {
               return (
                 <Commentary
                   key={index}
-                  commentContentState={value}
+                  contentState={value}
                   index={index}
                   writeComment={this.props.writeComment}
                   deleteComment={this.props.deleteComment}

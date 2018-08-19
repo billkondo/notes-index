@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Editor, EditorState } from 'draft-js';
-import { parseContent } from '../../Editor/EditorCustom';
+import { parseContent } from '../../Editor/CustomEditor';
 
 const DescriptionUI = ({ description }) => (
   <div id="description-view">

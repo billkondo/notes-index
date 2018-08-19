@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Editor, EditorState } from 'draft-js';
-import { parseContent } from '../../Editor/EditorCustom';
+import { parseContent } from '../../Editor/CustomEditor';
 
 const Comment = ({ comment }) => (
   <div className="comment-view">

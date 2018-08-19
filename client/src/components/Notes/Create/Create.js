@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { stringifyContent } from '../../Editor/EditorCustom';
+import { stringifyContent } from '../../Editor/CustomEditor';
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -28,12 +28,7 @@ class CreateUI extends React.Component {
 
     this.setState({ open: false });
 
-    const newNote = {
-      title: this.props.note.title,
-      description: stringifyContent(this.props.note.description.getCurrentContent()),  
-      commentaries: this.props.note.commentaries, 
-      tags: this.props.note.tags
-    }
+    const newNote = this.props.note
 
     axios
       .post('/api/notes', newNote)
