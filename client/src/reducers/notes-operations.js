@@ -1,5 +1,6 @@
 import { EditorState } from 'draft-js';
 import { stringifyContent } from '../components/Editor/CustomEditor';
+import  uuidv4 from 'uuid/v4';
 
 import {
   WRITE_TITLE,
@@ -17,8 +18,14 @@ const defaultState = {
   title: "",
   description: stringifyContent(EditorState.createEmpty().getCurrentContent()),
   commentaries: [], // Array of Strings, each String will be a stringfied object 
-  tags: []
+  tags: [],
+  id: ""
 }
+
+const createEmpty = () => ({
+  contentState: stringifyContent(EditorState.createEmpty().getCurrentContent()),
+  id: uuidv4()
+})
 
 const notesOperationsReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -37,14 +44,19 @@ const notesOperationsReducer = (state = defaultState, action) => {
     case ADD_COMMENT:
       return {
         ...state,
-        commentaries: state.commentaries.concat([stringifyContent(EditorState.createEmpty().getCurrentContent())])
+        commentaries: state.commentaries.concat(JSON.stringify(createEmpty()))
       }
 
     case WRITE_COMMENT:
       return {
         ...state,
-        commentaries: state.commentaries.map((value, index) => {
-          if (index === action.id) return action.newComment;
+        commentaries: state.commentaries.map(value => {
+          if (JSON.parse(value).id === action.id) 
+            return JSON.stringify({
+              contentState: action.newComment,
+              id: JSON.parse(value).id
+            });
+
           return value;
         })
       }
@@ -61,13 +73,13 @@ const notesOperationsReducer = (state = defaultState, action) => {
     case DELETE_COMMENT:
       return {
         ...state,
-        commentaries: state.commentaries.filter((comment, index) => index !== action.index)
+        commentaries: state.commentaries.filter(comment => JSON.parse(comment).id !== action.id)
       }
 
     case DELETE_TAG:
       return {
         ...state,
-        tags: state.tags.filter((tag, index) => index !== action.index)
+        tags: state.tags.filter(tag => tag !== action.tag)
       }
 
     case LOAD_NOTE:

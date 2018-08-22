@@ -6,14 +6,16 @@ import NoteCard from './NoteCard';
 const ContainerNotesUI = (props) => (
   <div id="container-notes">
     {
-      props.notes.map((value, index) => {
+      props.notes.map(value => {
+        console.log(value);
         return (
-          <NoteCard key={index} note={value} id={index} />
+          <NoteCard key={value.id} note={value} />
         );
       })
     }
   </div>
 );
+
 
 const ContainerNotes = connect(
   (state) => ({

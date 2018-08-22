@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import { writeTitle } from '../../../actions/notes-operations';
 
 const TitleUI = ({ title, writeTitle }) => (
-  <div id="title-create">
+  <div id="title-note">
     <div id="header">
       <div id="title"> Title </div>
 
@@ -15,9 +15,6 @@ const TitleUI = ({ title, writeTitle }) => (
           <Input type="text" value={title} onChange={(e) => writeTitle(e.target.value)} />
         </InputGroup>
       </div>
-    </div>
-
-    <div className="separator">
     </div>
   </div>
 );

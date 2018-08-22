@@ -10,7 +10,8 @@ const newEditorState = (contentState) => EditorState.createWithContent(parseCont
 class CustomEditor extends React.Component {
   static propTypes = {
     contentState: propTypes.string.isRequired,
-    saveFunction: propTypes.func.isRequired
+    saveFunction: propTypes.func.isRequired,
+    doubleClick: propTypes.bool
   }
 
   state = {
@@ -18,6 +19,8 @@ class CustomEditor extends React.Component {
   }
 
   onBlur = () => this.props.saveFunction(stringifyContent(this.state.editorState.getCurrentContent()))
+  onClick = () => this.editor.focus();
+  
 
   onChange = (editorState) => this.setState({ editorState });
 
@@ -26,14 +29,14 @@ class CustomEditor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (stringifyContent(this.state.editorState.getCurrentContent()) !== nextProps.contentState) 
+    if (stringifyContent(this.state.editorState.getCurrentContent()) !== nextProps.contentState)
       this.setState({ editorState: newEditorState(nextProps.contentState) });
   }
 
   render() {
     return (
-      <div className="custom-editor" onBlur={this.onBlur} >
-        <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      <div className="custom-editor" onBlur={this.onBlur} onClick={this.onClick}>
+        <Editor editorState={this.state.editorState} onChange={this.onChange} ref={editor => this.editor = editor} />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { stringifyContent } from '../../Editor/CustomEditor';
+import uuidv4 from 'uuid/v4';
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -28,7 +28,12 @@ class CreateUI extends React.Component {
 
     this.setState({ open: false });
 
-    const newNote = this.props.note
+    let newNote = this.props.note;
+
+    newNote = {
+      ...newNote,
+      id: uuidv4()
+    }
 
     axios
       .post('/api/notes', newNote)

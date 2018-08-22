@@ -13,7 +13,8 @@ router.post('/', (req, res) => {
     title: req.body.title,
     description: req.body.description,
     commentaries: req.body.commentaries,
-    tags: req.body.tags
+    tags: req.body.tags,
+    id: req.body.id
   });
 
   newNote.save().then(item => res.json(item));

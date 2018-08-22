@@ -1,4 +1,4 @@
-#commentaries-create {
+#commentaries-note {
   padding: $small-font;
 
   #commentaries-header {
@@ -13,5 +13,7 @@
 
   #commentaries-box {
     padding: $small-font;
+    display: grid;
+    grid-row-gap: $extra-small-font;
   }
 }

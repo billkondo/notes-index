@@ -1,4 +1,4 @@
-.tag-create {
+.tag-note {
   box-sizing: border-box;
   position: relative;
   font-size: $small-font;
@@ -14,7 +14,7 @@
   border: $thin-border solid lightgrey; 
 }
 
-.tag-create:hover {
+.tag-note:hover {
   border: $thin-border solid black;
   background: #353839;
   transition: all 700ms ease-out;

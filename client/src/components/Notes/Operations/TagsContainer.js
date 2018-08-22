@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Tag from './Tag';
 
@@ -10,27 +9,26 @@ import { deleteTag } from '../../../actions/notes-operations';
 const TagsContainerUI = ({ tags, deleteTag }) => (
   <TransitionGroup className="tags-container">
     {
-      tags.map((key, index) => {
+      tags.map(key => {
         return (
           <CSSTransition
             key={key}
-            timeout={800}
+            timeout={500}
             classNames={{
               enter: "animated",
-              enterActive: "fadeIn fast",
+              enterActive: "zoomIn faster",
               exit: "animated",
-              exitActive: "fadeOutUp fast"
+              exitActive: "zoomOut faster"
             }}
-            appear={true}
           >
             <Tag
               key={key}
               tag={key}
-              deleteTag={() => deleteTag(index)}
+              deleteTag={() => deleteTag(key)}
             />
           </CSSTransition>
         );
-      })
+      })  
     }
   </TransitionGroup>
 );
@@ -40,7 +38,7 @@ const TagsContainer = connect(
     tags: state.notesOperations.tags
   }),
   (dispatch) => ({
-    deleteTag: (index) => dispatch(deleteTag(index))
+    deleteTag: (tag) => dispatch(deleteTag(tag))
   })
 )(TagsContainerUI)
 

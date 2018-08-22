@@ -1,13 +1,8 @@
-#description-create {
+#description-note {
   padding: $small-font;
-  display: grid;
-  
+  display: grid;  
+
   .description {
-    padding: $small-font;
-    font-size: $medium-font;
-    margin-top: $extra-small-font; 
-    border-radius: $small-button-radius;
-    font-family: 'Merriweather';
-    background: white;
+    margin-top: $extra-small-font;
   }
 }

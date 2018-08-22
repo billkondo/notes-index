@@ -46,15 +46,15 @@ export const resetNote = () => ({
 });
 
 
-export const deleteComment = (index) => ({
+export const deleteComment = (id) => ({
   type: DELETE_COMMENT,
-  index
+  id
 });
 
 
-export const deleteTag = (index) => ({
+export const deleteTag = (tag) => ({
   type: DELETE_TAG,
-  index
+  tag
 });
 
 export const loadNote = (note) => ({
@@ -62,7 +62,8 @@ export const loadNote = (note) => ({
   title: note.title, 
   description: note.description, 
   commentaries: note.commentaries, 
-  tags: note.tags
+  tags: note.tags,
+  id: note.id
 })
 
 

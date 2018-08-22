@@ -1,10 +1,10 @@
-#tags-header-create {
+#tags-header-note {
   display: grid;
   grid-template-rows: 1fr; 
   grid-template-columns: 1fr 1fr;
 
   padding: $small-font;
-  font-size: $small-font;
+  font-size: $medium-font;
 
   #title {
     font-family: "Merriweather";
@@ -16,13 +16,18 @@
   #write-menu {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: $small-font;
+    grid-gap: $medium-font;
     justify-items: end;
     align-items: center;
     
     .input-group-text {
       background: $tag-color;
       color: white;
+    }
+
+    .input-group {
+      font-size: $small-font;
+      font-family: 'Merriweather';
     }
   }
 }

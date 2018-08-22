@@ -19,7 +19,7 @@ class ExitButton extends React.Component {
           appearActive: "fadeIn fast"
         }}
       >
-        <div className="exit-button" onClick={this.props.click} >
+        <div className="exit-button" onMouseDown={this.props.click} >
           <i className="fas fa-times" />
         </div>
       </CSSTransition>

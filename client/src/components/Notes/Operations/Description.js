@@ -42,7 +42,7 @@ class DescriptionUI extends React.Component {
 
   render() {
     return (
-      <div id="description-create">
+      <div id="description-note">
         <Header
           onBoldClick={this.onBoldClick}
           onItalicClick={this.onItalicClick}
@@ -53,8 +53,6 @@ class DescriptionUI extends React.Component {
         <div className="description">
           <CustomEditor contentState={this.props.description} saveFunction={this.props.writeDescription}/>
         </div>
-
-        <Separator />
       </div>
     );
   }

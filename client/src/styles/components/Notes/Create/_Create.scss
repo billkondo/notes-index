@@ -18,7 +18,8 @@
     width: 40vw;
     min-height: 50vh;
     display: grid;
-    grid-template-rows: 0.5fr 1fr auto auto auto $large-font;
+    grid-template-rows: $large-font auto auto auto auto $large-font;
+    grid-row-gap: $small-font; 
     border-radius: $extra-small-font; 
 
     #create-button {
