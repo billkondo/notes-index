@@ -6,10 +6,22 @@
 
   #trash {
     cursor: pointer;
-    color: $exit-color;
-
-    justify-self: center;
-    align-self: center;
+    background: $exit-color;
+    color: rgba(0, 0, 0, 0.5);
+    justify-self: stretch;
+    align-self: stretch;
     font-size: $medium-font;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    border-radius: $small-button-radius;
+  }
+
+  #trash:hover {
+    transition: all 250ms ease-out;
+    background: darkred;
+    color: black;
   }
 }

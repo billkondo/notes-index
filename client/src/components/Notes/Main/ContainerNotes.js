@@ -7,7 +7,6 @@ const ContainerNotesUI = (props) => (
   <div id="container-notes">
     {
       props.notes.map(value => {
-        console.log(value);
         return (
           <NoteCard key={value.id} note={value} />
         );

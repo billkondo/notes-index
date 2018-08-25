@@ -2,6 +2,9 @@
 @import './base/base';
 @import './base/bootstrap';
 
+// Modal Styles 
+@import './components/Modal/Exit';
+
 // Main Styles
 @import './components/Notes/Main/ContainerFunctions';
 @import './components/Notes/Main/ContainerNotes';

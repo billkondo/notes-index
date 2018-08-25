@@ -1,31 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExitButton from '../../Buttons/ExitButton';
+import propTypes from 'prop-types';
 
-import { exitNotesEdit, enterNotesMenu } from '../../../actions/css-transitions';
-import { exitEdit, enterMenu } from '../../../actions/notes-routes';
-import { resetNote } from '../../../actions/notes-operations';
+import { startExitModal } from '../../../actions/modal';
 
-const HeaderUI = ({ transitionEditToMenu }) => (
+const HeaderUI = ({ startExitModal }) => (
   <div id="header-edit">
     <div id="header-title"> Edit Note </div>
-    <ExitButton click={transitionEditToMenu} />
+    <ExitButton click={startExitModal} />
   </div>
 );
+
+HeaderUI.propTypes = {
+  startExitModal: propTypes.func.isRequired
+}
 
 const Header = connect(
   (state) => ({}),
   (dispatch) => ({
-    transitionEditToMenu: () => {
-      dispatch(exitNotesEdit());
-
-      setTimeout(() => {
-        dispatch(enterNotesMenu());
-        dispatch(exitEdit());
-        dispatch(enterMenu());
-        dispatch(resetNote());
-      }, 500);
-    }
+    startExitModal: () => dispatch(startExitModal())
   })
 )(HeaderUI);
 

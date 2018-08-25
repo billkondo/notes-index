@@ -7,10 +7,16 @@ import Description from '../Operations/Description';
 import Commentaries from '../Operations/Commentaries';
 import Tags from '../Operations/Tags';
 import Footer from './Footer';
+import Exit from '../../Modal/Exit';
 
 import { CSSTransition } from 'react-transition-group';
 
-const EditUI = ({ cssTransition }) => (
+import { exitNotesEdit, enterNotesMenu } from '../../../actions/css-transitions';
+import { exitEdit, enterMenu } from '../../../actions/notes-routes';
+import { resetNote } from '../../../actions/notes-operations';
+import { endExitModal } from '../../../actions/modal';
+
+const EditUI = ({ cssTransition, transitionEditToMenu }) => (
   <CSSTransition
     in={cssTransition}
     timeout={{
@@ -33,15 +39,28 @@ const EditUI = ({ cssTransition }) => (
         <Commentaries />
         <Tags />
         <Footer />
+        <Exit exit={transitionEditToMenu} />
       </div>
     </div>
   </CSSTransition>
 );
 
-
 const Edit = connect(
   (state) => ({
     cssTransition: state.cssTransitions.notesEdit
+  }),
+  (dispatch) => ({
+    transitionEditToMenu: () => {
+      dispatch(exitNotesEdit());
+      dispatch(endExitModal());
+
+      setTimeout(() => {
+        dispatch(enterNotesMenu());
+        dispatch(exitEdit());
+        dispatch(enterMenu());
+        dispatch(resetNote());
+      }, 500);
+    }
   })
 )(EditUI);
 
