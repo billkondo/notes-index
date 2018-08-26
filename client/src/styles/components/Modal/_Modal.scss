@@ -1,4 +1,4 @@
-.modal-exit-page {
+.modal-page {
   z-index: 10;
   position: fixed;
 
@@ -13,7 +13,7 @@
   justify-items: center;
   align-items: start;
 
-  .modal-exit-box {
+  .modal-box {
     display: grid;
     background: white;
 
@@ -23,14 +23,14 @@
     width: 40vw; 
     border-radius: $extra-small-font; 
 
-    .modal-exit-title {
+    .modal-title {
       font-family: "Baloo Bhai";
       font-size: $large-font;
       align-self: center;
       justify-self: center;
     }
 
-    .modal-exit-text {
+    .modal-text {
       align-self: center;
       text-justify: center;
       
@@ -46,7 +46,7 @@
       }
     }
 
-    .modal-exit-buttons {
+    .modal-buttons {
       align-self: stretch;
       justify-self: stretch;
       
@@ -55,7 +55,7 @@
       align-items: center;
       justify-items: center;
 
-      .modal-exit-button {
+      .modal-button {
         font-family: 'Merriweather';
         font-size: $small-font;
         color: white;

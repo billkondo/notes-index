@@ -1,2 +1,2 @@
-export const START_EXIT_MODAL = "START_EXIT_MODAL";
-export const END_EXIT_MODAL = "END_EXIT_MODAL";
+export const START_MODAL = "START_MODAL";
+export const END_MODAL = "END_MODAL";

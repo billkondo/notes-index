@@ -5,8 +5,6 @@
   font-family: "Anonymous Pro";
   font-size: $small-font; 
 
-  border-radius: $small-button-radius;
-
   #commentaries-title {
     font-size: $small-font;
     font-family: "Merriweather";
@@ -24,5 +22,6 @@
 
   #commentaries-container {
     background: #C9C0BB;
+    border-radius: $small-button-radius;  
   }
 }

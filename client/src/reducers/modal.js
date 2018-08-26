@@ -1,27 +1,44 @@
+import React from 'react';
+
 import {
-  START_EXIT_MODAL, 
-  END_EXIT_MODAL
+  START_MODAL,
+  END_MODAL
 } from '../types/modal';
 
+const WarningMessageDefault = () => (
+  <div className="modal-text">
+  </div>
+);
+
+const exitFunctionDefault = () => {}
+
 const defaultState = {
-  exitModalRender: false
+  modalRender: false,
+  redButton: "",
+  greenButton: "",
+  WarningMessage: WarningMessageDefault,
+  exitFunction: exitFunctionDefault
 }
 
 const modalReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case START_EXIT_MODAL:
+    case START_MODAL:
       return {
-        ...state, 
-        exitModalRender: true
+        ...state,
+        modalRender: true,
+        redButton: action.redButton,
+        greenButton: action.greenButton,
+        WarningMessage: action.WarningMessage,
+        exitFunction: action.exitFunction
       }
 
-    case END_EXIT_MODAL: 
+    case END_MODAL:
       return {
-        ...state, 
-        exitModalRender: false
+        ...state,
+        modalRender: false
       }
-    
-    default: 
+
+    default:
       return state;
   }
 }

@@ -1,6 +1,5 @@
 #tags-view {
   margin: $small-font;
-  border-radius: $small-button-radius;
 
   display: grid;
   align-items: center;
@@ -9,6 +8,8 @@
   #tags-title {
     font-size: $small-font;
     font-family: "Merriweather";
+
+    align-self: end;
     
     #tag-icon, #tag-title {
       display: inline-block;
@@ -19,9 +20,11 @@
     }
 
     margin-bottom: $extra-small-font;
+    
   }
 
   #tags-container {
     background: $tag-color;
+    border-radius: $small-button-radius;
   }
 }

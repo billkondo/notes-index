@@ -3,23 +3,25 @@ import { connect } from 'react-redux';
 import ExitButton from '../../Buttons/ExitButton';
 import propTypes from 'prop-types';
 
-import { startExitModal } from '../../../actions/modal';
+import { startModal } from '../../../actions/modal';
+import { exitButton, stayButton, ExitMessage } from '../../Modal/messages';
 
-const HeaderUI = ({ startExitModal }) => (
+const HeaderUI = ({ startModal, exitFunction }) => (
   <div id="header-edit">
     <div id="header-title"> Edit Note </div>
-    <ExitButton click={startExitModal} />
+    <ExitButton click={() => startModal(exitFunction)} />
   </div>
 );
 
 HeaderUI.propTypes = {
-  startExitModal: propTypes.func.isRequired
+  startModal: propTypes.func.isRequired,
+  exitFunction: propTypes.func.isRequired
 }
 
 const Header = connect(
   (state) => ({}),
   (dispatch) => ({
-    startExitModal: () => dispatch(startExitModal())
+    startModal: (exitFunction) => dispatch(startModal(exitButton, stayButton, ExitMessage, exitFunction))
   })
 )(HeaderUI);
 

@@ -9,7 +9,7 @@ import Title from '../Operations/Title';
 import Description from '../Operations/Description';
 import Commentaries from '../Operations/Commentaries';
 import Tags from '../Operations/Tags';
-import Exit from '../../Modal/Exit';
+import Modal from '../../Modal/Modal';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -17,7 +17,7 @@ import { addNote } from '../../../actions/notes-data';
 import { resetNote } from '../../../actions/notes-operations';
 import { exitCreate, enterMenu } from '../../../actions/notes-routes';
 import { exitNotesCreate, enterNotesMenu } from '../../../actions/css-transitions';
-import { endExitModal} from '../../../actions/modal';
+import { endModal} from '../../../actions/modal';
 
 class CreateUI extends React.Component {
   state = {
@@ -67,14 +67,14 @@ class CreateUI extends React.Component {
       >
         <div id="create-page">
           <div id="create-add">
-            <Header />
+            <Header exitFunction={this.props.transitionCreateToMenu}/>
             <Title />
             <Description />
             <Commentaries />
             <Tags />
             <Button color="success" onClick={this.submit} id="create-button"> Create </Button>
 
-            <Exit exit={this.props.transitionCreateToMenu} />
+            <Modal />
           </div>
         </div>
       </CSSTransition>
@@ -90,7 +90,7 @@ const Create = connect(
   (dispatch) => ({
     transitionCreateToMenu: () => {
       dispatch(exitNotesCreate());
-      dispatch(endExitModal());
+      dispatch(endModal());
 
       setTimeout(() => {
         dispatch(enterNotesMenu());

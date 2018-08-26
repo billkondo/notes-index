@@ -1,12 +1,16 @@
 import {
-  START_EXIT_MODAL, 
-  END_EXIT_MODAL
+  START_MODAL, 
+  END_MODAL
 } from '../types/modal';
 
-export const startExitModal = () => ({
-  type: START_EXIT_MODAL
+export const startModal = (redButton, greenButton, WarningMessage, exitFunction) => ({
+  type: START_MODAL,
+  redButton,
+  greenButton, 
+  WarningMessage,
+  exitFunction
 });
 
-export const endExitModal = () => ({
-  type: END_EXIT_MODAL
+export const endModal = () => ({
+  type: END_MODAL
 });
