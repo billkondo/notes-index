@@ -1,6 +1,7 @@
 #header-view {
+  align-self: start;
+
   box-sizing: content-box;
-  height: $large-font;
   display: grid;
 
   #title {

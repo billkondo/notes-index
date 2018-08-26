@@ -1,0 +1,27 @@
+#tags-view {
+  margin: $small-font;
+  border-radius: $small-button-radius;
+
+  display: grid;
+  align-items: center;
+  justify-items: stretch;
+
+  #tags-title {
+    font-size: $small-font;
+    font-family: "Merriweather";
+    
+    #tag-icon, #tag-title {
+      display: inline-block;
+    }
+
+    #tag-icon {
+      margin-right: $small-font;
+    }
+
+    margin-bottom: $extra-small-font;
+  }
+
+  #tags-container {
+    background: $tag-color;
+  }
+}

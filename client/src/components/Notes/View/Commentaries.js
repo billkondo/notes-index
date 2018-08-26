@@ -4,13 +4,20 @@ import Comment from './Comment';
 
 const CommentariesUI = ({ commentaries }) => (
   <div id="commentaries-view">
-    {
-      commentaries.map((value, index) => {
-        return (
-          <Comment comment={value} key={index} />
-        );
-      })
-    }
+    <div id="commentaries-title">
+      <div id="commentaries-icon"><i className="fas fa-book-open" /></div>
+      <div id="commentaries-text">Commentaries</div>
+    </div>
+
+    <div id="commentaries-container">
+      {
+        commentaries.map(value => {
+          return (
+            <Comment comment={JSON.parse(value).contentState} key={JSON.parse(value).id} />
+          );
+        })
+      }
+    </div>
   </div>
 );
 

@@ -1,12 +1,15 @@
 .tag-view {
   font-size: $medium-font;
-  background: darkred;
   color: white;
   font-family: "Merriweather";
-  border-radius: $small-button-radius;
+  
+  padding: $extra-small-font;
 
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  border-bottom: 1px dashed black;
+
   text-align: center;
+}
+
+.tag-view:last-of-type {
+  border: none;
 }

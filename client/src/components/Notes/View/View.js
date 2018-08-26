@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Flipcard from '@kennethormandy/react-flipcard';
 
 import ViewFront from './ViewFront';
 import ViewBack from './ViewBack';
@@ -11,15 +12,7 @@ class ViewUI extends React.Component {
     flipped: false
   }
 
-  flipSide = () => {
-    setTimeout(() => {
-      this.setState((prevState) => {
-        return {
-          flipped: !prevState.flipped
-        }
-      });
-    }, 800);
-  }
+  flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }))
 
   render() {
     return (
@@ -37,10 +30,10 @@ class ViewUI extends React.Component {
           exitActive: "fadeOut faster"
         }}
       >
-        <div id="view-page">
+        <Flipcard id="view-page" flipped={this.state.flipped}>
           <ViewFront flipSide={this.flipSide} flipped={!this.state.flipped} />
           <ViewBack flipSide={this.flipSide} flipped={this.state.flipped} />
-        </div>
+        </Flipcard>
       </CSSTransition>
     );
   }

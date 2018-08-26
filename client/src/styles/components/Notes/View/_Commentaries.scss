@@ -1,6 +1,28 @@
 #commentaries-view {
-  margin: $small-font;
+  align-self: start;
+
+  margin: $large-font;
   font-family: "Anonymous Pro";
-  font-size: $small-font;
-  padding: $small-font;
+  font-size: $small-font; 
+
+  border-radius: $small-button-radius;
+
+  #commentaries-title {
+    font-size: $small-font;
+    font-family: "Merriweather";
+
+    #commentaries-icon, #commentaries-text {
+      display: inline-block;
+    }
+
+    #commentaries-icon {
+      margin-right: $small-font
+    }
+
+    margin-bottom: $extra-small-font;
+  }
+
+  #commentaries-container {
+    background: #C9C0BB;
+  }
 }

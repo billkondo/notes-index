@@ -2,5 +2,11 @@
   padding: $extra-small-font;
   font-size: $medium-font;
   font-family: 'Merriweather';
-  background: #C9C0BB;
+  padding: $medium-font;
+
+  border-bottom: 1px dotted black;
+}
+
+.comment-view:last-child {
+  border: none;
 }

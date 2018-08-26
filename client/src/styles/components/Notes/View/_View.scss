@@ -10,8 +10,10 @@
     min-height: 50vh;
     background: lightgrey;
     
-    border-radius: $extra-small-font;
+    border-radius: $small-button-radius;
     display: grid;
     grid-template-rows: auto;
+
+    overflow: hidden;
   }
 }
