@@ -87,7 +87,8 @@ const notesOperationsReducer = (state = defaultState, action) => {
         title: action.title,
         description: action.description,
         commentaries: action.commentaries,
-        tags: action.tags
+        tags: action.tags,
+        id: action.id
       }
 
     default:

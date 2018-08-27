@@ -20,13 +20,37 @@ router.post('/', (req, res) => {
   newNote.save().then(item => res.json(item));
 });
 
-router.delete('/:_id', (req, res) => {
+router.put('/', (req, res) => {
+  const newNote = {
+    title: req.body.title,
+    description: req.body.description,
+    commentaries: req.body.commentaries,
+    tags: req.body.tags,
+    id: req.body.id
+  }
+
   Note
-    .findOneAndRemove({ _id: req.params._id })
+  .find({ 'id': req.body.id })
+  .exec()
+  .then(notes => {
+    for (note of notes) {
+      note.set(newNote);
+      note.save(err => {
+        if (err) return res.sendStatus(404);
+        res.sendStatus(200);
+      })
+    }
+  })
+  .catch(err => next(err));
+});
+
+router.delete('/', (req, res) => {
+  Note
+    .findOneAndRemove({ "id": req.body.id })
     .exec()
     .then(doc => {
-      if (!doc) { return res.status(404).end(); }
-      return res.status(204).end();
+      if (!doc) { return res.sendStatus(404); }
+      return res.sendStatus(200);
     })
     .catch(err => next(err));
 });

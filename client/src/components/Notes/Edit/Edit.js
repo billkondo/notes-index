@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -15,14 +16,29 @@ import { exitNotesEdit, enterNotesMenu } from '../../../actions/css-transitions'
 import { exitEdit, enterMenu } from '../../../actions/notes-routes';
 import { resetNote } from '../../../actions/notes-operations';
 import { endModal } from '../../../actions/modal';
+import { updateNote, deleteNote } from '../../../actions/notes-data';
 
 class EditUI extends React.Component {
   finishEdit = () => {
-
+    axios
+      .put('/api/notes', this.props.note)
+      .then(() => {
+        const id = this.props.note.id;
+        this.props.updateNote(id, this.props.note);
+        this.props.transitionEditToMenu();
+      })
+      .catch(err => console.log(err));
   }
 
   deleteNote = () => {
-    console.log(this.props);
+    const id = this.props.note.id;
+    axios
+      .delete('/api/notes', {data: { "id": id }})
+      .then(() => {
+        this.props.deleteNote(id);
+        this.props.transitionEditToMenu();
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -48,7 +64,7 @@ class EditUI extends React.Component {
             <Description />
             <Commentaries />
             <Tags />
-            <Footer finishEdit={this.finishEdit} deleteNote={this.deleteNote}/>
+            <Footer finishEdit={this.finishEdit} deleteNote={this.deleteNote} />
 
             <Modal />
           </div>
@@ -74,7 +90,9 @@ const Edit = connect(
         dispatch(enterMenu());
         dispatch(resetNote());
       }, 500);
-    }
+    },
+    updateNote: (id, note) => dispatch(updateNote(id, note)),
+    deleteNote: (id) => dispatch(deleteNote(id))
   })
 )(EditUI);
 
