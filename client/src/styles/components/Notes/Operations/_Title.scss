@@ -9,10 +9,20 @@
     grid-template-columns: auto 3fr;
     align-items: center;
 
-    #title {
-      font-family: "Merriweather";
-      font-size: $medium-font;
-      padding: $small-font;
+    #title-box {
+      #title {
+        font-family: "Merriweather";
+        font-size: $small-font;
+        font-weight: bold;
+      }
+
+      #title-icon, #title {
+        display: inline-block;
+      }
+
+      #title-icon {
+        margin-right: $small-font;
+      }
     }
 
     #enterTitle {
@@ -23,6 +33,7 @@
       margin-left: $small-font;
       font-size: $medium-font;
       font-family: "Merriweather";
+      padding: $medium-font;
     }
   }
 }

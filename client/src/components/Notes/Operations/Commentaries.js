@@ -16,7 +16,10 @@ class CommentariesUI extends React.Component {
     return (
       <div id="commentaries-note">
         <div id="commentaries-header">
-          <div id="commentaries-header-title">Commentaries</div>
+          <div id="commentaries-header-title-box">
+            <div id="commentaries-icon"><i className="fas fa-book-open" /></div>
+            <div id="commentaries-header-title">Commentaries</div>
+          </div>
           <AddButton click={this.props.addComment} />
         </div>
 
@@ -30,9 +33,9 @@ class CommentariesUI extends React.Component {
                   key={comment.id}
                   timeout={500}
                   classNames={{
-                    enter: "animated", 
+                    enter: "animated",
                     enterActive: "zoomIn faster",
-                    exit: "animated", 
+                    exit: "animated",
                     exitActive: "zoomOut faster"
                   }}
                 >

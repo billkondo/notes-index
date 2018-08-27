@@ -5,10 +5,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    font-size: $medium-font;
+    font-size: $small-font;
     font-family: "Merriweather";
 
     align-items: center;
+    font-weight: bold;
+
+    #commentaries-icon, #commentaries-header-title {
+      display: inline-block;
+    }
+
+    #commentaries-icon {
+      margin-right: $small-font; 
+    }
   }
 
   #commentaries-box {

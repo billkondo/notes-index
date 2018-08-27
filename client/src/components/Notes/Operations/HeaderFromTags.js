@@ -5,7 +5,10 @@ import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 const HeaderFromTags = ({ tag, writeTag, handleEnter, submitTag}) => (
   <div id="tags-header-note">
-    <div id="title"> Tags </div>
+    <div id="header-tags-title-box">
+      <div id="tag-icon"><i className="fas fa-hashtag" /></div>
+      <div id="title"> Tags </div>
+    </div>
 
     <div id="write-menu">
       <InputGroup>

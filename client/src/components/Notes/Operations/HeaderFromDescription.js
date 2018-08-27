@@ -14,7 +14,10 @@ const HeaderFromDescription = ({ onBoldClick, onItalicClick, isBold, isItalic })
 
   return (
     <div className="header-description-note">
-      <div className="title"> Description </div>
+      <div className="header-description-title-box">
+        <div className="description-icon"><i className="fas fa-book" /></div>
+        <div className="title"> Description </div>
+      </div>
       <div className="button-container">
         <i className="fas fa-bold button" onMouseDown={onBoldClick} style={getStyle(isBold)} />
         <i className="fas fa-italic button" onMouseDown={onItalicClick} style={getStyle(isItalic)} />

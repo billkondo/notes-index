@@ -5,11 +5,22 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
 
-  .title {
-    justify-self: start;
+  .header-description-title-box {
+    .title {
+      justify-self: start;
 
-    font-family: "Merriweather";
-    font-size: $medium-font;
+      font-family: "Merriweather";
+      font-size: $small-font;
+      font-weight: bold;
+    }
+
+    .title, .description-icon {
+      display: inline-block;
+    }
+
+    .description-icon {
+      margin-right: $small-font;
+    }
   }
 
   .button-container {
@@ -33,7 +44,8 @@
     }
 
     .button:hover {
-      opacity: 0.75;
+      transition: all 500ms ease-out;
+      background: #676767;
     }
 
     .button:active {

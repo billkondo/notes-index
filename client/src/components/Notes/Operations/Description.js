@@ -7,11 +7,6 @@ import CustomEditor from '../../Editor/CustomEditor';
 
 import { writeDescription } from '../../../actions/notes-operations';
 
-const Separator = () => (
-  <div className="separator">
-  </div>
-);
-
 class DescriptionUI extends React.Component {
   state = {
     isBold: false,

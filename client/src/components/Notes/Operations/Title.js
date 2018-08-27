@@ -8,8 +8,10 @@ import { writeTitle } from '../../../actions/notes-operations';
 const TitleUI = ({ title, writeTitle }) => (
   <div id="title-note">
     <div id="header">
-      <div id="title"> Title </div>
-
+      <div id="title-box">
+        <div id="title-icon"><i className="fas fa-quote-left" /></div>
+        <div id="title"> Title </div>
+      </div>
       <div id="enterTitle">
         <InputGroup>
           <Input type="text" value={title} onChange={(e) => writeTitle(e.target.value)} />
