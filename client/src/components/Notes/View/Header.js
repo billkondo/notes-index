@@ -9,7 +9,10 @@ import { resetNote } from '../../../actions/notes-operations';
 
 const HeaderUI = ({ title, transitionViewToMenu }) => (
   <div id="header-view">
-    <div id="title"> {title} </div>
+    <div id="title-box">
+      <div id="title-icon"><i className="fas fa-quote-left" /></div>
+      <div id="title"> {title} </div>
+    </div>
     <ExitButton click={transitionViewToMenu} />
   </div>
 );

@@ -4,12 +4,20 @@
   box-sizing: content-box;
   display: grid;
 
-  #title {
-    align-self: start;
-    justify-self: start;
-    font-size: $medium-font;
-    font-family: "Merriweather";
-    padding: $small-font;
-    font-weight: bold;
+  padding: $small-font;
+
+  #title-box {
+    #title {
+      align-self: start;
+      justify-self: start;
+      font-size: $medium-font;
+      font-family: "Merriweather";
+      padding: $small-font;
+      font-weight: bold;
+    }
+
+    #title-icon, #title {
+      display: inline-block;
+    }
   }
 }

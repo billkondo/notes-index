@@ -1,6 +1,6 @@
 .note-card {
   height: 300px;
-  width: 15vw;
+  width: 20vw;
   background: lightgray;
   border-radius: $small-font;
 
@@ -18,13 +18,17 @@
     grid-template-columns: 1fr 1fr;
 
     .note-display-title {
-      font-size: $medium-font;
+      font-size: $small-font;
       font-family: "Merriweather";
 
       align-self: center;
       justify-self: start;
 
       font-weight: bold;
+
+      height: $large-font;
+
+      overflow: hidden;
     }
 
     .controls {
