@@ -1,9 +1,12 @@
 #create-page {
+  position: relative;
   display: grid;
   justify-items: center;
   align-items: start;
 
   margin-bottom: $large-font;
+
+  width: 100vw;
 
   .separator {
     margin-top: $small-font;

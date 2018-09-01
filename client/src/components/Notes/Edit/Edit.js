@@ -65,9 +65,9 @@ class EditUI extends React.Component {
             <Commentaries />
             <Tags />
             <Footer finishEdit={this.finishEdit} deleteNote={this.deleteNote} />
-
-            <Modal />
           </div>
+
+          <Modal />
         </div>
       </CSSTransition>
     );

@@ -73,9 +73,9 @@ class CreateUI extends React.Component {
             <Commentaries />
             <Tags />
             <Button color="success" onClick={this.submit} id="create-button"> Create </Button>
-
-            <Modal />
           </div>
+
+          <Modal />
         </div>
       </CSSTransition>
     );
