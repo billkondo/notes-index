@@ -1,12 +1,28 @@
 #description-view {
-  position: relative;
-  align-self: start;
+  #description-editor {
+    position: relative;
+    align-self: start;
 
-  display: block;
-  margin: $small-font;
-  padding: $small-font;
-  font-size: $medium-font;
-  font-family: "ABeeZee";
-  background: darkgrey;
-  border-radius: $small-button-radius; 
+    display: block;
+    margin: $small-font;
+    padding: $small-font;
+    font-size: $medium-font;
+    font-family: "ABeeZee";
+    background: darkgrey;
+    border-radius: $small-button-radius; 
+  }
+
+  #description-title-box {
+    margin: $small-font;
+    font-size: $small-font;
+    font-family: "Merriweather";
+
+    #description-icon, #description-title {
+      display: inline-block;
+    }
+
+    #description-icon {
+      margin-right: $small-font;
+    }
+  }
 }

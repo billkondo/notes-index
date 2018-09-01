@@ -14,13 +14,27 @@ class NoteCardUI extends React.Component {
     note: propTypes.object.isRequired
   }
 
+  state = {
+    didClick: false
+  }
+
   prepareToEnterViewNote = () => {
+    if (this.state.didClick) 
+      return;
+
+    this.setState({ didClick: true });
+
     this.props
       .loadNote(this.props.note)
       .then(() => this.props.transitionMenuToView())
   }
 
   prepareToEnterEditNote = () => {
+    if (this.state.didClick)
+      return;
+
+    this.setState({ didClick: true });
+
     this.props
       .loadNote(this.props.note)
       .then(() => this.props.transitionMenuToEdit())

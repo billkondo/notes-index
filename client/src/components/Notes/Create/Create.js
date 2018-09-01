@@ -90,9 +90,9 @@ const Create = connect(
   (dispatch) => ({
     transitionCreateToMenu: () => {
       dispatch(exitNotesCreate());
-      dispatch(endModal());
 
       setTimeout(() => {
+        dispatch(endModal());
         dispatch(enterNotesMenu());
         dispatch(exitCreate());
         dispatch(enterMenu());

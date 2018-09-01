@@ -6,7 +6,9 @@ import {
   ENTER_EDIT,
   EXIT_EDIT,
   ENTER_VIEW, 
-  EXIT_VIEW
+  EXIT_VIEW,
+  START_FILTER, 
+  END_FILTER
 } from '../types/notes-routes';
 
 export const exitMenu = () => ({
@@ -39,4 +41,12 @@ export const exitView = () => ({
 
 export const enterView = () => ({
   type: ENTER_VIEW
+})
+
+export const startFilter = () => ({
+  type: START_FILTER
+})
+
+export const endFilter = () => ({
+  type: END_FILTER
 })

@@ -6,14 +6,17 @@ import {
   ENTER_EDIT, 
   EXIT_EDIT, 
   ENTER_VIEW, 
-  EXIT_VIEW
+  EXIT_VIEW,
+  START_FILTER, 
+  END_FILTER
 } from '../types/notes-routes';
 
 const defaultState = {
   renderMenu: true, 
   renderEdit: false, 
   renderCreate: false,
-  renderView: false
+  renderView: false,
+  renderFilter: false
 };
 
 const notesRoutesReducer = (state = defaultState, action) => {
@@ -64,6 +67,18 @@ const notesRoutesReducer = (state = defaultState, action) => {
       return {
         ...state, 
         renderView: false
+      }
+
+    case START_FILTER:
+      return {
+        ...state, 
+        renderFilter: true
+      }
+
+    case END_FILTER: 
+      return {
+        ...state, 
+        renderFilter: false
       }
       
     default:

@@ -82,9 +82,9 @@ const Edit = connect(
   (dispatch) => ({
     transitionEditToMenu: () => {
       dispatch(exitNotesEdit());
-      dispatch(endModal());
 
       setTimeout(() => {
+        dispatch(endModal());
         dispatch(enterNotesMenu());
         dispatch(exitEdit());
         dispatch(enterMenu());

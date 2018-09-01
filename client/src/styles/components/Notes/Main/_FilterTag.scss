@@ -1,0 +1,22 @@
+.tag-filter {
+  position: relative;
+  
+  min-height: $large-font;
+  font-size: $small-font;
+  font-family: "Merriweather";
+
+  display: inline-block;
+
+  background: $tag-color;
+  color: white;
+  border-radius: $small-button-radius;
+
+  display: grid;
+
+  align-items: center;
+  justify-items: center;
+
+  padding: $small-font;
+
+  cursor: pointer;
+}

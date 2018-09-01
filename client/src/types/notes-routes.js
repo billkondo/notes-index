@@ -6,3 +6,5 @@ export const ENTER_EDIT = "ENTER_EDIT";
 export const EXIT_EDIT = "EXIT_EDIT";
 export const ENTER_VIEW = "ENTER_VIEW";
 export const EXIT_VIEW = "EXIT_VIEW";
+export const START_FILTER = "START_FILTER";
+export const END_FILTER = "END_FILTER";
