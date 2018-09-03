@@ -1,6 +1,7 @@
 #header-create {
   font-size: $large-font;
   display: grid;
+  min-height: $large-font;
   
   #header-title {
     align-self: start;

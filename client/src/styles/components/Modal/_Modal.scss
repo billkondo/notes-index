@@ -19,8 +19,8 @@
 
     margin-top: $large-font;
 
-    min-height: 20vh;
-    width: 40vw; 
+    min-height: 12.5rem;
+    width: $big-card-width; 
     border-radius: $extra-small-font; 
 
     .modal-title {
@@ -41,7 +41,11 @@
       line-height: $large-font;
 
       p {
-        font-family: 'Merriweather';
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        font-family: 'ABeeZee';
         font-size: $medium-font;
       }
     }

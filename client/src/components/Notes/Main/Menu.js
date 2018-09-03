@@ -31,7 +31,7 @@ class MenuUI extends React.Component {
         }}
       >
         <div id="menu-page">
-          <div id="notes-menu-title"> Your Notes </div>
+          <div id="notes-menu-title"> Notes </div>
           <ContainerFunctions />
           <Filter />
           <ContainerNotes />

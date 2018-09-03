@@ -14,14 +14,14 @@
   }
 
   #create-add {
-    margin-top: 5vh;
+    margin-top: 3rem;
 
     position: relative;
     background-color: lightgrey;
-    width: 40vw;
-    min-height: 50vh;
+    width: $big-card-width;
+    min-height: $big-card-height;
     display: grid;
-    grid-template-rows: $large-font auto auto auto auto $large-font;
+    grid-template-rows: auto;
     grid-row-gap: $small-font; 
     border-radius: $extra-small-font; 
 
@@ -29,8 +29,8 @@
       box-sizing: content-box;
       display: grid;
       justify-items: center;
-      align-items: center;
-      height: $large-font;
+      align-items: end;
+      min-height: $large-font;
       font-size: $small-font;
       padding: 0;
     }

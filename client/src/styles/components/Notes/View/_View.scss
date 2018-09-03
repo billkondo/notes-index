@@ -1,13 +1,13 @@
 #view-page {
-  width: 40vw;
-  min-height: 50vh;
-  margin-top: 5vh; 
-  margin-bottom: 5vh; 
+  width: $big-card-width;
+  min-height: $big-card-height;
+  margin-top: 3rem; 
+  margin-bottom: 3rem; 
 
   .view-note {
     position: relative;
-    width: 40vw;
-    min-height: 50vh;
+    width: $big-card-width;
+    min-height: $big-card-height;
     background: lightgrey;
     
     border-radius: $small-button-radius;
@@ -15,5 +15,7 @@
     grid-template-rows: auto;
 
     overflow: hidden;
+
+    margin-bottom: 3rem;
   }
 }
