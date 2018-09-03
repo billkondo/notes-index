@@ -1,0 +1,18 @@
+.sign-up-form {
+  margin: $large-font;
+  background: white;
+  border-radius: 0.2rem;
+
+  padding: $small-font;
+
+  display: grid;
+
+  .sign-up-button {
+    background: linear-gradient(#005139, #2f9254);
+    color: white;
+    font-weight: bold;
+    font-family: "Josefin Sans";
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+}

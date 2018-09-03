@@ -1,0 +1,19 @@
+.sign-up {
+  width: 100vw;
+  height: 35rem;
+  background: linear-gradient(#1c1d22,#383839);
+
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+
+  .sign-up-page {
+    grid-column: 2/3;
+    padding: $small-font;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}

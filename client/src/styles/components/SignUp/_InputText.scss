@@ -1,0 +1,40 @@
+.sign-up-input-text {
+  display: grid;
+  padding: $extra-small-font;
+  height: 6.5rem;
+
+  grid-template-rows: 1fr 1fr 1fr;
+
+  .sign-up-label {
+    align-self: start;
+    font-size: 1rem;
+    font-family: "Josefin Sans";
+  }
+
+  .sign-up-input {
+    align-self: center;
+    font-size: 1rem;
+    padding: $small-font;
+    border-radius: 0.2rem;
+
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    
+    border: none;
+    border: 0.05rem solid #222;
+  }
+
+  .sign-up-invalid-input {
+    border-color: #901E1D;
+  }
+  
+  .sign-up-invalid-label { 
+    color: #901E1D;
+  }
+
+  .sign-up-error-message {
+    color: #901E1D;
+    font-size: 0.9rem;
+    align-self: end;
+  }
+}
