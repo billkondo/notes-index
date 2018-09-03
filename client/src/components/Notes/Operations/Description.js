@@ -4,6 +4,7 @@ import { Editor, RichUtils, EditorState } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Header from './HeaderFromDescription';
 import CustomEditor from '../../Editor/CustomEditor';
+import classnames from 'classnames';
 
 import { writeDescription } from '../../../actions/notes-operations';
 
@@ -11,11 +12,11 @@ class DescriptionUI extends React.Component {
   state = {
     isBold: false,
     isItalic: false,
-    editorFocus: false
+    isFocused: false
   }
 
   // onBoldClick = (e) => {
-  //   if (!this.state.editorFocus)
+  //   if (!this.state.isFocused)
   //     return;
 
   //   e.preventDefault();
@@ -24,7 +25,7 @@ class DescriptionUI extends React.Component {
   // }
 
   // onItalicClick = (e) => {
-  //   if (!this.state.editorFocus)
+  //   if (!this.state.isFocused)
   //     return;
 
   //   e.preventDefault();
@@ -32,12 +33,12 @@ class DescriptionUI extends React.Component {
   //   this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
   // }
 
-  onFocus = () => this.setState({ editorFocus: true });
-  onBlur = () => this.setState({ editorFocus: false })
+  onFocus = () => this.setState({ isFocused: true });
+  onBlur = () => this.setState({ isFocused: false })
 
   render() {
     return (
-      <div id="description-note">
+      <div className="description-note">
         <Header
           onBoldClick={this.onBoldClick}
           onItalicClick={this.onItalicClick}
@@ -45,7 +46,11 @@ class DescriptionUI extends React.Component {
           isItalic={this.state.isItalic}
         />
 
-        <div className="description">
+        <div 
+          className={classnames("description", {"description-onFocus-border": this.state.isFocused})} 
+          onFocus={this.onFocus} 
+          onBlur={this.onBlur} 
+        >
           <CustomEditor contentState={this.props.description} saveFunction={this.props.writeDescription}/>
         </div>
       </div>

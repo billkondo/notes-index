@@ -1,8 +1,10 @@
 .comment-view {
   padding: $extra-small-font;
-  font-size: $medium-font;
+  font-size: $small-font;
   font-family: 'Merriweather';
   padding: $medium-font;
+
+  line-height: $large-font;
 
   border-bottom: 1px dotted black;
 }

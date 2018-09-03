@@ -1,0 +1,28 @@
+.page-dropdown {
+  box-sizing: border-box;
+  position: absolute;
+  background: white;
+  color: black;
+
+  min-width: 4rem; 
+
+  top: 1.4rem;
+  left: -0.1rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem #333;
+  z-index: 999 !important;
+
+  .page-dropdown-line {
+    box-sizing: content-box;
+    font-size: 1rem;
+    font-family: "ABeeZee";
+
+    padding: 0.8rem;
+    cursor: pointer;
+  }
+
+  .page-dropdown-line:hover {
+    background: #1373af;
+  }
+
+  
+}

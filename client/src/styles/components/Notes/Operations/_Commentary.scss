@@ -1,4 +1,12 @@
 .commentary-note {
   position: relative;
   display: grid;
+
+  border-radius: $small-button-radius;
+  border: 4px solid lightgray;
+}
+
+.commentary-onFocus-border {
+  border: 4px solid rgb(148, 195, 245);
+  transition: all 500ms ease-out;
 }

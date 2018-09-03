@@ -15,10 +15,15 @@ class CustomEditor extends React.Component {
   }
 
   state = {
-    editorState: EditorState.createEmpty()
+    editorState: EditorState.createEmpty(),
+    isFocused: false
   }
 
-  onBlur = () => this.props.saveFunction(stringifyContent(this.state.editorState.getCurrentContent()))
+  onBlur = () => {
+    this.props.saveFunction(stringifyContent(this.state.editorState.getCurrentContent()));
+    this.setState({ isFocused: false });
+  }
+
   onClick = () => this.editor.focus();
   
 
@@ -33,9 +38,11 @@ class CustomEditor extends React.Component {
       this.setState({ editorState: newEditorState(nextProps.contentState) });
   }
 
+  onFocus = () => this.setState({ isFocused: true });
+
   render() {
     return (
-      <div className="custom-editor" onBlur={this.onBlur} onClick={this.onClick}>
+      <div className="custom-editor" onBlur={this.onBlur} onClick={this.onClick} onFocus={this.onFocus} >
         <Editor editorState={this.state.editorState} onChange={this.onChange} ref={editor => this.editor = editor} />
       </div>
     );

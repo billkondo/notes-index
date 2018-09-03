@@ -1,0 +1,51 @@
+#page-header {
+  display: grid;
+  background: #373538;
+  color: white;
+
+  grid-template-columns: 2fr 8fr 2fr;
+
+  height: 4rem;
+
+  #page-middle {
+    grid-column: 2/3;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    p {
+      align-self: center;
+      justify-self: start;
+      display: inline-block;
+      font-size: 1.5rem;
+      font-family: "ABeeZee";
+    }
+
+    #page-user {
+      justify-self: end;
+      align-self: center;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      font-size: 1rem;
+
+      grid-gap: 2rem;
+
+      #page-profile, #page-add {
+        position: relative;
+      }
+
+      .page-icons {
+        position: relative;
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.2rem;
+
+        cursor: pointer;
+      }
+    }
+  }
+}

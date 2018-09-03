@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import classnames from 'classnames';
 
 import CustomEditor from '../../Editor/CustomEditor';
 import ExitButton from '../../Buttons/ExitButton';
@@ -31,7 +32,11 @@ class Commentary extends React.Component {
 
   render() {
     return (
-      <div className="commentary-note" onFocus={this.onFocus} ref={node => this.node = node} >
+      <div 
+        className={classnames("commentary-note", {"commentary-onFocus-border": this.state.focus})} 
+        onFocus={this.onFocus} 
+        ref={node => this.node = node} 
+      >
         <CustomEditor contentState={this.props.contentState} saveFunction={this.saveFunction} />
         
         {
