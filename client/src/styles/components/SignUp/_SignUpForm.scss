@@ -15,4 +15,9 @@
     border-radius: 0.2rem;
     cursor: pointer;
   }
+
+  .sign-up-button:hover {
+    transition: all 250ms ease-out;
+    color: darkgray;
+  }
 }

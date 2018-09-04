@@ -17,15 +17,19 @@
     margin-top: 3rem;
 
     position: relative;
-    background-color: lightgrey;
+    background-color: $card-color;
     width: $big-card-width;
     min-height: $big-card-height;
     display: grid;
     grid-template-rows: auto;
     grid-row-gap: $small-font; 
-    border-radius: $extra-small-font; 
+    border-radius: 0.2rem; 
+
+    box-shadow: 0.2rem 0.2rem 1rem #555,
+                -0.2rem -0.2rem 1rem #555;
 
     #create-button {
+      background: linear-gradient(#005139, #2f9254);
       box-sizing: content-box;
       display: grid;
       justify-items: center;
@@ -33,6 +37,11 @@
       min-height: $large-font;
       font-size: $small-font;
       padding: 0;
+    }
+
+    #create-button:hover {
+      transition: all 250ms ease-out;
+      color: darkgray;
     }
   }
 }

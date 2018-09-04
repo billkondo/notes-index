@@ -7,22 +7,30 @@
 
   #trash {
     cursor: pointer;
-    background: $exit-color;
-    color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(#9b0a18,#c8372e);
+    color: white;
     justify-self: stretch;
     align-self: stretch;
-    font-size: $medium-font;
+    font-size: 1rem;
 
     display: grid;
     align-items: center;
     justify-items: center;
-
+    
     border-radius: $small-button-radius;
   }
 
   #trash:hover {
     transition: all 250ms ease-out;
-    background: darkred;
-    color: black;
+    color: darkgray;
+  }
+
+  .footer-edit-finish-button {
+    background: linear-gradient(#005139, #2f9254);
+  }
+
+  .footer-edit-finish-button:hover {
+    color: darkgray;
+    transition: all 250ms ease-out;
   }
 }

@@ -6,8 +6,8 @@ export const isValid = (data) => {
   if (Validator.isEmpty(data.username)) 
     errors.username = "This field is required";
   else 
-    if (data.username.indexOf(" ") !== -1)
-      errors.username = "Username can't have whitespaces"
+    if (!Validator.isAlphanumeric(data.username))
+      errors.username = "Username may only contain alphanumeric characters"
 
   if (Validator.isEmpty(data.email)) 
     errors.email = "This field is required";

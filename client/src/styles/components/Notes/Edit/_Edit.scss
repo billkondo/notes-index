@@ -21,7 +21,10 @@
     min-height: $big-card-height;
     display: grid;
     grid-template-rows: auto;
-    border-radius: $extra-small-font; 
+    border-radius: 0.2rem; 
     grid-row-gap: $small-font;
+
+    box-shadow: 0.2rem 0.2rem 1rem #555,
+                -0.2rem -0.2rem 1rem #555;
   }
 }

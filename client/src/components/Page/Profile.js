@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 
-import { profile, notes, collections, favorites } from './dropdown-actions';
+import { profile, notes, collections, favorites, logOut } from './dropdown-actions';
 
 class Profile extends React.Component {
   state = {
@@ -39,7 +39,7 @@ class Profile extends React.Component {
         {
           isFocused &&
           <Dropdown 
-            items={[profile, notes, collections, favorites]}
+            items={[profile, notes, collections, favorites, logOut]}
           />
         }
       </div>

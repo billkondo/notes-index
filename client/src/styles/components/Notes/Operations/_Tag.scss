@@ -1,8 +1,8 @@
 .tag-note {
-  box-sizing: border-box;
+  box-sizing: content-box;
   position: relative;
   font-size: $small-font;
-  padding: $extra-small-font;
+  padding: $small-font;
   background-color: $tag-color;
   color: white;
   border-radius: $small-button-radius;

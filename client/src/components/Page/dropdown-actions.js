@@ -1,5 +1,5 @@
 export const profile = {
-  label: "Your Profile"
+  label: "Profile"
 }
 
 export const notes = {
@@ -12,6 +12,10 @@ export const collections = {
 
 export const favorites = {
   label: "Favorites"
+}
+
+export const logOut = {
+  label: "Log Out"
 }
 
 export const addNote = {

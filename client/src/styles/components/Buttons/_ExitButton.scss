@@ -3,8 +3,8 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: $medium-font;
-  width: $medium-font;
+  height: 1rem;
+  width: 1rem;
   font-size: $small-font;
   background: $exit-color;
 
@@ -13,7 +13,7 @@
   align-items: center;
   color: black;
 
-  border-radius: $small-button-radius;
+  border-radius: 0.2rem;
   cursor: pointer;
 }
 

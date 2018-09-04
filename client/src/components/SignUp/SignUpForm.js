@@ -32,8 +32,6 @@ class SignUpFrom extends React.Component {
   render() {
     const { username, email, password, passwordConfirmation, isLoading, errors} = this.state;
 
-    console.log(errors);
-
     return (
       <div className="sign-up-form">
         <InputText

@@ -8,7 +8,7 @@ import { saveButton, goBackButton, SaveMessage, deleteButton, DeleteMessage } fr
 
 const FooterUI = ({ startModalFinish, startModalDelete, finishEdit, deleteNote }) => (
   <div id="footer-edit">
-    <Button color="success" onClick={() => startModalFinish(finishEdit)}> Finish </Button>
+    <Button color="success" className="footer-edit-finish-button" onClick={() => startModalFinish(finishEdit)}> Finish </Button>
     <div id="trash" onClick={() => startModalDelete(deleteNote)}>
       <i className="fas fa-trash-alt" />
     </div>
