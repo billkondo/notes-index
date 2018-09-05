@@ -9,8 +9,9 @@
   display: grid;
 
   grid-template-rows: $large-font auto;
-  box-shadow: 0.1rem 0.1rem 0.5rem #777,
-              -0.1rem -0.1rem 0.5rem #777;
+  
+  // box-shadow: 0.1rem 0.1rem 0.5rem #777,
+  //             -0.1rem -0.1rem 0.5rem #777;
 
   .note-display-header {
     display: grid;

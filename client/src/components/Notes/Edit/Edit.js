@@ -51,7 +51,7 @@ class EditUI extends React.Component {
         }}
         classNames={{
           appear: "animated",
-          appearActive: "zoomIn fast",
+          appearActive: "fadeIn fast",
           exit: "animated",
           exitActive: "fadeOut faster"
         }}

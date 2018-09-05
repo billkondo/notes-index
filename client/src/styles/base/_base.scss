@@ -48,6 +48,10 @@ table {
 	border-spacing: 0;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 // Font-sizes
 $large-font: 1.5rem;
 $medium-font: 1.3rem;

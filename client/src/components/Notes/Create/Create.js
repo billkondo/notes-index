@@ -61,7 +61,7 @@ class CreateUI extends React.Component {
         classNames={{
           appear: "animated",
           exit: "animated",
-          appearActive: "zoomIn fast", 
+          appearActive: "fadeIn fast", 
           exitActive: "fadeOut faster"
         }}
       >

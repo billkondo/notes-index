@@ -16,10 +16,9 @@ const TagsContainerUI = ({ tags, deleteTag }) => (
             timeout={500}
             classNames={{
               enter: "animated",
-              enterActive: "zoomIn faster",
-              exit: "animated",
-              exitActive: "zoomOut faster"
+              enterActive: "zoomIn faster"
             }}
+            exit={false}
           >
             <Tag
               key={key}

@@ -23,7 +23,7 @@ class MenuUI extends React.Component {
           appear: "animated",
           appearActive: "fadeIn",
           exit: "animated",
-          exitActive: "zoomOut faster"
+          exitActive: "fadeOut faster"
         }}
         timeout={{
           appear: 1000,
