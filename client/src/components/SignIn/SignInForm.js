@@ -1,12 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
+
 import InputText from '../Input/InputText';
+
+import { signInUser } from '../../actions/authentication';
 
 class SignInForm extends React.Component {
   state = {
     user: "", 
     password: "",
-    errors: {},
     isLoading: false
   }
 
@@ -14,25 +19,29 @@ class SignInForm extends React.Component {
 
   submit = () => {
     const { user, password } = this.state;
+    const { setErrors, signInUser } = this.props;
     const info = { user, password };
 
-    this.setState({ isLoading: true, errors: {} });
+    this.setState({ isLoading: true });
+    setErrors({});
 
     axios
       .post('/api/auth/signin', info)
       .then(res => {
-        console.log(res.data);
         const newErrors = res.data.errors;
 
-        this.setState({
-          isLoading: false,
-          errors: newErrors
-        })
+        if (isEmpty(newErrors)) 
+          signInUser();
+        else {
+          setErrors(newErrors);
+          this.setState({ isLoading: false });
+        }
       });
   }
 
   render() {
-    const { user, password, errors, isLoading } = this.state;
+    const { user, password, isLoading } = this.state;
+    const { errors } = this.props;
 
     return (
       <div className="sign-in-form">
@@ -66,4 +75,15 @@ class SignInForm extends React.Component {
   }
 }
 
-export default SignInForm;
+SignInForm.propTypes = {
+  errors: propTypes.object.isRequired,
+  setErrors: propTypes.func.isRequired,
+  signInUser: propTypes.func.isRequired
+}
+
+export default connect(
+  null, 
+  (dispatch) => ({
+    signInUser: () => dispatch(signInUser())
+  })
+)(SignInForm);

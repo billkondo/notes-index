@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 
 import Header from './Header';
 import SignUp from '../SignUp/SignUp';
+import Routers from '../Notes/Routes';
 
 class Page extends React.Component {
   render() {
@@ -15,8 +16,8 @@ class Page extends React.Component {
 
         {
           !isAuthenticated &&
-          <SignUp />
-        }
+          <Routers />
+        }      
       </div>
     );
   }

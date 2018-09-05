@@ -6,6 +6,7 @@
 @import './components/Input/InputText';
 
 // SignIn Styles 
+@import './components/SignIn/ErrorMessage';
 @import './components/SignIn/SignIn';
 
 // SignUp Styles 
@@ -16,6 +17,7 @@
 // Page Styles
 @import './components/Page/Dropdown';
 @import './components/Page/Header';
+@import './components/Page/Page';
 
 // Modal Styles 
 @import './components/Modal/Modal';

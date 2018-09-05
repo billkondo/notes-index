@@ -1,0 +1,20 @@
+.error-message-container {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  margin-bottom: 1rem;
+
+  .error-message {
+    height: 2rem;
+    width: 22.5rem;
+    background: linear-gradient(#9b0a18,#c8372e);
+    font-size: 1rem;
+    color: white;
+    border-radius: 0.2rem;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+}

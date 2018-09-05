@@ -10,12 +10,6 @@
   .sign-in {
     grid-column: 2/3;
 
-    display: grid;
-    align-items: center;
-    justify-items: center;
-
-    grid-template-rows: 10rem 18.5rem;
-
     .sign-in-logo {
       font-size: 2rem;
       font-family: "Josefin Sans";
@@ -29,17 +23,23 @@
       justify-items: center;
     }
 
-    .sign-in-form {
+    .sign-in-form-container {
       display: grid;
-      align-items: stretch;
-      justify-items: stretch;
+      align-items: center;
+      justify-items: center;
 
-      background: white;
-      border-radius: 0.2rem;
-      height: 18.5rem;
-      width: 22.5rem;
+      .sign-in-form {
+        display: grid;
+        align-items: stretch;
+        justify-items: stretch;
 
-      padding: 2rem;
+        background: white;
+        border-radius: 0.2rem;
+        height: 18.5rem;
+        width: 22.5rem;
+
+        padding: 2rem;
+      }
     }
 
     .sign-in-button {

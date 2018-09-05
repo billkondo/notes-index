@@ -34,7 +34,7 @@ router.put('/', (req, res) => {
   .find({ 'id': req.body.id })
   .exec()
   .then(notes => {
-    for (note of notes) {
+    for (let note of notes) {
       note.set(newNote);
       note.save(err => {
         if (err) return res.sendStatus(404);
