@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Note from '../../models/note';
+
 const router = express.Router();
-const Note = require('../../models/note');
 
 router.get('/', (req, res) => {
   Note
@@ -55,4 +56,4 @@ router.delete('/', (req, res) => {
     .catch(err => next(err));
 });
 
-module.exports = router;
+export default router;
