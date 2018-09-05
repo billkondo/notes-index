@@ -1,13 +1,16 @@
-const path = require('path');
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import path from 'path';
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+
+import auth from './routes/api/auth';
+import notes from './routes/api/notes';
 
 const app = express();
 app.use(bodyParser.json());
 
 // Routers
-const notes = require('./routes/api/notes');
+app.use('/api/auth', auth);
 app.use('/api/notes', notes);
 
 const db = require('./config/keys').mongoURI;
