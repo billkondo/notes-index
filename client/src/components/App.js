@@ -1,17 +1,11 @@
 import React from 'react';
 
-import Header from './Page/Header';
-import Routes from './Notes/Routes';
-import SignUp from './SignUp/SignUp';
+import AppRouter from './Router';
 
 class App extends React.Component {
   render() {
     return (
-      <div id="app">
-        <Header />
-        <SignUp />
-        {/* <Routes /> */}
-      </div>
+      <AppRouter />
     );
   }
 }
