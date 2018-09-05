@@ -13,7 +13,12 @@
     font-weight: bold;
     font-family: "Josefin Sans";
     border-radius: 0.2rem;
+    margin: $extra-small-font;
+    height: 2rem;
     cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-items: center;
   }
 
   .sign-up-button:hover {

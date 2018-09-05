@@ -1,3 +1,66 @@
 .sign-in-page {
-  
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: linear-gradient(#1c1d22,#383839);
+
+  .sign-in {
+    grid-column: 2/3;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    grid-template-rows: 10rem 18.5rem;
+
+    .sign-in-logo {
+      font-size: 2rem;
+      font-family: "Josefin Sans";
+      color: white;
+      font-weight: bold;
+
+      height: 10rem;
+
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .sign-in-form {
+      display: grid;
+      align-items: stretch;
+      justify-items: stretch;
+
+      background: white;
+      border-radius: 0.2rem;
+      height: 18.5rem;
+      width: 22.5rem;
+
+      padding: 2rem;
+    }
+
+    .sign-in-button {
+      background: linear-gradient(#005139, #2f9254);
+      color: white;
+      font-weight: bold;
+      font-family: "Josefin Sans";
+      border-radius: 0.2rem;
+      cursor: pointer;
+      height: 2rem;
+
+      display: grid;
+      align-items: center;
+      justify-items: center;
+
+      margin: $extra-small-font;
+    }
+
+    .sign-in-button:hover {
+      transition: all 250ms ease-out;
+      color: darkgray;
+    }
+  }
 }

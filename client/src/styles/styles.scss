@@ -2,11 +2,13 @@
 @import './base/base';
 @import './base/bootstrap';
 
+// Input Styles
+@import './components/Input/InputText';
+
 // SignIn Styles 
 @import './components/SignIn/SignIn';
 
 // SignUp Styles 
-@import './components/SignUp/InputText';
 @import './components/SignUp/SignUp';
 @import './components/SignUp/SignUpForm';
 @import './components/SignUp/Welcome';

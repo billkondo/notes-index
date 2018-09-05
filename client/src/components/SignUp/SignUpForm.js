@@ -1,6 +1,6 @@
 import React from 'react';
-import InputText from './InputText';
-import { isValid } from './sign-up-validation';
+import InputText from '../Input/InputText';
+import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 
 class SignUpFrom extends React.Component {
@@ -10,7 +10,8 @@ class SignUpFrom extends React.Component {
     password: "",
     passwordConfirmation: "",
     errors: {},
-    isLoading: false
+    isLoading: false,
+    isUserUnique: true
   }
 
   onChange = (e) => {
@@ -18,19 +19,31 @@ class SignUpFrom extends React.Component {
   }
 
   submit = () => {
+    const { username, email, password, passwordConfirmation} = this.state;
+
     this.setState({ isLoading: true, errors: {} });
 
-    const newErrors = isValid(this.state);
+    const info = { username, email, password, passwordConfirmation };
 
-    if (isEmpty(newErrors)) {
-      console.log('Right!');
-    }
+    axios
+      .post('/api/auth/signup', info).then(res => {
+        const newErrors = res.data.errors;
 
-    this.setState({ isLoading: false, errors: newErrors });
+        if (isEmpty(newErrors)) {
+          this.setState({ 
+            username: "",
+            email: "",
+            password: "",
+            passwordConfirmation: ""
+          });
+        }
+
+        this.setState({ isLoading: false, errors: newErrors });
+      });
   }
 
   render() {
-    const { username, email, password, passwordConfirmation, isLoading, errors} = this.state;
+    const { username, email, password, passwordConfirmation, isLoading, errors } = this.state;
 
     return (
       <div className="sign-up-form">

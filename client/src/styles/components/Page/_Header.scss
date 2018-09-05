@@ -48,5 +48,30 @@
         cursor: pointer;
       }
     }
+
+    #page-login {
+      cursor: pointer;
+      align-self: center;
+      justify-self: end;
+
+      a {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font-size: 1rem;
+        font-family: "ABeeZee";
+        grid-gap: 0.4rem;
+        color: white;
+
+        .login-icon {
+          justify-self: end;
+        }
+      }
+
+      a:hover {
+        transition: all 250ms ease-out;
+        color: darkgray;
+        text-decoration: none;
+      }
+    }
   }
 }
