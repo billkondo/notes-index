@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import Header from './Header';
 import SignUp from '../SignUp/SignUp';
 import Routers from '../Notes/Routes';
+import CollectionsRouter from '../Collections/ColletionsRouter';
 
 class Page extends React.Component {
   render() {
@@ -14,10 +15,12 @@ class Page extends React.Component {
       <div id="app">
         <Header />
 
-        {
-          !isAuthenticated &&
-          <Routers />
-        }      
+        <div id="app-body">
+          {
+            !isAuthenticated &&
+            <CollectionsRouter />
+          }    
+        </div>  
       </div>
     );
   }

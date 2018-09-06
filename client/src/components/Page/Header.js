@@ -16,7 +16,7 @@ class PageHeader extends React.Component {
           <p> Notes Index </p>
 
           {
-            isAuthenticated && 
+            !isAuthenticated && 
             <div id="page-user">
               <Add />
               <Profile />
@@ -24,7 +24,7 @@ class PageHeader extends React.Component {
           }
 
           {
-            !isAuthenticated && 
+            isAuthenticated && 
             <div id="page-login">
               <Login />
             </div>
