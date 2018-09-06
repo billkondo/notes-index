@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   Note
     .find()
+    .exec()
     .then(notes => res.json(notes));
 });
 
