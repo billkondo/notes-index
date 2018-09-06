@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import notesDataReducer from './notes-data';
 import notesOperationsReducer from './notes-operations';
@@ -14,7 +15,7 @@ const store = createStore(combineReducers({
   authentication: authenticationReducer,
   notesRouter,
   collectionsRouter
-}));
+}), applyMiddleware(thunk));
 
 store.subscribe(() => {
   // console.log(store.getState());
