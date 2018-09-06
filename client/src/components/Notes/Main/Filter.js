@@ -5,9 +5,9 @@ import { Collapse, Card, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 import ExitButton from '../../Buttons/ExitButton';
 import Tag from './FilterTag';
 
-import { endFilter } from '../../../actions/notes-routes';
+import { endFilter } from '../../../actions/notes-router';
 
-class FilterUI extends React.Component {
+class Filter extends React.Component {
   state = {
     tags: [],
     tag: ""
@@ -39,13 +39,15 @@ class FilterUI extends React.Component {
     })
   
   render() {
+    const { render, endFilter } = this.props;
+
     return (
       <Collapse 
-        isOpen={this.props.renderFilter} 
+        isOpen={render} 
       >
         <Card id="menu-filter">
 
-          <ExitButton click={this.props.endFilter} />
+          <ExitButton click={endFilter} />
 
           <div id="tags">
             <InputGroup id="header">    
@@ -82,13 +84,11 @@ class FilterUI extends React.Component {
   }
 }
 
-const Filter = connect(
+export default connect(
   (state) => ({
-    renderFilter: state.notesRoutes.renderFilter
+    render: state.notesRouter.renderFilter
   }),
   (dispatch) => ({
     endFilter: () => dispatch(endFilter())
   })
-)(FilterUI);
-
-export default Filter;
+)(Filter);

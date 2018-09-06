@@ -4,10 +4,18 @@ import { CSSTransition } from 'react-transition-group';
 import propTypes from 'prop-types';
 
 import Header from './Header';
+import Title from '../Utils/Title';
 
 class Add extends React.Component {
+  state = {
+    title: ""
+  }
+
+  onChange = (e) => this.setState({ title: e.target.value });
+
   render() {
     const { render } = this.props;
+    const { title } = this.state;
    
     return (
       <CSSTransition
@@ -27,6 +35,7 @@ class Add extends React.Component {
       >
         <div className="collections-add">
           <Header />
+          <Title title={title} onChange={this.onChange} />
         </div>
       </CSSTransition>
     );

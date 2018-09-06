@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
-import { exitNotesView, enterNotesMenu } from '../../../actions/css-transitions';
-import { exitView, enterMenu } from '../../../actions/notes-routes';
+
+import { exitView, enterMenu } from '../../../actions/notes-router';
 import { resetNote } from '../../../actions/notes-operations';
 
-const HeaderUI = ({ title, transitionViewToMenu }) => (
+const Header= ({ title, transitionViewToMenu }) => (
   <div id="header-view">
     <div id="title-box">
       <div id="title-icon"><i className="fas fa-quote-left" /></div>
@@ -17,27 +17,22 @@ const HeaderUI = ({ title, transitionViewToMenu }) => (
   </div>
 );
 
-HeaderUI.propTypes = {
+Header.propTypes = {
   title: propTypes.string, 
   transitionViewToMenu: propTypes.func
 }
 
-const Header = connect(
+export default connect(
   (state) => ({
     title: state.notesOperations.title
   }),
   (dispatch) => ({
     transitionViewToMenu: () => {
-      dispatch(exitNotesView());
-      
+      dispatch(exitView());
       setTimeout(() => {
-        dispatch(enterNotesMenu());
-        dispatch(exitView());
         dispatch(enterMenu());
         dispatch(resetNote());
       }, 500);
     }
   })
-)(HeaderUI);
-
-export default Header;
+)(Header);

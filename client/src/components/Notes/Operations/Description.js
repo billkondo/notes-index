@@ -1,70 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Editor, RichUtils, EditorState } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import propTypes from 'prop-types';
+
 import Header from './HeaderFromDescription';
 import CustomEditor from '../../Editor/CustomEditor';
 import classnames from 'classnames';
 
 import { writeDescription } from '../../../actions/notes-operations';
 
-class DescriptionUI extends React.Component {
+class Description extends React.Component {
   state = {
-    isBold: false,
-    isItalic: false,
     isFocused: false
   }
-
-  // onBoldClick = (e) => {
-  //   if (!this.state.isFocused)
-  //     return;
-
-  //   e.preventDefault();
-  //   this.setState((prevState) => ({ isBold: !prevState.isBold }));
-  //   this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'BOLD'));
-  // }
-
-  // onItalicClick = (e) => {
-  //   if (!this.state.isFocused)
-  //     return;
-
-  //   e.preventDefault();
-  //   this.setState((prevState) => ({ isItalic: !prevState.isItalic }));
-  //   this.onChange(RichUtils.toggleInlineStyle(this.props.description, 'ITALIC'));
-  // }
 
   onFocus = () => this.setState({ isFocused: true });
   onBlur = () => this.setState({ isFocused: false })
 
   render() {
+    const { isFocused } = this.state;
+    const { description, writeDescription } = this.props;
+
     return (
-      <div className="description-note">
-        <Header
-          onBoldClick={this.onBoldClick}
-          onItalicClick={this.onItalicClick}
-          isBold={this.state.isBold}
-          isItalic={this.state.isItalic}
-        />
+      <div className="notes-utils-description">
+        <Header />
 
         <div 
-          className={classnames("description", {"description-onFocus-border": this.state.isFocused})} 
+          className={classnames("description", {"description-onFocus-border": isFocused})} 
           onFocus={this.onFocus} 
           onBlur={this.onBlur} 
         >
-          <CustomEditor contentState={this.props.description} saveFunction={this.props.writeDescription}/>
+          <CustomEditor contentState={description} saveFunction={writeDescription} />
         </div>
       </div>
     );
   }
 }
 
-const Description = connect(
+Description.propTypes = {
+  description: propTypes.string.isRequired, 
+  writeDescription: propTypes.func.isRequired
+}
+
+export default connect(
   (state) => ({
     description: state.notesOperations.description
   }),
   (dispatch) => ({
     writeDescription: (newDescription) => dispatch(writeDescription(newDescription))
   })
-)(DescriptionUI);
-
-export default Description;
+)(Description);

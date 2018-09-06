@@ -9,7 +9,7 @@ import {
   EXIT_VIEW,
   START_FILTER, 
   END_FILTER
-} from '../types/notes-routes';
+} from '../types/notes-router';
 
 const defaultState = {
   renderMenu: true, 
@@ -19,7 +19,7 @@ const defaultState = {
   renderFilter: false
 };
 
-const notesRoutesReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case ENTER_MENU: 
       return {
@@ -85,5 +85,3 @@ const notesRoutesReducer = (state = defaultState, action) => {
       return state;
   }
 }
-
-export default notesRoutesReducer;

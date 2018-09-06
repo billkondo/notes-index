@@ -25,7 +25,7 @@ export default connect(
   (dispatch) => ({
     transitionAddToMenu: () => {
       dispatch(exitAdd());
-      setTimeout(() => dispatch(enterMenu()), 800);
+      setTimeout(() => dispatch(enterMenu()), 500);
     }
   })
 )(Header);

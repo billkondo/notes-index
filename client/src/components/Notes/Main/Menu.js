@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 import ContainerFunctions from './ContainerFunctions';
 import ContainerNotes from './ContainerNotes';
@@ -7,47 +8,54 @@ import Filter from './Filter';
 
 import { CSSTransition } from 'react-transition-group';
 
-import { endFilter } from '../../../actions/notes-routes';
+import { endFilter } from '../../../actions/notes-router';
 
-class MenuUI extends React.Component {
+class Menu extends React.Component {
   componentWillMount() {
     this.props.endFilter();
   }
 
   render() {
+    const { render } = this.props;
+
     return (
-      <CSSTransition
-        in={this.props.transitionMenu}
-        appear={true}
-        classNames={{
-          appear: "animated",
-          appearActive: "fadeIn",
-          exit: "animated",
-          exitActive: "fadeOut faster"
-        }}
-        timeout={{
-          appear: 1000,
-          exit: 500
-        }}
-      >
-        <div id="menu-page">
-          <div id="notes-menu-title"> Notes </div>
-          <ContainerFunctions />
-          <Filter />
-          <ContainerNotes />
-        </div>
-      </CSSTransition>
+      <div className="notes-page">
+        <CSSTransition
+          in={render}
+          mountOnEnter={true}
+          unmountOnExit={true}
+          classNames={{
+            enter: "animated",
+            enterActive: "fadeIn fast",
+            exit: "animated",
+            exitActive: "fadeOut faster"
+          }}
+          timeout={{
+            enter: 800,
+            exit: 500
+          }}
+        >
+          <div className="notes-menu">
+            <div className="notes-title"> Notes </div>
+            <ContainerFunctions />
+            <Filter />
+            <ContainerNotes />
+          </div>
+        </CSSTransition>
+      </div>
     );
   }
 }
 
-const Menu = connect(
+Menu.propTypes = {
+  render: propTypes.bool.isRequired
+}
+
+export default connect(
   (state) => ({
-    transitionMenu: state.cssTransitions.notesMenu
+    render: state.notesRouter.renderMenu
   }),
   (dispatch) => ({
     endFilter: () => dispatch(endFilter())
   })
-)(MenuUI)
-
-export default Menu;
+)(Menu);

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 import Create from './Create/Create';
 import View from './View/View';
@@ -9,7 +10,7 @@ import Menu from './Main/Menu';
 
 import { loadNotes } from '../../actions/notes-data';
 
-class RoutesUI extends React.Component {
+class NotesRouter extends React.Component {
   componentDidMount() {
     axios
       .get('/api/notes')
@@ -19,27 +20,23 @@ class RoutesUI extends React.Component {
 
   render() {
     return (
-      <div id="routes">
-        {this.props.renderMenu && <Menu />}
-        {this.props.renderCreate && <Create />}
-        {this.props.renderEdit && <Edit />}
-        {this.props.renderView && <View />}
+      <div className="notes-router">
+        <Menu />
+        <Create />
+        <Edit />
+        <View />
       </div>
     );
   }
 }
 
-const Routes = connect(
-  (state) => ({
-    renderMenu: state.notesRoutes.renderMenu,
-    renderCreate: state.notesRoutes.renderCreate,
-    renderEdit: state.notesRoutes.renderEdit, 
-    renderView: state.notesRoutes.renderView,
-    notes: state.notesData.notes,
-  }),
+NotesRouter.propTypes = {
+  loadNotes: propTypes.func.isRequired
+}
+
+export default connect(
+  null,
   (dispatch) => ({
     loadNotes: (notes) => dispatch(loadNotes(notes))
   })
-)(RoutesUI)
-
-export default Routes;
+)(NotesRouter)

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { CSSTransition } from 'react-transition-group';
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -10,15 +11,12 @@ import Tags from '../Operations/Tags';
 import Footer from './Footer';
 import Modal from '../../Modal/Modal';
 
-import { CSSTransition } from 'react-transition-group';
-
-import { exitNotesEdit, enterNotesMenu } from '../../../actions/css-transitions';
-import { exitEdit, enterMenu } from '../../../actions/notes-routes';
+import { exitEdit, enterMenu } from '../../../actions/notes-router';
 import { resetNote } from '../../../actions/notes-operations';
 import { endModal } from '../../../actions/modal';
 import { updateNote, deleteNote } from '../../../actions/notes-data';
 
-class EditUI extends React.Component {
+class Edit extends React.Component {
   finishEdit = () => {
     axios
       .put('/api/notes', this.props.note)
@@ -42,24 +40,27 @@ class EditUI extends React.Component {
   }
 
   render() {
+    const { render, transitionEditToMenu } = this.props;
+
     return (
       <CSSTransition
-        in={this.props.cssTransition}
+        in={render}
+        mountOnEnter={true}
+        unmountOnExit={true}
         timeout={{
-          appear: 800,
+          enter: 800,
           exit: 500
         }}
         classNames={{
-          appear: "animated",
-          appearActive: "fadeIn fast",
+          enter: "animated",
+          enterActive: "fadeIn fast",
           exit: "animated",
           exitActive: "fadeOut faster"
         }}
-        appear={true}
       >
-        <div id="edit-page">
-          <div id="edit-note">
-            <Header exitFunction={this.props.transitionEditToMenu} />
+        <div className="notes-edit-page">
+          <div className="notes-edit">
+            <Header exitFunction={transitionEditToMenu} />
             <Title />
             <Description />
             <Commentaries />
@@ -74,26 +75,21 @@ class EditUI extends React.Component {
   }
 }
 
-const Edit = connect(
+export default connect(
   (state) => ({
-    cssTransition: state.cssTransitions.notesEdit,
+    render: state.notesRouter.renderEdit,
     note: state.notesOperations
   }),
   (dispatch) => ({
     transitionEditToMenu: () => {
-      dispatch(exitNotesEdit());
-
+      dispatch(exitEdit());
       setTimeout(() => {
-        dispatch(endModal());
-        dispatch(enterNotesMenu());
-        dispatch(exitEdit());
         dispatch(enterMenu());
         dispatch(resetNote());
+        dispatch(endModal());
       }, 500);
     },
     updateNote: (id, note) => dispatch(updateNote(id, note)),
     deleteNote: (id) => dispatch(deleteNote(id))
   })
-)(EditUI);
-
-export default Edit;
+)(Edit);

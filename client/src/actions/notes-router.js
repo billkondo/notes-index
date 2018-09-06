@@ -9,7 +9,7 @@ import {
   EXIT_VIEW,
   START_FILTER, 
   END_FILTER
-} from '../types/notes-routes';
+} from '../types/notes-router';
 
 export const exitMenu = () => ({
   type: EXIT_MENU

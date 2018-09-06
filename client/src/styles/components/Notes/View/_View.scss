@@ -1,9 +1,7 @@
-#view-page {
+.view-page {
   width: $big-card-width;
   min-height: $big-card-height;
-  margin-top: 3rem; 
-  margin-bottom: 3rem; 
-
+ 
   .view-note {
     position: relative;
     width: $big-card-width;
@@ -17,7 +15,6 @@
     overflow: hidden;
 
     margin-bottom: 3rem;
-
     border-radius: 0.2rem
   }
 }

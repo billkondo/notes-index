@@ -1,21 +1,8 @@
-#edit-page {
+.notes-edit-page {
   position: relative;
-  display: grid;
-  justify-items: center;
-  align-items: start;
 
-  width: 100vw;
-
-  margin-bottom: $large-font;
-
-  .separator {
-    margin-top: $small-font;
-    border-bottom: $thin-border solid black;
-  }
-
-  #edit-note {
+  .notes-edit {
     position: relative;
-    margin-top: 3rem;
     background-color: lightgrey;
     width: $big-card-width;
     min-height: $big-card-height;

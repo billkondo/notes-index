@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
+import { CSSTransition } from 'react-transition-group';
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -11,15 +12,12 @@ import Commentaries from '../Operations/Commentaries';
 import Tags from '../Operations/Tags';
 import Modal from '../../Modal/Modal';
 
-import { CSSTransition } from 'react-transition-group';
-
 import { addNote } from '../../../actions/notes-data';
 import { resetNote } from '../../../actions/notes-operations';
-import { exitCreate, enterMenu } from '../../../actions/notes-routes';
-import { exitNotesCreate, enterNotesMenu } from '../../../actions/css-transitions';
-import { endModal} from '../../../actions/modal';
+import { exitCreate, enterMenu } from '../../../actions/notes-router';
+import { endModal } from '../../../actions/modal';
 
-class CreateUI extends React.Component {
+class Create extends React.Component {
   state = {
     open: true // Avoid double clicks
   }
@@ -42,66 +40,61 @@ class CreateUI extends React.Component {
       .then(() => {
         this.props.addNote(newNote);
         this.props.transitionCreateToMenu();
-        setTimeout(() => {
-          this.props.reset();
-        }, 500);
       })  
       .catch(err => console.log(err))
   }
 
   render() {
+    const { render, transitionCreateToMenu } = this.props;
+
     return (
       <CSSTransition
-        in={ this.props.transitionCreate }
+        in={render}
+        mountOnEnter={true}
+        unmountOnExit={true}
         timeout={{
-          appear: 800,
+          enter: 800,
           exit: 500
         }}
-        appear={true}
         classNames={{
-          appear: "animated",
+          enter: "animated",
           exit: "animated",
-          appearActive: "fadeIn fast", 
+          enterActive: "fadeIn fast", 
           exitActive: "fadeOut faster"
         }}
       >
-        <div id="create-page">
-          <div id="create-add">
-            <Header exitFunction={this.props.transitionCreateToMenu}/>
-            <Title />
-            <Description />
-            <Commentaries />
-            <Tags />
-            <Button color="success" onClick={this.submit} id="create-button"> Create </Button>
-          </div>
+          <div className="notes-create-page">
+            <div className="notes-create">
+              <Header exitFunction={transitionCreateToMenu} />
+              <Title />
+              <Description />
+              <Commentaries />
+              <Tags />
+              <Button color="success" onClick={this.submit} className="notes-create-button"> Create </Button>
+            </div>
 
-          <Modal />
-        </div>
+            <Modal />
+          </div>
       </CSSTransition>
     );
   }
 }
 
-const Create = connect(
+export default connect(
   (state) => ({
     note: state.notesOperations,
-    transitionCreate: state.cssTransitions.notesCreate
+    render: state.notesRouter.renderCreate
   }),
   (dispatch) => ({
+    addNote: (note) => dispatch(addNote(note)),
     transitionCreateToMenu: () => {
-      dispatch(exitNotesCreate());
+      dispatch(exitCreate());
 
       setTimeout(() => {
-        dispatch(endModal());
-        dispatch(enterNotesMenu());
-        dispatch(exitCreate());
         dispatch(enterMenu());
         dispatch(resetNote());
+        dispatch(endModal());
       }, 500);
-    },
-    reset: () => dispatch(resetNote()),
-    addNote: (note) => dispatch(addNote(note))
+    }
   })
-)(CreateUI);
-
-export default Create;
+)(Create);

@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import Header from './Header';
 import SignUp from '../SignUp/SignUp';
-import Routers from '../Notes/Routes';
+import NotesRouter from '../Notes/NotesRouter';
 import CollectionsRouter from '../Collections/ColletionsRouter';
 
 class Page extends React.Component {
@@ -18,7 +18,7 @@ class Page extends React.Component {
         <div id="app-body">
           {
             !isAuthenticated &&
-            <CollectionsRouter />
+            <NotesRouter />
           }    
         </div>  
       </div>

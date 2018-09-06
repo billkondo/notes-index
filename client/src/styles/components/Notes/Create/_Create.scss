@@ -1,21 +1,6 @@
-#create-page {
+.notes-create-page {
   position: relative;
-  display: grid;
-  justify-items: center;
-  align-items: start;
-
-  margin-bottom: $large-font;
-
-  width: 100vw;
-
-  .separator {
-    margin-top: $small-font;
-    border-bottom: $thin-border solid black;
-  }
-
-  #create-add {
-    margin-top: 3rem;
-
+  .notes-create {
     position: relative;
     background-color: $card-color;
     width: $big-card-width;
@@ -25,7 +10,7 @@
     grid-row-gap: $small-font; 
     border-radius: 0.2rem; 
 
-    #create-button {
+    .notes-create-button {
       background: linear-gradient(#005139, #2f9254);
       box-sizing: content-box;
       display: grid;
@@ -36,7 +21,7 @@
       padding: 0;
     }
 
-    #create-button:hover {
+    .notes-create-button:hover {
       transition: all 250ms ease-out;
       color: darkgray;
     }

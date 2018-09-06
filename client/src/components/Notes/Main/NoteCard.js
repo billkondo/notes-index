@@ -2,18 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Editor, EditorState } from 'draft-js';
 import propTypes from 'prop-types';
+
 import { parseContent } from '../../Editor/CustomEditor';
 
-import { enterEdit, enterView, exitMenu } from '../../../actions/notes-routes';
-import { exitNotesMenu, enterNotesView, enterNotesEdit } from '../../../actions/css-transitions';
-
+import { enterEdit, enterView, exitMenu } from '../../../actions/notes-router';
 import { loadNote } from '../../../actions/notes-operations';
 
-class NoteCardUI extends React.Component {
-  static propsTypes = {
-    note: propTypes.object.isRequired
-  }
-
+class NoteCard extends React.Component {
   state = {
     didClick: false
   }
@@ -61,31 +56,23 @@ class NoteCardUI extends React.Component {
   }
 }
 
-const NoteCard = connect(
-  (state) => ({}),
+NoteCard.propTypes = {
+  note: propTypes.object.isRequired
+}
+
+export default connect(
+  null,
   (dispatch) => ({
     loadNote: (note) => new Promise((resolve, reject) => {
       resolve(dispatch(loadNote(note)));
     }),
     transitionMenuToView: () => {
-      dispatch(exitNotesMenu());
-
-      setTimeout(() => {
-        dispatch(enterNotesView());
-        dispatch(exitMenu());
-        dispatch(enterView());
-      }, 500);
+      dispatch(exitMenu());
+      setTimeout(() => dispatch(enterView()), 500);
     },
     transitionMenuToEdit: () => {
-      dispatch(exitNotesMenu());
-
-      setTimeout(() => {
-        dispatch(enterNotesEdit());
-        dispatch(exitMenu());
-        dispatch(enterEdit());
-      }, 500);
+      dispatch(exitMenu());
+      setTimeout(() => dispatch(enterEdit()), 500);
     }
   })
-)(NoteCardUI);
-
-export default NoteCard;
+)(NoteCard);

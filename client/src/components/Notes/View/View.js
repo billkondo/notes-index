@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+
 import ViewFront from './ViewFront';
 import ViewBack from './ViewBack';
-import propTypes from 'prop-types';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -15,24 +16,25 @@ class View extends React.Component {
 
   render() {
     const { flipped } = this.state;
-    const { cssTransition } = this.props;
+    const { render } = this.props;
 
     return (
       <CSSTransition
-        in={cssTransition}
+        in={render}
+        mountOnEnter={true}
+        unmountOnExit={true}
         timeout={{
-          appear: 800,
+          enter: 800,
           exit: 500
         }}
-        appear={true}
         classNames={{
-          appear: "animated",
+          enter: "animated",
           exit: "animated",
-          appearActive: "fadeIn fast",
+          enterActive: "fadeIn fast",
           exitActive: "fadeOut faster"
         }}
       >
-        <div id="view-page">
+        <div className="view-page">
           <ViewFront flipSide={this.flipSide} flipped={!flipped} />
           <ViewBack flipSide={this.flipSide} flipped={flipped} />
         </div>
@@ -42,11 +44,11 @@ class View extends React.Component {
 }
 
 View.propTypes = {
-  cssTransition: propTypes.bool.isRequired
+  render: propTypes.bool.isRequired
 }
 
 export default connect(
   (state) => ({
-    cssTransition: state.cssTransitions.notesView
+    render: state.notesRouter.renderView
   })
 )(View);

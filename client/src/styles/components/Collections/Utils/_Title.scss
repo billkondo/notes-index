@@ -1,0 +1,21 @@
+.collections-utils-title {
+  padding: $medium-font;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  .header {
+    font-family: "Merriweather";
+    font-size: $small-font;
+    display: grid;
+    align-items: center;
+    justify-items: start;
+  }
+
+  .title {
+    font-family: "Merriweather";
+    font-size: $small-font;
+    height: 2rem;
+    padding: $medium-font;
+  }
+}

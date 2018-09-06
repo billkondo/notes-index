@@ -7,15 +7,13 @@ const Title = ({ title, onChange }) => (
       Title
     </div>
 
-    <input className="title" onChange={onChange} value={title} >
-      {title}
-    </input>
+    <input className="title" onChange={onChange} value={title} />
   </div>
 );
 
 Title.propTypes = {
   title: propTypes.string.isRequired,
-  onChange: propTypes.string.isRequired
+  onChange: propTypes.func.isRequired
 }
 
 export default Title;

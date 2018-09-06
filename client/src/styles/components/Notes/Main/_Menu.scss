@@ -1,12 +1,19 @@
-#menu-page {
+.notes-page {
+  position: relative;
   display: grid;
   justify-items: center;
-  align-items: start;
+  align-items: center;
   margin-top: 3rem;
 
-  #notes-menu-title {
-    font-size: $large-font;
-    font-family: "Baloo Bhai";
-    color: white;
+  .notes-menu {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    .notes-title {
+      font-size: 3rem;
+      font-family: "Baloo Bhai";
+      color: white;
+    }
   }
 }
