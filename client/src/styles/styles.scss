@@ -2,6 +2,13 @@
 @import './base/base';
 @import './base/bootstrap';
 
+// Collections Styles
+@import './components/Collections/CollectionsRouter';
+@import './components/Collections/Add/Add';
+@import './components/Collections/Add/Header';
+@import './components/Collections/Main/Functions';
+@import './components/Collections/Main/Menu';
+
 // Input Styles
 @import './components/Input/InputText';
 

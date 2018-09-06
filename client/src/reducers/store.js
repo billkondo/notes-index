@@ -6,6 +6,7 @@ import notesRoutesReducer from './notes-routes';
 import cssTransitionsReducer from './css-transitions';
 import modalReducer from './modal';
 import authenticationReducer from './authentication';
+import collectionsRouter from './collections-router';
 
 const store = createStore(combineReducers({
   notesData: notesDataReducer,
@@ -13,7 +14,8 @@ const store = createStore(combineReducers({
   notesRoutes: notesRoutesReducer,
   cssTransitions: cssTransitionsReducer,
   modal: modalReducer, 
-  authentication: authenticationReducer
+  authentication: authenticationReducer,
+  collectionsRouter
 }));
 
 store.subscribe(() => {

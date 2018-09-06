@@ -48,10 +48,6 @@ table {
 	border-spacing: 0;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 // Font-sizes
 $large-font: 1.5rem;
 $medium-font: 1.3rem;
@@ -75,3 +71,6 @@ $card-color: lightgray;
 $big-card-width: 30rem;
 $big-card-height: 40rem;
 $big-card-line-height: 8rem;
+
+// Bacground
+$card-background: linear-gradient(#4b4c50,#5b5e6a);

@@ -1,0 +1,19 @@
+.collections-functions {
+  margin-top: 2rem;
+
+  .collections-button {
+    height: 2rem;
+    color: white;
+    background: linear-gradient(#707070, #787878);
+    font-size: $medium-font;
+    border-radius: 0.2rem;
+    font-family: "Baloo Bhai";
+    outline: none;
+    cursor: pointer;
+  }
+
+  .collections-button:hover {
+    transition: all 500ms ease-out;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}

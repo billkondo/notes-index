@@ -1,0 +1,14 @@
+.collections-header {
+  position: relative;
+  height: 4rem; 
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  
+  .collections-header-title {
+    font-family: "Baloo Bhai";
+    font-size: $large-font;
+    color: black;
+  }
+}
