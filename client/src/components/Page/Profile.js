@@ -1,48 +1,30 @@
 import React from 'react';
-import Dropdown from './Dropdown';
+import DropdownCustom from './Dropdown';
+import { Dropdown, DropdownToggle } from 'reactstrap';
 
 import { profile, notes, collections, favorites, logOut } from './dropdown-actions';
 
-class Profile extends React.Component {
+class Profile extends React.Component {  
   state = {
-    isFocused: false
+    isOpen: false
   }
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.detectOutsideClick, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.detectOutsideClick, false);
-  }
-
-  detectOutsideClick = (e) => {
-    if (!this.node.contains(e.target))
-      this.setState({ isFocused: false });
-  }
-
-  onMouseDown = () => this.setState({ isFocused: true });
+  toggle = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }));
 
   render() {
-    const { isFocused } = this.state;
+    const { isOpen } = this.state;
+
     return (
-      <div id="page-profile">
-        <div 
-          className="page-icons"
-          onMouseDown={this.onMouseDown}
-          ref={node => this.node = node}
-        >
+      <Dropdown id="page-profile" isOpen={isOpen} toggle={this.toggle} > 
+        <DropdownToggle className="page-icons">
           <i className="fas fa-square-full" />
           <i className="fas fa-caret-down page-down" />
-        </div>
+        </DropdownToggle>
 
-        {
-          isFocused &&
-          <Dropdown 
-            items={[profile, notes, collections, favorites, logOut]}
-          />
-        }
-      </div>
+        <DropdownCustom 
+          items={[profile, notes, collections, favorites, logOut]}
+        />
+      </Dropdown>
     );
   }
 }

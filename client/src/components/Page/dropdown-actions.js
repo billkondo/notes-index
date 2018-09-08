@@ -3,11 +3,13 @@ export const profile = {
 }
 
 export const notes = {
-  label: "Notes"
+  label: "Notes",
+  path: '/Notes'
 }
 
 export const collections = {
-  label: "Collections"
+  label: "Collections",
+  path: '/Collections'
 }
 
 export const favorites = {
@@ -19,11 +21,13 @@ export const logOut = {
 }
 
 export const addNote = {
-  label: "Add Note"
+  label: "Add Note",
+  path: '/Notes/Add'
 }
 
 export const addCollection = {
-  label: "Add Collection"
+  label: "Add Collection",
+  path: '/Collections/Add'
 }
 
 export const addFavorite = {

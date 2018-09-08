@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
+import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 
 export const stringifyContent = (contentState) => JSON.stringify(convertToRaw(contentState));
 export const parseContent = (editorContent) => convertFromRaw(JSON.parse(editorContent));

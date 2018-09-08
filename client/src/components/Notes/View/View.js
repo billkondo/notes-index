@@ -1,54 +1,53 @@
 import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import ViewFront from './ViewFront';
 import ViewBack from './ViewBack';
 
-import { CSSTransition } from 'react-transition-group';
+import { loadNote, resetNote } from '../../../actions/notes-operations';
 
 class View extends React.Component {
   state = {
     flipped: false
   }
 
-  flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }))
+  flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }));
+
+  componentWillMount() {
+    const id = this.props.match.params.id;
+    const { loadNote } = this.props;
+
+    axios
+      .get(`/api/notes/${id}`)
+      .then(res => { loadNote(res.data) })
+      .catch(err => console.log(err));
+  }
+
+  componentWillUnmount() {
+    const { resetNote } = this.props;
+    resetNote();
+  }
 
   render() {
     const { flipped } = this.state;
-    const { render } = this.props;
 
     return (
-      <CSSTransition
-        in={render}
-        mountOnEnter={true}
-        unmountOnExit={true}
-        timeout={{
-          enter: 800,
-          exit: 500
-        }}
-        classNames={{
-          enter: "animated",
-          exit: "animated",
-          enterActive: "fadeIn fast",
-          exitActive: "fadeOut faster"
-        }}
-      >
-        <div className="view-page">
-          <ViewFront flipSide={this.flipSide} flipped={!flipped} />
-          <ViewBack flipSide={this.flipSide} flipped={flipped} />
-        </div>
-      </CSSTransition>
+      <div className="view-page">
+        <ViewFront flipSide={this.flipSide} flipped={!flipped} />
+        <ViewBack flipSide={this.flipSide} flipped={flipped} />
+      </div>
     );
   }
 }
 
 View.propTypes = {
-  render: propTypes.bool.isRequired
+  loadNote: propTypes.func.isRequired, 
+  resetNote: propTypes.func.isRequired
 }
 
 export default connect(
-  (state) => ({
-    render: state.notesRouter.renderView
-  })
+  null, 
+  { loadNote, resetNote }
 )(View);

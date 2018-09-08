@@ -8,7 +8,7 @@ const Description = ({ description, onChange }) => (
     </div>
 
     <div className="description">
-
+      
     </div>
   </div>
 );

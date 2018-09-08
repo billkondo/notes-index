@@ -1,25 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { exitMenu, enterAdd } from '../../../actions/collections-router';
-
-const Functions = ({ transitionMenuToAdd }) => (
+const Functions = () => (
   <div className="collections-functions">
-    <button className="collections-button" onClick={transitionMenuToAdd}> ADD </button>
+    <Link className="collections-button" to='/Collections/Add'> ADD </Link>
   </div>
 );
 
-Function.propTypes = {
-  transitionMenuToAdd: propTypes.func.isRequired
-}
-
-export default connect(
-  null, 
-  (dispatch) => ({
-    transitionMenuToAdd: () => {
-      dispatch(exitMenu());
-      setTimeout(() => dispatch(enterAdd()), 800);
-    }
-  })
-)(Functions);
+export default Functions;

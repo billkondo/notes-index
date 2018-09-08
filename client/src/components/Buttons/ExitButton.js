@@ -1,30 +1,40 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
-class ExitButton extends React.Component {
-  static propTypes = {
-    click: propTypes.func.isRequired
-  }
-
-  render() {
+const Exit = (to, click) => {
+  if (to)
     return (
-      <CSSTransition
-        in={true}
-        timeout={800}
-        appear={true}
-        classNames={{
-          appear: "animated", 
-          appearActive: "fadeIn fast"
-        }}
-      >
-        <div className="exit-button" onMouseDown={this.props.click} >
-          <i className="fas fa-times" />
-        </div>
-      </CSSTransition>
+      <Link className="exit-button" to={to}>
+        <i className="fas fa-times" />
+      </Link>
     );
-  }
+
+  return (
+    <div className="exit-button" onMouseDown={click}>
+      <i className="fas fa-times" />
+    </div>
+  );
+}
+
+const ExitButton = ({ to, click }) => (
+  <CSSTransition
+    in={true}
+    timeout={800}
+    appear={true}
+    classNames={{
+      appear: "animated", 
+      appearActive: "fadeIn fast"
+    }}
+  >
+    { Exit(to, click) }
+  </CSSTransition>
+);
+
+ExitButton.propTypes = {
+  to: propTypes.string, 
+  click: propTypes.func
 }
 
 export default ExitButton;

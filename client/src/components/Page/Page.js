@@ -4,24 +4,13 @@ import propTypes from 'prop-types';
 
 import Header from './Header';
 import SignUp from '../SignUp/SignUp';
-import NotesRouter from '../Notes/NotesRouter';
-import CollectionsRouter from '../Collections/ColletionsRouter';
 
 class Page extends React.Component {
   render() {
     const { isAuthenticated } = this.props;
 
     return (
-      <div id="app">
-        <Header />
-
-        <div id="app-body">
-          {
-            !isAuthenticated &&
-            <NotesRouter />
-          }    
-        </div>  
-      </div>
+      <SignUp />
     );
   }
 }

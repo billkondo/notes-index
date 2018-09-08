@@ -1,14 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import propTypes from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 
-import { exitAdd, enterMenu } from '../../../actions/collections-router';
-
-const Header = ({ transitionAddToMenu }) => (
+const Header = () => (
   <div className="collections-header">
-    <ExitButton click={transitionAddToMenu} />   
+    <ExitButton to='/Collections' />   
      
     <div className="collections-header-title">
       Add Collection
@@ -16,16 +12,4 @@ const Header = ({ transitionAddToMenu }) => (
   </div>
 );  
 
-Header.propTypes = {
-  transitionAddToMenu: propTypes.func.isRequired
-}
-
-export default connect(
-  null, 
-  (dispatch) => ({
-    transitionAddToMenu: () => {
-      dispatch(exitAdd());
-      setTimeout(() => dispatch(enterMenu()), 500);
-    }
-  })
-)(Header);
+export default Header;

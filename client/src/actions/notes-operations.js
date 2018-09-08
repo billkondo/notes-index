@@ -15,7 +15,6 @@ export const writeTitle = (newTitle) => ({
   title: newTitle
 });
 
-
 export const writeDescription = (newDescription) => ({
   type: WRITE_DESCRIPTION,
   description: newDescription
@@ -40,12 +39,6 @@ export const addTag = (newTag) => ({
   newTag
 });
 
-
-export const resetNote = () => ({
-  type: RESET_NOTE
-});
-
-
 export const deleteComment = (id) => ({
   type: DELETE_COMMENT,
   id
@@ -57,13 +50,25 @@ export const deleteTag = (tag) => ({
   tag
 });
 
-export const loadNote = (note) => ({
-  type: LOAD_NOTE, 
-  title: note.title, 
-  description: note.description, 
-  commentaries: note.commentaries, 
-  tags: note.tags,
-  id: note.id
-})
+export const resetNote = () => {
+  return dispatch => {
+    dispatch({
+      type: RESET_NOTE
+    });
+  }
+}
+
+export const loadNote = (note) => {
+  return dispatch => {
+    dispatch({
+      type: LOAD_NOTE, 
+      title: note.title, 
+      description: note.description, 
+      commentaries: note.commentaries, 
+      tags: note.tags, 
+      id: note.id
+    });
+  }
+}
 
 

@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  START_MODAL,
-  END_MODAL
-} from '../types/modal';
+import { START_MODAL, END_MODAL } from '../types/modal';
 
 const WarningMessageDefault = () => (
   <div className="modal-text">

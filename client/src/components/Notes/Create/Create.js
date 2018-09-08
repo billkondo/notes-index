@@ -2,8 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import uuidv4 from 'uuid/v4';
-import { CSSTransition } from 'react-transition-group';
+import uuidv4 from 'uuid/v4'; 
 
 import Header from './Header';
 import Title from '../Operations/Title';
@@ -45,45 +44,28 @@ class Create extends React.Component {
   }
 
   render() {
-    const { render, transitionCreateToMenu } = this.props;
+    const { transitionCreateToMenu } = this.props;
 
     return (
-      <CSSTransition
-        in={render}
-        mountOnEnter={true}
-        unmountOnExit={true}
-        timeout={{
-          enter: 800,
-          exit: 500
-        }}
-        classNames={{
-          enter: "animated",
-          exit: "animated",
-          enterActive: "fadeIn fast", 
-          exitActive: "fadeOut faster"
-        }}
-      >
-          <div className="notes-create-page">
-            <div className="notes-create">
-              <Header exitFunction={transitionCreateToMenu} />
-              <Title />
-              <Description />
-              <Commentaries />
-              <Tags />
-              <Button color="success" onClick={this.submit} className="notes-create-button"> Create </Button>
-            </div>
+      <div className="notes-create-page">
+        <div className="notes-create">
+          <Header exitFunction={transitionCreateToMenu} />
+          <Title />
+          <Description />
+          <Commentaries />
+          <Tags />
+          <Button color="success" onClick={this.submit} className="notes-create-button"> Create </Button>
+        </div>
 
-            <Modal />
-          </div>
-      </CSSTransition>
+        <Modal />
+      </div>
     );
   }
 }
 
 export default connect(
   (state) => ({
-    note: state.notesOperations,
-    render: state.notesRouter.renderCreate
+    note: state.notesOperations
   }),
   (dispatch) => ({
     addNote: (note) => dispatch(addNote(note)),

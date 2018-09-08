@@ -1,5 +1,6 @@
 import express from 'express';
 import Note from '../../models/note';
+import isEmpty from 'lodash/isEmpty';
 
 const router = express.Router();
 
@@ -8,6 +9,30 @@ router.get('/', (req, res) => {
     .find()
     .exec()
     .then(notes => res.json(notes));
+});
+
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  
+  Note
+    .findOne({ id })
+    .exec()
+    .then(note => {
+      let newNote = {};
+
+      if (!isEmpty(note)) {
+        newNote = {
+          title: note.title, 
+          description: note.description, 
+          commentaries: note.commentaries, 
+          tags: note.tags, 
+          id: note.id
+        };
+      }
+
+      res.status(200).json(newNote);
+    })
+    .catch(err => res.status(500).json({ success: false, err }))
 });
 
 router.post('/', (req, res) => {

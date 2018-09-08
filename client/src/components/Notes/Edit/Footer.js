@@ -1,33 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { startModal } from '../../../actions/modal';
-import { saveButton, goBackButton, SaveMessage, deleteButton, DeleteMessage } from '../../Modal/messages';
-
-const FooterUI = ({ startModalFinish, startModalDelete, finishEdit, deleteNote }) => (
+const Footer = ({ finishEdit, deleteNote }) => (
   <div id="footer-edit">
-    <Button color="success" className="footer-edit-finish-button" onClick={() => startModalFinish(finishEdit)}> Finish </Button>
-    <div id="trash" onClick={() => startModalDelete(deleteNote)}>
+    <Link color="success" className="footer-edit-finish-button" onClick={finishEdit} to='/Notes'> Finish </Link>
+    
+    <Link id="trash" onClick={deleteNote}>
       <i className="fas fa-trash-alt" />
-    </div>
+    </Link>
   </div>
 );
 
-FooterUI.propTypes = {
-  startModalFinish: propTypes.func.isRequired, 
-  startModalDelete: propTypes.func.isRequired, 
+Footer.propTypes = {
   finishEdit: propTypes.func.isRequired, 
   deleteNote: propTypes.func.isRequired
 }
-
-const Footer = connect(
-  (state) => ({}),
-  (dispatch) => ({
-    startModalFinish: (finishEdit) => dispatch(startModal(saveButton, goBackButton, SaveMessage, finishEdit)),
-    startModalDelete: (deleteNote) => dispatch(startModal(deleteButton, goBackButton, DeleteMessage, deleteNote))
-  })
-)(FooterUI);
 
 export default Footer;

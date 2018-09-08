@@ -1,48 +1,31 @@
 import React from 'react';
-import Dropdown from './Dropdown';
+import { Dropdown, DropdownToggle } from 'reactstrap';
+
+import DropdownCustom from './Dropdown';
+
 import { addNote, addCollection, addFavorite } from './dropdown-actions';
 
 class Add extends React.Component {
   state = {
-    isFocused: false
+    isOpen: false
   }
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.detectOutsideClick, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.detectOutsideClick, false);
-  }
-
-  detectOutsideClick = (e) => {
-    if (!this.node.contains(e.target))
-      this.setState({ isFocused: false });
-  }
-
-  onMouseDown = () => this.setState({ isFocused: true });
+  toggle = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }));
 
   render() {
-    const { isFocused } = this.state;
+    const { isOpen } = this.state;
 
     return (
-      <div id="page-add">
-        <div  
-          className="page-icons"
-          onMouseDown={this.onMouseDown}
-          ref={node => this.node = node}
-        >
+      <Dropdown id="page-add" isOpen={isOpen} toggle={this.toggle}>
+        <DropdownToggle className="page-icons">
           <i className="fas fa-plus" />
           <i className="fas fa-caret-down page-down" />
-        </div>
+        </DropdownToggle>
 
-        {
-          isFocused &&
-          <Dropdown 
-            items={[addNote, addCollection, addFavorite]}
-          />
-        }
-      </div>
+        <DropdownCustom 
+          items={[addNote, addCollection, addFavorite]}
+        />
+      </Dropdown>
     );
   }
 }

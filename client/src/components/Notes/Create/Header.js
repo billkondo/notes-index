@@ -1,27 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import propTypes from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 
-import { startModal } from '../../../actions/modal';
-import { exitButton, stayButton, ExitMessage } from '../../Modal/messages';
-
-const Header = ({ startModal, exitFunction}) => (
+const Header = () => (
   <div id="header-create">
     <div id="header-title"> Create Note </div>
-    <ExitButton click={() => startModal(exitFunction)} />
+    <ExitButton to='/Notes' />
   </div>
 );
 
-Header.propTypes = {
-  startModal: propTypes.func.isRequired,
-  exitFunction: propTypes.func.isRequired
-}
-
-export default connect(
-  null,
-  (dispatch) => ({
-    startModal: (exitFunction) => dispatch(startModal(exitButton, stayButton, ExitMessage, exitFunction))
-  })
-)(Header);
+export default Header;

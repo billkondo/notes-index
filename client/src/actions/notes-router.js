@@ -47,6 +47,10 @@ export const startFilter = () => ({
   type: START_FILTER
 })
 
-export const endFilter = () => ({
-  type: END_FILTER
-})
+export const endFilter = () => {
+  return dispatch => {
+    dispatch({
+      type: END_FILTER
+    });
+  }
+}

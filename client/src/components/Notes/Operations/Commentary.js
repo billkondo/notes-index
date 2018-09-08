@@ -35,7 +35,6 @@ class Commentary extends React.Component {
       <div 
         className={classnames("commentary-note", {"commentary-onFocus-border": this.state.focus})} 
         onFocus={this.onFocus} 
-        ref={node => this.node = node} 
       >
         <CustomEditor contentState={this.props.contentState} saveFunction={this.saveFunction} />
         
