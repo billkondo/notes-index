@@ -1,0 +1,17 @@
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 4rem auto;
+  background: linear-gradient(#1c1d22,#383839);
+
+  #app-body {
+    #app-body-main {
+      margin-top: 3rem;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      margin-bottom: 3rem;
+    }
+  }
+}

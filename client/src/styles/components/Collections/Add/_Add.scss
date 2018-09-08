@@ -1,6 +1,10 @@
-.collections-add {
-  height: $big-card-height;
-  width: $big-card-width;
-  background: white;
-  border-radius: 0.2rem;
+.collections-add-page {
+  position: relative; 
+    
+  .collections-add {
+    height: $big-card-height;
+    width: $big-card-width;
+    background: white;
+    border-radius: 0.2rem;
+  }
 }

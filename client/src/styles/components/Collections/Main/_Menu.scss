@@ -1,19 +1,11 @@
-.collections-page {
-  margin-top: 3rem;
-
+.collections-menu {
   display: grid;
   align-items: center;
   justify-items: center;
 
-  .collections-menu {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-
-    .collections-title {
-      color: white;
-      font-size: 3rem;
-      font-family: "Baloo Bhai";
-    }
+  .collections-title {
+    color: white;
+    font-size: 3rem;
+    font-family: "Baloo Bhai";
   }
 }
