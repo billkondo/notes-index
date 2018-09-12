@@ -1,17 +1,14 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import isEmpty from 'lodash/isEmpty';
-import User from '../../models/user';
+import uuidv4 from 'uuid/v4'; 
+import User from '../../../models/user';
 
-import signUpValidation from '../../validation/signUpValidation';
+import signUpValidation from '../../../validation/signUpValidation';
 
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  
-});
-
-router.post('/signup', (req, res) => {
   const info = req.body;
   const errors = signUpValidation(info);
 
@@ -22,7 +19,8 @@ router.post('/signup', (req, res) => {
       const newUser = new User({
         username: info.username, 
         email: info.email, 
-        passwordHash: hash
+        passwordHash: hash,
+        userId: uuidv4() 
       });
 
       newUser
@@ -32,7 +30,7 @@ router.post('/signup', (req, res) => {
     });
   }
   else 
-    res.status(202).json({ errors });
+    res.status(200).json({ errors });
 });
 
 export default router;

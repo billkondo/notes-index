@@ -5,7 +5,7 @@ const defaultState = {
   isAuthenticated: false
 };
 
-const authenticationReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case SIGN_IN_USER:
       return {
@@ -17,5 +17,3 @@ const authenticationReducer = (state = defaultState, action) => {
       return state;
   }
 }
-
-export default authenticationReducer;
