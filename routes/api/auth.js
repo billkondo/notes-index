@@ -4,7 +4,6 @@ import isEmpty from 'lodash/isEmpty';
 import User from '../../models/user';
 
 import signUpValidation from '../../validation/signUpValidation';
-import signInValidation from '../../validation/signInValidation';
 
 const router = express.Router();
 
@@ -34,54 +33,6 @@ router.post('/signup', (req, res) => {
   }
   else 
     res.status(202).json({ errors });
-});
-
-router.post('/signin', (req, res) => {
-  const { user, password} = req.body;
-
-  let errors = signInValidation({ user, password });
-  
-  if (!isEmpty(errors))
-    res.status(200).json({ errors });
-  else {
-    User 
-      .find({ username: user })
-      .exec()
-      .then(doc => {
-        if (isEmpty(doc)) {
-          User.find({ email: user })
-          .exec()
-          .then(doc => {
-            if (isEmpty(doc)) {
-              errors.match = "Credentials are invalid";
-              res.status(200).json({ errors });
-            }
-            else {
-              bcrypt.compare(password, doc[0].passwordHash, (err, match) => {
-                if (err) res.status(500).json({ errors, err, message: "Could not decrypt" });
-    
-                if (!match) 
-                  errors.match = "Credentials are invalid";
-                
-                res.status(200).json({ errors });
-              });
-            }
-          })
-          .catch(err => res.status(500).json({ errors, err, message: "Database Error "}));
-        }
-        else {
-          bcrypt.compare(password, doc[0].passwordHash, (err, match) => {
-            if (err) res.status(500).json({ errors, err, message: "Could not decrypt" });
-
-            if (!match) 
-              errors.match = "Credentials are invalid";
-            
-            res.status(200).json({ errors });
-          });
-        }
-      })
-      .catch(err => res.status(500).json({ errors, err, message: "Database Error" }));
-  }
 });
 
 export default router;
