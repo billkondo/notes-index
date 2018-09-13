@@ -2,13 +2,16 @@ import express from 'express';
 import Note from '../../models/note';
 import isEmpty from 'lodash/isEmpty';
 
+import verify from '../../validation/verifyMiddleware';
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', verify, (req, res) => {
   Note
-    .find()
+    .find({ userId: req.userId })
+    .select("title tags commentaries description id")
     .exec()
-    .then(notes => res.json(notes));
+    .then(notes => res.status(200).json(notes));
 });
 
 router.get('/:id', (req, res) => {
@@ -36,15 +39,23 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newNote = new Note({
-    title: req.body.title,
-    description: req.body.description,
-    commentaries: req.body.commentaries,
-    tags: req.body.tags,
-    id: req.body.id
-  });
-
-  newNote.save().then(item => res.json(item));
+  // jwt.verify(req.body.token, 'secret', (err, decoded) => {
+  //   if (err) {
+  //     res.status(200).json({ err });
+  //   }
+  //   else {
+  //     const newNote = new Note({
+  //       title: req.body.title,
+  //       description: req.body.description,
+  //       commentaries: req.body.commentaries,
+  //       tags: req.body.tags,
+  //       id: req.body.id,
+  //       userId: decoded.userId
+  //     });
+    
+  //     newNote.save().then(item => res.json(item));
+  //   }
+  // })
 });
 
 router.put('/', (req, res) => {

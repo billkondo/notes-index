@@ -3,9 +3,11 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import jwt from 'jsonwebtoken';
 
 import InputText from '../Input/InputText';
 
+import setHeader from '../../authentication/setHeader';
 import { signInUser } from '../../actions/authentication';
 
 class SignInForm extends React.Component {
@@ -29,9 +31,13 @@ class SignInForm extends React.Component {
       .post('/api/auth/signin', info)
       .then(res => {
         const newErrors = res.data.errors;
+        const token = res.data.token;
 
-        if (isEmpty(newErrors)) 
-          signInUser();
+        if (isEmpty(newErrors)) {
+          setHeader(token);
+          localStorage.setItem('jwtToken', token);
+          signInUser(jwt.decode(token));          
+        }
         else {
           setErrors(newErrors);
           this.setState({ isLoading: false });
@@ -83,7 +89,5 @@ SignInForm.propTypes = {
 
 export default connect(
   null, 
-  (dispatch) => ({
-    signInUser: () => dispatch(signInUser())
-  })
+  { signInUser }
 )(SignInForm);
