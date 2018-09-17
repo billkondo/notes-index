@@ -4,7 +4,8 @@ import propTypes from 'prop-types';
 
 import Add from './Add';
 import Profile from './Profile';
-import Login from './Login';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 class PageHeader extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class PageHeader extends React.Component {
           <p> Notes Index </p>
 
           {
-            !isAuthenticated && 
+            isAuthenticated && 
             <div id="page-user">
               <Add />
               <Profile />
@@ -24,9 +25,10 @@ class PageHeader extends React.Component {
           }
 
           {
-            isAuthenticated && 
+            !isAuthenticated && 
             <div id="page-login">
-              <Login />
+              <SignIn />
+              <SignUp />
             </div>
           }
         </div>

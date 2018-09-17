@@ -29,9 +29,7 @@
 
       display: grid;
       grid-template-columns: 1fr 1fr;
-
       font-size: 1rem;
-
       grid-gap: 2rem;
 
       #page-profile, #page-add {
@@ -54,10 +52,14 @@
       align-self: center;
       justify-self: end;
 
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+      font-size: 1rem;
+
       a {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        font-size: 1rem;
         font-family: "ABeeZee";
         grid-gap: 0.4rem;
         color: white;
