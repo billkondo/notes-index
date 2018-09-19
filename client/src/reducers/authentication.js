@@ -1,4 +1,4 @@
-import { SIGN_IN_USER } from '../types/authentication';
+import { SIGN_IN_USER, SIGN_OUT_USER } from '../types/authentication';
 import isEmpty from 'lodash/isEmpty';
 
 const defaultState = {
@@ -13,6 +13,13 @@ export default (state = defaultState, action) => {
         ...state, 
         isAuthenticated: !isEmpty(action.user),
         user: action.user
+      }
+
+    case SIGN_OUT_USER:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {}
       }
 
     default:

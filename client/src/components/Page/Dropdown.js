@@ -1,30 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import { DropdownMenu, DropdownItem } from 'reactstrap';
+import { DropdownMenu } from 'reactstrap';
 
 const Line = ({ item }) => 
 {
   if (item.path)
     return (
-      <DropdownItem>
-        <Link className="page-dropdown-line dropdown-item" to={item.path}>
-          {item.label}
-        </Link>
-      </DropdownItem>
+      <Link className="page-dropdown-line" to={item.path}>
+        {item.label}
+      </Link>
     );
 
   return (
-    <DropdownItem>
-      <div className="page-dropdown-line dropdown-item" >
-        {item.label} 
-      </div>
-    </DropdownItem>
+    <div className="page-dropdown-line" onClick={item.onClick}>
+      {item.label} 
+    </div>
   );
 }
 
-const Dropdown = ({ items }) => (
-  <DropdownMenu className="page-dropdown dropdown-menu">
+const Dropdown = ({ items, toggle }) => (
+  <DropdownMenu className="page-dropdown" onClick={toggle}>
     {
       items.map(value => {
         return (

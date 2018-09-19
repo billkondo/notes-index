@@ -2,7 +2,7 @@ import React from 'react';
 import DropdownCustom from './Dropdown';
 import { Dropdown, DropdownToggle } from 'reactstrap';
 
-import { profile, notes, collections, favorites, logOut } from './dropdown-actions';
+import { profile, notes, collections, favorites } from './dropdown-actions';
 
 class Profile extends React.Component {  
   state = {
@@ -16,13 +16,15 @@ class Profile extends React.Component {
 
     return (
       <Dropdown id="page-profile" isOpen={isOpen} toggle={this.toggle} > 
-        <DropdownToggle className="page-icons">
-          <i className="fas fa-square-full" />
-          <i className="fas fa-caret-down page-down" />
+        <DropdownToggle>
+          <div className="page-icons">
+            <i className="fas fa-square-full" />
+            <i className="fas fa-caret-down page-down" />
+          </div>
         </DropdownToggle>
 
-        <DropdownCustom 
-          items={[profile, notes, collections, favorites, logOut]}
+        <DropdownCustom toggle={this.toggle}
+          items={[profile, notes, collections, favorites, { label: "Log Out", onClick: this.props.logOut }]}
         />
       </Dropdown>
     );
