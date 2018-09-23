@@ -1,0 +1,11 @@
+.notes-add-page {
+  position: relative;
+
+  .notes-add {
+    position: relative;
+    min-height: $big-card-height;
+    width: $big-card-width;
+    background-color: $card-color;
+    border-radius: 0.2rem; 
+  }
+}

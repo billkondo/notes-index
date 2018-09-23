@@ -1,0 +1,14 @@
+.notes-header {
+  position: relative;
+  height: 4rem; 
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  
+  .title {
+    font-family: "Baloo Bhai";
+    font-size: $medium-font;
+    color: black;
+  } 
+}

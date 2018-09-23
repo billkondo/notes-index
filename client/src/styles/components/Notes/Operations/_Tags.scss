@@ -1,7 +1,51 @@
-#tags-note {
-  min-height: $big-card-line-height;
-  .tags-container {
+.notes-utils-tags {
+  padding: $medium-font;
+  display: grid;
+  grid-gap: 1.5rem;
+  padding-bottom: 4rem;
+
+  .header {
     display: grid;
-    padding: $small-font;
+    grid-template-columns: 1fr 3fr;
+
+    .title {
+      display: grid;
+      grid-template-columns: 1.5rem auto;
+      align-items: center;
+      font-size: $small-font;
+      font-weight: bold;
+      font-family: 'Merriweather';
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: auto 2rem;
+      align-items: center;
+      justify-items: start;
+    }
+  }
+
+  .container-tags {
+    font-family: "Merriweather";
+    font-size: $small-font;
+    display: grid;
+    grid-gap: 0.5rem;
+
+    .tag {
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      background: $tag-color;
+      color: white;
+      border-radius: 0.2rem;
+      padding: 0.75rem;
+    }
+
+    .tag:hover {
+      background-color: #353839;
+      color: darkgray;
+      transition: all 500ms ease-out;
+    }
   }
 }

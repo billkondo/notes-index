@@ -1,29 +1,38 @@
-#commentaries-note {
-  padding: $small-font;
-  min-height: $big-card-line-height;
+.notes-utils-commentaries {
+  padding: $medium-font;
+  display: grid;
+  grid-gap: 1rem;
 
-  #commentaries-header {
+  .header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    font-size: $small-font;
-    font-family: "Merriweather";
-
     align-items: center;
-    font-weight: bold;
+    justify-items: end;
 
-    #commentaries-icon, #commentaries-header-title {
-      display: inline-block;
+    .title {
+      justify-self: start;
+      display: grid;
+      grid-template-columns: 1.5rem auto;
+      align-items: center;
+      font-size: $small-font;
+      font-weight: bold;
+      font-family: 'Merriweather';
     }
 
-    #commentaries-icon {
-      margin-right: $small-font; 
+    .button {
+      align-self: end;
     }
   }
 
-  #commentaries-box {
-    padding: $small-font;
+  .container-comment {
     display: grid;
-    grid-row-gap: $extra-small-font;
+    grid-gap: 1rem;
+
+    .comment {
+      position: relative;
+      textarea {
+        resize: none;
+      }
+    }
   }
 }

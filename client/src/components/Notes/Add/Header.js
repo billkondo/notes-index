@@ -3,8 +3,8 @@ import React from 'react';
 import ExitButton from '../../Buttons/ExitButton';
 
 const Header = () => (
-  <div id="header-create">
-    <div id="header-title"> Create Note </div>
+  <div className="notes-header">
+    <div className="title"> Add Note </div>
     <ExitButton to='/Notes' />
   </div>
 );

@@ -1,22 +1,20 @@
 .notes-utils-description {
-  min-height: $big-card-line-height;
-  padding: $small-font;
-  display: grid;  
+  padding: $medium-font;
+  display: grid;
+  grid-gap: 1rem;
 
-  grid-template-rows: $large-font auto;
-
-  .description {
-    align-self: start;
-    margin-top: $extra-small-font;
-    border: 4px solid lightgray;
-
+  .header {
     display: grid;
-    align-items: stretch;
-    justify-items: stretch;
+    grid-template-columns: 1.5rem auto;
+    align-items: center;
+    font-size: $small-font;
+    font-weight: bold;
+    font-family: 'Merriweather';
   }
 
-  .description-onFocus-border {
-    border: 4px solid rgb(148, 195, 245);
-    transition: all 500ms ease-out;
+  .description {
+    textarea {
+      resize: none;
+    }
   }
 }
