@@ -5,10 +5,14 @@ import {
   UPDATE_NOTE
 } from '../types/notes-data';
 
-export const addNote = (note) => ({
-  type: ADD_NOTE,
-  note
-})
+export const addNote = (note) => {
+  return dispatch => {
+    dispatch({
+      type: ADD_NOTE,
+      note
+    });
+  }
+}
 
 export const deleteNote = (id) => {
   return dispatch => {

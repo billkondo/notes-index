@@ -1,3 +1,6 @@
+import uuidv4 from 'uuid/v4'; 
+import axios from 'axios';
+
 import {
   WRITE_TITLE,
   WRITE_DESCRIPTION,
@@ -7,53 +10,91 @@ import {
   RESET_NOTE,
   DELETE_COMMENT,
   DELETE_TAG,
-  LOAD_NOTE
+  LOAD_NOTE,
+  WRITE_TAG,
+  START_LOADING, 
+  END_LOADING
 } from '../types/notes-operations';
 
-export const writeTitle = (newTitle) => ({
-  type: WRITE_TITLE,
-  title: newTitle
-});
+export const writeTitle = (title) => {
+  return dispatch => {
+    dispatch({
+      type: WRITE_TITLE,
+      title
+    });
+  }
+}
 
-export const writeDescription = (newDescription) => ({
-  type: WRITE_DESCRIPTION,
-  description: newDescription
-});
+export const writeDescription = (description) => {
+  return dispatch => {
+    dispatch({
+      type: WRITE_DESCRIPTION, 
+      description
+    });
+  }
+}
 
+export const addComment = () => {
+  return dispatch => {
+    const id = uuidv4();
+    const newComment = {
+      comment: "",
+      id
+    };
 
-export const addComment = (newComment) => ({
-  type: ADD_COMMENT,
-  newComment
-});
+    dispatch({
+      type: ADD_COMMENT, 
+      newComment
+    })
+  }
+}
 
+export const writeComment = (comment, id) => {
+  return dispatch => {
+    dispatch({
+      type: WRITE_COMMENT, 
+      comment, 
+      id
+    });
+  }
+}
 
-export const writeComment = (newComment, id) => ({
-  type: WRITE_COMMENT,
-  newComment,
-  id
-});
-
-
-export const addTag = (newTag) => ({
-  type: ADD_TAG,
-  newTag
-});
+export const addTag = (tag) => {
+  return dispatch => {
+    dispatch({
+      type: ADD_TAG, 
+      tag
+    });
+  }
+}
 
 export const deleteComment = (id) => ({
   type: DELETE_COMMENT,
   id
 });
 
-
-export const deleteTag = (tag) => ({
-  type: DELETE_TAG,
-  tag
-});
+export const deleteTag = (tag) => {
+  return dispatch => {
+    dispatch({
+      type: DELETE_TAG, 
+      tag
+    });
+  }
+}
 
 export const resetNote = () => {
   return dispatch => {
     dispatch({
       type: RESET_NOTE
+    });
+  }
+}
+
+export const writeTag = (tag) => {
+  return dispatch => {
+    dispatch({
+      type: WRITE_TAG, 
+      tag
     });
   }
 }
@@ -71,4 +112,37 @@ export const loadNote = (note) => {
   }
 }
 
+export const submitNote = (updateURL) => {
+  return (dispatch, getState) => {
+    const note = getState().notesOperations;
+    
+    if (note.isLoading) 
+      return;
 
+    dispatch({ type: START_LOADING });
+
+    const newNote = {
+      title: note.title, 
+      description: note.description,
+      commentaries: note.commentaries, 
+      tags: note.commentaries,
+      id: uuidv4()
+    };
+
+    console.log(newNote);
+
+    return;
+
+    axios
+      .post('/api/notes', newNote)
+      .then(res => {
+        if (res.err.name === 'TokenExpiredError') {
+
+        }
+        else {
+          updateURL();
+        }
+      })
+      .catch()
+  }
+}

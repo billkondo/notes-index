@@ -9,7 +9,7 @@ const defaultState = {
   notes: []
 }
 
-const notesDataReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case LOAD_NOTES:
       return {
@@ -42,5 +42,3 @@ const notesDataReducer = (state = defaultState, action) => {
       return state;
   }
 }
-
-export default notesDataReducer;

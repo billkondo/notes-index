@@ -1,7 +1,3 @@
-import { EditorState } from 'draft-js';
-import { stringifyContent } from '../components/Editor/CustomEditor';
-import  uuidv4 from 'uuid/v4';
-
 import {
   WRITE_TITLE,
   WRITE_DESCRIPTION,
@@ -11,23 +7,23 @@ import {
   RESET_NOTE,
   DELETE_COMMENT,
   DELETE_TAG,
-  LOAD_NOTE
+  LOAD_NOTE,
+  WRITE_TAG,
+  START_LOADING, 
+  END_LOADING
 } from '../types/notes-operations';
 
 const defaultState = {
   title: "",
-  description: stringifyContent(EditorState.createEmpty().getCurrentContent()),
-  commentaries: [], // Array of Strings, each String will be a stringfied object 
+  description: "",
+  commentaries: [], // Array of JSON { comment, id }
   tags: [],
-  id: ""
+  id: "",
+  tag: "",
+  isLoading: false
 }
 
-const createEmpty = () => ({
-  contentState: stringifyContent(EditorState.createEmpty().getCurrentContent()),
-  id: uuidv4()
-})
-
-const notesOperationsReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case WRITE_TITLE:
       return {
@@ -44,19 +40,19 @@ const notesOperationsReducer = (state = defaultState, action) => {
     case ADD_COMMENT:
       return {
         ...state,
-        commentaries: state.commentaries.concat(JSON.stringify(createEmpty()))
+        commentaries: state.commentaries.concat(action.newComment)
       }
 
     case WRITE_COMMENT:
       return {
         ...state,
         commentaries: state.commentaries.map(value => {
-          if (JSON.parse(value).id === action.id) 
-            return JSON.stringify({
-              contentState: action.newComment,
-              id: JSON.parse(value).id
+          if (value.id === action.id) 
+            return ({
+              comment: action.comment, 
+              id: value.id
             });
-
+          
           return value;
         })
       }
@@ -64,7 +60,8 @@ const notesOperationsReducer = (state = defaultState, action) => {
     case ADD_TAG:
       return {
         ...state,
-        tags: state.tags.concat(action.newTag)
+        tags: state.tags.concat(action.tag),
+        tag: ""
       }
 
     case RESET_NOTE:
@@ -73,7 +70,7 @@ const notesOperationsReducer = (state = defaultState, action) => {
     case DELETE_COMMENT:
       return {
         ...state,
-        commentaries: state.commentaries.filter(comment => JSON.parse(comment).id !== action.id)
+        commentaries: state.commentaries.filter(comment => comment.id !== action.id)
       }
 
     case DELETE_TAG:
@@ -82,18 +79,36 @@ const notesOperationsReducer = (state = defaultState, action) => {
         tags: state.tags.filter(tag => tag !== action.tag)
       }
 
+    case WRITE_TAG:
+      return {
+        ...state, 
+        tag: action.tag
+      }
+
+    case START_LOADING:
+      return {
+        ...state, 
+        isLoading: true
+      }
+
+    case END_LOADING: 
+      return {
+        ...state, 
+        isLoading: false
+      }
+
     case LOAD_NOTE:
       return {
         title: action.title,
         description: action.description,
         commentaries: action.commentaries,
         tags: action.tags,
-        id: action.id
+        id: action.id,
+        tag: "",
+        isLoading: false
       }
 
     default:
       return state;
   }
 }
-
-export default notesOperationsReducer;

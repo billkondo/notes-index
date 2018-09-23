@@ -1,20 +1,20 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import notesDataReducer from './notes-data';
-import notesOperationsReducer from './notes-operations';
+import notesData from './notes-data';
+import notesOperations from './notes-operations';
 import notesRouter from './notes-router';
-import modalReducer from './modal';
-import authenticationReducer from './authentication';
+import authentication from './authentication';
 import collectionsRouter from './collections-router';
+import collectionsOperations from './collections-operations';
 
 const store = createStore(combineReducers({
-  notesData: notesDataReducer,
-  notesOperations: notesOperationsReducer, 
-  modal: modalReducer, 
-  authentication: authenticationReducer,
+  notesData,
+  notesOperations , 
+  authentication,
   notesRouter,
-  collectionsRouter
+  collectionsRouter,
+  collectionsOperations
 }), applyMiddleware(thunk));
 
 store.subscribe(() => {
