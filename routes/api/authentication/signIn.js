@@ -30,7 +30,6 @@ router.post('/', (req, res) => {
             else {
               authenticate(password, doc)
                 .then(token => {
-                  console.log(token);
                   res.status(200).json({ token });
                 })
                 .catch(err => {
@@ -47,7 +46,6 @@ router.post('/', (req, res) => {
         else {
           authenticate(password, doc)
             .then(token => {
-              console.log(token);
               res.status(200).json({ token });
             })
             .catch(err => {

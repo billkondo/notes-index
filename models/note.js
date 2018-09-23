@@ -6,7 +6,8 @@ const noteSchema = new Schema({
   tags: Array, 
   commentaries: Array, 
   description: String,
-  id: String
+  id: String,
+  userId: String
 });
 
 const Note = mongoose.model('Note', noteSchema);

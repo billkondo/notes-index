@@ -1,18 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-class AddButton extends React.Component {
-  static propTypes = {
-    click: propTypes.func.isRequired
-  }
+const AddButton = ({ click }) => (
+  <button className="add-button" onClick={click}>
+    <i className="fas fa-plus plus" />
+  </button>
+);
 
-  render() {
-    return (
-      <div className="add-button" onClick={this.props.click}>
-        <i className="fas fa-plus plus" />
-      </div>
-    );
-  }
+AddButton.propTypes = {
+  click: propTypes.func.isRequired
 }
 
 export default AddButton;

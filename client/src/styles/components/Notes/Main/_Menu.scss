@@ -4,7 +4,10 @@
   justify-items: center;
 
   .notes-title {
-    font-size: 3rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2rem auto;
+    font-size: 2rem;
     font-family: "Baloo Bhai";
     color: white;
   }

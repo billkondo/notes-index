@@ -1,18 +1,16 @@
 import React from 'react';
+
+import Fade from '../High_Order/Fade';
 import SignUpForm from './SignUpForm';
 import Welcome from './Welcome';
 
-class SignUp extends React.Component {
-  render() {
-    return (
-      <div className="sign-up">
-        <div className="sign-up-page">
-          <SignUpForm />
-          <Welcome />
-        </div>
-      </div>
-    );
-  }
-}
+const SignUp = () => (
+  <div className="sign-up">
+    <div className="sign-up-page">
+      <SignUpForm />
+      <Welcome />
+    </div>
+  </div>
+);
 
-export default SignUp;
+export default Fade(SignUp);

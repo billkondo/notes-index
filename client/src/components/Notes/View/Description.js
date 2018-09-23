@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Editor, EditorState } from 'draft-js';
-import { parseContent } from '../../Editor/CustomEditor';
 
 const DescriptionUI = ({ description }) => (
   <div id="description-view">
@@ -10,9 +8,9 @@ const DescriptionUI = ({ description }) => (
       <div id="description-title"> Description </div>
     </div>
 
-    <div id="description-editor">
+    {/* <div id="description-editor">
       <Editor editorState={EditorState.createWithContent(parseContent(description))} readOnly={true} />
-    </div>
+    </div> */}
   </div>
 );
 

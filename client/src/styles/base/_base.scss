@@ -48,6 +48,7 @@ table {
 	border-spacing: 0;
 }
 
+
 // Font-sizes
 $large-font: 1.5rem;
 $medium-font: 1.3rem;
@@ -74,3 +75,12 @@ $big-card-line-height: 8rem;
 
 // Bacground
 $card-background: linear-gradient(#4b4c50,#5b5e6a);
+
+// Classes
+.inline-block {
+  display: inline-block;
+}
+
+.large-font {
+  font-size: $large-font;
+}

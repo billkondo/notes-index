@@ -3,7 +3,7 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 
 import InputText from '../Input/InputText';
 
@@ -36,7 +36,7 @@ class SignInForm extends React.Component {
         if (isEmpty(newErrors)) {
           setHeader(token);
           localStorage.setItem('jwtToken', token);
-          signInUser(jwt.decode(token));          
+          signInUser(decode(token));          
         }
         else {
           setErrors(newErrors);

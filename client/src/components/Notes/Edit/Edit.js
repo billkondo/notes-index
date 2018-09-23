@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Header from './Header';
-import Title from '../Operations/Title';
-import Description from '../Operations/Description';
-import Commentaries from '../Operations/Commentaries';
-import Tags from '../Operations/Tags';
+import Title from '../Utils/Title';
+import Description from '../Utils/Description';
+import Commentaries from '../Utils/Commentaries';
+import Tags from '../Utils/Tags';
 import Footer from './Footer';
 
 import { loadNote, resetNote } from '../../../actions/notes-operations';
@@ -51,7 +51,6 @@ class Edit extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="notes-edit-page">
         <div className="notes-edit">
@@ -69,7 +68,7 @@ class Edit extends React.Component {
 
 export default connect(
   (state) => ({
-    note: state.notesOperations
+    note: state.notesOperations,
   }),
   { updateNote, deleteNote, loadNote, resetNote }
 )(Edit);

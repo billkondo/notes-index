@@ -1,25 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 import NoteCard from './NoteCard';
 
-const ContainerNotesUI = (props) => (
+const ContainerNotes = ({ notes, transition }) => (
   <div id="container-notes">
     {
-      props.notes.map(value => {
-        return (
-          <NoteCard key={value.id} note={value} />
-        );
-      })
+      notes.map(value => <NoteCard key={value.id} note={value} transition={transition}/>)
     }
   </div>
 );
 
+ContainerNotes.propTypes = {
+  notes: propTypes.arrayOf(Object),
+  transition: propTypes.func.isRequired
+}
 
-const ContainerNotes = connect(
+
+export default connect(
   (state) => ({
     notes: state.notesData.notes
   })
-)(ContainerNotesUI)
-
-export default ContainerNotes;
+)(ContainerNotes)

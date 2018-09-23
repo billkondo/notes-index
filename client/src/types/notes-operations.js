@@ -7,3 +7,6 @@ export const RESET_NOTE = "RESET_NOTE";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const DELETE_TAG = "DELETE_TAG";
 export const LOAD_NOTE = "LOAD_NOTE";
+export const WRITE_TAG = "WRITE_TAG";
+export const START_LOADING = "START_LOADING";
+export const END_LOADING = "END_LOADING";

@@ -7,7 +7,7 @@ const Footer = ({ finishEdit, deleteNote }) => (
   <div id="footer-edit">
     <Link color="success" className="footer-edit-finish-button" onClick={finishEdit} to='/Notes'> Finish </Link>
     
-    <Link id="trash" onClick={deleteNote}>
+    <Link id="trash" onClick={deleteNote} to='/Notes'>
       <i className="fas fa-trash-alt" />
     </Link>
   </div>

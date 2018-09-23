@@ -15,16 +15,6 @@ class View extends React.Component {
 
   flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }));
 
-  componentWillMount() {
-    const id = this.props.match.params.id;
-    const { loadNote } = this.props;
-
-    axios
-      .get(`/api/notes/${id}`)
-      .then(res => { loadNote(res.data) })
-      .catch(err => console.log(err));
-  }
-
   componentWillUnmount() {
     const { resetNote } = this.props;
     resetNote();

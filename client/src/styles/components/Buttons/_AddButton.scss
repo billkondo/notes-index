@@ -1,18 +1,10 @@
 .add-button {
   justify-self: end;
-
   background: $add-color;
-  height: $large-font;
-  width: $large-font;
-  font-size: $medium-font;
-
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-size: $small-font;
   color: white;
-  
-  display: grid;
-  justify-items: center;
-  align-items: center;
-
-  border-radius: $small-button-radius; 
   cursor: pointer;
 }
 

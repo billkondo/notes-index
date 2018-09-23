@@ -8,9 +8,14 @@
 @import './components/Collections/Add/Header';
 @import './components/Collections/Main/Functions';
 @import './components/Collections/Main/Menu';
+@import './components/Collections/Utils//Children';
+@import './components/Collections/Utils/Description';
+@import './components/Collections/Utils/Tags';
 @import './components/Collections/Utils/Title';
 
-@import './components/Notes/Create/Create';
+@import './components/Notes/Add/Add';
+@import './components/Notes/Add/Header';
+@import './components/Notes/Add/Submit';
 @import './components/Notes/Edit/Edit';
 @import './components/Notes/Main/Menu';
 @import './components/Notes/NotesRouter';
@@ -54,16 +59,10 @@
 
 // Notes Operations Styles
 @import './components/Notes/Operations/Commentaries';
-@import './components/Notes/Operations/Commentary';
 @import './components/Notes/Operations/Description';
-@import './components/Notes/Operations/HeaderFromDescription';
-@import './components/Notes/Operations/HeaderFromTags';
-@import './components/Notes/Operations/Tag';
 @import './components/Notes/Operations/Tags';
 @import './components/Notes/Operations/Title';
 
-// Create Note Styles 
-@import './components/Notes/Create/Header';
 
 // Edit Note Styles
 @import './components/Notes/Edit/Footer';
