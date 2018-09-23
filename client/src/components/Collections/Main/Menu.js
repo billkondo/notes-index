@@ -4,7 +4,7 @@ import Functions from './Functions';
 
 const Menu = () => (
   <div className="collections-menu">
-    <div className="collections-title"> Collections </div>
+    <div className="collections-title"> <i className="fas fa-box large-font" /> Collections </div>
     <Functions />
   </div> 
 );

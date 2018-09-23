@@ -7,7 +7,9 @@
   .header {
     font-family: "Merriweather";
     font-size: $small-font;
+    font-weight: bold;
     display: grid;
+    grid-template-columns: 1.5rem auto; 
     align-items: center;
     justify-items: start;
   }
