@@ -2,6 +2,7 @@ import React from 'react';
 import DropdownCustom from './Dropdown';
 import { Dropdown, DropdownToggle } from 'reactstrap';
 
+import Fade from '../High_Order/Fade';
 import { profile, notes, collections, favorites } from './dropdown-actions';
 
 class Profile extends React.Component {  
@@ -31,4 +32,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default Fade(Profile);

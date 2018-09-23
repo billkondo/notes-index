@@ -2,13 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import Header from './Header';
 import SignUp from '../SignUp/SignUp';
 
 class Page extends React.Component {
   render() {
-    const { isAuthenticated } = this.props;
-
     return (
       <SignUp />
     );

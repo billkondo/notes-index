@@ -2,6 +2,7 @@ import React from 'react';
 import { Dropdown, DropdownToggle } from 'reactstrap';
 
 import DropdownCustom from './Dropdown';
+import Fade from '../High_Order/Fade';
 
 import { addNote, addCollection, addFavorite } from './dropdown-actions';
 
@@ -17,12 +18,14 @@ class Add extends React.Component {
 
     return (
       <Dropdown id="page-add" isOpen={isOpen} toggle={this.toggle}>
-        <DropdownToggle className="page-icons">
-          <i className="fas fa-plus" />
-          <i className="fas fa-caret-down page-down" />
+        <DropdownToggle>
+          <div className="page-icons">
+            <i className="fas fa-plus" />
+            <i className="fas fa-caret-down page-down" />
+          </div>
         </DropdownToggle>
 
-        <DropdownCustom 
+        <DropdownCustom toggle={this.toggle}
           items={[addNote, addCollection, addFavorite]}
         />
       </Dropdown>
@@ -30,4 +33,4 @@ class Add extends React.Component {
   }
 }
 
-export default Add;
+export default Fade(Add);

@@ -4,12 +4,9 @@
   background: white;
   color: black;
 
+  padding: 0;
   min-width: 4rem; 
-
-  top: 1.4rem;
-  left: -0.1rem;
   box-shadow: 0.2rem 0.2rem 0.5rem #333;
-  z-index: 999 !important;
 
   .page-dropdown-line {
     box-sizing: content-box;
@@ -24,5 +21,8 @@
     background: #1373af;
   }
 
+  a {
+    display: block;
+  }
   
 }

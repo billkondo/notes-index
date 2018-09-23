@@ -16,10 +16,6 @@ export const favorites = {
   label: "Favorites"
 }
 
-export const logOut = {
-  label: "Log Out"
-}
-
 export const addNote = {
   label: "Add Note",
   path: '/Notes/Add'

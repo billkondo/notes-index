@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Fade from '../High_Order/Fade';
+
 const SignUp = () => (
   <Link to="/">
     <i className="fas fa-user-plus login-icon" />
@@ -8,4 +10,4 @@ const SignUp = () => (
   </Link>
 );
 
-export default SignUp;
+export default Fade(SignUp);
