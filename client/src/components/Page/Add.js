@@ -3,8 +3,7 @@ import { Dropdown, DropdownToggle } from 'reactstrap';
 
 import DropdownCustom from './Dropdown';
 import Fade from '../High_Order/Fade';
-
-import { addNote, addCollection, addFavorite } from './dropdown-actions';
+import Action from '../High_Order/Action';
 
 class Add extends React.Component {
   state = {
@@ -12,9 +11,11 @@ class Add extends React.Component {
   }
 
   toggle = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-
+  close = () => this.setState({ isOpen: false });
+  
   render() {
     const { isOpen } = this.state;
+    const { addNote, addCollection, addFavorite } = this.props;
 
     return (
       <Dropdown id="page-add" isOpen={isOpen} toggle={this.toggle}>
@@ -25,12 +26,12 @@ class Add extends React.Component {
           </div>
         </DropdownToggle>
 
-        <DropdownCustom toggle={this.toggle}
-          items={[addNote, addCollection, addFavorite]}
+        <DropdownCustom close={this.close}
+          items={[addNote(), addCollection(), addFavorite()]}
         />
       </Dropdown>
     );
   }
 }
 
-export default Fade(Add);
+export default Action(Fade(Add));

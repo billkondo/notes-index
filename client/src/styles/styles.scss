@@ -6,6 +6,7 @@
 @import './components/Collections/CollectionsRouter';
 @import './components/Collections/Add/Add';
 @import './components/Collections/Add/Header';
+@import './components/Collections/Add/Submit';
 @import './components/Collections/Main/Functions';
 @import './components/Collections/Main/Menu';
 @import './components/Collections/Utils//Children';
@@ -43,7 +44,7 @@
 @import './components/Modal/Modal';
 
 // Main Styles
-@import './components/Notes/Main/ContainerFunctions';
+@import './components/Notes/Main/Functions';
 @import './components/Notes/Main/ContainerNotes';
 @import './components/Notes/Main/Filter';
 @import './components/Notes/Main/FilterTag';

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import propTypes from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 import AddButton from '../../Buttons/AddButton';
@@ -108,6 +109,11 @@ const Tags = ({ tag, tags, addTag, writeTag, deleteTag }) => {
       <Container tags={tags} deleteTag={deleteTag} />
     </div>
   );
+}
+
+Tags.propTypes = {
+  tag: propTypes.string.isRequired,
+  tags: propTypes.arrayOf(propTypes.string).isRequired
 }
 
 export default connect(

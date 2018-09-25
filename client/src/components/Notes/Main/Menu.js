@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import axios from 'axios';
 
-import ContainerFunctions from './ContainerFunctions';
+import Functions from './Functions';
 import ContainerNotes from './ContainerNotes';
 
 import { loadNotes } from '../../../actions/notes-data';
@@ -22,24 +22,14 @@ class Menu extends React.Component {
       .catch(err => console.log(err));
   }
 
-  transition = (to, id) => {
-    const { loadNote } = this.props;
-
-    axios 
-      .get(`/api/notes/${id}`)
-      .then(note => {
-        loadNote(note.data);
-        this.props.history.push(to);
-      })
-      .catch(err => console.log(err));
-  }
+  transition = (to) => this.props.history.push(to);
 
   render() {
     return (
       <div className="notes-menu">
-          <div className="notes-title"><i className="fas fa-sticky-note large-font" /> Notes </div>
-          <ContainerFunctions />
-          <ContainerNotes transition={this.transition}/>
+        <div className="notes-title"><i className="fas fa-sticky-note large-font" /> Notes </div>
+        <Functions />
+        <ContainerNotes transition={this.transition} />
       </div>
     );
   }

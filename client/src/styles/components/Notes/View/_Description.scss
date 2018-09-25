@@ -1,5 +1,5 @@
-#description-view {
-  #description-editor {
+.notes-view-description {
+  .editor {
     position: relative;
     align-self: start;
 
@@ -13,16 +13,16 @@
     line-height: $large-font;
   }
 
-  #description-title-box {
+  .header {
     margin: $small-font;
     font-size: $small-font;
     font-family: "Merriweather";
 
-    #description-icon, #description-title {
+    .icon, .title {
       display: inline-block;
     }
 
-    #description-icon {
+    .icon {
       margin-right: $small-font;
     }
   }

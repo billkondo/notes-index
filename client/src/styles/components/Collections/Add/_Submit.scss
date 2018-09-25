@@ -1,0 +1,14 @@
+.collections-submit {
+  position: absolute;
+  font-family: "Baloo Bhai"; 
+  bottom: 0;
+  letter-spacing: 0.2rem;
+  width: $big-card-width;
+  display: grid;
+  justify-items: stretch;
+
+  .submit:hover {
+    color: darkgrey;
+    transition: all 500ms ease-in;
+  }
+}

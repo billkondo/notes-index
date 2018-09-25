@@ -1,15 +1,22 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import ExitButton from '../../Buttons/ExitButton';
 
-const Header = () => (
-  <div className="collections-header">
-    <ExitButton to='/Collections' />   
-     
-    <div className="collections-header-title">
-      Add Collection
-    </div>
-  </div>
-);  
+const Header = (props) => {
+  const exit = () => {
+    props.history.push('/Collections');
+  }
 
-export default Header;
+  return (
+    <div className="collections-header">
+      <ExitButton click={exit} />   
+      
+      <div className="collections-header-title">
+        Add Collection
+      </div>
+    </div>
+  );  
+}
+
+export default withRouter(Header);

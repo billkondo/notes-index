@@ -1,12 +1,19 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import ExitButton from '../../Buttons/ExitButton';
 
-const Header = () => (
-  <div className="notes-header">
-    <div className="title"> Add Note </div>
-    <ExitButton to='/Notes' />
-  </div>
-);
+const Header = (props) => {
+  const exit = () => {
+    props.history.push('/Notes');
+  }
 
-export default Header;
+  return (
+    <div className="notes-header">
+      <div className="title"> Add Note </div>
+      <ExitButton click={exit} />
+    </div>
+  );
+}
+
+export default withRouter(Header);

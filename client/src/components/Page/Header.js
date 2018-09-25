@@ -7,42 +7,29 @@ import Profile from './Profile';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-import { signOutUser } from '../../actions/authentication';
+const PageHeader = ({ isAuthenticated }) => (
+  <div id="page-header">
+    <div id="page-middle">
+      <p> Notes Index </p>
 
-class PageHeader extends React.Component {
-  logOut = () => {
-    this.props.signOutUser();
-    this.props.history.push('/');
-  }
-
-  render() {
-    const { isAuthenticated } = this.props;
-
-    return (
-      <div id="page-header">
-        <div id="page-middle">
-          <p> Notes Index </p>
-
-          {
-            isAuthenticated && 
-            <div id="page-user">
-              <Add />
-              <Profile logOut={this.logOut}/>
-            </div>
-          }
-
-          {
-            !isAuthenticated && 
-            <div id="page-login">
-              <SignIn />
-              <SignUp />
-            </div>
-          }
+      {
+        isAuthenticated && 
+        <div id="page-user">
+          <Add />
+          <Profile />
         </div>
-      </div>
-    );  
-  }
-}
+      }
+
+      {
+        !isAuthenticated && 
+        <div id="page-login">
+          <SignIn />
+          <SignUp />
+        </div>
+      }
+    </div>
+  </div>
+);  
 
 PageHeader.propTypes = {
   isAuthenticated: propTypes.bool.isRequired
@@ -51,6 +38,5 @@ PageHeader.propTypes = {
 export default connect(
   (state) => ({
     isAuthenticated: state.authentication.isAuthenticated
-  }),
-  { signOutUser }
+  })
 )(PageHeader);

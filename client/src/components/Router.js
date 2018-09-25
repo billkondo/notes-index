@@ -26,8 +26,8 @@ const AppRouter = () => (
             <Route exact path='/' component={Page} />
             <Route exact path='/Notes' component={Fade(Auth(NotesMenu))} />
             <Route exact path='/Notes/Add' component={Fade(Auth(NotesAdd))} />
-            <Route exact path='/Notes/Edit/:id' component={Fade(Auth(NotesEdit))} /> 
-            <Route exact path='/Notes/View/:id' component={Fade(Auth(NotesView))} />
+            <Route exact path='/Notes/Edit/:id' component={Auth(NotesEdit)} /> 
+            <Route exact path='/Notes/View/:id' component={Auth(NotesView)} />
             <Route exact path='/Collections' component={Fade(Auth(CollectionsMenu))} />
             <Route exact path='/Collections/Add' component={Fade(Auth(CollectionsAdd))} />
             <Route exact path='/SignIn' component={Fade(SignIn)} />

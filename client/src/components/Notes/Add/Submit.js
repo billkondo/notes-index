@@ -11,7 +11,7 @@ const Submit = (props) => {
   
   return (
     <div className="notes-utils-submit">
-      <Button onClick={() => submitNote(updateURL)}> 
+      <Button className="submit" onClick={() => submitNote(updateURL)}> 
         Done   
       </Button>
     </div>

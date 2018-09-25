@@ -2,17 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import Header from './Header';
-import Title from '../Utils/Title';
-import Description from '../Utils/Description';
-import Commentaries from '../Utils/Commentaries';
-import Tags from '../Utils/Tags';
-import Footer from './Footer';
+import EditUI from './EditUI';
 
 import { loadNote, resetNote } from '../../../actions/notes-operations';
 import { updateNote, deleteNote } from '../../../actions/notes-data';
 
 class Edit extends React.Component {
+  state = {
+    loaded: false
+  }
+
+  finishLoading = () => this.setState({ loaded: true })
+
   finishEdit = () => {
     axios
       .put('/api/notes', this.props.note)
@@ -41,7 +42,10 @@ class Edit extends React.Component {
 
     axios
       .get(`/api/notes/${id}`)
-      .then(res => loadNote(res.data))
+      .then(res => {
+        loadNote(res.data);
+        this.finishLoading();
+      })
       .catch(err => console.log(err));
   }
 
@@ -51,17 +55,12 @@ class Edit extends React.Component {
   }
 
   render() {
+    const { loaded } = this.state;
+
+    if (!loaded) return <div></div>
+
     return (
-      <div className="notes-edit-page">
-        <div className="notes-edit">
-          <Header />
-          <Title />
-          <Description />
-          <Commentaries />
-          <Tags />
-          <Footer finishEdit={this.finishEdit} deleteNote={this.deleteNote} />
-        </div>
-      </div>
+      <EditUI />
     );
   }
 }

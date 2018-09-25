@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
-const Functions = () => (
-  <div className="collections-functions">
-    <Link className="collections-button" to='/Collections/Add'> ADD </Link>
-  </div>
-);
+const Functions = (props) => {
+  const goToCollectionsAdd = () => props.history.push('/Collections/Add');
 
-export default Functions;
+  return (
+    <div className="collections-functions">
+      <Button className="functions-button" onClick={goToCollectionsAdd}> Add </Button>
+      <Button className="functions-button" > Filter </Button>
+    </div>
+  );
+}
+
+export default withRouter(Functions);

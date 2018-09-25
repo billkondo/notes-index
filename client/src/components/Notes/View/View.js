@@ -10,10 +10,26 @@ import { loadNote, resetNote } from '../../../actions/notes-operations';
 
 class View extends React.Component {
   state = {
-    flipped: false
+    flipped: false,
+    loaded: false
   }
 
   flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }));
+  finishLoading = () => this.setState({ loaded: true });
+
+  componentWillMount() {
+    const id = this.props.match.params.id;
+    const { loadNote } = this.props;
+
+    axios
+      .get(`/api/notes/${id}/`)
+      .then(res => {
+        const note = res.data;
+        loadNote(note);
+        this.finishLoading();
+      })
+      .catch(err => console.log(err));
+  }
 
   componentWillUnmount() {
     const { resetNote } = this.props;
@@ -21,12 +37,12 @@ class View extends React.Component {
   }
 
   render() {
-    const { flipped } = this.state;
+    const { flipped, loaded } = this.state;
 
     return (
       <div className="view-page">
-        <ViewFront flipSide={this.flipSide} flipped={!flipped} />
-        <ViewBack flipSide={this.flipSide} flipped={flipped} />
+        { !flipped && loaded && <ViewFront flipSide={this.flipSide} /> }
+        {  flipped && loaded &&  <ViewBack flipSide={this.flipSide} /> }
       </div>
     );
   }

@@ -7,31 +7,19 @@ import Description from './Description';
 import Commentaries from './Commentaries';
 import Footer from './Footer';
 
-const ViewFront = ({ flipSide, flipped }) => (
-  <CSSTransition
-    in={flipped}
-    timeout={1000}
-    mountOnEnter={true}
-    unmountOnExit={true}
-    classNames={{
-      enter: "animated", 
-      exit: "animated",
-    }}
-    exit={false}
-    enter={false}
-  >
-    <div className="view-note">
-      <Header />
-      <Description />
-      <Commentaries />
-      <Footer flipSide={flipSide} />
-    </div>
-  </CSSTransition>
+import Fade from '../../High_Order/Fade';
+
+const ViewFront = ({ flipSide }) => (
+  <div className="view-note">
+    <Header />
+    <Description />
+    {/* <Commentaries /> */}
+    <Footer flipSide={flipSide} />
+  </div>
 );
 
 ViewFront.propTypes = {
-  flipSide: propTypes.func.isRequired,
-  flipped: propTypes.bool.isRequired
+  flipSide: propTypes.func.isRequired
 }
 
-export default ViewFront;
+export default Fade(ViewFront);

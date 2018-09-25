@@ -9,7 +9,8 @@ const defaultState = {
   title: "",
   description: "",
   tags: [],
-  tag: ""
+  tag: "",
+  isLoaing: false
 };
 
 export default (state = defaultState, action) => {

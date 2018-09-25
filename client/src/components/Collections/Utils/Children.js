@@ -10,7 +10,7 @@ const ChildrenHeader = () => (
     </div>
 
     <div className="controls">
-      <Button className="button"> +  Collection</Button>
+      {/* <Button className="button"> +  Collection</Button> */}
       <Button className="button"> +  Note</Button>
     </div>
   </div>

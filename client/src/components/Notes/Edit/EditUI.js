@@ -3,21 +3,22 @@ import React from 'react';
 import Header from './Header';
 import Title from '../Utils/Title';
 import Description from '../Utils/Description';
+import Commentaries from '../Utils/Commentaries';
 import Tags from '../Utils/Tags';
-import Children from '../Utils/Children';
-import Submit from './Submit';
+import Footer from './Footer';
 
-const Add = () => (
-  <div className="collections-add-page">
-    <div className="collections-add">
+import Fade from '../../High_Order/Fade';
+
+const EditUI = () => (
+  <div className="notes-edit-page"> 
+    <div className="notes-edit">
       <Header />
       <Title />
       <Description />
+      <Commentaries />
       <Tags />
-      <Children />
-      <Submit />
     </div>
   </div>
 );
 
-export default Add;
+export default Fade(EditUI);

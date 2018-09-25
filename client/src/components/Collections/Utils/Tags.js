@@ -51,7 +51,7 @@ const TagsContainer = ({ tags }) => (
 
 const Tags = ({ tag, tags, writeTag, addTag }) => {
   const canAdd = () => {
-    if (tag.trim() && tags.indexOf(tag.trim()) === -1)
+    if (tag.trim() && tags.indexOf(tag) === -1)
       return true;
 
     return false;

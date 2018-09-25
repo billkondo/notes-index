@@ -7,16 +7,14 @@ import NoteCard from './NoteCard';
 const ContainerNotes = ({ notes, transition }) => (
   <div id="container-notes">
     {
-      notes.map(value => <NoteCard key={value.id} note={value} transition={transition}/>)
+      notes.map(value => <NoteCard key={value.id} note={value} transition={transition} />)
     }
   </div>
 );
 
 ContainerNotes.propTypes = {
-  notes: propTypes.arrayOf(Object),
-  transition: propTypes.func.isRequired
+  notes: propTypes.arrayOf(Object)
 }
-
 
 export default connect(
   (state) => ({

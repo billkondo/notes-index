@@ -1,23 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
-const DescriptionUI = ({ description }) => (
-  <div id="description-view">
-    <div id="description-title-box">
-      <div id="description-icon"> <i className="fas fa-book" /> </div>
-      <div id="description-title"> Description </div>
+const Description = ({ description }) => (
+  <div className="notes-view-description">
+    <div className="header">
+      <div className="icon"> <i className="fas fa-book" /> </div>
+      <div className="title"> Description </div>
     </div>
 
-    {/* <div id="description-editor">
-      <Editor editorState={EditorState.createWithContent(parseContent(description))} readOnly={true} />
-    </div> */}
+    <div className="editor">
+      {description}
+    </div>
   </div>
 );
 
-const Description = connect(
+Description.propTypes = {
+  description: propTypes.string.isRequired
+}
+
+export default connect(
   (state) => ({
     description: state.notesOperations.description
   })
-)(DescriptionUI)
-
-export default Description;
+)(Description)

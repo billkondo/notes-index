@@ -3,11 +3,12 @@
   width: 12.5rem;
   border-radius: 0.4rem;
 
-  padding: $small-font;
+  padding: $medium-font;
 
   display: grid;
 
   grid-template-rows: $large-font auto;
+  grid-gap: 1rem;
 
   background: $card-background;
   
@@ -66,7 +67,6 @@
     font-family: "Comfortaa";
     font-size: $small-font;
     padding: $medium-font;
-    margin: $medium-font;
     background: darkgray;
     border-radius: 0.4rem;
     overflow: hidden;

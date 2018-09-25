@@ -9,7 +9,6 @@
   box-shadow: 0.2rem 0.2rem 0.5rem #333;
 
   .page-dropdown-line {
-    box-sizing: content-box;
     font-size: 1rem;
     font-family: "ABeeZee";
 
@@ -20,9 +19,4 @@
   .page-dropdown-line:hover {
     background: #1373af;
   }
-
-  a {
-    display: block;
-  }
-  
 }

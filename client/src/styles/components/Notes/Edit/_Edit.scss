@@ -3,12 +3,9 @@
 
   .notes-edit {
     position: relative;
-    background-color: lightgrey;
-    width: $big-card-width;
     min-height: $big-card-height;
-    display: grid;
-    grid-template-rows: auto;
+    width: $big-card-width;
+    background-color: $card-color;
     border-radius: 0.2rem; 
-    grid-row-gap: $small-font;
   }
 }

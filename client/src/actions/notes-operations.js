@@ -125,23 +125,21 @@ export const submitNote = (updateURL) => {
       title: note.title, 
       description: note.description,
       commentaries: note.commentaries, 
-      tags: note.commentaries,
+      tags: note.tags,
       id: uuidv4()
     };
-
-    console.log(newNote);
-
-    return;
 
     axios
       .post('/api/notes', newNote)
       .then(res => {
-        if (res.err.name === 'TokenExpiredError') {
+        if (res.err) {
 
         }
         else {
           updateURL();
         }
+
+        dispatch({ type: END_LOADING });
       })
       .catch()
   }

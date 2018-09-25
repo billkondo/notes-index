@@ -3,7 +3,7 @@ import DropdownCustom from './Dropdown';
 import { Dropdown, DropdownToggle } from 'reactstrap';
 
 import Fade from '../High_Order/Fade';
-import { profile, notes, collections, favorites } from './dropdown-actions';
+import Action from '../High_Order/Action';
 
 class Profile extends React.Component {  
   state = {
@@ -11,9 +11,11 @@ class Profile extends React.Component {
   }
 
   toggle = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  close = () => this.setState({ isOpen: false });
 
   render() {
     const { isOpen } = this.state;
+    const { profile, notes, collections, favorites, logout } = this.props;
 
     return (
       <Dropdown id="page-profile" isOpen={isOpen} toggle={this.toggle} > 
@@ -24,12 +26,12 @@ class Profile extends React.Component {
           </div>
         </DropdownToggle>
 
-        <DropdownCustom toggle={this.toggle}
-          items={[profile, notes, collections, favorites, { label: "Log Out", onClick: this.props.logOut }]}
+        <DropdownCustom close={this.close}
+          items={[profile(), notes(), collections(), favorites(), logout()]}
         />
       </Dropdown>
     );
   }
 }
 
-export default Fade(Profile);
+export default Action(Fade(Profile));
