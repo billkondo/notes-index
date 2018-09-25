@@ -6,6 +6,7 @@ import verify from '../../validation/verifyMiddleware';
 
 const router = express.Router();
 
+// Getting List of Notes from Database
 router.get('/', verify, (req, res) => {
   Note
     .find({ userId: req.userId })
@@ -14,6 +15,7 @@ router.get('/', verify, (req, res) => {
     .then(notes => res.status(200).json(notes));
 });
 
+// Getting a specific Note from Database
 router.get('/:id', (req, res) => {
   const id = req.params.id;
   
@@ -38,33 +40,32 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).json({ success: false, err }))
 });
 
-router.post('/', (req, res) => {
-  // jwt.verify(req.body.token, 'secret', (err, decoded) => {
-  //   if (err) {
-  //     res.status(200).json({ err });
-  //   }
-  //   else {
-  //     const newNote = new Note({
-  //       title: req.body.title,
-  //       description: req.body.description,
-  //       commentaries: req.body.commentaries,
-  //       tags: req.body.tags,
-  //       id: req.body.id,
-  //       userId: decoded.userId
-  //     });
+// Adding Note To Database
+router.post('/', verify, (req, res) => {
+  const newNote = new Note({
+    title: req.body.title,
+    description: req.body.description,
+    commentaries: req.body.commentaries,
+    tags: req.body.tags,
+    id: req.body.id,
+    userId: req.userId
+  });
     
-  //     newNote.save().then(item => res.json(item));
-  //   }
-  // })
+  newNote
+    .save()
+    .then(item => res.status(200).json(item))
+    .catch(err => res.status(500).json({ success: false, err }));
 });
 
-router.put('/', (req, res) => {
+// Updating Note from Database
+router.put('/', verify, (req, res) => {
   const newNote = {
     title: req.body.title,
     description: req.body.description,
     commentaries: req.body.commentaries,
     tags: req.body.tags,
-    id: req.body.id
+    id: req.body.id,
+    userId: req.userId
   }
 
   Note
@@ -82,6 +83,7 @@ router.put('/', (req, res) => {
   .catch(err => next(err));
 });
 
+// Deleting Note from Database
 router.delete('/', (req, res) => {
   Note
     .findOneAndRemove({ "id": req.body.id })
