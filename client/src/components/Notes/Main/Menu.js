@@ -5,16 +5,16 @@ import axios from 'axios';
 
 import Functions from './Functions';
 import ContainerNotes from './ContainerNotes';
+import Filter from './Filter';
 
-import { loadNotes } from '../../../actions/notes-data';
-import { endFilter } from '../../../actions/notes-router';
+import { loadNotes, filterOff } from '../../../actions/notes-data';
 import { loadNote } from '../../../actions/notes-operations';
 
 class Menu extends React.Component {
   componentWillMount() {
-    const { endFilter, loadNotes } = this.props;
-
-    endFilter();
+    const { filterOff, loadNotes } = this.props;
+    
+    filterOff();
 
     axios
       .get('/api/notes')
@@ -29,6 +29,7 @@ class Menu extends React.Component {
       <div className="notes-menu">
         <div className="notes-title"><i className="fas fa-sticky-note large-font" /> Notes </div>
         <Functions />
+        <Filter />
         <ContainerNotes transition={this.transition} />
       </div>
     );
@@ -36,10 +37,10 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  endFilter: propTypes.func.isRequired
+  filterOff: propTypes.func.isRequired
 }
 
 export default connect(
   null,
-  { loadNotes, endFilter, loadNote }
+  { loadNotes, filterOff, loadNote }
 )(Menu);

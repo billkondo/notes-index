@@ -1,4 +1,5 @@
 .view-page {
+  position: relative;
   width: $big-card-width;
   min-height: $big-card-height;
  
@@ -6,13 +7,9 @@
     position: relative;
     width: $big-card-width;
     min-height: $big-card-height;
-    background: lightgrey;
+    background: $card-color;
     
     border-radius: $small-button-radius;
-    display: grid;
-    grid-template-rows: auto;
-
-    overflow: hidden;
 
     margin-bottom: 3rem;
     border-radius: 0.2rem

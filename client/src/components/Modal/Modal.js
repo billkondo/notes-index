@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 
 import { endModal } from '../../actions/modal';
 
-const ModalUI = ({ modalRender, endModal, exitFunction, redButton, greenButton, WarningMessage }) => (
+const Modal = ({ modalRender, endModal, exitFunction, redButton, greenButton, WarningMessage }) => (
   <CSSTransition
     in={modalRender}
     timeout={500}
@@ -37,7 +37,7 @@ const ModalUI = ({ modalRender, endModal, exitFunction, redButton, greenButton, 
   </CSSTransition>
 );
 
-ModalUI.propTypes = {
+Modal.propTypes = {
   modalRender: propTypes.bool.isRequired,
   endModal: propTypes.func.isRequired,
   exitFunction: propTypes.func.isRequired,
@@ -46,7 +46,7 @@ ModalUI.propTypes = {
   WarningMessage: propTypes.func.isRequired
 }
 
-const Modal = connect(
+export default connect(
   (state) => ({
     modalRender: state.modal.modalRender,
     redButton: state.modal.redButton,
@@ -54,9 +54,5 @@ const Modal = connect(
     WarningMessage: state.modal.WarningMessage,
     exitFunction: state.modal.exitFunction
   }),
-  (dispatch) => ({
-    endModal: () => dispatch(endModal())
-  })
-)(ModalUI)
-
-export default Modal;
+  { endModal }
+)(Modal);

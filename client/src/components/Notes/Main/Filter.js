@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Collapse, Card, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Collapse, Card, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 import ExitButton from '../../Buttons/ExitButton';
 import Tag from './FilterTag';
 
-import { endFilter } from '../../../actions/notes-router';
+import { filterOff } from '../../../actions/notes-data';
 
 class Filter extends React.Component {
   state = {
@@ -39,24 +39,19 @@ class Filter extends React.Component {
     })
   
   render() {
-    const { render, endFilter } = this.props;
-
+    const { filter, filterOff } = this.props;
+    
     return (
-      <Collapse 
-        isOpen={render} 
-      >
-        <Card id="menu-filter">
+      <Collapse isOpen={filter} >
+        <Card className="notes-filter">
+          <ExitButton click={filterOff} />
 
-          <ExitButton click={endFilter} />
-
-          <div id="tags">
-            <InputGroup id="header">    
+          <div className="header">
+            <InputGroup className="input">    
               <InputGroupAddon addonType="prepend">
-                <i className="fas fa-hashtag icon" />
-                <p>Tags</p>
+                TAGS
               </InputGroupAddon>
               <Input 
-                className="input-tag" 
                 onChange={this.onChange} 
                 onKeyDown={this.onKeyDown} 
                 value={this.state.tag} 
@@ -64,7 +59,7 @@ class Filter extends React.Component {
             </InputGroup>
           </div>
 
-          <div id="tags-container">
+          <div className="tags-container">
             {
               this.state.tags.map(tag => {
                 return (
@@ -74,9 +69,9 @@ class Filter extends React.Component {
             }
           </div>
 
-          <button id="tags-submit">
+          <Button className="tags-submit">
             FILTER
-          </button>
+          </Button>
           
         </Card>
       </Collapse>
@@ -86,9 +81,7 @@ class Filter extends React.Component {
 
 export default connect(
   (state) => ({
-    render: state.notesRouter.renderFilter
+    filter: state.notesData.filter
   }),
-  (dispatch) => ({
-    endFilter: () => dispatch(endFilter())
-  })
+  { filterOff }
 )(Filter);

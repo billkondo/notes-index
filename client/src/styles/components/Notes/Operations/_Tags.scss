@@ -14,7 +14,7 @@
       align-items: center;
       font-size: $small-font;
       font-weight: bold;
-      font-family: 'Merriweather';
+      font-family: "Baloo Bhai";
     }
 
     .controls {
@@ -22,11 +22,12 @@
       grid-template-columns: auto 2rem;
       align-items: center;
       justify-items: start;
+      font-family: "Baloo Bhai";
     }
   }
 
   .container-tags {
-    font-family: "Merriweather";
+    font-family: "Baloo Bhai";;
     font-size: $small-font;
     display: grid;
     grid-gap: 0.5rem;
@@ -37,9 +38,10 @@
       align-items: center;
       justify-items: center;
       background: $tag-color;
-      color: white;
+      color: $white;
       border-radius: 0.2rem;
       padding: 0.75rem;
+      font-family: "Baloo Bhai";
     }
 
     .tag:hover {

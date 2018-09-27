@@ -13,7 +13,7 @@ const ViewFront = ({ flipSide }) => (
   <div className="view-note">
     <Header />
     <Description />
-    {/* <Commentaries /> */}
+    <Commentaries />
     <Footer flipSide={flipSide} />
   </div>
 );

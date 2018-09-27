@@ -1,31 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Tag from './Tag';
+const Tag = ({ tag }) => (
+  <div className="tag">
+    {tag}
+  </div>
+);
 
-const TagsUI = ({ tags }) => (
-  <div id="tags-view">
-    <div id="tags-title">
-      <div id="tag-icon"><i className="fas fa-hashtag" /></div>
-      <div id="tag-title"> Tags </div>
+const Tags = ({ tags }) => (
+  <div className="notes-tags-view">
+    <div className="header">
+      <i className="fas fa-hashtag icon" />
+      Tags
     </div>
 
-    <div id="tags-container">
+    <div className="tags">
       {
-        tags.map((value, index) => {
-          return (
-            <Tag key={index} tag={value} />
-          );
-        })
+        tags.map(tag => <Tag key={tag} tag={tag} />)
       }
     </div>
   </div>
 );
 
-const Tags = connect(
+export default connect(
   (state) => ({
     tags: state.notesOperations.tags
   })
-)(TagsUI);
-
-export default Tags;
+)(Tags);

@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+
+import Fade from '../../High_Order/Fade';
 import ExitButton from '../../Buttons/ExitButton';
 
 class FilterTag extends React.Component {
@@ -42,4 +44,4 @@ FilterTag.propTypes = {
   deleteTag: propTypes.func.isRequired
 }
 
-export default FilterTag;
+export default Fade(FilterTag);

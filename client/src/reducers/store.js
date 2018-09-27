@@ -3,18 +3,18 @@ import thunk from 'redux-thunk';
 
 import notesData from './notes-data';
 import notesOperations from './notes-operations';
-import notesRouter from './notes-router';
 import authentication from './authentication';
 import collectionsRouter from './collections-router';
 import collectionsOperations from './collections-operations';
+import modal from './modal';
 
 const store = createStore(combineReducers({
   notesData,
   notesOperations , 
   authentication,
-  notesRouter,
   collectionsRouter,
-  collectionsOperations
+  collectionsOperations,
+  modal
 }), applyMiddleware(thunk));
 
 store.subscribe(() => {

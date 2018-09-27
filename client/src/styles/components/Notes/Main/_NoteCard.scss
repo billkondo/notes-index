@@ -18,10 +18,12 @@
     align-self: start;
 
     grid-template-columns: 1fr 1fr;
+    color: $white;
+    padding: 0.5rem;
 
     .note-display-title {
       font-size: $small-font;
-      font-family: "Merriweather";
+      font-family: "Baloo Bhai";
 
       align-self: center;
       justify-self: start;
@@ -35,6 +37,8 @@
       display: grid;
       align-items: center;
       justify-items: start;
+
+      letter-spacing: 0.1rem;
     }
 
     .controls {
@@ -64,7 +68,7 @@
   }
 
   .description {
-    font-family: "Comfortaa";
+    font-family: "Baloo Bhai";
     font-size: $small-font;
     padding: $medium-font;
     background: darkgray;

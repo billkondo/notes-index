@@ -1,5 +1,4 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
 import propTypes from 'prop-types';
 
 import Header from './Header';
@@ -11,7 +10,7 @@ import Fade from '../../High_Order/Fade';
 const ViewBack = ({ flipSide }) => (
   <div className="view-note">
     <Header />
-    {/* <Tags /> */}
+    <Tags />
     <Footer flipSide={flipSide} />
   </div>
 );

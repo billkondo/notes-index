@@ -1,22 +1,18 @@
 .tag-filter {
   position: relative;
-  
-  min-height: $large-font;
-  font-size: $small-font;
-  font-family: "Merriweather";
-
-  display: inline-block;
-
   background: $tag-color;
-  color: white;
-  border-radius: $small-button-radius;
+  font-family: "Baloo Bhai";
+  color: $white;
 
   display: grid;
-
   align-items: center;
   justify-items: center;
 
-  padding: $small-font;
+  padding: 0.5rem;
+}
 
-  cursor: pointer;
+.tag-filter:hover {
+  background-color: #353839;
+  color: darkgray;
+  transition: all 500ms ease-out;
 }

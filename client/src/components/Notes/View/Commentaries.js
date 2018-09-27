@@ -1,30 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Comment from './Comment';
 
-const CommentariesUI = ({ commentaries }) => (
-  <div id="commentaries-view">
-    <div id="commentaries-title">
-      <div id="commentaries-icon"><i className="fas fa-book-open" /></div>
-      <div id="commentaries-text">Commentaries</div>
+const Comment = ({ comment }) => (
+  <div className="comment">
+    { comment } 
+  </div>
+);
+
+const Commentaries = ({ commentaries }) => (
+  <div className="notes-commentaries-view">
+    <div className="header">
+      <i className="fas fa-book-open icon" />
+      Commentaries
     </div>
 
-    <div id="commentaries-container">
+    <div className="commentaries">
       {
-        commentaries.map(value => {
-          return (
-            <Comment comment={JSON.parse(value).contentState} key={JSON.parse(value).id} />
-          );
-        })
+        commentaries.map(value => <Comment key={value.id} comment={value.comment} />)
       }
     </div>
   </div>
 );
 
-const Commentaries = connect(
+export default connect(
   (state) => ({
     commentaries: state.notesOperations.commentaries
   })
-)(CommentariesUI);
-
-export default Commentaries;
+)(Commentaries);

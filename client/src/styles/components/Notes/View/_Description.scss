@@ -1,13 +1,15 @@
 .notes-view-description {
+  padding-top: $large-font;
+  padding-bottom: $small-font;  
+
   .editor {
     position: relative;
-    align-self: start;
 
     display: block;
     margin: $small-font;
     padding: $small-font;
-    font-size: $small-font;
-    font-family: "Merriweather";
+    font-size: 1rem;
+    font-family: "Baloo Bhai";
     background: darkgrey;
     border-radius: $small-button-radius; 
     line-height: $large-font;
@@ -15,8 +17,8 @@
 
   .header {
     margin: $small-font;
-    font-size: $small-font;
-    font-family: "Merriweather";
+    font-size: $medium-font;
+    font-family: "Baloo Bhai";
 
     .icon, .title {
       display: inline-block;

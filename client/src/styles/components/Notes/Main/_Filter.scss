@@ -1,58 +1,38 @@
-#menu-filter {
+.notes-filter {
   position: relative;
 
   padding: $small-font;
   align-self: center;
-  width: 50vw;
 
-  background:#D9D6CF;
-  border-radius: $extra-small-font;
+  background: linear-gradient(#47484a, #5b5e6a);
+  border-radius: 0.2rem;
 
-  min-height: 20vh;
+  width: 25rem;
+  min-height: 5rem;
 
-  #tags {
+  .header {
     margin: $small-font;
-
-    #header {
-      .icon, p {
-        display: inline-block;
-        display: grid;
-        align-items: center;
-        justify-items: center;
-      }
-
-      .input-group-prepend {
-        background: $tag-color;
-        color: white;
-        font-size: $medium-font;
-        border-radius: $small-button-radius 0 0 $small-button-radius;
-      }
-
-      .icon {
-        font-size: $small-font;
-        margin: $extra-small-font;
-      }
-
-      p {
-        margin-right: $extra-small-font;
-      }
-    }
+    font-family: "Baloo Bhai";
+    font-size: $small-font;
   }
 
-  #tags-container {
+  .tags-container {
     margin: $small-font;
     padding: $small-font;
 
     display: grid;
-
-    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: $extra-small-font;
+    font-family: "Baloo Bhai";
   }
 
-  #tags-submit {
+  .tags-submit {
     margin: $small-font;
-    font-size: $small-font;
-    font-family: "Merriweather";
-    padding: $small-font;
+    letter-spacing: 0.15rem;
+    font-size: $medium-font;
+    font-family: "Baloo Bhai";
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
   }
 }

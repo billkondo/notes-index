@@ -1,27 +1,26 @@
-#commentaries-view {
-  align-self: start;
+.notes-commentaries-view {
+  padding-top: $large-font; 
+  padding-bottom: $small-font;
 
-  margin: $large-font;
-  font-family: "Anonymous Pro";
-  font-size: $small-font; 
+  .header {
+    margin: $small-font;
+    font-family: "Baloo Bhai";
+    font-size: $medium-font;
 
-  #commentaries-title {
-    font-size: $small-font;
-    font-family: "Merriweather";
-
-    #commentaries-icon, #commentaries-text {
-      display: inline-block;
+    .icon {
+      margin-right: $small-font;
     }
-
-    #commentaries-icon {
-      margin-right: $small-font
-    }
-
-    margin-bottom: $extra-small-font;
   }
 
-  #commentaries-container {
-    background: #C9C0BB;
-    border-radius: $small-button-radius;  
+  .commentaries {
+    font-family: "Baloo Bhai";
+    font-size: 1rem;
+    margin: $small-font;
+
+    .comment {
+      padding: $small-font;
+      background-color: darkgray; 
+      border-radius: 0.2rem;
+    }
   }
 }

@@ -1,37 +1,8 @@
 import {
   LOAD_NOTES,
-  ADD_NOTE,
-  DELETE_NOTE,
-  UPDATE_NOTE
+  FILTER_ON, 
+  FILTER_OFF
 } from '../types/notes-data';
-
-export const addNote = (note) => {
-  return dispatch => {
-    dispatch({
-      type: ADD_NOTE,
-      note
-    });
-  }
-}
-
-export const deleteNote = (id) => {
-  return dispatch => {
-    dispatch({
-      type: DELETE_NOTE, 
-      id
-    });
-  }
-}
-
-export const updateNote = (id, note) => {
-  return dispatch => {
-    dispatch({
-      type: UPDATE_NOTE, 
-      id, 
-      note
-    })
-  }
-}
 
 export const loadNotes = (notes) => {
   return dispatch => {
@@ -39,5 +10,17 @@ export const loadNotes = (notes) => {
       type: LOAD_NOTES, 
       notes
     });
+  }
+}
+
+export const filterOn = () => {
+  return dispatch => {
+    dispatch({ type: FILTER_ON });
+  }
+}
+
+export const filterOff = () => {
+  return dispatch => {
+    dispatch({ type: FILTER_OFF });
   }
 }

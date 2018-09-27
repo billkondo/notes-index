@@ -13,12 +13,14 @@ import NotesView from './Notes/View/View';
 import CollectionsMenu from './Collections/Main/Menu';
 import CollectionsAdd from './Collections/Add/Add';
 import SignIn from './SignIn/SignIn';
+import Modal from './Modal/Modal';
 
 
 const AppRouter = () => (
   <BrowserRouter>
     <div id="app">
       <Route path='/'component={Header} />
+      <Modal />
      
       <div id="app-body">
         <div id="app-body-main">

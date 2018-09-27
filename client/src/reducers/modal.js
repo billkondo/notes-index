@@ -17,7 +17,7 @@ const defaultState = {
   exitFunction: exitFunctionDefault
 }
 
-const modalReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case START_MODAL:
       return {
@@ -31,7 +31,7 @@ const modalReducer = (state = defaultState, action) => {
 
     case END_MODAL:
       return {
-        ...state,
+        ...state, 
         modalRender: false
       }
 
@@ -39,5 +39,3 @@ const modalReducer = (state = defaultState, action) => {
       return state;
   }
 }
-
-export default modalReducer;
