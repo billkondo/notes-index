@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
 
 import ErrorMessage from './ErrorMessage';
 import SignInForm from './SignInForm';
@@ -24,7 +25,7 @@ class SignIn extends React.Component {
         <div className="sign-in">
           <div className="sign-in-logo"> Notes Index </div>
 
-          { errors.match && <ErrorMessage message={errors.match} />}
+          <ErrorMessage message={errors.match} shouldRender={!isEmpty(errors.match)} />
 
           <div className="sign-in-form-container">
             <SignInForm errors={errors} setErrors={this.setErrors} /> 

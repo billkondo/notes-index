@@ -8,12 +8,14 @@ import { endModal } from '../../actions/modal';
 const Modal = ({ modalRender, endModal, exitFunction, redButton, greenButton, WarningMessage }) => (
   <CSSTransition
     in={modalRender}
-    timeout={500}
+    timeout={{
+      enter: 500,
+      exit: 0
+    }}
     classNames={{
       enter: "animated",
       exit: "animated",
-      enterActive: "fadeIn faster",
-      exitActive: "fadeOut faster"
+      enterActive: "fadeIn faster"
     }}
     mountOnEnter={true}
     unmountOnExit={true}

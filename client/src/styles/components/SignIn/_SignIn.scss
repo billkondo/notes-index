@@ -5,7 +5,11 @@
   .sign-in {
     grid-column: 2/3;
 
+    display: grid;
+    grid-template-rows: 10rem 3rem 20rem;
+
     .sign-in-logo {
+      grid-row: 1/2;
       font-size: 2rem;
       font-family: "Josefin Sans";
       color: white;
@@ -19,6 +23,7 @@
     }
 
     .sign-in-form-container {
+      grid-row: 3/4;
       display: grid;
       align-items: center;
       justify-items: center;

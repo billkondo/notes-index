@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Collapse, Card, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 import ExitButton from '../../Buttons/ExitButton';
 import Tag from './FilterTag';
 
-import { filterOff } from '../../../actions/notes-data';
+import { filterOff, loadNotes } from '../../../actions/notes-data';
 
 class Filter extends React.Component {
   state = {
@@ -37,6 +38,22 @@ class Filter extends React.Component {
         tags: prevState.tags.filter(value => value !== tag)
       }
     })
+
+  submit = () => {
+    const { tags } = this.state; 
+    const { loadNotes, filterOff } = this.props;
+    
+    this.setState({ tags: [] })
+
+    axios
+      .get(`/api/notes/filter`, { params: { tags } })
+      .then(res => {
+        const notes = res.data.notes;
+        loadNotes(notes);
+        filterOff();
+      })
+      .catch(err => console.log(err));
+  }
   
   render() {
     const { filter, filterOff } = this.props;
@@ -69,7 +86,7 @@ class Filter extends React.Component {
             }
           </div>
 
-          <Button className="tags-submit">
+          <Button className="tags-submit" onClick={this.submit} >
             FILTER
           </Button>
           
@@ -83,5 +100,5 @@ export default connect(
   (state) => ({
     filter: state.notesData.filter
   }),
-  { filterOff }
+  { filterOff, loadNotes }
 )(Filter);

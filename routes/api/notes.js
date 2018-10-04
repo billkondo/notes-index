@@ -4,7 +4,33 @@ import isEmpty from 'lodash/isEmpty';
 
 import verify from '../../validation/verifyMiddleware';
 
+// verify: Middleware to check user authorization
+//         After authorization, you can access the user id in req.userId
+
 const router = express.Router();
+
+// Filter Notes 
+router.get('/filter', verify, (req, res) => {
+  Note  
+    .find({ userId: req.userId })
+    .exec()
+    .then(notes => {
+      const { tags } = req.query;
+      let filteredNotes = [];
+
+      for (const note of notes) {
+        for (const tag of tags) {
+          if (note.tags.indexOf(tag) !== -1) {
+            filteredNotes.push(note);
+            break;
+          }
+        }
+      }
+
+      res.status(200).json({ notes: filteredNotes });
+    })
+    .catch(err => res.status(500).json({ err, success: false }));
+}); 
 
 // Getting List of Notes from Database
 router.get('/', verify, (req, res) => {
@@ -18,7 +44,7 @@ router.get('/', verify, (req, res) => {
 // Getting a specific Note from Database
 router.get('/:id', (req, res) => {
   const id = req.params.id;
-  
+
   Note
     .findOne({ id })
     .exec()

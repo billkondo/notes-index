@@ -1,0 +1,27 @@
+.search-note {
+  color: white;
+  padding: $small-font;
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+  outline: none;
+}
+
+.search-note:focus {
+  color:rgb(173, 183, 230);
+  outline: 0;
+}
+
+.title {
+  display: grid;
+  align-items: center;
+  justify-items: start;
+}
+
+.gray {
+  background: #47484a;
+}
+
+.black {
+  background: #1c1d22;
+}

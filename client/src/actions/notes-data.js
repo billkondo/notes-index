@@ -5,6 +5,8 @@ import {
 } from '../types/notes-data';
 
 export const loadNotes = (notes) => {
+  // Receive an Array of notes
+
   return dispatch => {
     dispatch({
       type: LOAD_NOTES, 

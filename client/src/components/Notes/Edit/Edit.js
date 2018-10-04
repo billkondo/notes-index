@@ -57,7 +57,7 @@ class Edit extends React.Component {
   render() {
     const { loaded } = this.state;
 
-    if (!loaded) return <div></div>
+    if (!loaded) return null;
 
     return (
       <EditUI />

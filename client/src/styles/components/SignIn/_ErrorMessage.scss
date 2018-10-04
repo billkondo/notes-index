@@ -1,9 +1,8 @@
 .error-message-container {
+  grid-row: 2/3;
   display: grid;
   align-items: center;
   justify-items: center;
-
-  margin-bottom: 1rem;
 
   .error-message {
     height: 2rem;
@@ -16,5 +15,6 @@
     display: grid;
     align-items: center;
     justify-items: center;
+    font-family: "Baloo Bhai";
   }
 }
