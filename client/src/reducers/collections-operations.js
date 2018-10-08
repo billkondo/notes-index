@@ -5,7 +5,9 @@ import {
   WRITE_DESCRIPTION,
   ADD_CHILDREN,
   REMOVE_CHILDREN,
-  RESET_COLLECTION
+  RESET_COLLECTION,
+  DELETE_TAG,
+  FAVORITE_FLIP
 } from '../types/collections-operations';
 
 const defaultState = {
@@ -14,7 +16,8 @@ const defaultState = {
   tags: [],
   tag: "",
   isLoaing: false,
-  children: []
+  children: [],
+  favorite: false
 };
 
 export default (state = defaultState, action) => {
@@ -38,6 +41,12 @@ export default (state = defaultState, action) => {
         tag: action.tag
       }
 
+    case DELETE_TAG: 
+      return {
+        ...state, 
+        tags: state.tags.filter(tag => tag !== action.tag)
+      }
+
     case WRITE_DESCRIPTION: 
       return {
         ...state, 
@@ -54,6 +63,12 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         children: state.children.filter(child => child.id !== action.note.id)
+      }
+
+    case FAVORITE_FLIP: 
+      return {
+        ...state, 
+        favorite: !state.favorite
       }
 
     case RESET_COLLECTION:

@@ -1,13 +1,16 @@
-#header-edit {
-  min-height: $large-font;
+.notes-edit-header {
   position: relative;
-  font-size: $large-font;
+  height: 4rem; 
+
   display: grid;
+  align-items: center;
+  justify-items: center;
+
+  grid-template-rows: 4rem;
   
-  #header-title {
-    align-self: start;
-    justify-self: center;
+  .title {
     font-family: "Baloo Bhai";
-    padding: $small-font;
+    font-size: $medium-font;
+    color: black;
   } 
 }

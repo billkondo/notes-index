@@ -20,6 +20,7 @@
       grid-template-columns: auto 2rem;
       align-items: center;
       justify-items: start;
+      font-family: "Baloo Bhai";
     }
   }
 
@@ -28,5 +29,31 @@
     display: grid;
     align-items: center;
     justify-items: center;
+    font-family: "Baloo Bhai";
+
+    display: grid;
+    grid-gap: 0.5rem;
+
+    align-items: center;
+    justify-items: stretch;
+
+    .collections-utils-tag {
+      position: relative;
+      font-size: 1rem;
+      color: white;
+      padding: $small-font;
+      background: $tag-color;
+      border-radius: 0.2rem;
+
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .collections-utils-tag:hover {
+      background-color: #353839;
+      color: darkgray;
+      transition: all 500ms ease-out;
+    }
   }
 }

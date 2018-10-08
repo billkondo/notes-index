@@ -36,7 +36,7 @@ router.get('/filter', verify, (req, res) => {
 router.get('/', verify, (req, res) => {
   Note
     .find({ userId: req.userId })
-    .select("title tags commentaries description id")
+    .select("title tags commentaries description favorite id")
     .exec()
     .then(notes => res.status(200).json(notes));
 });
@@ -57,6 +57,7 @@ router.get('/:id', (req, res) => {
           description: note.description, 
           commentaries: note.commentaries, 
           tags: note.tags, 
+          favorite: note.favorite, 
           id: note.id
         };
       }
@@ -73,6 +74,7 @@ router.post('/', verify, (req, res) => {
     description: req.body.description,
     commentaries: req.body.commentaries,
     tags: req.body.tags,
+    favorite: req.body.favorite, 
     id: req.body.id,
     userId: req.userId
   });
@@ -90,23 +92,24 @@ router.put('/', verify, (req, res) => {
     description: req.body.description,
     commentaries: req.body.commentaries,
     tags: req.body.tags,
+    favorite: req.body.favorite, 
     id: req.body.id,
     userId: req.userId
   }
 
   Note
-  .find({ 'id': req.body.id })
-  .exec()
-  .then(notes => {
-    for (let note of notes) {
-      note.set(newNote);
-      note.save(err => {
-        if (err) return res.sendStatus(404);
-        res.sendStatus(200);
-      })
-    }
-  })
-  .catch(err => next(err));
+    .find({ 'id': req.body.id })
+    .exec()
+    .then(notes => {
+      for (let note of notes) {
+        note.set(newNote);
+        note.save(err => {
+          if (err) return res.sendStatus(404);
+          res.sendStatus(200);
+        })
+      }
+    })
+    .catch(err => next(err));
 });
 
 // Deleting Note from Database

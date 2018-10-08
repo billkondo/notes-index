@@ -7,7 +7,8 @@ const noteSchema = new Schema({
   description: String,
   id: String,
   userId: String,
-  childsId: Array
+  childsId: Array, 
+  favorite: { type: Boolean, default: false }
 });
 
 const Collection = mongoose.model('Collection', noteSchema);

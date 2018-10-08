@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { func } from 'prop-types';
 
 import Header from './Header';
 import Title from '../Utils/Title';
@@ -8,6 +10,8 @@ import Children from '../Utils/Children';
 import Submit from './Submit';
 import Search from '../../Modal/Search/Search';
 
+import { resetCollection } from '../../../actions/collections-operations';
+
 class Add extends React.Component {
   state = {
     shouldRender: false
@@ -15,6 +19,11 @@ class Add extends React.Component {
 
   enterSearchMenu = () => this.setState({ shouldRender: true });
   exitSearchMenu = () => this.setState({ shouldRender: false });
+
+  componentWillUnmount() {
+    const { resetCollection } = this.props;
+    resetCollection();
+  }
 
   render() {
     const { shouldRender } = this.state;
@@ -36,4 +45,11 @@ class Add extends React.Component {
   }
 }
 
-export default Add;
+Add.propTypes = {
+  resetCollection: func.isRequired
+}
+
+export default connect(
+  null, 
+  { resetCollection }
+)(Add);

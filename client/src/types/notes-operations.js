@@ -10,3 +10,4 @@ export const LOAD_NOTE = "NOTES_LOAD_NOTE";
 export const WRITE_TAG = "NOTES_WRITE_TAG";
 export const START_LOADING = "NOETS_START_LOADING";
 export const END_LOADING = "NOTES_END_LOADING";
+export const FAVORITE_FLIP = "NOTES_FAVORITE_FLIP";

@@ -13,7 +13,8 @@ import {
   LOAD_NOTE,
   WRITE_TAG,
   START_LOADING, 
-  END_LOADING
+  END_LOADING,
+  FAVORITE_FLIP
 } from '../types/notes-operations';
 
 export const writeTitle = (title) => {
@@ -107,8 +108,15 @@ export const loadNote = (note) => {
       description: note.description, 
       commentaries: note.commentaries, 
       tags: note.tags, 
+      favorite: note.favorite, 
       id: note.id
     });
+  }
+}
+
+export const favoriteFlip = () => {
+  return dispatch => {
+    dispatch({ type: FAVORITE_FLIP });
   }
 }
 
@@ -126,6 +134,7 @@ export const submitNote = (updateURL) => {
       description: note.description,
       commentaries: note.commentaries, 
       tags: note.tags,
+      favorite: note.favorite, 
       id: uuidv4()
     };
 

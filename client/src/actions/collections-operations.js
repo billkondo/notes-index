@@ -1,3 +1,6 @@
+import uuidv4 from 'uuid/v4'; 
+import axios from 'axios';
+
 import { 
   WRITE_TITLE,
   ADD_TAG,
@@ -6,7 +9,8 @@ import {
   ADD_CHILDREN, 
   REMOVE_CHILDREN,
   RESET_COLLECTION,
-  SUBMIT_COLLECTION
+  DELETE_TAG,
+  FAVORITE_FLIP
 } from '../types/collections-operations';
 
 export const writeTitle = (title) => {
@@ -33,6 +37,15 @@ export const writeTag = (tag) => {
       type: WRITE_TAG,
       tag
     });
+  }
+}
+
+export const deleteTag = (tag) => {
+  return dispatch => {
+    dispatch({
+      type: DELETE_TAG,
+      tag
+    })
   }
 }
 
@@ -68,6 +81,12 @@ export const resetCollection = () => {
     dispatch({
       type: RESET_COLLECTION
     })
+  }
+}
+
+export const favoriteFlip = () => {
+  return dispatch => {
+    dispatch({ type: FAVORITE_FLIP });
   }
 }
 

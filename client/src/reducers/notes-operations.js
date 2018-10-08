@@ -10,7 +10,8 @@ import {
   LOAD_NOTE,
   WRITE_TAG,
   START_LOADING, 
-  END_LOADING
+  END_LOADING,
+  FAVORITE_FLIP,
 } from '../types/notes-operations';
 
 const defaultState = {
@@ -20,7 +21,8 @@ const defaultState = {
   tags: [],
   id: "",
   tag: "",
-  isLoading: false
+  isLoading: false,
+  favorite: false
 }
 
 export default (state = defaultState, action) => {
@@ -105,7 +107,14 @@ export default (state = defaultState, action) => {
         tags: action.tags,
         id: action.id,
         tag: "",
+        favorite: action.favorite, 
         isLoading: false
+      }
+
+    case FAVORITE_FLIP:
+      return {
+        ...state, 
+        favorite: !state.favorite
       }
 
     default:

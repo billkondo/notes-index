@@ -12,7 +12,7 @@ const Functions = (props) => {
 
   return (
     <div className="notes-functions" >
-      <Button className="functions-button" onClick={goToNotesAdd} > Create </Button>
+      <Button className="functions-button" onClick={goToNotesAdd} > Add </Button>
       <Button className="functions-button" onClick={filterOn} > Filter </Button>
     </div>
   );

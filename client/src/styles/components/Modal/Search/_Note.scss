@@ -5,13 +5,13 @@
   border-radius: 0;
   border: none;
   outline: none;
-
+  
   .info {
     margin-top: 2rem;
     background: inherit;
     border: none;
   }
-
+  
   .info-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -26,10 +26,10 @@
       text-justify: inter-word;
       font-size: 1rem;
     }
-
+    
     .tags {
       padding: $medium-font;
-
+      
       .tag {
         display: inline-block;
         margin: 0.5rem;
@@ -51,6 +51,7 @@
 }
 
 .title {
+  position: relative;
   display: grid;
   align-items: center;
   justify-items: start;

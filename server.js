@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
 import notes from './routes/api/notes';
+import collections from './routes/api/collections';
 import signUp from './routes/api/authentication/signUp';
 import signIn from './routes/api/authentication/signIn';
 import verifyToken from './routes/api/authentication/verifyToken';
@@ -16,6 +17,7 @@ app.use('/api/auth/signin', signIn);
 app.use('/api/auth/signUp', signUp);
 app.use('/api/auth/verify', verifyToken);
 app.use('/api/notes', notes);
+app.use('/api/collections', collections);
 
 const db = require('./config/keys').mongoURI;
 

@@ -1,6 +1,6 @@
 .note-card {
   height: 20rem;
-  width: 12.5rem;
+  width: 13.5rem;
   border-radius: 0.4rem;
 
   padding: $medium-font;
@@ -74,5 +74,9 @@
     background: darkgray;
     border-radius: 0.4rem;
     overflow: hidden;
+
+    text-align: justify;
+    text-justify: inter-word;
+    color: $black;
   }
 }

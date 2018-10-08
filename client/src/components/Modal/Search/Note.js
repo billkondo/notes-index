@@ -3,10 +3,12 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { Collapse, Card, CardBody } from 'reactstrap';
 
+import Favorite from '../../Buttons/FavoriteButton';
+
 class Note extends React.Component {  
   render() {
     const { note, index, isOpen, setId } = this.props;
-    const { title, description, tags, id } = note;
+    const { title, description, tags, favorite } = note;
 
     return (
       <button
@@ -15,7 +17,9 @@ class Note extends React.Component {
       >
         <div className="title">
           { title }
+          { favorite && <Favorite on={true} /> }
         </div>
+
 
         <Collapse isOpen={isOpen}>
           <Card className="info">
