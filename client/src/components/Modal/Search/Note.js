@@ -3,31 +3,32 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { Collapse, Card, CardBody } from 'reactstrap';
 
-class Note extends React.Component {
-  state = {
-    isOpen: false
-  }
-
-  toggle = () => this.setState({ isOpen: !this.state.isOpen });
-  
+class Note extends React.Component {  
   render() {
-    const { note, index } = this.props;
-    const { title, description, tags } = note;
-    const { isOpen } = this.state;
+    const { note, index, isOpen, setId } = this.props;
+    const { title, description, tags, id } = note;
 
     return (
       <button
         className={classNames("search-note", {"black" : index == 0}, {"gray": index == 1} )}
-        onClick={this.toggle}
+        onClick={() => setId(note)}
       >
         <div className="title">
-          {title}
+          { title }
         </div>
 
         <Collapse isOpen={isOpen}>
-          <Card>
-            <CardBody>
-              oi
+          <Card className="info">
+            <CardBody className="info-body">
+              <div className="description">
+                { description }
+              </div>
+
+              <div className="tags">
+                { 
+                  tags.map(tag => <div key={tag} className="tag"> { tag } </div>)
+                }
+              </div>
             </CardBody>
           </Card>
         </Collapse>
@@ -38,7 +39,9 @@ class Note extends React.Component {
 
 Note.propTypes = {
   note: propTypes.object.isRequired,
-  index: propTypes.number.isRequired
+  index: propTypes.number.isRequired,
+  isOpen: propTypes.bool.isRequired,
+  setId: propTypes.func.isRequired
 }
 
 export default Note;

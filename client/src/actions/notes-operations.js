@@ -141,6 +141,6 @@ export const submitNote = (updateURL) => {
 
         dispatch({ type: END_LOADING });
       })
-      .catch()
+      .catch(err => console.log(err));
   }
 }

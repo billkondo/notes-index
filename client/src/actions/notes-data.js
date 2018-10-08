@@ -1,7 +1,9 @@
 import {
   LOAD_NOTES,
   FILTER_ON, 
-  FILTER_OFF
+  FILTER_OFF,
+  REMOVE_NOTE,
+  ADD_NOTE
 } from '../types/notes-data';
 
 export const loadNotes = (notes) => {
@@ -24,5 +26,23 @@ export const filterOn = () => {
 export const filterOff = () => {
   return dispatch => {
     dispatch({ type: FILTER_OFF });
+  }
+}
+
+export const addNote = (note) => {
+  return dispatch => {
+    dispatch({
+      type: ADD_NOTE, 
+      note
+    })
+  }
+}
+
+export const removeNote = (note) => {
+  return dispatch => {
+    dispatch({
+      type: REMOVE_NOTE, 
+      note
+    })
   }
 }

@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 
 import Fade from '../High_Order/Fade';
 
-const ExitButton = ({ click }) => (
-  <button className="exit-button" onClick={click}><i className="fas fa-times exit-icon" /></button>
+const ExitButton = ({ click, styles }) => (
+  <button className="exit-button" onClick={click} style={styles} ><i className="fas fa-times exit-icon" /></button>
 );
 
 ExitButton.propTypes = {

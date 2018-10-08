@@ -5,11 +5,49 @@
   border-radius: 0;
   border: none;
   outline: none;
+
+  .info {
+    margin-top: 2rem;
+    background: inherit;
+    border: none;
+  }
+
+  .info-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    .description {
+      color: $black;
+      background: white;
+      border-radius: 0.2rem;
+      padding: $medium-font;
+      font-family: "Baloo Bhai";
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 1rem;
+    }
+
+    .tags {
+      padding: $medium-font;
+
+      .tag {
+        display: inline-block;
+        margin: 0.5rem;
+        background: $tag-color;
+        border-radius: 0.2rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-family: "Baloo Bhai";
+        color: $black;
+      }
+    }
+  }
 }
 
 .search-note:focus {
-  color:rgb(173, 183, 230);
+  color: darkgray;
   outline: 0;
+  border: none;
 }
 
 .title {

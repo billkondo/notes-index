@@ -1,5 +1,6 @@
 .collections-utils-children {
   padding: $medium-font;
+  padding-bottom: 2.5rem; 
 
   .collections-utils-children-header {
     display: grid;
@@ -23,6 +24,7 @@
       .button {
         font-size: $small-font;
         font-weight: bold;
+        font-family: "Baloo Bhai";
       }
     }
   }
@@ -30,6 +32,18 @@
   .collections-utils-children-container {
     padding: $medium-font;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    font-family: "Baloo Bhai";
+    font-size: 1rem;
+    
+    .notes {
+      background: #1c1d22;
+
+      .note {
+        position: relative;
+        padding: $small-font;
+        color: white;
+        cursor: pointer;
+      }
+    }
   }
 }

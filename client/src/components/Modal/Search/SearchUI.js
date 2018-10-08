@@ -1,20 +1,48 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ButtonGroup, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { bool, func } from 'prop-types';
 
 import Notes from './Notes';
 import ExitButton from '../../Buttons/ExitButton';
 
+import { addChildren } from '../../../actions/collections-operations';
+import { removeNote } from '../../../actions/notes-data';
+
 class SearchUI extends React.Component {
   state = {
-    option: 0
+    option: 0,
+    noteToSubmit: {},
+    idToSubmit: ""
   }
 
   filpSearch = (value) => this.setState({ option: value });
+
+  setId = (note) => {
+    const { idToSubmit } = this.state;
+    if (idToSubmit === note.id) this.setState({ noteToSubmit: {}, idToSubmit: "" });
+    else this.setState({ noteToSubmit: note, idToSubmit: note.id });
+  }
+
+  onSubmit = () => {
+    const { addChildren, exitSearchMenu, removeNote } = this.props;
+    const { noteToSubmit } = this.state;
+    
+    addChildren(noteToSubmit);
+    removeNote(noteToSubmit);
+    exitSearchMenu();
+
+    this.setState({
+      option: 0,
+      noteToSubmit: {},
+      idToSubmit: ""
+    })
+  }
   
   render() {
     const { shouldRender, exitSearchMenu } = this.props;
-    const { option } = this.state;
+    const { option, idToSubmit } = this.state;
 
     return (
       <CSSTransition
@@ -51,7 +79,16 @@ class SearchUI extends React.Component {
 
               </div>
 
-              {(option == 0) && <Notes /> }
+              {(option == 0) && <Notes id={idToSubmit} setId={this.setId} /> }
+
+              <Button 
+                color="success" 
+                disabled={!idToSubmit} 
+                className="submit"
+                onClick={this.onSubmit}
+              > 
+                Submit 
+              </Button>
             </div>
           </div>
         </div>
@@ -60,4 +97,14 @@ class SearchUI extends React.Component {
   }
 }
 
-export default SearchUI;
+SearchUI.propTypes = {
+  shouldRender: bool.isRequired, 
+  exitSearchMenu: func.isRequired,
+  addChildren: func.isRequired,
+  removeNote: func.isRequired
+}
+
+export default connect(
+  null, 
+  { addChildren, removeNote }
+)(SearchUI);

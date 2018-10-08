@@ -1,3 +1,5 @@
-export const LOAD_NOTES = "LOAD_NOTES";
-export const FILTER_ON = "FILTER_ON";
-export const FILTER_OFF = "FILTER_OFF";
+export const LOAD_NOTES = "NOTES_DATA_LOAD_NOTES";
+export const FILTER_ON = "NOTES_DATA_FILTER_ON";
+export const FILTER_OFF = "NOTES_DATA_FILTER_OFF";
+export const REMOVE_NOTE = "NOTES_DATA_REMOVE_NOTE";
+export const ADD_NOTE = "NOTES_DATA_ADD_NOTE";

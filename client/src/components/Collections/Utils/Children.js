@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button } from 'reactstrap'; 
-import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { array, func } from 'prop-types';
+
+import Note from './Note';
 
 const ChildrenHeader = ({ enterSearchMenu }) => (
   <div className="collections-utils-children-header">
@@ -16,24 +19,30 @@ const ChildrenHeader = ({ enterSearchMenu }) => (
   </div>
 );
 
-const ChildrenContainer = () => (
+const ChildrenContainer = ({ children }) => (
   <div className="collections-utils-children-container">
-    <div className="collections">
-    </div>
     <div className="notes">
+      {
+        children.map((child, index)  => <Note key={child.id} index={index%2} child={child}/>)
+      }
     </div>
   </div>
 );
 
-const Children = ({ enterSearchMenu }) => (
+const Children = ({ children, enterSearchMenu }) => (
   <div className="collections-utils-children">
     <ChildrenHeader enterSearchMenu={enterSearchMenu} />
-    <ChildrenContainer />
+    <ChildrenContainer children={children} />
   </div>
 );
 
 Children.propTypes = {
-  enterSearchMenu: propTypes.func.isRequired
+  children: array.isRequired, 
+  enterSearchMenu: func.isRequired
 }
 
-export default Children;
+export default connect(
+  (state) => ({
+    children: state.collectionsOperations.children
+  })
+)(Children);
