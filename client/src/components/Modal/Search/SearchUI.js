@@ -26,12 +26,11 @@ class SearchUI extends React.Component {
   }
 
   onSubmit = () => {
-    const { addChildren, exitSearchMenu, removeNote } = this.props;
+    const { addChildren, removeNote } = this.props;
     const { noteToSubmit } = this.state;
     
     addChildren(noteToSubmit);
     removeNote(noteToSubmit);
-    exitSearchMenu();
 
     this.setState({
       option: 0,
@@ -75,9 +74,9 @@ class SearchUI extends React.Component {
                 </div>
               </div>
 
-              <div className="sort">
+              {/* <div className="sort">
 
-              </div>
+              </div> */}
 
               {(option == 0) && <Notes id={idToSubmit} setId={this.setId} /> }
 

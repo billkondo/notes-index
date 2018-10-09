@@ -10,7 +10,9 @@ import {
   REMOVE_CHILDREN,
   RESET_COLLECTION,
   DELETE_TAG,
-  FAVORITE_FLIP
+  FAVORITE_FLIP,
+  START_LOAD, 
+  END_LOAD
 } from '../types/collections-operations';
 
 export const writeTitle = (title) => {
@@ -90,9 +92,45 @@ export const favoriteFlip = () => {
   }
 }
 
+export const startLoad = () => {
+  return dispatch => {
+    dispatch({ type: START_LOAD });
+  }
+}
+
+export const endLoad = () => {
+  return dispatch => {
+    dispatch({ type: END_LOAD });
+  }
+}
+
 export const submitCollection = () => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
-    console.log(collection);
+    const children = collection.children.map(child => ({
+        id: child.id,
+        description: child.description,
+        tags: child.tags
+      })
+    );
+
+    const { title, description, tags, favorite } = collection; 
+
+    const newCollection = {
+      title, 
+      description,
+      tags,
+      children, 
+      favorite, 
+      id: uuidv4()
+    };
+
+    startLoad();
+
+    axios
+      .post('/api/collections', newCollection)
+      .then(res => {
+        endLoad();
+      })
   }
 }

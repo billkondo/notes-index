@@ -1,2 +1,4 @@
 export const START_MODAL = "START_MODAL";
 export const END_MODAL = "END_MODAL";
+export const ENTER_SEARCH_MENU = "ENTER_SEARCH_MENU";
+export const EXIT_SEARCH_MENU = "EXIT_SEARCH_MENU";

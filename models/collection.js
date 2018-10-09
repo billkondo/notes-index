@@ -7,7 +7,7 @@ const noteSchema = new Schema({
   description: String,
   id: String,
   userId: String,
-  childsId: Array, 
+  children: Array, 
   favorite: { type: Boolean, default: false }
 });
 

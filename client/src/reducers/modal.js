@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { START_MODAL, END_MODAL } from '../types/modal';
+import { 
+  START_MODAL, 
+  END_MODAL,
+  ENTER_SEARCH_MENU, 
+  EXIT_SEARCH_MENU
+} from '../types/modal';
 
 const WarningMessageDefault = () => (
   <div className="modal-text">
@@ -14,7 +19,8 @@ const defaultState = {
   redButton: "",
   greenButton: "",
   WarningMessage: WarningMessageDefault,
-  exitFunction: exitFunctionDefault
+  exitFunction: exitFunctionDefault,
+  searchRender: false
 }
 
 export default (state = defaultState, action) => {
@@ -33,6 +39,18 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         modalRender: false
+      }
+
+    case ENTER_SEARCH_MENU:
+      return {
+        ...state, 
+        searchRender: true
+      }
+
+    case EXIT_SEARCH_MENU: 
+      return {
+        ...state, 
+        searchRender: false
       }
 
     default:

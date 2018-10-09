@@ -13,7 +13,10 @@ class Menu extends React.Component {
     
     axios
       .get('/api/collections')
-      .then(res => loadCollections(res.data))
+      .then(res => {
+        loadCollections(res.data);
+        console.log(res.data);
+      })
       .catch(err => console.log(err));
   }
 

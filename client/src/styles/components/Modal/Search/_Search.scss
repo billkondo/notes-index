@@ -1,13 +1,13 @@
 .modal-search-page {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-
+  
   z-index: 20;
   min-height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
+  background: linear-gradient(#1c1d22,#383839);
+  padding-bottom: 2rem;
 
   .container {
     position: relative;
@@ -22,10 +22,10 @@
       background: #f0e9ee;
       border-radius: 0.2rem;
       width: 40rem;
-      min-height: $big-card-height;
-      padding: $small-font;
+      height: $big-card-height;
 
       .header {
+        padding: $small-font;
         font-family: "Baloo Bhai";
         font-size: $medium-font;
         display: grid;

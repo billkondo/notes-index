@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import propTypes from 'prop-types';
+import { func, bool } from 'prop-types';
 
 import SearchUI from './SearchUI';
+
+import { exitSearchMenu } from '../../../actions/modal';
 import { loadNotes } from '../../../actions/notes-data';
 
 class Search extends React.Component {
@@ -26,20 +28,23 @@ class Search extends React.Component {
   
   render() {
     const { loadedNotes } = this.state;
-    const { shouldRender, exitSearchMenu } = this.props;
+    const { searchRender, exitSearchMenu } = this.props;
 
     if (!loadedNotes) return null;
 
-    return <SearchUI shouldRender={shouldRender} exitSearchMenu={exitSearchMenu} />
+    return <SearchUI shouldRender={searchRender} exitSearchMenu={exitSearchMenu} />
   }
 }
 
 Search.propTypes = {
-  shouldRender: propTypes.bool.isRequired, 
-  exitSearchMenu: propTypes.func.isRequired
+  searchRender: bool.isRequired, 
+  loadNotes: func.isRequired, 
+  exitSearchMenu: func.isRequired
 }
 
 export default connect(
-  null, 
-  { loadNotes }
+  (state) => ({
+    searchRender: state.modal.searchRender
+  }), 
+  { loadNotes, exitSearchMenu }
 )(Search);

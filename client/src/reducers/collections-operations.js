@@ -7,7 +7,9 @@ import {
   REMOVE_CHILDREN,
   RESET_COLLECTION,
   DELETE_TAG,
-  FAVORITE_FLIP
+  FAVORITE_FLIP,
+  START_LOAD, 
+  END_LOAD
 } from '../types/collections-operations';
 
 const defaultState = {
@@ -15,7 +17,7 @@ const defaultState = {
   description: "",
   tags: [],
   tag: "",
-  isLoaing: false,
+  isLoading: false,
   children: [],
   favorite: false
 };
@@ -69,6 +71,18 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         favorite: !state.favorite
+      }
+
+    case START_LOAD: 
+      return {
+        ...state, 
+        isLoading: true
+      }
+
+    case END_LOAD:
+      return {
+        ...state, 
+        isLoading: false
       }
 
     case RESET_COLLECTION:

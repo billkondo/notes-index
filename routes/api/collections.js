@@ -12,7 +12,7 @@ import verify from '../../validation/verifyMiddleware';
 router.get('/', verify, (req, res) => {
   Collection
     .find({ userId: req.userId })
-    .select("title description tags childrenId favorite id")
+    .select("title description tags children favorite id")
     .exec()
     .then(collections => res.status(200).json(collections))
 });
@@ -23,11 +23,13 @@ router.post('/', verify, (req, res) => {
     title: req.body.title, 
     description: req.body.description, 
     tags: req.body.tags, 
-    childrenId: req.body, children, 
+    children: req.body.children, 
     favorite: req.body.favorite, 
     id: req.body.id,
     userId: req.userId
   });
+
+  console.log(newCollection);
 
   newCollection
     .save()

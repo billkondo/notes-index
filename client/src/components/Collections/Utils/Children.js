@@ -5,6 +5,8 @@ import { array, func } from 'prop-types';
 
 import Note from './Note';
 
+import { enterSearchMenu } from '../../../actions/modal';
+
 const ChildrenHeader = ({ enterSearchMenu }) => (
   <div className="collections-utils-children-header">
     <div className="title-box">
@@ -44,5 +46,6 @@ Children.propTypes = {
 export default connect(
   (state) => ({
     children: state.collectionsOperations.children
-  })
+  }), 
+  { enterSearchMenu }
 )(Children);
