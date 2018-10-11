@@ -7,8 +7,8 @@ const Functions = (props) => {
 
   return (
     <div className="collections-functions">
-      <Button className="functions-button" onClick={goToCollectionsAdd}> Add </Button>
-      <Button className="functions-button" > Filter </Button>
+      <Button color="primary" className="functions-button" onClick={goToCollectionsAdd}> Add </Button>
+      <Button color="info" className="functions-button" > Filter </Button>
     </div>
   );
 }

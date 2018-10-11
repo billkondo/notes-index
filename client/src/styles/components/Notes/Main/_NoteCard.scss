@@ -3,29 +3,28 @@
   width: 13.5rem;
   border-radius: 0.4rem;
 
-  padding: $medium-font;
-
   display: grid;
 
-  grid-template-rows: $large-font auto;
+  grid-template-rows: 1.75rem auto;
   grid-gap: 1rem;
 
   background: $card-background;
+  cursor: pointer;
   
   .note-display-header {
     display: grid;
+    align-items: start;
 
     align-self: start;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     color: $white;
-    padding: 0.5rem;
+    padding: $small-font;
 
     .note-display-title {
-      font-size: $small-font;
+      font-size: 1rem;
       font-family: "Baloo Bhai";
 
-      align-self: center;
       justify-self: start;
 
       font-weight: bold;
@@ -35,14 +34,13 @@
       overflow: hidden;
 
       display: grid;
-      align-items: center;
+      align-items: start;
       justify-items: start;
 
       letter-spacing: 0.1rem;
     }
 
     .controls {
-      align-self: center;
       justify-self: end;
 
       display: grid;
@@ -64,6 +62,11 @@
       .view {
         justify-self: start;
       }
+
+      .edit:hover, .view:hover {
+        color: darkgray;
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -71,12 +74,29 @@
     font-family: "Baloo Bhai";
     font-size: 0.9rem;
     padding: $medium-font;
+    margin: $medium-font;
     background: darkgray;
-    border-radius: 0.4rem;
-    overflow: hidden;
+    border-radius: 0.2rem;
+    overflow-y: auto;
 
     text-align: justify;
     text-justify: inter-word;
     color: $black;
+  }
+
+  .tags {
+    padding: $medium-font;
+    overflow-y: auto;
+
+    .tag {
+      margin: 0.5rem;
+      display: inline-block;
+      font-family: "Baloo Bhai";
+      font-size: 0.9rem;
+      padding: $small-font;
+      color: $black;
+      background: darkgray;
+      border-radius: 0.2rem;
+    }
   }
 }

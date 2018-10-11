@@ -86,7 +86,7 @@ class Filter extends React.Component {
             }
           </div>
 
-          <Button className="tags-submit" onClick={this.submit} >
+          <Button color="success" className="tags-submit" onClick={this.submit} >
             FILTER
           </Button>
           

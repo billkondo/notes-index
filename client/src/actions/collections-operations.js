@@ -104,7 +104,7 @@ export const endLoad = () => {
   }
 }
 
-export const submitCollection = () => {
+export const submitCollection = (updateURL) => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
     const children = collection.children.map(child => ({
@@ -130,6 +130,8 @@ export const submitCollection = () => {
     axios
       .post('/api/collections', newCollection)
       .then(res => {
+        // TODO Handle Errors
+        updateURL();
         endLoad();
       })
   }

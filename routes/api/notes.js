@@ -29,7 +29,7 @@ router.get('/filter', verify, (req, res) => {
 
       res.status(200).json({ notes: filteredNotes });
     })
-    .catch(err => res.status(500).json({ err, success: false }));
+    .catch(err => res.status(500).json({ database: "Filter Notes Problem", err }));
 }); 
 
 // Getting List of Notes from Database
@@ -38,15 +38,14 @@ router.get('/', verify, (req, res) => {
     .find({ userId: req.userId })
     .select("title tags commentaries description favorite id")
     .exec()
-    .then(notes => res.status(200).json(notes));
+    .then(notes => res.status(200).json(notes))
+    .catch(err => res.status(500).json({ database: "Getting All Notes Problem", err }));
 });
 
 // Getting a specific Note from Database
-router.get('/:id', (req, res) => {
-  const id = req.params.id;
-
+router.get('/:id', verify, (req, res) => {
   Note
-    .findOne({ id })
+    .findOne({ id: req.params.id, userId: req.userId })
     .exec()
     .then(note => {
       let newNote = {};
@@ -64,7 +63,7 @@ router.get('/:id', (req, res) => {
 
       res.status(200).json(newNote);
     })
-    .catch(err => res.status(500).json({ success: false, err }))
+    .catch(err => res.status(500).json({ database: "Getting Note by ID Problem", err }))
 });
 
 // Adding Note To Database
@@ -82,7 +81,7 @@ router.post('/', verify, (req, res) => {
   newNote
     .save()
     .then(item => res.status(200).json(item))
-    .catch(err => res.status(500).json({ success: false, err }));
+    .catch(err => res.status(500).json({ database: "Add Problem", err }));
 });
 
 // Updating Note from Database
@@ -98,30 +97,28 @@ router.put('/', verify, (req, res) => {
   }
 
   Note
-    .find({ 'id': req.body.id })
+    .findOne({ id: req.body.id, userId: req.userId })
     .exec()
-    .then(notes => {
-      for (let note of notes) {
-        note.set(newNote);
-        note.save(err => {
-          if (err) return res.sendStatus(404);
-          res.sendStatus(200);
-        })
-      }
+    .then(note => {
+      note.set(newNote);
+      note.save(err => {
+        if (err) res.status(400).json(err);
+        else res.status(200).json(note);
+      });
     })
-    .catch(err => next(err));
+    .catch(err => res.staus(500).json({ database: "Update Problem", err }));
 });
 
 // Deleting Note from Database
-router.delete('/', (req, res) => {
+router.delete('/', verify, (req, res) => {
   Note
-    .findOneAndRemove({ "id": req.body.id })
+    .findOneAndRemove({ id: req.query.id, userId: req.userId })
     .exec()
     .then(doc => {
-      if (!doc) { return res.sendStatus(404); }
-      return res.sendStatus(200);
+      if (isEmpty(doc)) res.status(400).json({ message: "It was not possible to delete note " });
+      else res.status(200).json(doc);
     })
-    .catch(err => next(err));
+    .catch(err => res.status(500).json({ database: "Delete Problem", err }));
 });
 
 export default router;

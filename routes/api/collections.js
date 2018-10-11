@@ -29,8 +29,6 @@ router.post('/', verify, (req, res) => {
     userId: req.userId
   });
 
-  console.log(newCollection);
-
   newCollection
     .save()
     .then(item => res.status(200).json(item))

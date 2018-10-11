@@ -17,6 +17,7 @@ const EditUI = () => (
       <Description />
       <Commentaries />
       <Tags />
+      <Footer />
     </div>
   </div>
 );

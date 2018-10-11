@@ -4,7 +4,8 @@ import {
   START_MODAL, 
   END_MODAL,
   ENTER_SEARCH_MENU, 
-  EXIT_SEARCH_MENU
+  EXIT_SEARCH_MENU,
+  RESET_MODAL
 } from '../types/modal';
 
 const WarningMessageDefault = () => (
@@ -52,6 +53,9 @@ export default (state = defaultState, action) => {
         ...state, 
         searchRender: false
       }
+
+    case RESET_MODAL: 
+      return defaultState;
 
     default:
       return state;

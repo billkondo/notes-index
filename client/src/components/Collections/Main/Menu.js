@@ -4,6 +4,7 @@ import axios from 'axios';
 import { func } from 'prop-types';
 
 import Functions from './Functions';
+import Container from './Container';
 
 import { loadCollections } from '../../../actions/collections-data';
 
@@ -13,10 +14,7 @@ class Menu extends React.Component {
     
     axios
       .get('/api/collections')
-      .then(res => {
-        loadCollections(res.data);
-        console.log(res.data);
-      })
+      .then(res => loadCollections(res.data))
       .catch(err => console.log(err));
   }
 
@@ -25,6 +23,7 @@ class Menu extends React.Component {
       <div className="collections-menu">
         <div className="collections-title"> <i className="fas fa-box large-font" /> Collections </div>
         <Functions />
+        <Container />
       </div> 
     );
   }

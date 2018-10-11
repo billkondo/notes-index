@@ -120,6 +120,18 @@ export const favoriteFlip = () => {
   }
 }
 
+export const startLoading = () => {
+  return dispatch => {
+    dispatch({ type: START_LOADING });
+  }
+}
+
+export const endLoading = () => {
+  return dispatch => {
+    dispatch({ type: END_LOADING });
+  }
+}
+
 export const submitNote = (updateURL) => {
   return (dispatch, getState) => {
     const note = getState().notesOperations;
@@ -127,7 +139,7 @@ export const submitNote = (updateURL) => {
     if (note.isLoading) 
       return;
 
-    dispatch({ type: START_LOADING });
+    startLoading();
 
     const newNote = {
       title: note.title, 
@@ -141,14 +153,58 @@ export const submitNote = (updateURL) => {
     axios
       .post('/api/notes', newNote)
       .then(res => {
-        if (res.err) {
+        // TODO Error handling
+        updateURL();
+        endLoading();
+      })
+      .catch(err => console.log(err));
+  }
+}
 
-        }
-        else {
-          updateURL();
-        }
+export const submitEditedNote = (updateURL) => {
+  return (dispatch, getState) => {
+    const note = getState().notesOperations;
 
-        dispatch({ type: END_LOADING });
+    if (note.isLoading)
+      return;
+
+    startLoading();
+
+    const editedNote = {
+      title: note.title, 
+      description: note.description, 
+      commentaries: note.commentaries, 
+      tags: note.tags, 
+      favorite: note.favorite, 
+      id: note.id
+    };
+
+    axios
+      .put('/api/notes', editedNote)
+      .then(res => {
+        // TODO Error handling
+        endLoading();
+        updateURL();
+      })
+      .catch(err => console.log(err));
+  }
+}
+
+export const deleteNote = (updateURL) => {
+  return (dispatch, getState) => {
+    const note = getState().notesOperations;
+
+    if (note.isLoading)
+      return;
+
+    startLoading();
+
+    axios
+      .delete('/api/notes', { params: note })
+      .then(res => {
+        // TODO Error handling
+        endLoading();
+        updateURL();
       })
       .catch(err => console.log(err));
   }

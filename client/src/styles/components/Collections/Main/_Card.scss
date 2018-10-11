@@ -1,0 +1,30 @@
+.collections-main-card{
+  height: 20rem;
+  width: 13.5rem;
+  
+  background: linear-gradient(#122b3e,#172035);
+  cursor: pointer;
+
+  display: grid;
+  grid-template-rows: 2rem 18rem;
+
+  .title {
+    font-family: "Baloo Bhai";
+    font-size: $medium-font;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: $small-font;
+  }
+
+  .description {
+    background:linear-gradient(#a7c6eb,#78adc2);
+    margin: $medium-font;
+    padding: $medium-font;
+    font-family: "Baloo Bhai";
+    font-size: 0.9rem;
+    text-align: justify;
+    text-justify: auto;
+    color: $black;
+  }
+}
