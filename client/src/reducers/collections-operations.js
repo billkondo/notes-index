@@ -9,7 +9,8 @@ import {
   DELETE_TAG,
   FAVORITE_FLIP,
   START_LOAD, 
-  END_LOAD
+  END_LOAD,
+  LOAD_COLLECTION
 } from '../types/collections-operations';
 
 const defaultState = {
@@ -19,7 +20,8 @@ const defaultState = {
   tag: "",
   isLoading: false,
   children: [],
-  favorite: false
+  favorite: false,
+  id: ""
 };
 
 export default (state = defaultState, action) => {
@@ -83,6 +85,18 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         isLoading: false
+      }
+
+    case LOAD_COLLECTION: 
+      return {
+        title: action.title, 
+        description: action.description, 
+        tags: action.tags, 
+        children: action.children, 
+        favorite: action.favorite, 
+        id: action.id, 
+        isLoading: false, 
+        tag: ""
       }
 
     case RESET_COLLECTION:

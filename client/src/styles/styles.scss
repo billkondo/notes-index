@@ -5,19 +5,21 @@
 
 @import './components/Collections/CollectionsRouter';
 @import './components/Collections/Add/Add';
-@import './components/Collections/Add/Header';
 @import './components/Collections/Add/Submit';
+@import './components/Collections/Edit/Edit';
+@import './components/Collections/Edit/Footer';
 @import './components/Collections/Main/Card';
 @import './components/Collections/Main/Container';
 @import './components/Collections/Main/Functions';
 @import './components/Collections/Main/Menu';
-@import './components/Collections/Utils//Children';
+@import './components/Collections/Utils/Children';
 @import './components/Collections/Utils/Description';
+@import './components/Collections/Utils/Header';
 @import './components/Collections/Utils/Tags';
 @import './components/Collections/Utils/Title';
 
 @import './components/Notes/Add/Add';
-@import './components/Notes/Add/Header';
+@import './components/Notes/Utils/Header';
 @import './components/Notes/Add/Submit';
 @import './components/Notes/Edit/Edit';
 @import './components/Notes/Main/Menu';
@@ -26,56 +28,52 @@
 
 @import './components/App.scss';
 
-// Input Styles
 @import './components/Input/InputText';
 
-// SignIn Styles 
+ 
 @import './components/SignIn/ErrorMessage';
 @import './components/SignIn/SignIn';
 
-// SignUp Styles 
+
 @import './components/SignUp/SignUp';
 @import './components/SignUp/SignUpForm';
 @import './components/SignUp/Welcome';
 
-// Page Styles
+
 @import './components/Page/Dropdown';
 @import './components/Page/Header';
 
-// Modal Styles 
+
 @import './components/Modal/Modal';
 @import './components/Modal/Search/Note';
 @import './components/Modal/Search/Notes';
 @import './components/Modal/Search/Search';
 
-// Main Styles
-@import './components/Notes/Main/Functions';
-@import './components/Notes/Main/ContainerNotes';
+
+@import './components/Notes/Main/Card';
+@import './components/Notes/Main/Container';
 @import './components/Notes/Main/Filter';
 @import './components/Notes/Main/FilterTag';
-@import './components/Notes/Main/NoteCard';
+@import './components/Notes/Main/Functions';
 
 
-// Buttons Styles
+
 @import './components/Buttons/AddButton';
 @import './components/Buttons/ExitButton';
 @import './components/Buttons/FavoriteButton';
 
-// Editor Styles 
+
 @import './components/Editor/CustomEditor';
 
-// Notes Operations Styles
-@import './components/Notes/Operations/Commentaries';
-@import './components/Notes/Operations/Description';
-@import './components/Notes/Operations/Tags';
-@import './components/Notes/Operations/Title';
+@import './components/Notes/Utils/Commentaries';
+@import './components/Notes/Utils/Description';
+@import './components/Notes/Utils/Tags';
+@import './components/Notes/Utils/Title';
 
 
-// Edit Note Styles
+
 @import './components/Notes/Edit/Footer';
-@import './components/Notes/Edit/Header';
 
-// View Note Styles
 @import './components/Notes/View/Commentaries';
 @import './components/Notes/View/Description';
 @import './components/Notes/View/Footer';

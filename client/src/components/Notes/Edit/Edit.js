@@ -5,35 +5,11 @@ import axios from 'axios';
 import EditUI from './EditUI';
 
 import { loadNote, resetNote } from '../../../actions/notes-operations';
-import { updateNote, deleteNote } from '../../../actions/notes-data';
+import { searchNotesUnload } from '../../../actions/modal';
 
 class Edit extends React.Component {
   state = {
     loaded: false
-  }
-
-  finishLoading = () => this.setState({ loaded: true })
-
-  finishEdit = () => {
-    axios
-      .put('/api/notes', this.props.note)
-      .then(() => {
-        const id = this.props.note.id;
-        this.props.updateNote(id, this.props.note);
-        this.props.transitionEditToMenu();
-      })
-      .catch(err => console.log(err));
-  }
-
-  deleteNote = () => {
-    const id = this.props.note.id;
-    axios
-      .delete('/api/notes', {data: { "id": id }})
-      .then(() => {
-        this.props.deleteNote(id);
-        this.props.transitionEditToMenu();
-      })
-      .catch(err => console.log(err));
   }
   
   componentWillMount() {
@@ -44,14 +20,15 @@ class Edit extends React.Component {
       .get(`/api/notes/${id}`)
       .then(res => {
         loadNote(res.data);
-        this.finishLoading();
+        this.setState({ loaded: true });
       })
       .catch(err => console.log(err));
   }
 
   componentWillUnmount() {
-    const { resetNote } = this.props;
+    const { resetNote, searchNotesUnload } = this.props;
     resetNote();
+    searchNotesUnload();
   }
 
   render() {
@@ -69,5 +46,5 @@ export default connect(
   (state) => ({
     note: state.notesOperations,
   }),
-  { updateNote, deleteNote, loadNote, resetNote }
+  { loadNote, resetNote, searchNotesUnload }
 )(Edit);

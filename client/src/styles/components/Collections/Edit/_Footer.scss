@@ -1,0 +1,17 @@
+.collections-edit-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: $big-card-width;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: "Baloo Bhai";
+
+  .my-button {
+    border-radius: 0 0 0 0.2rem;
+  }
+
+  .my-button:hover {
+    color: darkgrey;
+  }
+}

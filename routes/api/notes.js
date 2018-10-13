@@ -3,9 +3,7 @@ import Note from '../../models/note';
 import isEmpty from 'lodash/isEmpty';
 
 import verify from '../../validation/verifyMiddleware';
-
-// verify: Middleware to check user authorization
-//         After authorization, you can access the user id in req.userId
+import newNoteMiddleware from '../../middlewares/newNoteMiddleware';
 
 const router = express.Router();
 
@@ -67,16 +65,8 @@ router.get('/:id', verify, (req, res) => {
 });
 
 // Adding Note To Database
-router.post('/', verify, (req, res) => {
-  const newNote = new Note({
-    title: req.body.title,
-    description: req.body.description,
-    commentaries: req.body.commentaries,
-    tags: req.body.tags,
-    favorite: req.body.favorite, 
-    id: req.body.id,
-    userId: req.userId
-  });
+router.post('/', verify, newNoteMiddleware, (req, res) => {
+  const newNote = new Note(req.newNote);
     
   newNote
     .save()
@@ -85,28 +75,18 @@ router.post('/', verify, (req, res) => {
 });
 
 // Updating Note from Database
-router.put('/', verify, (req, res) => {
-  const newNote = {
-    title: req.body.title,
-    description: req.body.description,
-    commentaries: req.body.commentaries,
-    tags: req.body.tags,
-    favorite: req.body.favorite, 
-    id: req.body.id,
-    userId: req.userId
-  }
-
+router.put('/', verify, newNoteMiddleware, (req, res) => {
   Note
     .findOne({ id: req.body.id, userId: req.userId })
     .exec()
     .then(note => {
-      note.set(newNote);
+      note.set(req.newNote);
       note.save(err => {
-        if (err) res.status(400).json(err);
-        else res.status(200).json(note);
+        if (err) res.status(400).json({ database: "Could not save note", err});
+        else res.status(200).json(req.newNote);
       });
     })
-    .catch(err => res.staus(500).json({ database: "Update Problem", err }));
+    .catch(err => res.staus(500).json({ database: "Could not find note to update", err }));
 });
 
 // Deleting Note from Database

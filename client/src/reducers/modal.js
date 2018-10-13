@@ -5,7 +5,9 @@ import {
   END_MODAL,
   ENTER_SEARCH_MENU, 
   EXIT_SEARCH_MENU,
-  RESET_MODAL
+  RESET_MODAL,
+  SEARCH_NOTES_LOAD, 
+  SEARCH_NOTES_UNLOAD
 } from '../types/modal';
 
 const WarningMessageDefault = () => (
@@ -21,7 +23,8 @@ const defaultState = {
   greenButton: "",
   WarningMessage: WarningMessageDefault,
   exitFunction: exitFunctionDefault,
-  searchRender: false
+  searchRender: false,
+  notesLoaded: false
 }
 
 export default (state = defaultState, action) => {
@@ -52,6 +55,18 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         searchRender: false
+      }
+
+    case SEARCH_NOTES_LOAD: 
+      return {
+        ...state, 
+        notesLoaded: true
+      }
+
+    case SEARCH_NOTES_UNLOAD: 
+      return {
+        ...state, 
+        notesLoaded: false
       }
 
     case RESET_MODAL: 

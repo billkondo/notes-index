@@ -29,7 +29,7 @@ class Note extends React.Component {
 
   render() {
     const { mouseOn } = this.state;
-    const { child, index, removeChildren } = this.props;
+    const { child, index } = this.props;
 
     return (
       <div 

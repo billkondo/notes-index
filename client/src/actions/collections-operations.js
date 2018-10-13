@@ -12,7 +12,8 @@ import {
   DELETE_TAG,
   FAVORITE_FLIP,
   START_LOAD, 
-  END_LOAD
+  END_LOAD,
+  LOAD_COLLECTION
 } from '../types/collections-operations';
 
 export const writeTitle = (title) => {
@@ -107,8 +108,13 @@ export const endLoad = () => {
 export const submitCollection = (updateURL) => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
+
+    if (collection.isLoading)
+      return;
+
     const children = collection.children.map(child => ({
         id: child.id,
+        title: child.title, 
         description: child.description,
         tags: child.tags
       })
@@ -134,5 +140,77 @@ export const submitCollection = (updateURL) => {
         updateURL();
         endLoad();
       })
+  }
+}
+
+export const submitEditedCollection = (updateURL) => {
+  return (dispatch, getState) => {
+    const collection = getState().collectionsOperations;
+
+    if (collection.isLoading)
+      return;
+
+    const children = collection.children.map(child => ({
+        id: child.id,
+        title: child.title, 
+        description: child.description,
+        tags: child.tags
+      })
+    );
+
+    const { title, description, tags, favorite, id } = collection; 
+
+    const newCollection = {
+      title, 
+      description,
+      tags,
+      children, 
+      favorite, 
+      id
+    };
+
+    startLoad();
+
+    axios
+      .put('/api/collections', newCollection)
+      .then(res => {
+        // TODO Handle Errors
+        updateURL();
+        endLoad();
+      })
+  }
+}
+
+export const deleteCollection = (updateURL) => {
+  return (dispatch, getState) => {
+    const collection = getState().collectionsOperations;
+
+    if (collection.isLoading)
+      return;
+
+    // startLoad();
+
+    axios
+      .delete('/api/collections', { params: collection })
+      .then(res => {
+        // TODO Error handling
+        // endLoading();
+        updateURL();
+      })
+      .catch(err => console.log(err));
+  }
+}
+
+export const loadCollection = (collection) => {
+  return dispatch => {
+    dispatch({
+      type: LOAD_COLLECTION, 
+      title: collection.title,
+      description: collection.description, 
+      tags: collection.tags, 
+      children: collection.children, 
+      id: collection.id, 
+      favorite: collection.favorite
+    });
   }
 }

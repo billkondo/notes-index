@@ -1,8 +1,8 @@
-.collections-main-card{
+.notes-main-card{
   height: 20rem;
   width: 13.5rem;
   
-  background: linear-gradient(#122b3e,#172035);
+  background: linear-gradient(#1f3057,#2a283d);
   cursor: pointer;
 
   display: grid;
@@ -17,10 +17,11 @@
     justify-items: center;
     padding: $small-font;
     padding-bottom: 0; 
+    color: $white;
   }
 
   .description {
-    background:linear-gradient(#a7c6eb,#78adc2);
+    background: linear-gradient(#5f88c1,#78adc2);
     margin: $medium-font;
     margin-bottom: $small-font;
     padding: $medium-font;
@@ -29,10 +30,11 @@
     text-align: justify;
     text-justify: auto;
     color: $black;
-    border-radius: 0.2rem; 
+    border-radius: 0.2rem;
   }
 
   .footer {
+    color: $white;
     font-family: "Baloo Bhai";
     padding-left: $medium-font;
     padding-right: $medium-font;

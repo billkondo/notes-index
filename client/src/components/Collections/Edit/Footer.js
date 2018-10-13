@@ -4,18 +4,18 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { bool, func } from 'prop-types';
 
-import { submitEditedNote, deleteNote } from '../../../actions/notes-operations';
+import { submitEditedCollection, deleteCollection } from '../../../actions/collections-operations';
 import { startModal } from '../../../actions/modal';
-import { goBackButton, deleteButton, DeleteMessage, saveButton, SaveMessage } from '../../Modal/messages';
+import { goBackButton, deleteButton, DeleteMessageCollection, saveButton, SaveMessageCollection } from '../../Modal/messages';
 
 const Footer = (props) => {
-  const { isLoading, submitEditedNote, deleteNote, startModal } = props;
-  const updateURL = () => props.history.push('/Notes');
-  const editAction = () => startModal(saveButton, goBackButton, SaveMessage, () => submitEditedNote(updateURL));
-  const deleteAction = () => startModal(deleteButton, goBackButton, DeleteMessage, () => deleteNote(updateURL));
+  const { isLoading, submitEditedCollection, deleteCollection, startModal } = props;
+  const updateURL = () => props.history.push('/Collections');
+  const editAction = () => startModal(saveButton, goBackButton, SaveMessageCollection, () => submitEditedCollection(updateURL));
+  const deleteAction = () => startModal(deleteButton, goBackButton, DeleteMessageCollection, () => deleteCollection(updateURL));
 
   return (
-    <div className="notes-edit-footer">
+    <div className="collections-edit-footer">
       <Button 
         disabled={isLoading} 
         color="success" 
@@ -39,8 +39,8 @@ const Footer = (props) => {
 
 Footer.propTypes = {
   isLoading: bool.isRequired, 
-  submitEditedNote: func.isRequired, 
-  deleteNote: func.isRequired,
+  submitEditedCollection: func.isRequired, 
+  deleteCollection: func.isRequired,
   startModal: func.isRequired
 }
 
@@ -48,5 +48,5 @@ export default withRouter(connect(
   (state) => ({
     isLoading: state.notesOperations.isLoading
   }), 
-  { submitEditedNote, deleteNote, startModal }
+  { submitEditedCollection, deleteCollection, startModal }
 )(Footer));

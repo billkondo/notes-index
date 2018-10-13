@@ -19,7 +19,7 @@ class Add extends React.Component {
 
     return (
       <Dropdown id="page-add" isOpen={isOpen} toggle={this.toggle}>
-        <DropdownToggle>
+        <DropdownToggle color="primary">
           <div className="page-icons">
             <i className="fas fa-plus" />
             <i className="fas fa-caret-down page-down" />

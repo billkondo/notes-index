@@ -19,7 +19,7 @@ class Profile extends React.Component {
 
     return (
       <Dropdown id="page-profile" isOpen={isOpen} toggle={this.toggle} > 
-        <DropdownToggle>
+        <DropdownToggle color="info">
           <div className="page-icons">
             <i className="fas fa-square-full" />
             <i className="fas fa-caret-down page-down" />

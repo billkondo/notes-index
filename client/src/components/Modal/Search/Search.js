@@ -1,50 +1,69 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
-import { func, bool } from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { bool, func } from 'prop-types';
 
 import SearchUI from './SearchUI';
 
-import { exitSearchMenu } from '../../../actions/modal';
 import { loadNotes } from '../../../actions/notes-data';
+import { searchNotesLoad } from '../../../actions/modal';
 
 class Search extends React.Component {
-  state = {
-    loadedNotes: false, 
-    loadedCollections: false
+  componentDidUpdate() {
+    const { searchNotesLoad, notesLoaded, loadNotes } = this.props;
+
+    if (!notesLoaded) {
+      axios
+        .get('/api/notes')
+        .then(res => {
+          const notes = res.data;
+          loadNotes(notes);
+          searchNotesLoad();
+        })
+        .catch(err => console.log(err));
+    }
   }
 
-  componentWillMount() {
-    const { loadNotes } = this.props;
-
-    axios
-      .get('/api/notes')
-      .then(res => {
-        const notes = res.data;
-        loadNotes(notes);
-        this.setState({ loadedNotes: true });
-      })
-  }
-  
   render() {
-    const { loadedNotes } = this.state;
-    const { searchRender, exitSearchMenu } = this.props;
+    const { searchRender, notesLoaded } = this.props;
 
-    if (!loadedNotes) return null;
-
-    return <SearchUI shouldRender={searchRender} exitSearchMenu={exitSearchMenu} />
+    return (
+      <CSSTransition
+        in={searchRender && notesLoaded}
+        mountOnEnter={true}
+        unmountOnExit={true}
+        timeout={{
+          enter: 800,
+          exit: 500,
+          appear: 800
+        }}
+        classNames={{
+          enter: "animated", 
+          exit: "animated", 
+          appear: "animated",
+          enterActive: "fadeIn fast",
+          exitActive: "fadeOut faster",
+          appearActive: "fadeIn fast"
+        }}
+      >
+        <SearchUI shouldRender={searchRender} />
+      </CSSTransition>
+    );
   }
 }
 
 Search.propTypes = {
-  searchRender: bool.isRequired, 
-  loadNotes: func.isRequired, 
-  exitSearchMenu: func.isRequired
+  searchRender: bool.isRequired,
+  notesLoaded: bool.isRequired, 
+  searchNotesLoad: func.isRequired, 
+  loadNotes: func.isRequired
 }
 
 export default connect(
   (state) => ({
-    searchRender: state.modal.searchRender
-  }), 
-  { loadNotes, exitSearchMenu }
+    searchRender: state.modal.searchRender,
+    notesLoaded: state.modal.notesLoaded
+  }),
+  { searchNotesLoad, loadNotes }
 )(Search);

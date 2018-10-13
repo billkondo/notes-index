@@ -1,12 +1,12 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
 import { ButtonGroup, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { bool, func } from 'prop-types';
+import { func } from 'prop-types';
 
 import Notes from './Notes';
 import ExitButton from '../../Buttons/ExitButton';
 
+import { exitSearchMenu } from '../../../actions/modal';
 import { addChildren } from '../../../actions/collections-operations';
 import { removeNote } from '../../../actions/notes-data';
 
@@ -44,60 +44,43 @@ class SearchUI extends React.Component {
     const { option, idToSubmit } = this.state;
 
     return (
-      <CSSTransition
-        in={shouldRender}
-        mountOnEnter={true}
-        unmountOnExit={true}
-        timeout={{
-          enter: 800,
-          exit: 500
-        }}
-        classNames={{
-          enter: "animated", 
-          exit: "animated", 
-          enterActive: "fadeIn fast",
-          exitActive: "fadeOut faster"
-        }}
-      >
-        <div className="modal-search-page">
-          <div className="container">
-            <div className="search-menu">
-              <div className="header"> 
-                Search Menu 
-                <ExitButton click={exitSearchMenu} />
-                <div className="buttons">
-                  <ButtonGroup className="first-group">
-                    <Button color="primary" active={option == 0} onClick={() => this.filpSearch(0)} >Notes</Button>
-                    <Button color="primary" active={option == 1} onClick={() => this.filpSearch(1)} >Collections</Button>
-                  </ButtonGroup>
-                  <Button className="second-group" color="success">Filter by Tags</Button>
-                </div>
+      <div className="modal-search-page">
+        <div className="container">
+          <div className="search-menu">
+            <div className="header"> 
+              Search Menu 
+              <ExitButton click={exitSearchMenu} />
+              <div className="buttons">
+                <ButtonGroup className="first-group">
+                  <Button color="primary" active={option == 0} onClick={() => this.filpSearch(0)} >Notes</Button>
+                  <Button color="primary" active={option == 1} onClick={() => this.filpSearch(1)} >Collections</Button>
+                </ButtonGroup>
+                <Button className="second-group" color="success">Filter by Tags</Button>
               </div>
-
-              {/* <div className="sort">
-
-              </div> */}
-
-              {(option == 0) && <Notes id={idToSubmit} setId={this.setId} /> }
-
-              <Button 
-                color="success" 
-                disabled={!idToSubmit} 
-                className="submit"
-                onClick={this.onSubmit}
-              > 
-                Submit 
-              </Button>
             </div>
+
+            {/* <div className="sort">
+
+            </div> */}
+
+            {(option == 0) && <Notes id={idToSubmit} setId={this.setId} /> }
+
+            <Button 
+              color="success" 
+              disabled={!idToSubmit} 
+              className="submit"
+              onClick={this.onSubmit}
+            > 
+              Submit 
+            </Button>
           </div>
         </div>
-      </CSSTransition>
+      </div>
     );
   }
 }
 
-SearchUI.propTypes = {
-  shouldRender: bool.isRequired, 
+SearchUI.propTypes = { 
   exitSearchMenu: func.isRequired,
   addChildren: func.isRequired,
   removeNote: func.isRequired
@@ -105,5 +88,5 @@ SearchUI.propTypes = {
 
 export default connect(
   null, 
-  { addChildren, removeNote }
+  { addChildren, removeNote, exitSearchMenu }
 )(SearchUI);

@@ -10,16 +10,16 @@ class Card extends React.Component {
   }
 
   editURL = () => {
-    const { id } = this.props.collection;
-    this.props.history.push(`/Collections/Edit/${id}`);
+    const { id } = this.props.note;
+    this.props.history.push(`/Notes/Edit/${id}`);
   }
 
   render() {
-    const { collection } = this.props;
-    const { title, description, tags } = collection;
+    const { note } = this.props;
+    const { title, description, tags } = note;
 
     return (
-      <div className="collections-main-card">
+      <div className="notes-main-card">
         <div className="title">
           {truncate(title, { 'length': 15 })}
         </div>
@@ -38,7 +38,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  collection: object.isRequired
+  note: object.isRequired
 }
 
 export default withRouter(Card);

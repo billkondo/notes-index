@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 import Functions from './Functions';
-import ContainerNotes from './ContainerNotes';
+import Container from './Container';
 import Filter from './Filter';
 
 import { loadNotes, filterOff } from '../../../actions/notes-data';
@@ -22,15 +22,13 @@ class Menu extends React.Component {
       .catch(err => console.log(err));
   }
 
-  transition = (to) => this.props.history.push(to);
-
   render() {
     return (
       <div className="notes-menu">
         <div className="notes-title"><i className="fas fa-sticky-note large-font" /> Notes </div>
         <Functions />
         <Filter />
-        <ContainerNotes transition={this.transition} />
+        <Container />
       </div>
     );
   }

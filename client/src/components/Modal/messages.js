@@ -22,8 +22,21 @@ export const SaveMessage = () => (
   </div>
 );
 
+export const SaveMessageCollection = () => (
+  <div className="modal-text">
+    <p> You will save your changes on this collection. </p>
+    <p> The previous note will be lost! </p>
+  </div>
+);
+
 export const DeleteMessage = () => (
   <div className="modal-text">
     <p> You will delete this note permanently! </p>
+  </div>
+);
+
+export const DeleteMessageCollection = () => (
+  <div className="modal-text">
+    <p> You will delete this collection permanently! </p>
   </div>
 );

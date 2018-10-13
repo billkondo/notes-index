@@ -3,7 +3,9 @@ import {
   END_MODAL,
   ENTER_SEARCH_MENU, 
   EXIT_SEARCH_MENU,
-  RESET_MODAL
+  RESET_MODAL,
+  SEARCH_NOTES_LOAD, 
+  SEARCH_NOTES_UNLOAD
 } from '../types/modal';
 
 export const startModal = (redButton, greenButton, WarningMessage, exitFunction) => {
@@ -39,5 +41,17 @@ export const exitSearchMenu = () => {
 export const resetModal = () => {
   return dispatch => {
     dispatch({ type: RESET_MODAL });
+  }
+}
+
+export const searchNotesLoad = () => {
+  return dispatch => {
+    dispatch({ type: SEARCH_NOTES_LOAD });
+  }
+}
+
+export const searchNotesUnload = () => {
+  return dispatch => {
+    dispatch({ type: SEARCH_NOTES_UNLOAD });
   }
 }

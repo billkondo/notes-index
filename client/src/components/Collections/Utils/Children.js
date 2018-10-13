@@ -16,7 +16,7 @@ const ChildrenHeader = ({ enterSearchMenu }) => (
 
     <div className="controls">
       {/* <Button className="button"> +  Collection</Button> */}
-      <Button className="button" onClick={enterSearchMenu} > +  Note</Button>
+      <Button color="info" className="button" onClick={enterSearchMenu} > +  Note</Button>
     </div>
   </div>
 );
