@@ -5,10 +5,17 @@ import isEmpty from 'lodash/isEmpty';
 const router = express.Router();
 
 import verify from '../../validation/verifyMiddleware';
-// verify: Middleware to check user authorization
-//         After authorization, you can access the user id in req.userId
-
 import newCollectionMiddleware from '../../middlewares/newCollectionMiddleware';
+
+router.get('/favorite', verify, (req, res) => {
+  Collection
+    .find({ userId: req.userId, favorite: true })
+    .exec()
+    .then(collections => {
+      res.status(200).json({ collections });
+    })
+    .catch(err => res.status(500).json({ database: "Getting Favorite Collections Problem", err }));
+});
 
 // Getting list of Collections from Database
 router.get('/', verify, (req, res) => {

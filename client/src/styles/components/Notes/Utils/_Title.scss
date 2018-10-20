@@ -7,18 +7,22 @@
 
   .header {
     font-family: "Baloo Bhai";;
-    font-size: $small-font;
+    font-size: 1rem;
     font-weight: bold;
     display: grid;
     grid-template-columns: 1.5rem auto; 
     align-items: center;
     justify-items: start;
+    color: $white;
   }
 
   .title {
+    color: $black;
     font-family: "Baloo Bhai";;
-    font-size: $small-font;
+    font-size: 1rem;
     height: 2rem;
     padding: $medium-font;
+    background: linear-gradient(#5f88c1,#78adc2);
+    border: none;
   }
 }

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -11,6 +12,8 @@ import { loadCollections } from '../../../actions/collections-data';
 class Menu extends React.Component {
   componentWillMount() {
     const { loadCollections } = this.props;
+
+    loadCollections([]);
     
     axios
       .get('/api/collections')

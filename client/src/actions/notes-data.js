@@ -3,7 +3,8 @@ import {
   FILTER_ON, 
   FILTER_OFF,
   REMOVE_NOTE,
-  ADD_NOTE
+  ADD_NOTE,
+  SET_ID
 } from '../types/notes-data';
 
 export const loadNotes = (notes) => {
@@ -44,5 +45,14 @@ export const removeNote = (note) => {
       type: REMOVE_NOTE, 
       note
     })
+  }
+}
+
+export const setID = (id) => {
+  return dispatch => {
+    dispatch({ 
+      type: SET_ID,
+      id
+    });
   }
 }

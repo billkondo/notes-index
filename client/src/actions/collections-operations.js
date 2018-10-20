@@ -116,7 +116,8 @@ export const submitCollection = (updateURL) => {
         id: child.id,
         title: child.title, 
         description: child.description,
-        tags: child.tags
+        tags: child.tags,
+        favorite: child.favorite
       })
     );
 
@@ -154,7 +155,8 @@ export const submitEditedCollection = (updateURL) => {
         id: child.id,
         title: child.title, 
         description: child.description,
-        tags: child.tags
+        tags: child.tags,
+        favorite: child.favorite
       })
     );
 

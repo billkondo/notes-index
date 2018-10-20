@@ -7,7 +7,17 @@ import newNoteMiddleware from '../../middlewares/newNoteMiddleware';
 
 const router = express.Router();
 
-// Filter Notes 
+router.get('/favorite', verify, (req, res) => {
+  Note
+    .find({ userId: req.userId, favorite: true })
+    .exec()
+    .then(notes => {
+      res.status(200).json({ notes });
+    })
+    .catch(err => res.status(500).json({ database: "Getting Favorite Notes Problem", err }));
+});
+
+// Filter Notes By Tags
 router.get('/filter', verify, (req, res) => {
   Note  
     .find({ userId: req.userId })

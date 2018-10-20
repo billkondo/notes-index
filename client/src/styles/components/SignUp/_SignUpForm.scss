@@ -6,12 +6,14 @@
   padding: $small-font;
 
   display: grid;
+  font-family: "Baloo Bhai"; 
+  color: $black;
 
   .sign-up-button {
-    background: linear-gradient(#005139, #2f9254);
+    background: #28a745;;
     color: white;
     font-weight: bold;
-    font-family: "Josefin Sans";
+    font-family: "Baloo Bhai"; 
     border-radius: 0.2rem;
     margin: $extra-small-font;
     height: 2rem;

@@ -1,17 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { object } from 'prop-types';
-
 import truncate from 'lodash/truncate';
+import { object, func } from 'prop-types';
+
+import { setID } from '../../../actions/collections-data';
 
 class Card extends React.Component {
   state = {
     side: false
   }
 
-  editURL = () => {
+  edit = () => {
     const { id } = this.props.collection;
+
     this.props.history.push(`/Collections/Edit/${id}`);
+  }
+
+  view = () => {
+    const { id } = this.props.collection;
+    const { setID } = this.props;
+
+    setID(id);
   }
 
   render() {
@@ -24,13 +34,16 @@ class Card extends React.Component {
           {truncate(title, { 'length': 15 })}
         </div>
 
-        <div className="description">
-          {description}
-        </div>
-
+        <textarea
+          className="description"
+          readOnly
+          value={description}
+          disabled
+        />
+        
         <div className="footer">
-          <div className="icon edit" onClick={this.editURL}> <i className="fas fa-edit" /> </div>
-          <div className="icon"> <i className="fas fa-eye" /> </div>
+          <button className="icon edit" onClick={this.edit}> <i className="fas fa-edit" /> </button>
+          <button className="icon" onClick={this.view}> <i className="fas fa-eye" /> </button>
         </div>
       </div>
     );
@@ -38,7 +51,11 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  collection: object.isRequired
+  collection: object.isRequired,
+  setID: func.isRequired
 }
 
-export default withRouter(Card);
+export default withRouter(connect(
+  null, 
+  { setID }
+)(Card));

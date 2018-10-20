@@ -1,9 +1,6 @@
 @import './base/animations';
 @import './base/base';
 @import './base/bootstrap';
-
-
-@import './components/Collections/CollectionsRouter';
 @import './components/Collections/Add/Add';
 @import './components/Collections/Add/Submit';
 @import './components/Collections/Edit/Edit';
@@ -17,6 +14,7 @@
 @import './components/Collections/Utils/Header';
 @import './components/Collections/Utils/Tags';
 @import './components/Collections/Utils/Title';
+@import './components/View/View';
 
 @import './components/Notes/Add/Add';
 @import './components/Notes/Utils/Header';
@@ -79,3 +77,6 @@
 @import './components/Notes/View/Footer';
 @import './components/Notes/View/Header';
 @import './components/Notes/View/Tags';
+
+@import './components/Favorite/Container';
+@import './components/Favorite/Favorite';

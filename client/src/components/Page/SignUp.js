@@ -5,7 +5,7 @@ import Fade from '../High_Order/Fade';
 
 const SignUp = () => (
   <Link to="/">
-    <i className="fas fa-user-plus login-icon" />
+    <i className="fas fa-user-plus login-icon cyan-color" />
     <span> Sign Up </span>
   </Link>
 );

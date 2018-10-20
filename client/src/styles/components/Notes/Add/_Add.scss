@@ -5,8 +5,8 @@
     position: relative;
     min-height: $big-card-height;
     width: $big-card-width;
-    background: $card-color;
     border-radius: 0.2rem; 
     font-family: "Baloo Bhai";
+    background: linear-gradient(#1f3057,#2a283d);
   }
 }

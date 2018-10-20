@@ -12,9 +12,10 @@
       display: grid;
       grid-template-columns: 1.5rem auto;
       align-items: center;
-      font-size: $small-font;
+      font-size: 1rem;
       font-weight: bold;
       font-family: "Baloo Bhai";
+      color: $white;
     }
 
     .controls {
@@ -23,6 +24,12 @@
       align-items: center;
       justify-items: start;
       font-family: "Baloo Bhai";
+
+      .Blue {
+        background: linear-gradient(#5f88c1,#78adc2);
+        border: none;
+        color: $black;
+      }
     }
   }
 

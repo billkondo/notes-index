@@ -1,59 +1,66 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+import axios from 'axios';
+import { CSSTransition } from 'react-transition-group';
+import { string } from 'prop-types';
 
-import ViewFront from './ViewFront';
-import ViewBack from './ViewBack';
+import ViewUI from './ViewUI';
 
-import { loadNote, resetNote } from '../../../actions/notes-operations';
+import { loadNote } from '../../../actions/notes-operations';
 
 class View extends React.Component {
   state = {
-    flipped: false,
-    loaded: false
+    isLoaded: false
   }
 
-  flipSide = () => this.setState((prevState) => ({ flipped: !prevState.flipped }));
-  finishLoading = () => this.setState({ loaded: true });
-
-  componentWillMount() {
-    const id = this.props.match.params.id;
+  componentDidUpdate(prevProps) {
+    const prevID = prevProps.idToLoad;
+    const curID = this.props.idToLoad;
     const { loadNote } = this.props;
 
-    axios
-      .get(`/api/notes/${id}/`)
-      .then(res => {
-        const note = res.data;
-        loadNote(note);
-        this.finishLoading();
-      })
-      .catch(err => console.log(err));
-  }
+    if (prevID && !curID) this.setState({ isLoaded: false });
 
-  componentWillUnmount() {
-    const { resetNote } = this.props;
-    resetNote();
+    if (!prevID && curID) {
+      axios
+        .get(`/api/notes/${curID}`)
+        .then(res => {
+          const note = res.data;
+          loadNote(note);
+          this.setState({ isLoaded: true });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
-    const { flipped, loaded } = this.state;
+    const { isLoaded } = this.state;
 
     return (
-      <div className="view-page">
-        { !flipped && loaded && <ViewFront flipSide={this.flipSide} /> }
-        {  flipped && loaded &&  <ViewBack flipSide={this.flipSide} /> }
-      </div>
+      <CSSTransition
+        in={isLoaded}
+        mountOnEnter
+        unmountOnExit
+        timeout={500}
+        classNames={{
+          enter: "animated", 
+          exit: "animated", 
+          enterActive: "fadeIn faster",
+          exitActive: "fadeOut faster"
+        }}
+      >
+        <ViewUI />
+      </CSSTransition>
     );
   }
 }
 
 View.propTypes = {
-  loadNote: propTypes.func.isRequired, 
-  resetNote: propTypes.func.isRequired
+  idToLoad: string.isRequired
 }
 
 export default connect(
-  null, 
-  { loadNote, resetNote }
+  (state) => ({
+    idToLoad: state.notesData.idToLoad
+  }),
+  { loadNote }
 )(View);

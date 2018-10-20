@@ -3,12 +3,14 @@ import {
   FILTER_ON,
   FILTER_OFF,
   REMOVE_NOTE, 
-  ADD_NOTE
+  ADD_NOTE,
+  SET_ID
 } from '../types/notes-data';
 
 const defaultState = {
   notes: [],
-  filter: false
+  filter: false,
+  idToLoad: ""
 }
 
 export default (state = defaultState, action) => {
@@ -41,6 +43,12 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         notes: state.notes.concat(action.note)
+      }
+
+    case SET_ID:
+      return {
+        ...state, 
+        idToLoad: action.id
       }
 
     default: 

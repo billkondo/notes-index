@@ -1,0 +1,15 @@
+.FavoritePage {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-family: "Baloo Bhai";
+
+  .Title {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3rem auto;
+
+    color: $white;
+    font-size: 2rem;
+  }
+}

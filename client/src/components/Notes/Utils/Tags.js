@@ -7,6 +7,7 @@ import propTypes from 'prop-types';
 import ExitButton from '../../Buttons/ExitButton';
 import AddButton from '../../Buttons/AddButton';
 import { addTag, writeTag, deleteTag } from '../../../actions/notes-operations';
+import { prepareTag } from '../../../utilities/tags';
 
 const Header = ({ tag, writeTag, addTag, canAdd }) => (
   <div className="header">
@@ -23,15 +24,16 @@ const Header = ({ tag, writeTag, addTag, canAdd }) => (
           value={tag} 
           onKeyPress={e => {
             if (e.key === 'Enter' && canAdd())
-              addTag(tag);
+              addTag(prepareTag(tag));
           }}
+          className="Blue"
         />
       </InputGroup>
 
       <AddButton 
         click={() => {
           if (canAdd())
-            addTag(tag);
+            addTag(prepareTag(tag));
         }}
       />
     </div>
@@ -98,7 +100,7 @@ const Container = ({ tags, deleteTag }) => (
 
 const Tags = ({ tag, tags, addTag, writeTag, deleteTag }) => {
   const canAdd = () => {
-    if (tag && tags.indexOf(tag) === -1) 
+    if (prepareTag(tag) && tags.indexOf(prepareTag(tag)) === -1) 
       return true;
     return false;
   }

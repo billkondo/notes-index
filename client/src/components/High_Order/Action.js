@@ -37,8 +37,8 @@ export default (Component) => {
     })
     
     favorites = () => ({
-      label: "Favorites",
-      onClick: () => this.props.history.push('/')
+      label: "Favorite",
+      onClick: () => this.props.history.push('/Favorite')
     })
 
     logout = () => ({

@@ -10,14 +10,14 @@
       display: grid;
       grid-template-columns: 1.5rem auto;
       align-items: center;
-      font-size: $small-font;
+      font-size: 1rem;
       font-weight: bold;
+      color: $white;
       font-family: "Baloo Bhai";
     }
 
     .controls {
       display: grid;
-      // grid-template-columns: 3fr 1fr;
       align-items: center;
       justify-items: end;
 

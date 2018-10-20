@@ -17,14 +17,14 @@ class Filter extends React.Component {
   onChange = (e) => this.setState({ tag: e.target.value })
   
   addTag = () => {
-     if (this.state.tag && this.state.tags.indexOf(this.state.tag) === -1) {
+    if (this.state.tag && this.state.tags.indexOf(this.state.tag) === -1) {
       this.setState(prevState => {
-         return {
-           tags: prevState.tags.concat([prevState.tag]),
-           tag: ""
-         }
-       })
-     }
+        return {
+          tags: prevState.tags.concat([prevState.tag]),
+          tag: ""
+        }
+      })
+    }
   }
 
   onKeyDown = (e) => {

@@ -5,10 +5,10 @@
   display: grid;
   align-items: center;
   justify-items: center;
+  color: $white;
   
   .title {
     font-family: "Baloo Bhai";
     font-size: $medium-font;
-    color: black;
   }
 }

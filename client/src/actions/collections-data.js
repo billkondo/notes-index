@@ -1,5 +1,6 @@
 import {
-  LOAD_COLLECTIONS
+  LOAD_COLLECTIONS,
+  SET_ID
 } from '../types/collections-data';
 
 export const loadCollections = (collections) => {
@@ -7,6 +8,15 @@ export const loadCollections = (collections) => {
     dispatch({
       type: LOAD_COLLECTIONS,
       collections
+    });
+  }
+}
+
+export const setID = (id) => {
+  return dispatch => {
+    dispatch({
+      type: SET_ID, 
+      id
     });
   }
 }

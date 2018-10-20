@@ -13,7 +13,8 @@ import { loadNote } from '../../../actions/notes-operations';
 class Menu extends React.Component {
   componentWillMount() {
     const { filterOff, loadNotes } = this.props;
-    
+
+    loadNotes([]);    
     filterOff();
 
     axios

@@ -1,0 +1,18 @@
+.FavoriteContainer {
+  margin-top: 2rem;
+
+  .Buttons {
+    .Button {
+      font-size: $medium-font;
+    }
+  }
+
+  .Cards {
+    display: grid;
+    grid-template-columns: 13.5rem 13.5rem 13.5rem;
+    grid-gap: 3rem;  
+    margin-top: 2rem;
+    align-items: center;
+    justify-items: center;
+  }  
+}

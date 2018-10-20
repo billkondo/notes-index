@@ -7,11 +7,12 @@
 
     display: grid;
     grid-template-rows: 10rem 3rem 20rem;
+    font-family: "Baloo Bhai";
 
     .sign-in-logo {
       grid-row: 1/2;
       font-size: 2rem;
-      font-family: "Josefin Sans";
+      font-family: "Baloo Bhai"; 
       color: white;
       font-weight: bold;
 
@@ -27,6 +28,8 @@
       display: grid;
       align-items: center;
       justify-items: center;
+      font-family: "Baloo Bhai";
+      color: $black;
 
       .sign-in-form {
         display: grid;
@@ -39,14 +42,15 @@
         width: 22.5rem;
 
         padding: 2rem;
+        font-family: "Baloo Bhai";
       }
     }
 
     .sign-in-button {
-      background: linear-gradient(#005139, #2f9254);
+      background: #28a745;
       color: white;
       font-weight: bold;
-      font-family: "Josefin Sans";
+      font-family: "Baloo Bhai";
       border-radius: 0.2rem;
       cursor: pointer;
       height: 2rem;

@@ -7,6 +7,7 @@ import { string, array, func } from 'prop-types';
 import Add from '../../Buttons/AddButton';
 import ExitButton from '../../Buttons/ExitButton';
 import { writeTag, addTag, deleteTag } from '../../../actions/collections-operations';
+import { prepareTag } from '../../../utilities/tags';
 
 class Tag extends React.Component {
   state = {
@@ -59,15 +60,16 @@ const TagsHeader = ({ tag, writeTag, addTag, canAdd }) => (
           value={tag} 
           onKeyPress={e => {
             if (e.key === 'Enter' && canAdd())
-              addTag(tag);
+              addTag(prepareTag(tag));
           }}
+          className="Blue"
         />
       </InputGroup>
 
       <Add 
         click={() => {
           if (canAdd())
-            addTag(tag);
+            addTag(prepareTag(tag));
         }}
       />
     </div>
@@ -96,7 +98,7 @@ const TagsContainer = ({ tags, deleteTag }) => (
 
 const Tags = ({ tag, tags, writeTag, addTag, deleteTag }) => {
   const canAdd = () => {
-    if (tag.trim() && tags.indexOf(tag) === -1)
+    if (prepareTag(tag) && tags.indexOf(prepareTag(tag)) === -1)
       return true;
 
     return false;

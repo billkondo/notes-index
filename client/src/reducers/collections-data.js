@@ -1,9 +1,11 @@
 import {
-  LOAD_COLLECTIONS
+  LOAD_COLLECTIONS,
+  SET_ID
 } from '../types/collections-data';
 
 const defaultState = {
-  collections: []
+  collections: [],
+  idToLoad: ""
 }
 
 export default (state = defaultState, action) => {
@@ -12,6 +14,13 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         collections: action.collections
+      }
+    
+    case SET_ID:
+      return {
+        ...state, 
+        idToLoad: action.id,
+        sideToView: false
       }
 
     default:

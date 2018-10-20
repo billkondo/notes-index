@@ -6,7 +6,8 @@
 
   .header {
     font-family: "Baloo Bhai";
-    font-size: $small-font;
+    font-size: 1rem;
+    color: $white;
     font-weight: bold;
     display: grid;
     grid-template-columns: 1.5rem auto; 
@@ -16,8 +17,11 @@
 
   .title {
     font-family: "Baloo Bhai";
-    font-size: $small-font;
+    font-size: 1rem;
     height: 2rem;
     padding: $medium-font;
+    color: $black;
+    background: linear-gradient(#a7c6eb,#78adc2);
+    border: none;
   }
 }

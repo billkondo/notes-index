@@ -5,7 +5,7 @@ import { arrayOf, object } from 'prop-types';
 
 import Card from './Card';
 
-const ContainerNotes = ({ notes }) => (
+const Container = ({ notes }) => (
   <TransitionGroup id="container-notes">
     {
       notes.map(value =>
@@ -25,7 +25,7 @@ const ContainerNotes = ({ notes }) => (
   </TransitionGroup>
 );
 
-ContainerNotes.propTypes = {
+Container.propTypes = {
   notes: arrayOf(object)
 }
 
@@ -33,4 +33,4 @@ export default connect(
   (state) => ({
     notes: state.notesData.notes
   })
-)(ContainerNotes)
+)(Container)

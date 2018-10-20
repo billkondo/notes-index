@@ -4,6 +4,7 @@
   grid-gap: 1rem;
 
   .header {
+    color: $white;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -14,7 +15,7 @@
       display: grid;
       grid-template-columns: 1.5rem auto;
       align-items: center;
-      font-size: $small-font;
+      font-size: 1rem;
       font-weight: bold;
       font-family: "Baloo Bhai";;
     }
@@ -31,8 +32,11 @@
     .comment {
       position: relative;
       textarea {
+        color: $black;
         resize: none;
         font-family: "Baloo Bhai";
+        background: linear-gradient(#5f88c1,#78adc2);
+        border: none;
       }
     }
   }

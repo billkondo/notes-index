@@ -13,7 +13,7 @@ class Note extends React.Component {
     return (
       <button
         className={classNames("search-note", {"black" : index == 0}, {"gray": index == 1} )}
-        onClick={() => setId({ title, description, tags, id })}
+        onClick={() => setId({ title, description, tags, id, favorite })}
       >
         <div className="title">
           { title }
