@@ -6,6 +6,29 @@ const router = express.Router();
 
 import verify from '../../validation/verifyMiddleware';
 import newCollectionMiddleware from '../../middlewares/newCollectionMiddleware';
+import { getUpdatedChildren } from '../../utils/getUpdatedChildren'; 
+
+router.get('/filter', verify, (req, res) => {
+  Collection
+    .find({ userId: req.userId })
+    .exec()
+    .then(collections => {
+      const { tags } = req.query;
+      let filteredCollections = [];
+
+      for (const collection of collections) {
+        for (const tag of tags) {
+          if (collection.tags.indexOf(tag) !== -1) {
+            filteredCollections.push(collection);
+            break;
+          }
+        }
+      }
+
+      res.status(200).json({ collections: filteredCollections });
+    })
+    .catch(err => res.status(500).json({ database: "Filter Collections Problems", err }));
+});
 
 router.get('/favorite', verify, (req, res) => {
   Collection
@@ -34,19 +57,23 @@ router.get('/:id', verify, (req, res) => {
     .then(collection => {
       let newCollection = {};
 
-      if (!isEmpty(collection)) {
-        newCollection = {
-          title: collection.title, 
-          description: collection.description, 
-          tags: collection.tags, 
-          children: collection.children, 
-          favorite: collection.favorite, 
-          id: collection.id
-        }
-      }
-      
-      res.status(200).json(newCollection);
-    })
+      getUpdatedChildren(collection.children)
+        .then(children => {
+          if (!isEmpty(collection)) {
+            newCollection = {
+              title: collection.title, 
+              description: collection.description, 
+              tags: collection.tags, 
+              children, 
+              favorite: collection.favorite, 
+              id: collection.id
+            }
+          }
+          
+          res.status(200).json(newCollection);
+        })
+        .catch(err => res.status(500).json({ database: "Problem in getting children ", err }))
+    })  
 });
 
 // Adding a collection to Database

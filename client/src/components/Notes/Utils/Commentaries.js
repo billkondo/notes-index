@@ -13,23 +13,35 @@ class Comment extends React.Component {
     focus: false
   }
 
-  onFocus = () => this.setState({ focus: true });
-  onBlur = () => this.setState({ focus: false });
+  componentWillMount() {
+    document.addEventListener('mousedown', this.loseFocus, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.loseFocus, false);
+  }
+
+  loseFocus = (e) => {
+    if (!this.node.contains(e.target)) 
+      this.setState({ focus: false });
+  }
 
   render() {
     const { comment, writeComment, deleteComment, id } = this.props;
     const { focus } = this.state;
 
     return (
-      <div className="comment">
+      <div 
+        className="comment"
+        ref={node => this.node = node }
+      >
         <InputGroup>
           <Input 
+            onFocus={() => this.setState({ focus: true })}
             type="textarea" 
             rows="2" 
             value={comment} 
             onChange={e => writeComment(e.target.value, id)}
-            onFocus={this.onFocus} 
-            onBlur={this.onBlur}
           />
         </InputGroup>
 

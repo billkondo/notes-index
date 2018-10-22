@@ -5,7 +5,9 @@ import {
   EXIT_SEARCH_MENU,
   RESET_MODAL,
   SEARCH_NOTES_LOAD, 
-  SEARCH_NOTES_UNLOAD
+  SEARCH_NOTES_UNLOAD,
+  FILTER_LOAD, 
+  FILTER_UNLOAD
 } from '../types/modal';
 
 export const startModal = (redButton, greenButton, WarningMessage, exitFunction) => {
@@ -53,5 +55,17 @@ export const searchNotesLoad = () => {
 export const searchNotesUnload = () => {
   return dispatch => {
     dispatch({ type: SEARCH_NOTES_UNLOAD });
+  }
+}
+
+export const filterLoad = (filterType) => {
+  return dispatch => {
+    dispatch({ type: FILTER_LOAD, filterType });
+  }
+}
+
+export const filterUnload = () => {
+  return dispatch => {
+    dispatch({ type: FILTER_UNLOAD });
   }
 }

@@ -112,14 +112,7 @@ export const submitCollection = (updateURL) => {
     if (collection.isLoading)
       return;
 
-    const children = collection.children.map(child => ({
-        id: child.id,
-        title: child.title, 
-        description: child.description,
-        tags: child.tags,
-        favorite: child.favorite
-      })
-    );
+    const children = collection.children.map(child => child._id);
 
     const { title, description, tags, favorite } = collection; 
 
@@ -151,14 +144,7 @@ export const submitEditedCollection = (updateURL) => {
     if (collection.isLoading)
       return;
 
-    const children = collection.children.map(child => ({
-        id: child.id,
-        title: child.title, 
-        description: child.description,
-        tags: child.tags,
-        favorite: child.favorite
-      })
-    );
+    const children = collection.children.map(child => child._id);
 
     const { title, description, tags, favorite, id } = collection; 
 

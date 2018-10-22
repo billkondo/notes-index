@@ -7,7 +7,9 @@ import {
   EXIT_SEARCH_MENU,
   RESET_MODAL,
   SEARCH_NOTES_LOAD, 
-  SEARCH_NOTES_UNLOAD
+  SEARCH_NOTES_UNLOAD,
+  FILTER_LOAD, 
+  FILTER_UNLOAD
 } from '../types/modal';
 
 const WarningMessageDefault = () => (
@@ -24,7 +26,9 @@ const defaultState = {
   WarningMessage: WarningMessageDefault,
   exitFunction: exitFunctionDefault,
   searchRender: false,
-  notesLoaded: false
+  notesLoaded: false,
+  filterRender: false,
+  filterType: 0
 }
 
 export default (state = defaultState, action) => {
@@ -67,6 +71,20 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         notesLoaded: false
+      }
+
+    case FILTER_LOAD:
+      return {
+        ...state, 
+        filterRender: true,
+        filterType: action.filterType
+      }
+
+    case  FILTER_UNLOAD:  
+      return {
+        ...state, 
+        filterRender: false,
+        filterType: 0
       }
 
     case RESET_MODAL: 

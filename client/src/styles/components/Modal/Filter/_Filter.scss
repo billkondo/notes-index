@@ -1,0 +1,84 @@
+.FilterPage {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-items: center;
+  font-family: "Baloo Bhai"; 
+
+  .FilterMenu {
+    position: relative;
+    height: $big-card-height;
+    width: $big-card-width;
+    margin-top: 7rem;
+    border-radius: 0.2rem; 
+
+    .Header {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: $medium-font;
+      padding: $small-font;
+      color: $white;
+    }
+
+    .InputTag {
+      display: grid;
+      grid-template-columns: 4rem auto 2rem;
+      align-items: center;
+      color: $white;
+      padding: $small-font;
+
+      .Input {
+        color: $black;
+        font-size: 1rem;
+        border: none;
+      }
+
+      .TagIcon {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .Tags {
+      padding: $small-font;
+      display: grid;
+      justify-items: stretch;
+      align-items: stretch;
+      grid-gap: 1rem;
+
+      .Tag {
+        position: relative;
+        color: $white;
+        background: $tag-color;
+        font-size: 1rem;
+        padding: $small-font;
+
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        
+        border-radius: 0.2rem;
+      }
+
+      .Tag:hover {
+        background-color: #353839;
+        color: darkgray;
+        transition: all 500ms ease-out;
+      }
+    }
+
+    .Submit {
+      border-radius: 0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: $big-card-width;
+      border-radius: 0 0 0.2rem 0.2rem;
+    }
+  }
+}

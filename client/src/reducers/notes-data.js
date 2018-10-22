@@ -1,7 +1,5 @@
 import {  
   LOAD_NOTES,
-  FILTER_ON,
-  FILTER_OFF,
   REMOVE_NOTE, 
   ADD_NOTE,
   SET_ID
@@ -9,7 +7,6 @@ import {
 
 const defaultState = {
   notes: [],
-  filter: false,
   idToLoad: ""
 }
 
@@ -19,18 +16,6 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         notes: action.notes
-      }
-
-    case FILTER_ON:
-      return {
-        ...state, 
-        filter: true
-      }
-
-    case FILTER_OFF:
-      return {
-        ...state, 
-        filter: false
       }
 
     case REMOVE_NOTE: 

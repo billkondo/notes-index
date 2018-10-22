@@ -8,12 +8,12 @@ import Favorite from '../../Buttons/FavoriteButton';
 class Note extends React.Component {  
   render() {
     const { note, index, isOpen, setId } = this.props;
-    const { title, description, tags, favorite, id } = note;
+    const { title, description, tags, favorite } = note;
 
     return (
       <button
         className={classNames("search-note", {"black" : index == 0}, {"gray": index == 1} )}
-        onClick={() => setId({ title, description, tags, id, favorite })}
+        onClick={() => setId(note)}
       >
         <div className="title">
           { title }

@@ -19,6 +19,7 @@ import Favorite from './Favorite/Favorite';
 import SignIn from './SignIn/SignIn';
 import Modal from './Modal/Modal';
 import Search from './Modal/Search/Search';
+import Filter from './Modal/Filter/Filter';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -28,6 +29,7 @@ const AppRouter = () => (
       <Search />
       <NotesView />
       <CollectionsView />
+      <Filter />
     
       <div id="app-body">
         <div id="app-body-main">

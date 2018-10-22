@@ -1,9 +1,9 @@
 import toUpper from 'lodash/toUpper';
 
 export const prepareTag = (tag) => {
-  const tagTrim = tag.trim();
-  const words = tagTrim.split(" ");
+  const newTag = tag.replace(/\s+/g,' ').trim();
+  const words = newTag.split(" ");
   const upperCaseWords = words.map(word => toUpper(word));
-  const newTag = upperCaseWords.join("   ");
-  return newTag;
+  const preparedTag = upperCaseWords.join("   ");
+  return preparedTag;
 }
