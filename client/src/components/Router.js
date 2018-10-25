@@ -20,6 +20,7 @@ import SignIn from './SignIn/SignIn';
 import Modal from './Modal/Modal';
 import Search from './Modal/Search/Search';
 import Filter from './Modal/Filter/Filter';
+import Profile from './Profile/Profile';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -43,6 +44,7 @@ const AppRouter = () => (
             <Route exact path='/Collections/Edit/:id' component={ModalReset(Fade(Auth(CollectionsEdit)))} />
             <Route exact path='/Favorite' component={ModalReset(Fade(Auth(Favorite)))} />
             <Route exact path='/SignIn' component={ModalReset(Fade(SignIn))} />
+            <Route exact path='/Profile' component={ModalReset(Fade(Auth(Profile)))}s/>
           </Switch>
         </div>
       </div>

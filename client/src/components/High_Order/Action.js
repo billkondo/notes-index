@@ -23,7 +23,7 @@ export default (Component) => {
 
     profile = () => ({
       label: "Profile",
-      onClick: () => this.props.history.push('/')
+      onClick: () => this.props.history.push('/Profile')
     })
     
     notes = () => ({

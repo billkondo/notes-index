@@ -1,0 +1,40 @@
+.ProfileInfo {
+  font-family: "Baloo Bhai";
+
+  width: $big-card-width;
+
+  display: grid;
+
+  grid-gap: 2rem;
+
+  .InfoTitle {
+    color: $white;
+    font-size: $large-font;
+
+    .UserName {
+      font-size: 2rem;
+    }
+  }
+
+  .ProfileName {
+    display: grid;
+
+    grid-template-columns: 5rem auto;
+
+    align-items: center;
+    justify-items: start;
+
+    .Title {
+      color: $white;
+      font-size: $medium-font;
+    }
+
+    .Input {
+      color: $black;
+    }
+  }
+
+  .Submit {
+
+  }
+}

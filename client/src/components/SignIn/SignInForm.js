@@ -8,7 +8,7 @@ import decode from 'jsonwebtoken/decode';
 import InputText from '../Input/InputText';
 
 import setHeader from '../../authentication/setHeader';
-import { signInUser } from '../../actions/authentication';
+import { setUser } from '../../actions/authentication';
 
 class SignInForm extends React.Component {
   state = {
@@ -21,7 +21,7 @@ class SignInForm extends React.Component {
 
   submit = () => {
     const { user, password } = this.state;
-    const { setErrors, signInUser } = this.props;
+    const { setErrors, setUser } = this.props;
     const info = { user, password };
 
     this.setState({ isLoading: true });
@@ -36,7 +36,7 @@ class SignInForm extends React.Component {
         if (isEmpty(newErrors)) {
           setHeader(token);
           localStorage.setItem('jwtToken', token);
-          signInUser(decode(token));          
+          setUser(decode(token));          
         }
         else {
           setErrors(newErrors);
@@ -84,10 +84,10 @@ class SignInForm extends React.Component {
 SignInForm.propTypes = {
   errors: propTypes.object.isRequired,
   setErrors: propTypes.func.isRequired,
-  signInUser: propTypes.func.isRequired
+  setUser: propTypes.func.isRequired
 }
 
 export default connect(
   null, 
-  { signInUser }
+  { setUser }
 )(SignInForm);

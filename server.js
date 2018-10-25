@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
+import user from './routes/api/user';
 import notes from './routes/api/notes';
 import collections from './routes/api/collections';
 import signUp from './routes/api/authentication/signUp';
@@ -13,6 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routers
+app.use('/api/user', user);
 app.use('/api/auth/signin', signIn);
 app.use('/api/auth/signUp', signUp);
 app.use('/api/auth/verify', verifyToken);

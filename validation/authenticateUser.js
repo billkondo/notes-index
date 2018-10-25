@@ -7,7 +7,8 @@ export default (password, user) => new Promise((resolve, reject) => {
 
     if (match) {
       const token = jwt.sign({
-        username: user.username
+        username: user.username,
+        name: user.name
       }, 'secret', { expiresIn: 60 * 60 });
 
       resolve(token);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import decode from 'jsonwebtoken/decode';
 
-import { signInUser } from '../actions/authentication';
+import { setUser } from '../actions/authentication';
 import setHeader from '../authentication/setHeader';
 
 export default (store) => new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ export default (store) => new Promise((resolve, reject) => {
       .get('/api/auth/verify')
       .then(res => {
         if (res.data.success) 
-          store.dispatch(signInUser(decode(localStorage.jwtToken)));
+          store.dispatch(setUser(decode(localStorage.jwtToken)));
 
         resolve();
       })

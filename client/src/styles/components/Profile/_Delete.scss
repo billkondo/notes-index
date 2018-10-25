@@ -1,0 +1,19 @@
+.ProfileDelete {
+  font-family: "Baloo Bhai";
+
+  width: $big-card-width;
+
+  display: grid;
+
+  grid-gap: 2rem;
+
+  .DeleteTitle {
+    font-size: 2rem;
+    color: #dc3545;
+  }
+
+  .DeleteWarning {
+    font-size: $medium-font;
+    color: $white;
+  }
+}

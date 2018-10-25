@@ -1,6 +1,6 @@
 import { SIGN_IN_USER, SIGN_OUT_USER } from '../types/authentication';
 
-export const signInUser = (user) => {
+export const setUser = (user) => {
   return dispatch => {
     dispatch({ type: SIGN_IN_USER, user });
   }
