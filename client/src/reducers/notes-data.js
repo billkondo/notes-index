@@ -1,7 +1,5 @@
 import {  
   LOAD_NOTES,
-  REMOVE_NOTE, 
-  ADD_NOTE,
   SET_ID
 } from '../types/notes-data';
 
@@ -16,18 +14,6 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         notes: action.notes
-      }
-
-    case REMOVE_NOTE: 
-      return {
-        ...state, 
-        notes: state.notes.filter(note => note.id != action.note.id)
-      }
-
-    case ADD_NOTE:
-      return {
-        ...state, 
-        notes: state.notes.concat(action.note)
       }
 
     case SET_ID:

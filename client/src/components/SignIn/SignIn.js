@@ -23,7 +23,7 @@ class SignIn extends React.Component {
     return (
       <div className="sign-in-page">
         <div className="sign-in">
-          <div className="sign-in-logo"> Notes Index </div>
+          <div className="sign-in-logo"> NOTES INDEX </div>
 
           <ErrorMessage message={errors.match} shouldRender={!isEmpty(errors.match)} />
 

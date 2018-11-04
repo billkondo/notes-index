@@ -4,12 +4,17 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { func } from 'prop-types';
 
+import Loading from '../../Animation/Loading';
 import Functions from './Functions';
 import Container from './Container';
 
 import { loadCollections } from '../../../actions/collections-data';
 
 class Menu extends React.Component {
+  state = {
+    loaded: false
+  }
+
   componentWillMount() {
     const { loadCollections } = this.props;
 
@@ -17,16 +22,24 @@ class Menu extends React.Component {
     
     axios
       .get('/api/collections')
-      .then(res => loadCollections(res.data))
+      .then(res => {
+        const collections = res.data;
+        loadCollections(collections);
+        this.setState({ loaded: true });
+      })
       .catch(err => console.log(err));
   }
 
   render() {
+    const { loaded } = this.state;
+
     return (
       <div className="collections-menu">
-        <div className="collections-title"> <i className="fas fa-box large-font" /> Collections </div>
+        <div className="collections-title"> <i className="fas fa-box large-font" /> COLLECTIONS </div>
         <Functions />
-        <Container />
+
+        { !loaded && <Loading /> }
+        { loaded && <Container /> }
       </div> 
     );
   }

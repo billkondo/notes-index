@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import EditUI from './EditUI';
 
 import { loadCollection, resetCollection } from '../../../actions/collections-operations';
+import { startLoadingNotes, startLoadingCollections, resetSearchMenu, loadNotesToDelete } from '../../../actions/search-menu';
 
 class Edit extends React.Component {
   state = {
@@ -13,15 +14,22 @@ class Edit extends React.Component {
 
   componentWillMount() {
     const id = this.props.match.params.id;
-    const { loadCollection } = this.props;
+    const { loadCollection, startLoadingCollections, startLoadingNotes, resetSearchMenu, loadNotesToDelete } = this.props;
 
+    resetSearchMenu();
+    
     axios
-      .get(`/api/collections/${id}`)
-      .then(res => {
-        const collection = res.data;
-        loadCollection(collection);
-        this.setState({ loaded: true });
-      })
+    .get(`/api/collections/${id}`)
+    .then(res => {
+      const collection = res.data;
+      loadCollection(collection);
+      loadNotesToDelete(collection.children);
+      
+      startLoadingNotes();
+      startLoadingCollections();
+      
+      this.setState({ loaded: true });
+    })
   }
 
   componentWillUnmount() {
@@ -41,5 +49,5 @@ class Edit extends React.Component {
 
 export default connect(
   null, 
-  { loadCollection, resetCollection }
+  { loadCollection, resetCollection, startLoadingCollections, startLoadingNotes, resetSearchMenu, loadNotesToDelete }
 )(Edit);

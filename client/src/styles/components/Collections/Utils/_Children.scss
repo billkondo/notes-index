@@ -43,6 +43,12 @@
         padding: $small-font;
         color: white;
         cursor: pointer;
+
+        .Favorite-Children {
+          position: absolute;
+          right: 0;
+          margin-right: 2rem;
+        }
       }
     }
   }

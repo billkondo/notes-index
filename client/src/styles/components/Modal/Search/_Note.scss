@@ -50,11 +50,19 @@
   border: none;
 }
 
-.title {
+.title_note {
   position: relative;
   display: grid;
   align-items: center;
   justify-items: start;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  .favorite-icon-note {
+    justify-self: end;
+  }
 }
 
 .gray {

@@ -21,7 +21,6 @@ const defaultState = {
   tags: [],
   id: "",
   tag: "",
-  isLoading: false,
   favorite: false
 }
 
@@ -85,18 +84,6 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         tag: action.tag
-      }
-
-    case START_LOADING:
-      return {
-        ...state, 
-        isLoading: true
-      }
-
-    case END_LOADING: 
-      return {
-        ...state, 
-        isLoading: false
       }
 
     case LOAD_NOTE:

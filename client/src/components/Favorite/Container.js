@@ -1,52 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup, Button } from 'reactstrap';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { bool, array } from 'prop-types';
 
-import CardNote from '../Notes/Main/Card';
-import CardCollection from '../Collections/Main/Card';
-
-const ContainerNotes = ({ notes }) => (
-  <TransitionGroup className="Cards">
-    {
-      notes.map(value => 
-        <CSSTransition
-          key={value.id}
-          timeout={500}
-          classNames={{
-            appear: "animated",
-            enter: "animated",
-            appearActive: "fadeIn faster", 
-            enterActive: "fadeIn faster"
-          }}
-          exit={false}
-        >
-          <CardNote key={value.id} note={value} />
-        </CSSTransition>
-      )
-    }
-  </TransitionGroup>
-);
-
-const Collections = ({ collections }) => (
-  <TransitionGroup className="Cards">
-    {
-      collections.map(value => 
-        <CSSTransition
-          key={value.id}
-          timeout={500}
-          classNames={{
-            enter: "animated",
-            enterActive: "fadeIn faster"
-          }}
-          exit={false}
-        >
-          <CardCollection key={value.id} collection={value} />
-        </CSSTransition>
-      )
-    }
-  </TransitionGroup>
-);
+import Loading from '../Animation/Loading';
+import Notes from './Notes';
+import Collections from './Collections';
 
 class Container extends React.Component {
   state = {
@@ -57,7 +16,7 @@ class Container extends React.Component {
 
   render() {
     const { option } = this.state;
-    const { notes, collections } = this.props;
+    const { notes, collections, notesLoaded, collectionsLoaded } = this.props;
     
     return (
       <div className="FavoriteContainer">
@@ -66,16 +25,31 @@ class Container extends React.Component {
           <Button className="Button" color="primary" onClick={() => this.flip(1)} active={option === 1} > Collections </Button>
         </ButtonGroup>
 
-        {(option === 0) && <ContainerNotes notes={notes} /> }
-        {(option === 1) && <Collections collections={collections} />}
+        {(option === 0) && !notesLoaded && <Loading /> }
+        {(option === 1) && !collectionsLoaded && <Loading /> }
+
+        <div className="Cards">
+          {(option === 0) && notesLoaded && <Notes notes={notes} /> }
+          {(option === 1) &&  collectionsLoaded && <Collections collections={collections} /> }
+        </div>
+
       </div>
     );
   }
 }
 
+Container.propTypes = {
+  notesLoaded: bool.isRequired, 
+  collectionsLoaded: bool.isRequired, 
+  notes: array.isRequired, 
+  collections: array.isRequired
+}
+
 export default connect(
   (state) => ({
     notes: state.notesData.notes, 
-    collections: state.collectionsData.collections
+    collections: state.collectionsData.collections,
+    notesLoaded: state.favorite.notesLoaded, 
+    collectionsLoaded: state.favorite.collectionsLoaded
   })
 )(Container);

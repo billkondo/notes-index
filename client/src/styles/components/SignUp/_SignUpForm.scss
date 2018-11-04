@@ -1,4 +1,5 @@
 .sign-up-form {
+  position: relative;
   margin: $large-font;
   background: white;
   border-radius: 0.2rem;
@@ -8,6 +9,13 @@
   display: grid;
   font-family: "Baloo Bhai"; 
   color: $black;
+
+  .Alert {
+    position: absolute;
+    top: 0;
+    margin-top: -4rem; 
+    width: 100%;
+  }
 
   .sign-up-button {
     background: #28a745;;

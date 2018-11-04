@@ -12,8 +12,6 @@ import {
   DELETE_TAG,
   LOAD_NOTE,
   WRITE_TAG,
-  START_LOADING, 
-  END_LOADING,
   FAVORITE_FLIP
 } from '../types/notes-operations';
 
@@ -120,26 +118,9 @@ export const favoriteFlip = () => {
   }
 }
 
-export const startLoading = () => {
-  return dispatch => {
-    dispatch({ type: START_LOADING });
-  }
-}
-
-export const endLoading = () => {
-  return dispatch => {
-    dispatch({ type: END_LOADING });
-  }
-}
-
 export const submitNote = (updateURL) => {
   return (dispatch, getState) => {
     const note = getState().notesOperations;
-    
-    if (note.isLoading) 
-      return;
-
-    startLoading();
 
     const newNote = {
       title: note.title, 
@@ -155,7 +136,6 @@ export const submitNote = (updateURL) => {
       .then(res => {
         // TODO Error handling
         updateURL();
-        endLoading();
       })
       .catch(err => console.log(err));
   }
@@ -164,11 +144,6 @@ export const submitNote = (updateURL) => {
 export const submitEditedNote = (updateURL) => {
   return (dispatch, getState) => {
     const note = getState().notesOperations;
-
-    if (note.isLoading)
-      return;
-
-    startLoading();
 
     const editedNote = {
       title: note.title, 
@@ -183,7 +158,6 @@ export const submitEditedNote = (updateURL) => {
       .put('/api/notes', editedNote)
       .then(res => {
         // TODO Error handling
-        endLoading();
         updateURL();
       })
       .catch(err => console.log(err));
@@ -194,16 +168,10 @@ export const deleteNote = (updateURL) => {
   return (dispatch, getState) => {
     const note = getState().notesOperations;
 
-    if (note.isLoading)
-      return;
-
-    startLoading();
-
     axios
       .delete('/api/notes', { params: note })
       .then(res => {
         // TODO Error handling
-        endLoading();
         updateURL();
       })
       .catch(err => console.log(err));

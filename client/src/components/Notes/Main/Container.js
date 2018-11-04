@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { arrayOf, object } from 'prop-types';
 
+import Fade from '../../High_Order/Fade';
 import Card from './Card';
 
 const Container = ({ notes }) => (
@@ -33,4 +34,4 @@ export default connect(
   (state) => ({
     notes: state.notesData.notes
   })
-)(Container)
+)(Fade(Container));

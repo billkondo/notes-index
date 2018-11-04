@@ -1,7 +1,5 @@
 import {
   LOAD_NOTES,
-  REMOVE_NOTE,
-  ADD_NOTE,
   SET_ID
 } from '../types/notes-data';
 
@@ -13,24 +11,6 @@ export const loadNotes = (notes) => {
       type: LOAD_NOTES, 
       notes
     });
-  }
-}
-
-export const addNote = (note) => {
-  return dispatch => {
-    dispatch({
-      type: ADD_NOTE, 
-      note
-    })
-  }
-}
-
-export const removeNote = (note) => {
-  return dispatch => {
-    dispatch({
-      type: REMOVE_NOTE, 
-      note
-    })
   }
 }
 

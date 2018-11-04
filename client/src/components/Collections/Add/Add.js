@@ -10,11 +10,15 @@ import Children from '../Utils/Children';
 import Submit from './Submit';
 
 import { resetCollection } from '../../../actions/collections-operations';
+import { startLoadingNotes, startLoadingCollections, resetSearchMenu } from '../../../actions/search-menu';
 
 class Add extends React.Component {
   componentWillMount() {
-    const { resetCollection } = this.props;
+    const { resetCollection, startLoadingNotes, startLoadingCollections, resetSearchMenu } = this.props;
     resetCollection();
+    resetSearchMenu();
+    startLoadingNotes();
+    startLoadingCollections();
   }
 
   componentWillUnmount() {
@@ -26,7 +30,7 @@ class Add extends React.Component {
     return (
       <div className="collections-add-page">
         <div className="collections-add">
-          <Header title="Add Collection" />
+          <Header title="ADD COLLECTION" />
           <Title />
           <Description />
           <Tags />
@@ -39,10 +43,10 @@ class Add extends React.Component {
 }
 
 Add.propTypes = {
-  resetCollection: func.isRequired
+  resetCollection: func.isRequired, 
 }
 
 export default connect(
   null, 
-  { resetCollection }
+  { resetCollection, startLoadingNotes, startLoadingCollections, resetSearchMenu }
 )(Add);

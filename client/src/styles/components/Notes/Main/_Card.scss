@@ -3,23 +3,31 @@
   width: 13.5rem;
   
   background: linear-gradient(#1f3057,#2a283d);
-  cursor: pointer;
 
   display: grid;
   grid-template-rows: 2rem 16rem 2rem;
   border-radius: 0.2rem;
 
-  .title {
+  .Notes-Card-Title {
     font-family: "Baloo Bhai";
     font-size: $medium-font;
     display: grid;
     align-items: center;
-    justify-items: center;
-    padding: $small-font;
+    justify-items: start;
+    padding-top: $small-font; 
+    padding-left: $medium-font;
+    padding-right: $medium-font;
     padding-bottom: 0; 
     color: $white;
+    grid-template-columns: auto $small-font;
+    
+    .Favorite {
+      font-size: $small-font;
+      justify-self: end;
+    }
   }
 
+  
   .description {
     background: linear-gradient(#5f88c1,#78adc2);
     margin: $medium-font;

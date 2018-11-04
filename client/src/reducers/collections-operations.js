@@ -8,8 +8,6 @@ import {
   RESET_COLLECTION,
   DELETE_TAG,
   FAVORITE_FLIP,
-  START_LOAD, 
-  END_LOAD,
   LOAD_COLLECTION
 } from '../types/collections-operations';
 
@@ -18,7 +16,6 @@ const defaultState = {
   description: "",
   tags: [],
   tag: "",
-  isLoading: false,
   children: [],
   favorite: false,
   id: ""
@@ -73,18 +70,6 @@ export default (state = defaultState, action) => {
       return {
         ...state, 
         favorite: !state.favorite
-      }
-
-    case START_LOAD: 
-      return {
-        ...state, 
-        isLoading: true
-      }
-
-    case END_LOAD:
-      return {
-        ...state, 
-        isLoading: false
       }
 
     case LOAD_COLLECTION: 

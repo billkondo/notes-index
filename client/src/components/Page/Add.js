@@ -27,7 +27,7 @@ class Add extends React.Component {
         </DropdownToggle>
 
         <DropdownCustom close={this.close}
-          items={[addNote(), addCollection(), addFavorite()]}
+          items={[addNote(), addCollection()]}
         />
       </Dropdown>
     );

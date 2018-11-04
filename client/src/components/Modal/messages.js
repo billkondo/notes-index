@@ -35,6 +35,12 @@ export const DeleteMessage = () => (
   </div>
 );
 
+export const DeleteAccountMessage = () => (
+  <div className="modal-text">
+    <p> You will delete this account permanently! </p>
+  </div>
+);
+
 export const DeleteMessageCollection = () => (
   <div className="modal-text">
     <p> You will delete this collection permanently! </p>

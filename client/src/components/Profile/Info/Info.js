@@ -54,7 +54,7 @@ class Info extends React.Component {
 
     return (
       <div className="ProfileInfo">
-        <div className="InfoTitle"> {`Profile from `} <span className="UserName">@{user.username}</span> </div>
+        <div className="InfoTitle"> <span className="UserName"> @ {user.username}</span> </div>
         <Name name={userInfo.name} onChangeName={this.onChangeName} />
         <Button 
           className="Submit" 

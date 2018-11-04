@@ -5,7 +5,6 @@ import axios from 'axios';
 import EditUI from './EditUI';
 
 import { loadNote, resetNote } from '../../../actions/notes-operations';
-import { searchNotesUnload } from '../../../actions/modal';
 
 class Edit extends React.Component {
   state = {
@@ -28,7 +27,6 @@ class Edit extends React.Component {
   componentWillUnmount() {
     const { resetNote, searchNotesUnload } = this.props;
     resetNote();
-    searchNotesUnload();
   }
 
   render() {
@@ -46,5 +44,5 @@ export default connect(
   (state) => ({
     note: state.notesOperations,
   }),
-  { loadNote, resetNote, searchNotesUnload }
+  { loadNote, resetNote }
 )(Edit);

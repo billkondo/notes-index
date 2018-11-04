@@ -1,9 +1,5 @@
 export const START_MODAL = "START_MODAL";
 export const END_MODAL = "END_MODAL";
-export const ENTER_SEARCH_MENU = "ENTER_SEARCH_MENU";
-export const EXIT_SEARCH_MENU = "EXIT_SEARCH_MENU";
 export const RESET_MODAL = "RESET_MODAL";
-export const SEARCH_NOTES_LOAD = "SEARCH_NOTES_LOAD";
-export const SEARCH_NOTES_UNLOAD = "SEARCH_NOTES_UNLOAD";
 export const FILTER_LOAD = "FILTER_LOAD";
 export const FILTER_UNLOAD = "FILTER_UNLOAD";

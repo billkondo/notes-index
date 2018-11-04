@@ -11,8 +11,6 @@ import {
   RESET_COLLECTION,
   DELETE_TAG,
   FAVORITE_FLIP,
-  START_LOAD, 
-  END_LOAD,
   LOAD_COLLECTION
 } from '../types/collections-operations';
 
@@ -93,24 +91,9 @@ export const favoriteFlip = () => {
   }
 }
 
-export const startLoad = () => {
-  return dispatch => {
-    dispatch({ type: START_LOAD });
-  }
-}
-
-export const endLoad = () => {
-  return dispatch => {
-    dispatch({ type: END_LOAD });
-  }
-}
-
 export const submitCollection = (updateURL) => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
-
-    if (collection.isLoading)
-      return;
 
     const children = collection.children.map(child => child._id);
 
@@ -125,14 +108,11 @@ export const submitCollection = (updateURL) => {
       id: uuidv4()
     };
 
-    startLoad();
-
     axios
       .post('/api/collections', newCollection)
       .then(res => {
         // TODO Handle Errors
         updateURL();
-        endLoad();
       })
   }
 }
@@ -140,9 +120,6 @@ export const submitCollection = (updateURL) => {
 export const submitEditedCollection = (updateURL) => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
-
-    if (collection.isLoading)
-      return;
 
     const children = collection.children.map(child => child._id);
 
@@ -157,14 +134,11 @@ export const submitEditedCollection = (updateURL) => {
       id
     };
 
-    startLoad();
-
     axios
       .put('/api/collections', newCollection)
       .then(res => {
         // TODO Handle Errors
         updateURL();
-        endLoad();
       })
   }
 }
@@ -173,16 +147,10 @@ export const deleteCollection = (updateURL) => {
   return (dispatch, getState) => {
     const collection = getState().collectionsOperations;
 
-    if (collection.isLoading)
-      return;
-
-    // startLoad();
-
     axios
       .delete('/api/collections', { params: collection })
       .then(res => {
         // TODO Error handling
-        // endLoading();
         updateURL();
       })
       .catch(err => console.log(err));

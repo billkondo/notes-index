@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { bool, func } from 'prop-types';
+import { func } from 'prop-types';
 
 import { submitEditedCollection, deleteCollection } from '../../../actions/collections-operations';
 import { startModal } from '../../../actions/modal';
 import { goBackButton, deleteButton, DeleteMessageCollection, saveButton, SaveMessageCollection } from '../../Modal/messages';
 
 const Footer = (props) => {
-  const { isLoading, submitEditedCollection, deleteCollection, startModal } = props;
+  const { submitEditedCollection, deleteCollection, startModal } = props;
   const updateURL = () => props.history.push('/Collections');
   const editAction = () => startModal(saveButton, goBackButton, SaveMessageCollection, () => submitEditedCollection(updateURL));
   const deleteAction = () => startModal(deleteButton, goBackButton, DeleteMessageCollection, () => deleteCollection(updateURL));
@@ -17,7 +17,6 @@ const Footer = (props) => {
   return (
     <div className="collections-edit-footer">
       <Button 
-        disabled={isLoading} 
         color="success" 
         className="my-button" 
         onClick={editAction} 
@@ -26,7 +25,6 @@ const Footer = (props) => {
       </Button>
 
       <Button 
-        disabled={isLoading} 
         color="danger"  
         className="my-button" 
         onClick={deleteAction} 
@@ -38,15 +36,12 @@ const Footer = (props) => {
 }
 
 Footer.propTypes = {
-  isLoading: bool.isRequired, 
   submitEditedCollection: func.isRequired, 
   deleteCollection: func.isRequired,
   startModal: func.isRequired
 }
 
 export default withRouter(connect(
-  (state) => ({
-    isLoading: state.notesOperations.isLoading
-  }), 
+  null,  
   { submitEditedCollection, deleteCollection, startModal }
 )(Footer));

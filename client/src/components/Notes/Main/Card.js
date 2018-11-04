@@ -26,12 +26,13 @@ class Card extends React.Component {
 
   render() {
     const { note } = this.props;
-    const { title, description, tags } = note;
+    const { title, description, favorite } = note;
 
     return (
       <div className="notes-main-card">
-        <div className="title">
+        <div className="Notes-Card-Title">
           {truncate(title, { 'length': 15 })}
+          { favorite && <i className="fas fa-star Favorite" /> }
         </div>
 
         <textarea 

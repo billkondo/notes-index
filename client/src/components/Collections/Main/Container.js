@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+import Fade from '../../High_Order/Fade';
 import Card from './Card';
 
 const Container = ({ collections }) => (
@@ -28,4 +29,4 @@ export default connect(
   (state) => ({
     collections: state.collectionsData.collections
   })
-)(Container);
+)(Fade(Container));

@@ -11,6 +11,10 @@
     color: $white;
     font-size: $large-font;
 
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
     .UserName {
       font-size: 2rem;
     }

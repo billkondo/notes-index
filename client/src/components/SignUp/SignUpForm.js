@@ -2,6 +2,8 @@ import React from 'react';
 import InputText from '../Input/InputText';
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
+import { Alert } from 'reactstrap';
+import { CSSTransition } from 'react-transition-group';
 
 class SignUpFrom extends React.Component {
   state = {
@@ -11,7 +13,7 @@ class SignUpFrom extends React.Component {
     passwordConfirmation: "",
     errors: {},
     isLoading: false,
-    isUserUnique: true
+    successInCreatingUser: false
   }
 
   onChange = (e) => {
@@ -21,7 +23,7 @@ class SignUpFrom extends React.Component {
   submit = () => {
     const { username, email, password, passwordConfirmation} = this.state;
 
-    this.setState({ isLoading: true, errors: {} });
+    this.setState({ isLoading: true, errors: {}, successInCreatingUser: false });
 
     const info = { username, email, password, passwordConfirmation };
 
@@ -30,11 +32,14 @@ class SignUpFrom extends React.Component {
         const newErrors = res.data.errors;
 
         if (isEmpty(newErrors)) {
+          // User was created
+
           this.setState({ 
             username: "",
             email: "",
             password: "",
-            passwordConfirmation: ""
+            passwordConfirmation: "",
+            successInCreatingUser: true
           });
         }
 
@@ -43,10 +48,29 @@ class SignUpFrom extends React.Component {
   }
 
   render() {
-    const { username, email, password, passwordConfirmation, isLoading, errors } = this.state;
+    const { username, email, password, passwordConfirmation, isLoading, errors, successInCreatingUser } = this.state;
 
     return (
       <div className="sign-up-form">
+        <CSSTransition
+          in={successInCreatingUser}
+          timeout={1000}
+          classNames={{
+            appear: "animated", 
+            enter: "animated", 
+            exit: "animated", 
+            appearActive: "fadeIn", 
+            enterActive: "fadeIn",
+            exitActive: "fadeOut"
+          }}
+          mountOnEnter={true}
+          unmountOnExit={true}
+        >
+          <Alert color="success" className="Alert">
+            User was created! Confirm your Email to login.
+          </Alert>
+        </CSSTransition>
+
         <InputText
           name="username"
           onChange={this.onChange}

@@ -6,32 +6,43 @@ import { func, bool } from 'prop-types';
 
 import { submitCollection } from '../../../actions/collections-operations';
 
-const Submit = (props) => {
-  const { isLoading, submitCollection } = props;
-  const updateURL = () => props.history.push('/Collections');
+class Submit extends React.Component {
+  state = {
+    isLoading: false
+  }
+  
+  updateURL = () => this.props.history.push('/Collections');
+  
+  onClick = () => {
+    const { submitCollection } = this.props;
+    
+    this.setState({ isLoading: true });
+    submitCollection(this.updateURL);
+  }
 
-  return (
-    <div className="collections-submit">
-      <Button 
-        color="success" 
-        className="submit" 
-        onClick={() => submitCollection(updateURL)} 
-        disabled={isLoading} 
-      >
-        Done
-      </Button>
-    </div>
-  );
+  render() {
+    const { isLoading } = this.state;
+  
+    return (
+      <div className="collections-submit">
+        <Button 
+          color="success" 
+          className="submit" 
+          onClick={this.onClick} 
+          disabled={isLoading} 
+        >
+          Done
+        </Button>
+      </div>
+    );
+  }
 }
 
 Submit.propTypes = {
-  isLoading: bool.isRequired, 
   submitCollection: func.isRequired
 }
 
 export default withRouter(connect(
-  (state) => ({
-    isLoading: state.collectionsOperations.isLoading
-  }), 
+  null, 
   { submitCollection }
 )(Submit));

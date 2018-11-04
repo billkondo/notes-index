@@ -1,15 +1,16 @@
-.collections-functions {
+.favorite_functions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 3rem;
   padding: 3rem;
   font-size: $medium-font;
   font-family: "Baloo Bhai";
-  
-  .functions-button {
+
+  .favorite_add_button {
     font-size: $medium-font;
     letter-spacing: 0.1rem;
     padding: $small-font;
+
     width: 6rem;
   }
 }

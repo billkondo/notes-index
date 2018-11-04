@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import ExitButton from '../../Buttons/ExitButton';
 import { removeChildren } from '../../../actions/collections-operations';
-import { addNote } from '../../../actions/notes-data';
+import { addNote } from '../../../actions/search-menu';
 
 class Note extends React.Component {
   state = {
@@ -39,6 +39,7 @@ class Note extends React.Component {
       >
         {mouseOn && <ExitButton click={this.remove} styles={{ borderRadius: "0" }}/>}
         {child.title}
+        { child.favorite && <i className="fas fa-star Favorite-Children" />}
       </div>
     );
   }

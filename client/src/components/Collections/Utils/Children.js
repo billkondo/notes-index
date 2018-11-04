@@ -5,7 +5,7 @@ import { array, func } from 'prop-types';
 
 import Note from './Note';
 
-import { enterSearchMenu } from '../../../actions/modal';
+import { enterSearchMenu } from '../../../actions/search-menu';
 
 const ChildrenHeader = ({ enterSearchMenu }) => (
   <div className="collections-utils-children-header">
@@ -15,7 +15,6 @@ const ChildrenHeader = ({ enterSearchMenu }) => (
     </div>
 
     <div className="controls">
-      {/* <Button className="button"> +  Collection</Button> */}
       <Button color="info" className="button" onClick={enterSearchMenu} > +  Note</Button>
     </div>
   </div>

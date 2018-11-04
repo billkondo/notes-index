@@ -7,6 +7,10 @@ import { bool, string, func } from 'prop-types';
 import { endModal } from '../../actions/modal';
 
 class Modal extends React.Component {
+  state = {
+    isLoading: false
+  }
+
   componentWillUpdate(nextProps) {
     if (!this.props.modalRender && nextProps.modalRender)
       document.addEventListener('mousedown', this.handleClick, false);
@@ -23,6 +27,7 @@ class Modal extends React.Component {
   
   render() {
     const { modalRender, endModal, exitFunction, redButton, greenButton, WarningMessage } = this.props;
+    const { isLoading } = this.state;
 
     return (
       <CSSTransition
@@ -45,7 +50,15 @@ class Modal extends React.Component {
             <WarningMessage />
 
             <div className="modal-buttons">
-              <Button color="danger" className="modal-button" onClick={exitFunction} >
+              <Button 
+                color="danger" 
+                className="modal-button" 
+                onClick={() => {
+                  this.setState({ isLoading: true });
+                  exitFunction();
+                }} 
+                disabled={isLoading}
+              >
                 {redButton}
               </Button>
 

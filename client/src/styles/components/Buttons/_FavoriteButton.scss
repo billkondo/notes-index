@@ -1,6 +1,9 @@
 .favorite {
   position: absolute;
   right: 0;
-  margin-right: $medium-font;
+  margin-right: 1.5rem;
+  color: white;
+  background: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
   cursor: pointer;
 }

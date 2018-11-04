@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100vw; 
 
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 20;
   
   display: grid;
@@ -34,6 +34,7 @@
     align-items: center;
     padding: $medium-font;
     color: $white;
+    padding-bottom: 0; 
     
     .icon-star, .icon-quote, .title {
       grid-row: 1/2;
@@ -80,13 +81,14 @@
     .container-commentaries {
       height: 15rem;
       overflow-y: auto;
-      padding-right: $medium-font;
 
       .comment {
         color: $black;
         margin-bottom: $small-font;
         border: none;
         border-radius: 0;
+
+        width: 90%;
       }
     }
   }
@@ -216,6 +218,8 @@
     font-size: $medium-font;
     display: grid;
     align-items: end;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem; 
 
     .left {
       justify-self: start;
@@ -247,4 +251,8 @@
 
 .Z-Index-30 {
   z-index: 30;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: rgba(0, 0, 0, 0); 
 }

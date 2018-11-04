@@ -13,8 +13,8 @@ const Functions = (props) => {
 
   return (
     <div className="notes-functions" >
-      <Button color="primary" className="functions-button" onClick={goToNotesAdd} > Add </Button>
-      <Button color="info" className="functions-button" onClick={startFilter} > Filter </Button>
+      <Button color="primary" className="functions-button" onClick={goToNotesAdd} > ADD </Button>
+      <Button color="info" className="functions-button" onClick={startFilter} > FILTER </Button>
     </div>
   );
 }

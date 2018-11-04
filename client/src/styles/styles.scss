@@ -21,8 +21,6 @@
 @import './components/Notes/Add/Submit';
 @import './components/Notes/Edit/Edit';
 @import './components/Notes/Main/Menu';
-@import './components/Notes/NotesRouter';
-@import './components/Notes/View/View';
 
 @import './components/App.scss';
 
@@ -72,15 +70,12 @@
 
 @import './components/Notes/Edit/Footer';
 
-@import './components/Notes/View/Commentaries';
-@import './components/Notes/View/Description';
-@import './components/Notes/View/Footer';
-@import './components/Notes/View/Header';
-@import './components/Notes/View/Tags';
-
 @import './components/Favorite/Container';
 @import './components/Favorite/Favorite';
+@import './components/Favorite/Functions';
 
 @import './components/Profile/Delete';
 @import './components/Profile/Profile';
 @import './components/Profile/Info/Info';
+
+@import './components/Animation/Loading';

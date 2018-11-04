@@ -3,21 +3,28 @@
   width: 13.5rem;
   
   background: linear-gradient(#122b3e,#172035);
-  cursor: pointer;
 
   display: grid;
   grid-template-rows: 2rem 16rem 2rem;
   border-radius: 0.2rem;
 
-  .title {
+  .Collections-Card-Title {
     font-family: "Baloo Bhai";
     font-size: $medium-font;
     display: grid;
     align-items: center;
-    justify-items: center;
-    padding: $small-font;
+    justify-items: start;
+    padding-top: $small-font; 
+    padding-left: $medium-font;
+    padding-right: $medium-font;
     padding-bottom: 0; 
     color: $white;
+    grid-template-columns: auto $small-font;
+    
+    .Favorite-Card {
+      font-size: $small-font;
+      justify-self: end;
+    }
   }
 
   .description {

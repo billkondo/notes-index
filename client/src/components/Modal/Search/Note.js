@@ -15,9 +15,9 @@ class Note extends React.Component {
         className={classNames("search-note", {"black" : index == 0}, {"gray": index == 1} )}
         onClick={() => setId(note)}
       >
-        <div className="title">
+        <div className="title_note">
           { title }
-          { favorite && <Favorite on={true} /> }
+          { favorite && <i className="fas fa-star favorite-icon-note" /> }
         </div>
 
 

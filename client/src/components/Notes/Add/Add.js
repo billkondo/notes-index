@@ -26,7 +26,7 @@ class Add extends React.Component {
     return (
       <div className="notes-add-page">
         <div className="notes-add">
-          <Header title="Add Note" />
+          <Header title="ADD NOTE" />
           <Title />
           <Description />
           <Commentaries />

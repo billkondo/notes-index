@@ -2,8 +2,7 @@
   margin: 1.6rem;
   margin-top: 0.8rem;
   margin-bottom: 2.5rem;
-  background: #1c1d22;
-
+  
   display: grid;
   font-family: "Baloo Bhai";
   font-size: 1rem;
@@ -12,4 +11,8 @@
   
   overflow-y: auto;
   max-height: 25rem;
+}
+
+.black-background {
+  background: #1c1d22;
 }

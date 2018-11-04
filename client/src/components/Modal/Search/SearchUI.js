@@ -6,9 +6,9 @@ import { func } from 'prop-types';
 import Notes from './Notes';
 import ExitButton from '../../Buttons/ExitButton';
 
-import { exitSearchMenu } from '../../../actions/modal';
+import { exitSearchMenu } from '../../../actions/search-menu';
 import { addChildren } from '../../../actions/collections-operations';
-import { removeNote } from '../../../actions/notes-data';
+import { removeNote } from '../../../actions/search-menu';
 
 class SearchUI extends React.Component {
   state = {
@@ -40,7 +40,7 @@ class SearchUI extends React.Component {
   }
   
   render() {
-    const { shouldRender, exitSearchMenu } = this.props;
+    const { exitSearchMenu } = this.props;
     const { option, idToSubmit } = this.state;
 
     return (
@@ -48,20 +48,16 @@ class SearchUI extends React.Component {
         <div className="container">
           <div className="search-menu">
             <div className="header"> 
-              Search Menu 
+              SEARCH MENU
               <ExitButton click={exitSearchMenu} />
               <div className="buttons">
                 <ButtonGroup className="first-group">
-                  <Button color="primary" active={option == 0} onClick={() => this.filpSearch(0)} >Notes</Button>
-                  <Button color="primary" active={option == 1} onClick={() => this.filpSearch(1)} >Collections</Button>
+                  <Button color="primary" active={option == 0} onClick={() => this.filpSearch(0)} disabled >NOTES</Button>
+                  {/* <Button color="primary" active={option == 1} onClick={() => this.filpSearch(1)} >COLLECTIONS</Button> */}
                 </ButtonGroup>
-                <Button className="second-group" color="success">Filter by Tags</Button>
+                {/* <Button className="second-group" color="success">Filter by Tags</Button> */}
               </div>
             </div>
-
-            {/* <div className="sort">
-
-            </div> */}
 
             {(option == 0) && <Notes id={idToSubmit} setId={this.setId} /> }
 
@@ -71,7 +67,7 @@ class SearchUI extends React.Component {
               className="submit"
               onClick={this.onSubmit}
             > 
-              Submit 
+              ADD
             </Button>
           </div>
         </div>

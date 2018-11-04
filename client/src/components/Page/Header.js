@@ -10,7 +10,7 @@ import SignUp from './SignUp';
 const PageHeader = ({ isAuthenticated }) => (
   <div id="page-header">
     <div id="page-middle">
-      <p> Notes Index </p>
+      <p> NOTES INDEX </p>
 
       {
         isAuthenticated && 

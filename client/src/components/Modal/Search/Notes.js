@@ -1,12 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Note from './Note';
+import Loading from '../../Animation/Loading';
 
-const Notes = ({ notes, id, setId }) => (
-  <div className="search-notes">
+const Notes = ({ notes, id, setId, isLoadingNotes }) => (
+  <div className={classNames({"transparent-background": isLoadingNotes }, {"black-background": !isLoadingNotes }, "search-notes")}>
+    { isLoadingNotes && <Loading /> }
+
     { 
+      !isLoadingNotes && 
       notes.map((value, index) => 
         <Note 
           key={value.id} 
@@ -28,6 +33,7 @@ Notes.propTypes = {
 
 export default connect(
   (state) => ({
-    notes: state.notesData.notes
+    notes: state.searchMenu.notes,
+    isLoadingNotes: state.searchMenu.isLoadingNotes
   })
 )(Notes);

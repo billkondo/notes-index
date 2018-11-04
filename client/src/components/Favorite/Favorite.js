@@ -1,38 +1,58 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
+import Functions from './Functions';
 import Container from './Container';
 
 import { loadNotes } from '../../actions/notes-data';
 import { loadCollections } from '../../actions/collections-data';
+import { resetFavorite, loadFavoriteCollections, loadFavoriteNotes } from '../../actions/favorite';
+import { loadCollectionsToDelete, loadNotesToDelete, startLoadingNotes, startLoadingCollections } from '../../actions/search-menu';
 
 class Favorite extends React.Component {
   componentWillMount() {
-    const { loadNotes, loadCollections } = this.props;
+    const { 
+      loadFavoriteCollections, 
+      loadFavoriteNotes, 
+      loadNotes, 
+      loadCollections, 
+      resetFavorite,
+      loadCollectionsToDelete, 
+      loadNotesToDelete,
+      startLoadingCollections, 
+      startLoadingNotes
+    } = this.props;
 
+    resetFavorite();
     loadNotes([]);
     loadCollections([]);
 
-    axios
-      .get('/api/notes/favorite')
-      .then(res => {
-        const notes = res.data.notes;
-        loadNotes(notes);
-      });
+    loadFavoriteCollections()
+      .then(collections => {
+        // loadCollectionsToDelete(collections);
+        // startLoadingCollections();
+      })
+      .catch(error => console.log(error));
 
-    axios
-      .get('/api/collections/favorite')
-      .then(res => {
-        const collections = res.data.collections;
-        loadCollections(collections);
-      });
+    loadFavoriteNotes()
+      .then(notes => {
+        // loadNotesToDelete(notes);
+        // startLoadingNotes();
+      })
+      .catch(error => console.log(error));
+  }
+
+  componentWillUnmount() {
+    const { resetFavorite } = this.props;
+
+    resetFavorite();
   }
 
   render() {
     return (
       <div className="FavoritePage">
         <div className="Title"> <i className="fas fa-star" /> Favorite </div>
+        {/* <Functions /> */}
         <Container />
       </div>
     );
@@ -41,5 +61,15 @@ class Favorite extends React.Component {
 
 export default connect(
   null, 
-  { loadNotes, loadCollections }
+  { 
+    loadNotes, 
+    loadCollections, 
+    resetFavorite, 
+    loadFavoriteCollections, 
+    loadFavoriteNotes, 
+    loadCollectionsToDelete, 
+    loadNotesToDelete,
+    startLoadingCollections,
+    startLoadingNotes
+  }
 )(Favorite);
