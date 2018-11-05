@@ -51,7 +51,7 @@ class Favorite extends React.Component {
   render() {
     return (
       <div className="FavoritePage">
-        <div className="Title"> <i className="fas fa-star" /> Favorite </div>
+        <div className="Title"> <i className="fas fa-star" /> FAVORITE </div>
         {/* <Functions /> */}
         <Container />
       </div>

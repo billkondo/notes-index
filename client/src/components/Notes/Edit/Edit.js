@@ -2,47 +2,45 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import Loading from '../../Animation/Loading';
 import EditUI from './EditUI';
 
 import { loadNote, resetNote } from '../../../actions/notes-operations';
+import { notesIsLoaded, resetEdit } from '../../../actions/edit';
 
 class Edit extends React.Component {
-  state = {
-    loaded: false
-  }
-  
   componentWillMount() {
     const id = this.props.match.params.id;  
-    const { loadNote } = this.props;
+    const { loadNote, notesIsLoaded, resetEdit } = this.props;
+
+    resetEdit();
 
     axios
       .get(`/api/notes/${id}`)
       .then(res => {
         loadNote(res.data);
-        this.setState({ loaded: true });
+        notesIsLoaded();
       })
       .catch(err => console.log(err));
   }
 
   componentWillUnmount() {
-    const { resetNote, searchNotesUnload } = this.props;
+    const { resetNote } = this.props;
     resetNote();
   }
 
   render() {
-    const { loaded } = this.state;
+    const { isNoteLoaded } = this.props;
 
-    if (!loaded) return null;
+    if (!isNoteLoaded) return <Loading />;
 
-    return (
-      <EditUI />
-    );
+    return <EditUI />;
   }
 }
 
 export default connect(
   (state) => ({
-    note: state.notesOperations,
+    isNoteLoaded: state.edit.isNoteLoaded
   }),
-  { loadNote, resetNote }
+  { loadNote, resetNote, notesIsLoaded, resetEdit }
 )(Edit);

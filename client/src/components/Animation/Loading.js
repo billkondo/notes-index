@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Loading = () => (
-  <div className="LoadingContainer">
-  <i className="fas fa-spinner loading-icon" />
-  </div>
-);
+import Fade from '../High_Order/Fade';
 
-export default Loading;
+const Loading = ({ position, icon }) => (
+  <div className="LoadingContainer" style={position} >
+    <div className="loading-icon" > <i className={`fas fa-spinner ${icon}`}/> </div>
+  </div>
+);  
+
+export default Fade(Loading);

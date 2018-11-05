@@ -94,8 +94,7 @@ export default (state = defaultState, action) => {
         tags: action.tags,
         id: action.id,
         tag: "",
-        favorite: action.favorite, 
-        isLoading: false
+        favorite: action.favorite
       }
 
     case FAVORITE_FLIP:

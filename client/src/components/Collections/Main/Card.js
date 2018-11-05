@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import truncate from 'lodash/truncate';
-import { object, func } from 'prop-types';
+import { object, func, bool, string } from 'prop-types';
+
+import Fade from '../../High_Order/Fade';
+import Loading from '../../Animation/Loading';
 
 import { setID } from '../../../actions/collections-data';
 
@@ -25,8 +28,8 @@ class Card extends React.Component {
   }
 
   render() {
-    const { collection } = this.props;
-    const { title, description, favorite } = collection;
+    const { collection, collectionIsLoading, idToLoad } = this.props;
+    const { title, description, favorite, id } = collection;
 
     return (
       <div className="collections-main-card">
@@ -43,6 +46,19 @@ class Card extends React.Component {
         />
         
         <div className="footer">
+          {
+            collectionIsLoading && (idToLoad === id) &&
+            <Loading 
+              position={{
+                position: "absolute", 
+                fontSize: "0.9 rem",
+                left: 0
+              }}
+
+              icon={" font-size-1_2-rem"}
+            />
+          }
+            
           <button className="icon edit" onClick={this.edit}> <i className="fas fa-edit" /> </button>
           <button className="icon" onClick={this.view}> <i className="fas fa-eye" /> </button>
         </div>
@@ -53,10 +69,15 @@ class Card extends React.Component {
 
 Card.propTypes = {
   collection: object.isRequired,
-  setID: func.isRequired
+  setID: func.isRequired,
+  collectionIsLoading: bool.isRequired, 
+  idToLoad: string.isRequired
 }
 
 export default withRouter(connect(
-  null, 
+  (state) => ({
+    collectionIsLoading: state.view.collectionIsLoading, 
+    idToLoad: state.collectionsData.idToLoad
+  }), 
   { setID }
-)(Card));
+)(Fade(Card)));

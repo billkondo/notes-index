@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Fade from '../High_Order/Fade';
 import CardNote from '../Notes/Main/Card';
 
 const Notes = ({ notes }) => (
@@ -11,4 +10,4 @@ const Notes = ({ notes }) => (
   </React.Fragment>
 );
 
-export default Fade(Notes);
+export default Notes;

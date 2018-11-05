@@ -7,6 +7,7 @@ import { string } from 'prop-types';
 import ViewUI from './ViewUI';
 
 import { loadNote } from '../../../actions/notes-operations';
+import { viewNoteEnter, viewNoteExit, importNote } from '../../../actions/view';
 
 class View extends React.Component {
   state = {
@@ -16,28 +17,26 @@ class View extends React.Component {
   componentDidUpdate(prevProps) {
     const prevID = prevProps.idToLoad;
     const curID = this.props.idToLoad;
-    const { loadNote } = this.props;
+    const { loadNote, viewNoteEnter, viewNoteExit, importNote } = this.props;
 
-    if (prevID && !curID) this.setState({ isLoaded: false });
+    if (prevID && !curID) viewNoteExit();
 
     if (!prevID && curID) {
-      axios
-        .get(`/api/notes/${curID}`)
-        .then(res => {
-          const note = res.data;
+      importNote(curID)
+        .then(note => {
           loadNote(note);
-          this.setState({ isLoaded: true });
+          viewNoteEnter();
         })
-        .catch(err => console.log(err));
+        .catch(err =>console.log(err));
     }
   }
 
   render() {
-    const { isLoaded } = this.state;
+    const { viewNote } = this.props;
 
     return (
       <CSSTransition
-        in={isLoaded}
+        in={viewNote}
         mountOnEnter
         unmountOnExit
         timeout={500}
@@ -60,7 +59,8 @@ View.propTypes = {
 
 export default connect(
   (state) => ({
-    idToLoad: state.notesData.idToLoad
+    idToLoad: state.notesData.idToLoad,
+    viewNote: state.view.viewNote
   }),
-  { loadNote }
+  { loadNote, viewNoteEnter, viewNoteExit, importNote }
 )(View);

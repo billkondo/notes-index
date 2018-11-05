@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Fade from '../High_Order/Fade';
 import CardCollection from '../Collections/Main/Card';
 
 const Collections = ({ collections }) => (
@@ -11,4 +10,4 @@ const Collections = ({ collections }) => (
   </React.Fragment>
 );
 
-export default Fade(Collections);
+export default Collections;

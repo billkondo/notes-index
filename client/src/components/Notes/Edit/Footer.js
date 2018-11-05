@@ -8,37 +8,47 @@ import { submitEditedNote, deleteNote } from '../../../actions/notes-operations'
 import { startModal } from '../../../actions/modal';
 import { goBackButton, deleteButton, DeleteMessage, saveButton, SaveMessage } from '../../Modal/messages';
 
-const Footer = (props) => {
-  const { isLoading, submitEditedNote, deleteNote, startModal } = props;
-  const updateURL = () => props.history.push('/Notes');
-  const editAction = () => startModal(saveButton, goBackButton, SaveMessage, () => submitEditedNote(updateURL));
-  const deleteAction = () => startModal(deleteButton, goBackButton, DeleteMessage, () => deleteNote(updateURL));
+class Footer extends React.Component {
+  updateURL = () => this.props.history.push('/Notes/');
 
-  return (
-    <div className="notes-edit-footer">
-      <Button 
-        disabled={isLoading} 
-        color="success" 
-        className="my-button" 
-        onClick={editAction} 
-      >
-        Submit 
-      </Button>
+  editAction = () => {
+    const { startModal, submitEditedNote } = this.props;
+    startModal(saveButton, goBackButton, SaveMessage, () => submitEditedNote(this.updateURL));
+  }
 
-      <Button 
-        disabled={isLoading} 
-        color="danger"  
-        className="my-button" 
-        onClick={deleteAction} 
-      > 
-        <i className="fas fa-trash-alt"/>  
-      </Button>
-    </div>
-  );
+  deleteAction = () => {
+    const { startModal, deleteNote } = this.props;
+    startModal(deleteButton, goBackButton, DeleteMessage, () => deleteNote(this.updateURL));
+  }
+
+  render() {
+    const { modalRender } = this.props;
+
+    return (
+      <div className="notes-edit-footer">
+        <Button 
+          disabled={modalRender} 
+          color="success" 
+          className="my-button" 
+          onClick={this.editAction} 
+        >
+          Submit 
+        </Button>
+    
+        <Button 
+          disabled={modalRender} 
+          color="danger"  
+          className="my-button" 
+          onClick={this.deleteAction} 
+        > 
+          <i className="fas fa-trash-alt"/>  
+        </Button>
+      </div>
+    );
+  }
 }
 
 Footer.propTypes = {
-  isLoading: bool.isRequired, 
   submitEditedNote: func.isRequired, 
   deleteNote: func.isRequired,
   startModal: func.isRequired
@@ -46,7 +56,7 @@ Footer.propTypes = {
 
 export default withRouter(connect(
   (state) => ({
-    isLoading: state.notesOperations.isLoading
+    modalRender: state.modal.modalRender
   }), 
   { submitEditedNote, deleteNote, startModal }
 )(Footer));

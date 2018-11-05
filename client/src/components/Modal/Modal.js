@@ -12,8 +12,10 @@ class Modal extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (!this.props.modalRender && nextProps.modalRender)
+    if (!this.props.modalRender && nextProps.modalRender) {
       document.addEventListener('mousedown', this.handleClick, false);
+      this.setState({ isLoading: false });
+    }
 
     if (this.props.modalRender && !nextProps.modalRender)
       document.removeEventListener('mousedown', this.handleClick, false);

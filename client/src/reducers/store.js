@@ -9,6 +9,8 @@ import collectionsOperations from './collections-operations';
 import modal from './modal';
 import searchMenu from './search-menu';
 import favorite from './favorite';
+import edit from './edit';
+import view from './view';
 
 const store = createStore(combineReducers({
   notesData,
@@ -18,7 +20,9 @@ const store = createStore(combineReducers({
   collectionsOperations,
   modal,
   searchMenu,
-  favorite
+  favorite,
+  edit,
+  view
 }), applyMiddleware(thunk));
 
 store.subscribe(() => {

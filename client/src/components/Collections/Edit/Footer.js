@@ -8,31 +8,44 @@ import { submitEditedCollection, deleteCollection } from '../../../actions/colle
 import { startModal } from '../../../actions/modal';
 import { goBackButton, deleteButton, DeleteMessageCollection, saveButton, SaveMessageCollection } from '../../Modal/messages';
 
-const Footer = (props) => {
-  const { submitEditedCollection, deleteCollection, startModal } = props;
-  const updateURL = () => props.history.push('/Collections');
-  const editAction = () => startModal(saveButton, goBackButton, SaveMessageCollection, () => submitEditedCollection(updateURL));
-  const deleteAction = () => startModal(deleteButton, goBackButton, DeleteMessageCollection, () => deleteCollection(updateURL));
+class Footer extends React.Component {
+  updateURL = () => this.props.history.push('/Collections');
 
-  return (
-    <div className="collections-edit-footer">
-      <Button 
-        color="success" 
-        className="my-button" 
-        onClick={editAction} 
-      >
-        Submit 
-      </Button>
+  editAction = () => {
+    const { startModal , submitEditedCollection } = this.props;
+    startModal(saveButton, goBackButton, SaveMessageCollection, () => submitEditedCollection(this.updateURL));
+  }
 
-      <Button 
-        color="danger"  
-        className="my-button" 
-        onClick={deleteAction} 
-      > 
-        <i className="fas fa-trash-alt"/>  
-      </Button>
-    </div>
-  );
+  deleteAction = () => {
+    const { startModal, deleteCollection } = this.props;
+    startModal(deleteButton, goBackButton, DeleteMessageCollection, () => deleteCollection(this.updateURL));
+  }
+
+  render() {
+    const { modalRender } = this.props;
+
+    return (
+      <div className="collections-edit-footer">
+        <Button 
+          color="success" 
+          className="my-button" 
+          onClick={this.editAction} 
+          disabled={modalRender}
+        >
+          Submit 
+        </Button>
+    
+        <Button 
+          color="danger"  
+          className="my-button" 
+          onClick={this.deleteAction} 
+          disabled={modalRender}
+        > 
+          <i className="fas fa-trash-alt"/>  
+        </Button>
+      </div>
+    );
+  }
 }
 
 Footer.propTypes = {
@@ -42,6 +55,8 @@ Footer.propTypes = {
 }
 
 export default withRouter(connect(
-  null,  
+  (state) => ({
+    modalRender: state.modal.modalRender
+  }),  
   { submitEditedCollection, deleteCollection, startModal }
 )(Footer));

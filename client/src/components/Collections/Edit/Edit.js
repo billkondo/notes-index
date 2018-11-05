@@ -2,20 +2,27 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import Loading from '../../Animation/Loading';
 import EditUI from './EditUI';
 
 import { loadCollection, resetCollection } from '../../../actions/collections-operations';
 import { startLoadingNotes, startLoadingCollections, resetSearchMenu, loadNotesToDelete } from '../../../actions/search-menu';
+import { collectionIsLoaded, resetEdit } from '../../../actions/edit';
 
 class Edit extends React.Component {
-  state = {
-    loaded: false
-  }
-
   componentWillMount() {
     const id = this.props.match.params.id;
-    const { loadCollection, startLoadingCollections, startLoadingNotes, resetSearchMenu, loadNotesToDelete } = this.props;
+    const { 
+      loadCollection, 
+      startLoadingCollections, 
+      startLoadingNotes, 
+      resetSearchMenu, 
+      loadNotesToDelete,
+      resetEdit, 
+      collectionIsLoaded
+    } = this.props;
 
+    resetEdit();
     resetSearchMenu();
     
     axios
@@ -28,7 +35,7 @@ class Edit extends React.Component {
       startLoadingNotes();
       startLoadingCollections();
       
-      this.setState({ loaded: true });
+      collectionIsLoaded();
     })
   }
 
@@ -38,16 +45,26 @@ class Edit extends React.Component {
   }
 
   render() {
-    const { loaded } = this.state;
+    const { isCollectionLoaded } = this.props;
 
-    if (!loaded) 
-      return null;
+    if (!isCollectionLoaded) return <Loading />;
 
-    return <EditUI />
+    return <EditUI />;
   }
 }
 
 export default connect(
-  null, 
-  { loadCollection, resetCollection, startLoadingCollections, startLoadingNotes, resetSearchMenu, loadNotesToDelete }
+  (state) => ({
+    isCollectionLoaded: state.edit.isCollectionLoaded
+  }), 
+  { 
+    loadCollection, 
+    resetCollection, 
+    startLoadingCollections, 
+    startLoadingNotes, 
+    resetSearchMenu, 
+    loadNotesToDelete, 
+    collectionIsLoaded, 
+    resetEdit 
+  }
 )(Edit);

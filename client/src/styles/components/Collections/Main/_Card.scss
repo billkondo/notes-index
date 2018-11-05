@@ -42,9 +42,10 @@
   }
 
   .footer {
+    position: relative;
     font-family: "Baloo Bhai";
-    padding-left: $medium-font;
-    padding-right: $medium-font;
+    margin-left: $medium-font;
+    margin-right: $medium-font;
     font-size: 0.9rem;
     display: grid;
     align-items: center;
