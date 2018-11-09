@@ -1,9 +1,7 @@
 import {
-  START_MODAL, 
+  START_MODAL,
   END_MODAL,
   RESET_MODAL,
-  FILTER_LOAD, 
-  FILTER_UNLOAD
 } from '../types/modal';
 
 export const startModal = (redButton, greenButton, WarningMessage, exitFunction) => {
@@ -11,7 +9,7 @@ export const startModal = (redButton, greenButton, WarningMessage, exitFunction)
     dispatch({
       type: START_MODAL,
       redButton,
-      greenButton, 
+      greenButton,
       WarningMessage,
       exitFunction
     });
@@ -27,17 +25,5 @@ export const endModal = () => {
 export const resetModal = () => {
   return dispatch => {
     dispatch({ type: RESET_MODAL });
-  }
-}
-
-export const filterLoad = (filterType) => {
-  return dispatch => {
-    dispatch({ type: FILTER_LOAD, filterType });
-  }
-}
-
-export const filterUnload = () => {
-  return dispatch => {
-    dispatch({ type: FILTER_UNLOAD });
   }
 }

@@ -1,11 +1,7 @@
-import {
-  RESET_EDIT, 
-  COLLECTION_IS_LOADED, 
-  NOTE_IS_LOADED
-} from '../types/edit';
+import { RESET_EDIT, COLLECTION_IS_LOADED, NOTE_IS_LOADED } from '../types/edit';
 
 const defaultState = {
-  isNoteLoaded: false, 
+  isNoteLoaded: false,
   isCollectionLoaded: false
 };
 
@@ -16,17 +12,17 @@ export default (state = defaultState, action) => {
 
     case COLLECTION_IS_LOADED:
       return {
-        ...state, 
+        ...state,
         isCollectionLoaded: true
-      }
+      };
 
     case NOTE_IS_LOADED:
       return {
-        ...state, 
+        ...state,
         isNoteLoaded: true
-      }
+      };
 
-    default: 
+    default:
       return state;
   }
-}
+};

@@ -9,20 +9,18 @@ import {
   DELETE_TAG,
   LOAD_NOTE,
   WRITE_TAG,
-  START_LOADING, 
-  END_LOADING,
-  FAVORITE_FLIP,
+  FAVORITE_FLIP
 } from '../types/notes-operations';
 
 const defaultState = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   commentaries: [], // Array of JSON { comment, id }
   tags: [],
-  id: "",
-  tag: "",
+  id: '',
+  tag: '',
   favorite: false
-}
+};
 
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -30,40 +28,40 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         title: action.title
-      }
+      };
 
     case WRITE_DESCRIPTION:
       return {
         ...state,
         description: action.description
-      }
+      };
 
     case ADD_COMMENT:
       return {
         ...state,
         commentaries: state.commentaries.concat(action.newComment)
-      }
+      };
 
     case WRITE_COMMENT:
       return {
         ...state,
         commentaries: state.commentaries.map(value => {
-          if (value.id === action.id) 
-            return ({
-              comment: action.comment, 
+          if (value.id === action.id)
+            return {
+              comment: action.comment,
               id: value.id
-            });
-          
+            };
+
           return value;
         })
-      }
+      };
 
     case ADD_TAG:
       return {
         ...state,
         tags: state.tags.concat(action.tag),
-        tag: ""
-      }
+        tag: ''
+      };
 
     case RESET_NOTE:
       return defaultState;
@@ -72,19 +70,19 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         commentaries: state.commentaries.filter(comment => comment.id !== action.id)
-      }
+      };
 
     case DELETE_TAG:
       return {
         ...state,
         tags: state.tags.filter(tag => tag !== action.tag)
-      }
+      };
 
     case WRITE_TAG:
       return {
-        ...state, 
+        ...state,
         tag: action.tag
-      }
+      };
 
     case LOAD_NOTE:
       return {
@@ -93,17 +91,17 @@ export default (state = defaultState, action) => {
         commentaries: action.commentaries,
         tags: action.tags,
         id: action.id,
-        tag: "",
+        tag: '',
         favorite: action.favorite
-      }
+      };
 
     case FAVORITE_FLIP:
       return {
-        ...state, 
+        ...state,
         favorite: !state.favorite
-      }
+      };
 
     default:
       return state;
   }
-}
+};

@@ -1,12 +1,9 @@
-import {  
-  LOAD_NOTES,
-  SET_ID
-} from '../types/notes-data';
+import { LOAD_NOTES, SET_ID } from '../types/notes-data';
 
 const defaultState = {
   notes: [],
-  idToLoad: ""
-}
+  idToLoad: ''
+};
 
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -14,15 +11,15 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         notes: action.notes
-      }
+      };
 
     case SET_ID:
       return {
-        ...state, 
+        ...state,
         idToLoad: action.id
-      }
+      };
 
-    default: 
+    default:
       return state;
   }
-}
+};

@@ -24,9 +24,12 @@ app.use('/api/collections', collections);
 const db = require('./config/keys').mongoURI;
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
   .then(() => console.log('Database Connected'))
-  .catch(err => console.log('Error', err))
+  .catch(err => console.log('Error', err));
 
 const publicPath = path.join(__dirname, 'client', 'public');
 const port = process.env.PORT || 3000;
@@ -40,4 +43,3 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`SERVER is ON on port ${port}`);
 });
-

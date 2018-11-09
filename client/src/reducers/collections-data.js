@@ -1,29 +1,26 @@
-import {
-  LOAD_COLLECTIONS,
-  SET_ID
-} from '../types/collections-data';
+import { LOAD_COLLECTIONS, SET_ID } from '../types/collections-data';
 
 const defaultState = {
   collections: [],
-  idToLoad: ""
-}
+  idToLoad: ''
+};
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case LOAD_COLLECTIONS:
       return {
-        ...state, 
+        ...state,
         collections: action.collections
-      }
-    
+      };
+
     case SET_ID:
       return {
-        ...state, 
+        ...state,
         idToLoad: action.id,
         sideToView: false
-      }
+      };
 
     default:
       return state;
   }
-}
+};

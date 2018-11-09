@@ -1,11 +1,7 @@
-import {
-  RESET_FAVORITE, 
-  NOTES_ARE_LOADED, 
-  COLLECTIONS_ARE_LOADED
-} from '../types/favorite';
+import { RESET_FAVORITE, NOTES_ARE_LOADED, COLLECTIONS_ARE_LOADED } from '../types/favorite';
 
 const defaultState = {
-  notesLoaded: false, 
+  notesLoaded: false,
   collectionsLoaded: false
 };
 
@@ -13,15 +9,15 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case NOTES_ARE_LOADED:
       return {
-        ...state, 
+        ...state,
         notesLoaded: true
-      }
+      };
 
-    case COLLECTIONS_ARE_LOADED: 
+    case COLLECTIONS_ARE_LOADED:
       return {
-        ...state, 
+        ...state,
         collectionsLoaded: true
-      }
+      };
 
     case RESET_FAVORITE:
       return defaultState;
@@ -29,4 +25,4 @@ export default (state = defaultState, action) => {
     default:
       return state;
   }
-}
+};

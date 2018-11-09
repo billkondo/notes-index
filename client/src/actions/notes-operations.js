@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4'; 
+import uuidv4 from 'uuid/v4';
 import axios from 'axios';
 
 import {
@@ -15,165 +15,139 @@ import {
   FAVORITE_FLIP
 } from '../types/notes-operations';
 
-export const writeTitle = (title) => {
-  return dispatch => {
-    dispatch({
-      type: WRITE_TITLE,
-      title
-    });
-  }
-}
+export const writeTitle = title => dispatch => {
+  dispatch({
+    type: WRITE_TITLE,
+    title
+  });
+};
 
-export const writeDescription = (description) => {
-  return dispatch => {
-    dispatch({
-      type: WRITE_DESCRIPTION, 
-      description
-    });
-  }
-}
+export const writeDescription = description => dispatch => {
+  dispatch({
+    type: WRITE_DESCRIPTION,
+    description
+  });
+};
 
-export const addComment = () => {
-  return dispatch => {
-    const id = uuidv4();
-    const newComment = {
-      comment: "",
-      id
-    };
+export const addComment = () => dispatch => {
+  const id = uuidv4();
+  const newComment = {
+    comment: '',
+    id
+  };
 
-    dispatch({
-      type: ADD_COMMENT, 
-      newComment
-    })
-  }
-}
+  dispatch({
+    type: ADD_COMMENT,
+    newComment
+  });
+};
 
-export const writeComment = (comment, id) => {
-  return dispatch => {
-    dispatch({
-      type: WRITE_COMMENT, 
-      comment, 
-      id
-    });
-  }
-}
+export const writeComment = (comment, id) => dispatch => {
+  dispatch({
+    type: WRITE_COMMENT,
+    comment,
+    id
+  });
+};
 
-export const addTag = (tag) => {
-  return dispatch => {
-    dispatch({
-      type: ADD_TAG, 
-      tag
-    });
-  }
-}
+export const addTag = tag => dispatch => {
+  dispatch({
+    type: ADD_TAG,
+    tag
+  });
+};
 
-export const deleteComment = (id) => ({
+export const deleteComment = id => ({
   type: DELETE_COMMENT,
   id
 });
 
-export const deleteTag = (tag) => {
-  return dispatch => {
-    dispatch({
-      type: DELETE_TAG, 
-      tag
-    });
-  }
-}
+export const deleteTag = tag => dispatch => {
+  dispatch({
+    type: DELETE_TAG,
+    tag
+  });
+};
 
-export const resetNote = () => {
-  return dispatch => {
-    dispatch({
-      type: RESET_NOTE
-    });
-  }
-}
+export const resetNote = () => dispatch => {
+  dispatch({
+    type: RESET_NOTE
+  });
+};
 
-export const writeTag = (tag) => {
-  return dispatch => {
-    dispatch({
-      type: WRITE_TAG, 
-      tag
-    });
-  }
-}
+export const writeTag = tag => dispatch => {
+  dispatch({
+    type: WRITE_TAG,
+    tag
+  });
+};
 
-export const loadNote = (note) => {
-  return dispatch => {
-    dispatch({
-      type: LOAD_NOTE, 
-      title: note.title, 
-      description: note.description, 
-      commentaries: note.commentaries, 
-      tags: note.tags, 
-      favorite: note.favorite, 
-      id: note.id
-    });
-  }
-}
+export const loadNote = note => dispatch => {
+  dispatch({
+    type: LOAD_NOTE,
+    title: note.title,
+    description: note.description,
+    commentaries: note.commentaries,
+    tags: note.tags,
+    favorite: note.favorite,
+    id: note.id
+  });
+};
 
-export const favoriteFlip = () => {
-  return dispatch => {
-    dispatch({ type: FAVORITE_FLIP });
-  }
-}
+export const favoriteFlip = () => dispatch => {
+  dispatch({ type: FAVORITE_FLIP });
+};
 
-export const submitNote = (updateURL) => {
-  return (dispatch, getState) => {
-    const note = getState().notesOperations;
+export const submitNote = updateURL => (dispatch, getState) => {
+  const note = getState().notesOperations;
 
-    const newNote = {
-      title: note.title, 
-      description: note.description,
-      commentaries: note.commentaries, 
-      tags: note.tags,
-      favorite: note.favorite, 
-      id: uuidv4()
-    };
+  const newNote = {
+    title: note.title,
+    description: note.description,
+    commentaries: note.commentaries,
+    tags: note.tags,
+    favorite: note.favorite,
+    id: uuidv4()
+  };
 
-    axios
-      .post('/api/notes', newNote)
-      .then(res => {
-        // TODO Error handling
-        updateURL();
-      })
-      .catch(err => console.log(err));
-  }
-}
+  axios
+    .post('/api/notes', newNote)
+    .then(res => {
+      // TODO Error handling
+      updateURL();
+    })
+    .catch(err => console.log(err));
+};
 
-export const submitEditedNote = (updateURL) => {
-  return (dispatch, getState) => {
-    const note = getState().notesOperations;
+export const submitEditedNote = updateURL => (dispatch, getState) => {
+  const note = getState().notesOperations;
 
-    const editedNote = {
-      title: note.title, 
-      description: note.description, 
-      commentaries: note.commentaries, 
-      tags: note.tags, 
-      favorite: note.favorite, 
-      id: note.id
-    };
+  const editedNote = {
+    title: note.title,
+    description: note.description,
+    commentaries: note.commentaries,
+    tags: note.tags,
+    favorite: note.favorite,
+    id: note.id
+  };
 
-    axios
-      .put('/api/notes', editedNote)
-      .then(res => {
-        // TODO Error handling
-        updateURL();
-      })
-      .catch(err => console.log(err));
-  }
-}
+  axios
+    .put('/api/notes', editedNote)
+    .then(res => {
+      // TODO Error handling
+      updateURL();
+    })
+    .catch(err => console.log(err));
+};
 
-export const deleteNote = (updateURL) => {
-  return (dispatch, getState) => {
-    const note = getState().notesOperations;
+export const deleteNote = updateURL => (dispatch, getState) => {
+  const note = getState().notesOperations;
 
-    axios
-      .delete('/api/notes', { params: note })
-      .then(res => {
-        // TODO Error handling
-        updateURL();
-      })
-      .catch(err => console.log(err));
-  }
-}
+  axios
+    .delete('/api/notes', { params: note })
+    .then(res => {
+      // TODO Error handling
+      updateURL();
+    })
+    .catch(err => console.log(err));
+};

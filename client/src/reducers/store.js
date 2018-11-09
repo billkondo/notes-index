@@ -11,22 +11,27 @@ import searchMenu from './search-menu';
 import favorite from './favorite';
 import edit from './edit';
 import view from './view';
+import filter from './filter';
 
-const store = createStore(combineReducers({
-  notesData,
-  notesOperations , 
-  authentication,
-  collectionsData, 
-  collectionsOperations,
-  modal,
-  searchMenu,
-  favorite,
-  edit,
-  view
-}), applyMiddleware(thunk));
+const store = createStore(
+  combineReducers({
+    notesData,
+    notesOperations,
+    authentication,
+    collectionsData,
+    collectionsOperations,
+    modal,
+    searchMenu,
+    favorite,
+    edit,
+    view,
+    filter
+  }),
+  applyMiddleware(thunk)
+);
 
 store.subscribe(() => {
   // console.log(store.getState());
-})
+});
 
 export default store;

@@ -1,4 +1,4 @@
-import { 
+import {
   WRITE_TITLE,
   ADD_TAG,
   WRITE_TAG,
@@ -12,77 +12,77 @@ import {
 } from '../types/collections-operations';
 
 const defaultState = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   tags: [],
-  tag: "",
+  tag: '',
   children: [],
   favorite: false,
-  id: ""
+  id: ''
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case WRITE_TITLE: 
+    case WRITE_TITLE:
       return {
         ...state,
         title: action.title
-      }
+      };
 
     case ADD_TAG:
       return {
         ...state,
         tags: state.tags.concat(action.tag),
-        tag: ""
-      }
+        tag: ''
+      };
 
-    case WRITE_TAG: 
+    case WRITE_TAG:
       return {
         ...state,
         tag: action.tag
-      }
+      };
 
-    case DELETE_TAG: 
+    case DELETE_TAG:
       return {
-        ...state, 
+        ...state,
         tags: state.tags.filter(tag => tag !== action.tag)
-      }
+      };
 
-    case WRITE_DESCRIPTION: 
+    case WRITE_DESCRIPTION:
       return {
-        ...state, 
+        ...state,
         description: action.description
-      }
+      };
 
-    case ADD_CHILDREN: 
+    case ADD_CHILDREN:
       return {
-        ...state, 
+        ...state,
         children: state.children.concat(action.note)
-      }
+      };
 
-    case REMOVE_CHILDREN: 
+    case REMOVE_CHILDREN:
       return {
-        ...state, 
+        ...state,
         children: state.children.filter(child => child.id !== action.note.id)
-      }
+      };
 
-    case FAVORITE_FLIP: 
+    case FAVORITE_FLIP:
       return {
-        ...state, 
+        ...state,
         favorite: !state.favorite
-      }
+      };
 
-    case LOAD_COLLECTION: 
+    case LOAD_COLLECTION:
       return {
-        title: action.title, 
-        description: action.description, 
-        tags: action.tags, 
-        children: action.children, 
-        favorite: action.favorite, 
-        id: action.id, 
-        isLoading: false, 
-        tag: ""
-      }
+        title: action.title,
+        description: action.description,
+        tags: action.tags,
+        children: action.children,
+        favorite: action.favorite,
+        id: action.id,
+        isLoading: false,
+        tag: ''
+      };
 
     case RESET_COLLECTION:
       return defaultState;
@@ -90,4 +90,4 @@ export default (state = defaultState, action) => {
     default:
       return state;
   }
-}
+};
