@@ -20,8 +20,8 @@ const FrontView = ({ sideToView, description, children }) => (
       exit: 0
     }}
     classNames={{
-      enter: "animated",
-      enterActive: "fadeIn faster"
+      enter: 'animated',
+      enterActive: 'fadeIn faster'
     }}
     mountOnEnter
     unmountOnExit
@@ -41,8 +41,8 @@ const BackView = ({ sideToView, tags }) => (
       exit: 0
     }}
     classNames={{
-      enter: "animated",
-      enterActive: "fadeIn faster"
+      enter: 'animated',
+      enterActive: 'fadeIn faster'
     }}
     mountOnEnter
     unmountOnExit
@@ -56,16 +56,17 @@ const BackView = ({ sideToView, tags }) => (
 class ViewUI extends React.Component {
   state = {
     sideToView: false
-  }
+  };
 
-  flipView = () => this.setState(prevState => ({
-    sideToView: !prevState.sideToView
-  }));
+  flipView = () =>
+    this.setState(prevState => ({
+      sideToView: !prevState.sideToView
+    }));
 
   exit = () => {
     const { setID } = this.props;
-    setID("");
-  }
+    setID('');
+  };
 
   render() {
     const { sideToView } = this.state;
@@ -89,10 +90,10 @@ class ViewUI extends React.Component {
 ViewUI.propTypes = {
   collection: object.isRequired,
   setID: func.isRequired
-}
+};
 
 export default connect(
-  (state) => ({
+  state => ({
     collection: state.collectionsOperations
   }),
   { setID }

@@ -22,13 +22,13 @@ const Child = ({ child, index, isOpen, idSelect, loadID, noteIsLoading }) => (
 
       {noteIsLoading && isOpen && (
         <Loading
-          position={{
+          positionStyle={{
             position: 'absolute',
             right: 0,
             marginRight: '5.5rem',
             alignSelf: 'center'
           }}
-          icon="font-size-1_2-rem"
+          iconStyle="font-size-1_2-rem"
         />
       )}
     </div>

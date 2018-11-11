@@ -16,7 +16,7 @@ class Add extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { addNote, addCollection, addFavorite } = this.props;
+    const { addNote, addCollection } = this.props;
 
     return (
       <Dropdown id="page-add" isOpen={isOpen} toggle={this.toggle}>

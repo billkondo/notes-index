@@ -19,20 +19,21 @@ import {
 class Add extends React.Component {
   componentWillMount() {
     const {
-      resetCollection,
-      startLoadingNotes,
-      startLoadingCollections,
-      resetSearchMenu
+      resetCollectionConnect,
+      startLoadingCollectionsConnect,
+      startLoadingNotesConnect,
+      resetSearchMenuConnect
     } = this.props;
-    resetCollection();
-    resetSearchMenu();
-    startLoadingNotes();
-    startLoadingCollections();
+
+    resetCollectionConnect();
+    resetSearchMenuConnect();
+    startLoadingCollectionsConnect();
+    startLoadingNotesConnect();
   }
 
   componentWillUnmount() {
-    const { resetCollection } = this.props;
-    resetCollection();
+    const { resetCollectionConnect } = this.props;
+    resetCollectionConnect();
   }
 
   render() {
@@ -52,10 +53,18 @@ class Add extends React.Component {
 }
 
 Add.propTypes = {
-  resetCollection: func.isRequired
+  resetCollectionConnect: func.isRequired,
+  resetSearchMenuConnect: func.isRequired,
+  startLoadingCollectionsConnect: func.isRequired,
+  startLoadingNotesConnect: func.isRequired
 };
 
 export default connect(
   null,
-  { resetCollection, startLoadingNotes, startLoadingCollections, resetSearchMenu }
+  {
+    resetCollectionConnect: resetCollection,
+    startLoadingNotesConnect: startLoadingNotes,
+    startLoadingCollectionsConnect: startLoadingCollections,
+    resetSearchMenuConnect: resetSearchMenu
+  }
 )(Add);

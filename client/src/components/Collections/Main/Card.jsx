@@ -2,29 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import truncate from 'lodash/truncate';
-import { object, func, bool, string } from 'prop-types';
+import { func, bool, string } from 'prop-types';
 
 import Fade from '../../High_Order/Fade';
 import Loading from '../../Animation/Loading';
 
 import { setID } from '../../../actions/collections-data';
 
+import { collectionObject, historyObject } from '../../../propTypes/propTypes';
+
 class Card extends React.Component {
-  state = {
-    side: false
-  };
-
   edit = () => {
-    const { id } = this.props.collection;
+    const { history, collection } = this.props;
+    const { id } = collection;
 
-    this.props.history.push(`/Collections/Edit/${id}`);
+    history.push(`/Collections/Edit/${id}`);
   };
 
   view = () => {
-    const { id } = this.props.collection;
-    const { setID } = this.props;
+    const { collection } = this.props;
+    const { id } = collection;
+    const { setIDConnect } = this.props;
 
-    setID(id);
+    setIDConnect(id);
   };
 
   render() {
@@ -43,22 +43,21 @@ class Card extends React.Component {
         <div className="footer">
           {collectionIsLoading && idToLoad === id && (
             <Loading
-              position={{
+              positionStyle={{
                 position: 'absolute',
                 fontSize: '0.9 rem',
                 left: 0
               }}
-              icon={' font-size-1_2-rem'}
+              iconStyle=" font-size-1_2-rem"
             />
           )}
 
-          <button className="icon edit" onClick={this.edit}>
-            {' '}
-            <i className="fas fa-edit" />{' '}
+          <button type="button" className="icon edit" onClick={this.edit}>
+            <i className="fas fa-edit" />
           </button>
-          <button className="icon" onClick={this.view}>
-            {' '}
-            <i className="fas fa-eye" />{' '}
+
+          <button type="button" className="icon" onClick={this.view}>
+            <i className="fas fa-eye" />
           </button>
         </div>
       </div>
@@ -67,10 +66,11 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  collection: object.isRequired,
-  setID: func.isRequired,
+  collection: collectionObject.isRequired,
+  setIDConnect: func.isRequired,
   collectionIsLoading: bool.isRequired,
-  idToLoad: string.isRequired
+  idToLoad: string.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
@@ -79,6 +79,6 @@ export default withRouter(
       collectionIsLoading: state.view.collectionIsLoading,
       idToLoad: state.collectionsData.idToLoad
     }),
-    { setID }
+    { setIDConnect: setID }
   )(Fade(Card))
 );

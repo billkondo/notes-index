@@ -9,14 +9,14 @@ import { string, func } from 'prop-types';
 
 const Name = ({ name, onChangeName }) => (
   <div className="ProfileName">
-    <span className="Title" >Name</span>
+    <span className="Title">Name</span>
     <Input value={name} className="Input" onChange={onChangeName} />
   </div>
 );
 
 Name.propTypes = {
-  name: string.isRequired, 
+  name: string.isRequired,
   onChangeName: func.isRequired
-}
+};
 
 export default Name;

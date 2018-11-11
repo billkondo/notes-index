@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { func, bool, string } from 'prop-types';
 
 import ViewUI from './ViewUI';
 
@@ -9,22 +10,22 @@ import { viewCollectionEnter, viewCollectionExit, importCollection } from '../..
 
 class View extends React.Component {
   componentDidUpdate(prevProps) {
-    const prevID = prevProps.idToLoad;
-    const curID = this.props.idToLoad;
+    const { idToLoad: prevID } = prevProps;
+    const { idToLoad: curID } = this.props;
     const {
-      loadCollection,
-      viewCollectionEnter,
-      viewCollectionExit,
-      importCollection
+      loadCollectionConnect,
+      viewCollectionEnterConnect,
+      viewCollectionExitConnect,
+      importCollectionConnect
     } = this.props;
 
-    if (prevID && !curID) viewCollectionExit();
+    if (prevID && !curID) viewCollectionExitConnect();
 
     if (!prevID && curID) {
-      importCollection(curID)
+      importCollectionConnect(curID)
         .then(collection => {
-          loadCollection(collection);
-          viewCollectionEnter();
+          loadCollectionConnect(collection);
+          viewCollectionEnterConnect();
         })
         .catch(err => console.log(err));
     }
@@ -52,10 +53,24 @@ class View extends React.Component {
   }
 }
 
+View.propTypes = {
+  loadCollectionConnect: func.isRequired,
+  viewCollectionEnterConnect: func.isRequired,
+  viewCollectionExitConnect: func.isRequired,
+  importCollectionConnect: func.isRequired,
+  viewCollection: bool.isRequired,
+  idToLoad: string.isRequired
+};
+
 export default connect(
   state => ({
     idToLoad: state.collectionsData.idToLoad,
     viewCollection: state.view.viewCollection
   }),
-  { loadCollection, viewCollectionEnter, viewCollectionExit, importCollection }
+  {
+    loadCollectionConnect: loadCollection,
+    viewCollectionEnterConnect: viewCollectionEnter,
+    viewCollectionExitConnect: viewCollectionExit,
+    importCollectionConnect: importCollection
+  }
 )(View);

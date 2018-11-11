@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { object, number, func } from 'prop-types';
+import { number, func } from 'prop-types';
 import classNames from 'classnames';
 
 import ExitButton from '../../Buttons/ExitButton';
 import { removeChildren } from '../../../actions/collections-operations';
 import { addNote } from '../../../actions/search-menu';
+
+import { noteObject } from '../../../propTypes/propTypes';
 
 class Note extends React.Component {
   state = {
@@ -20,11 +22,15 @@ class Note extends React.Component {
     this.setState({ mouseOn: true });
   };
 
-  remove = () => {
-    const { child, removeChildren, addNote } = this.props;
+  onFocus = () => this.setState({ mouseOn: true });
 
-    removeChildren(child);
-    addNote(child);
+  onBlur = () => this.setState({ mouseOn: false });
+
+  remove = () => {
+    const { child, removeChidrenConnect, addNoteConnect } = this.props;
+
+    removeChidrenConnect(child);
+    addNoteConnect(child);
   };
 
   render() {
@@ -33,9 +39,11 @@ class Note extends React.Component {
 
     return (
       <div
-        className={classNames('note', { black: index == 0 }, { gray: index == 1 })}
+        className={classNames('note', { black: index === 0 }, { gray: index === 1 })}
         onMouseLeave={this.onMouseLeave}
         onMouseOver={this.onMouseOver}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
       >
         {mouseOn && <ExitButton click={this.remove} styles={{ borderRadius: '0' }} />}
         {child.title}
@@ -46,13 +54,16 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-  child: object.isRequired,
+  child: noteObject.isRequired,
   index: number.isRequired,
-  removeChildren: func.isRequired,
-  addNote: func.isRequired
+  removeChidrenConnect: func.isRequired,
+  addNoteConnect: func.isRequired
 };
 
 export default connect(
   null,
-  { removeChildren, addNote }
+  {
+    removeChidrenConnect: removeChildren,
+    addNoteConnect: addNote
+  }
 )(Note);

@@ -22,7 +22,7 @@ export const loadFavoriteNotes = () => dispatch =>
     axios
       .get('/api/notes/favorite')
       .then(res => {
-        const notes = res.data.notes;
+        const { notes } = res.data;
 
         dispatch({
           type: LOAD_NOTES,
@@ -41,7 +41,7 @@ export const loadFavoriteCollections = () => dispatch =>
     axios
       .get('/api/collections/favorite')
       .then(res => {
-        const collections = res.data.collections;
+        const { collections } = res.data;
 
         dispatch({
           type: LOAD_COLLECTIONS,

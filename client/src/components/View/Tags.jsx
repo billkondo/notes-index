@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { tagsArray } from '../../propTypes/propTypes';
+
 const Tags = ({ tags }) => (
   <div className="tags">
     <i className="fas fa-hashtag" />
@@ -13,5 +15,9 @@ const Tags = ({ tags }) => (
     </div>
   </div>
 );
+
+Tags.propTypes = {
+  tags: tagsArray.isRequired
+};
 
 export default Tags;

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { bool, func } from 'prop-types';
+import { bool, func, shape, string } from 'prop-types';
 
 import Loading from '../../Animation/Loading';
 import EditUI from './EditUI';
@@ -17,35 +17,36 @@ import { collectionIsLoaded, resetEdit } from '../../../actions/edit';
 
 class Edit extends React.Component {
   componentWillMount() {
-    const id = this.props.match.params.id;
+    const { match } = this.props;
+    const { id } = match.params;
     const {
-      loadCollection,
-      startLoadingCollections,
-      startLoadingNotes,
-      resetSearchMenu,
-      loadNotesToDelete,
-      resetEdit,
-      collectionIsLoaded
+      loadCollectionConenct,
+      startLoadingCollectionsConnect,
+      startLoadingNotesConnect,
+      resetSearchMenuConnect,
+      loadNotesToDeleteConnect,
+      resetEditConnect,
+      collectionIsLoadedConnect
     } = this.props;
 
-    resetEdit();
-    resetSearchMenu();
+    resetEditConnect();
+    resetSearchMenuConnect();
 
     axios.get(`/api/collections/${id}`).then(res => {
       const collection = res.data;
-      loadCollection(collection);
-      loadNotesToDelete(collection.children);
+      loadCollectionConenct(collection);
+      loadNotesToDeleteConnect(collection.children);
 
-      startLoadingNotes();
-      startLoadingCollections();
+      startLoadingNotesConnect();
+      startLoadingCollectionsConnect();
 
-      collectionIsLoaded();
+      collectionIsLoadedConnect();
     });
   }
 
   componentWillUnmount() {
-    const { resetCollection } = this.props;
-    resetCollection();
+    const { resetCollectionConnect } = this.props;
+    resetCollectionConnect();
   }
 
   render() {
@@ -57,18 +58,35 @@ class Edit extends React.Component {
   }
 }
 
+Edit.propTypes = {
+  isCollectionLoaded: bool.isRequired,
+  resetCollectionConnect: func.isRequired,
+  loadCollectionConenct: func.isRequired,
+  startLoadingCollectionsConnect: func.isRequired,
+  startLoadingNotesConnect: func.isRequired,
+  resetSearchMenuConnect: func.isRequired,
+  loadNotesToDeleteConnect: func.isRequired,
+  resetEditConnect: func.isRequired,
+  collectionIsLoadedConnect: func.isRequired,
+  match: shape({
+    params: shape({
+      id: string.isRequired
+    })
+  }).isRequired
+};
+
 export default connect(
   state => ({
     isCollectionLoaded: state.edit.isCollectionLoaded
   }),
   {
-    loadCollection,
-    resetCollection,
-    startLoadingCollections,
-    startLoadingNotes,
-    resetSearchMenu,
-    loadNotesToDelete,
-    collectionIsLoaded,
-    resetEdit
+    loadCollectionConenct: loadCollection,
+    resetCollectionConnect: resetCollection,
+    startLoadingCollectionsConnect: startLoadingCollections,
+    startLoadingNotesConnect: startLoadingNotes,
+    resetSearchMenuConnect: resetSearchMenu,
+    loadNotesToDeleteConnect: loadNotesToDelete,
+    collectionIsLoadedConnect: collectionIsLoaded,
+    resetEditConnect: resetEdit
   }
 )(Edit);

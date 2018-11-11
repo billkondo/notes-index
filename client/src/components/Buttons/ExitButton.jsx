@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object } from 'prop-types';
+import { func, shape } from 'prop-types';
 
 import Fade from '../High_Order/Fade';
 
@@ -11,7 +11,11 @@ const ExitButton = ({ click, styles }) => (
 
 ExitButton.propTypes = {
   click: func.isRequired,
-  styles: object.isRequired
+  styles: shape({})
+};
+
+ExitButton.defaultProps = {
+  styles: null
 };
 
 export default Fade(ExitButton);

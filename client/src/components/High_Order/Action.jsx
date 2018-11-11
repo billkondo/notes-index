@@ -8,44 +8,59 @@ export default Component => {
   class Dropdown extends React.Component {
     addNote = () => ({
       label: 'Add Note',
-      onClick: () => this.props.history.push('/Notes/Add')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Notes/Add');
+      }
     });
 
     addCollection = () => ({
       label: 'Add Collection',
-      onClick: () => this.props.history.push('/Collections/Add')
-    });
-
-    addFavorite = () => ({
-      label: 'Add Favorite',
-      onClick: () => this.props.history.push('/')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Collections/Add');
+      }
     });
 
     profile = () => ({
       label: 'Profile',
-      onClick: () => this.props.history.push('/Profile')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Profile');
+      }
     });
 
     notes = () => ({
       label: 'Notes',
-      onClick: () => this.props.history.push('/Notes')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Notes');
+      }
     });
 
     collections = () => ({
       label: 'Collections',
-      onClick: () => this.props.history.push('/Collections')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Collections');
+      }
     });
 
     favorites = () => ({
       label: 'Favorite',
-      onClick: () => this.props.history.push('/Favorite')
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/Favorite');
+      }
     });
 
     logout = () => ({
       label: 'Log Out',
       onClick: () => {
-        this.props.signOutUser();
-        this.props.history.push('/');
+        const { signOutUserConnect, history } = this.props;
+
+        signOutUserConnect();
+        history.push('/');
       }
     });
 
@@ -69,7 +84,7 @@ export default Component => {
   return withRouter(
     connect(
       null,
-      { signOutUser }
+      { signOutUserConnect: signOutUser }
     )(Dropdown)
   );
 };

@@ -76,7 +76,10 @@ export const favoriteFlip = () => dispatch => {
 export const submitCollection = updateURL => (dispatch, getState) => {
   const collection = getState().collectionsOperations;
 
-  const children = collection.children.map(child => child._id);
+  const children = collection.children.map(child => {
+    const { _id } = child;
+    return _id;
+  });
 
   const { title, description, tags, favorite } = collection;
 
@@ -89,7 +92,7 @@ export const submitCollection = updateURL => (dispatch, getState) => {
     id: uuidv4()
   };
 
-  axios.post('/api/collections', newCollection).then(res => {
+  axios.post('/api/collections', newCollection).then(() => {
     // TODO Handle Errors
     updateURL();
   });
@@ -98,7 +101,10 @@ export const submitCollection = updateURL => (dispatch, getState) => {
 export const submitEditedCollection = updateURL => (dispatch, getState) => {
   const collection = getState().collectionsOperations;
 
-  const children = collection.children.map(child => child._id);
+  const children = collection.children.map(child => {
+    const { _id } = child;
+    return _id;
+  });
 
   const { title, description, tags, favorite, id } = collection;
 
@@ -111,7 +117,7 @@ export const submitEditedCollection = updateURL => (dispatch, getState) => {
     id
   };
 
-  axios.put('/api/collections', newCollection).then(res => {
+  axios.put('/api/collections', newCollection).then(() => {
     // TODO Handle Errors
     updateURL();
   });
@@ -122,7 +128,7 @@ export const deleteCollection = updateURL => (dispatch, getState) => {
 
   axios
     .delete('/api/collections', { params: collection })
-    .then(res => {
+    .then(() => {
       // TODO Error handling
       updateURL();
     })

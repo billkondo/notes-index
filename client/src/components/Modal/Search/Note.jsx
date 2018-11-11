@@ -28,9 +28,7 @@ class Note extends React.Component {
               <div className="tags">
                 {tags.map(tag => (
                   <div key={tag} className="tag">
-                    {' '}
                     {tag}
-{' '}
                   </div>
                 ))}
               </div>

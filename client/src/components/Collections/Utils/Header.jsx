@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { bool, func, string } from 'prop-types';
+import { bool, func, string, shape } from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 import Favorite from '../../Buttons/FavoriteButton';
@@ -9,14 +9,14 @@ import Favorite from '../../Buttons/FavoriteButton';
 import { favoriteFlip } from '../../../actions/collections-operations';
 
 const Header = props => {
-  const { favorite, favoriteFlip, title } = props;
+  const { favorite, favoriteFlipConnect, title, history } = props;
 
-  const exit = () => props.history.push('/Collections');
+  const exit = () => history.push('/Collections');
 
   return (
     <div className="collections-add-header">
       <ExitButton click={exit} />
-      <Favorite on={favorite} onClick={favoriteFlip} />
+      <Favorite on={favorite} onClick={favoriteFlipConnect} />
 
       <div className="title">{title}</div>
     </div>
@@ -26,7 +26,10 @@ const Header = props => {
 Header.propTypes = {
   title: string.isRequired,
   favorite: bool.isRequired,
-  favoriteFlip: func.isRequired
+  favoriteFlipConnect: func.isRequired,
+  history: shape({
+    push: func.isRequired
+  }).isRequired
 };
 
 export default withRouter(
@@ -34,6 +37,6 @@ export default withRouter(
     state => ({
       favorite: state.collectionsOperations.favorite
     }),
-    { favoriteFlip }
+    { favoriteFlipConnect: favoriteFlip }
   )(Header)
 );

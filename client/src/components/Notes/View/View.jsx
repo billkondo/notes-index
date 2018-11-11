@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { string } from 'prop-types';
+import { string, bool, func } from 'prop-types';
 
 import ViewUI from './ViewUI';
 
@@ -10,17 +10,23 @@ import { viewNoteEnter, viewNoteExit, importNote } from '../../../actions/view';
 
 class View extends React.Component {
   componentDidUpdate(prevProps) {
-    const prevID = prevProps.idToLoad;
-    const curID = this.props.idToLoad;
-    const { loadNote, viewNoteEnter, viewNoteExit, importNote } = this.props;
+    const { idToLoad: prevID } = prevProps;
+    const { idToLoad: curID } = this.props;
 
-    if (prevID && !curID) viewNoteExit();
+    const {
+      loadNoteConnect,
+      viewNoteEnterConnect,
+      viewNoteExitConnect,
+      importNoteConnect
+    } = this.props;
+
+    if (prevID && !curID) viewNoteExitConnect();
 
     if (!prevID && curID) {
-      importNote(curID)
+      importNoteConnect(curID)
         .then(note => {
-          loadNote(note);
-          viewNoteEnter();
+          loadNoteConnect(note);
+          viewNoteEnterConnect();
         })
         .catch(err => console.log(err));
     }
@@ -49,7 +55,12 @@ class View extends React.Component {
 }
 
 View.propTypes = {
-  idToLoad: string.isRequired
+  idToLoad: string.isRequired,
+  viewNote: bool.isRequired,
+  loadNoteConnect: func.isRequired,
+  viewNoteEnterConnect: func.isRequired,
+  viewNoteExitConnect: func.isRequired,
+  importNoteConnect: func.isRequired
 };
 
 export default connect(
@@ -57,5 +68,10 @@ export default connect(
     idToLoad: state.notesData.idToLoad,
     viewNote: state.view.viewNote
   }),
-  { loadNote, viewNoteEnter, viewNoteExit, importNote }
+  {
+    loadNoteConnect: loadNote,
+    viewNoteEnterConnect: viewNoteEnter,
+    viewNoteExitConnect: viewNoteExit,
+    importNoteConnect: importNote
+  }
 )(View);

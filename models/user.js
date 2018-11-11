@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
   username: String,
   passwordHash: String,
   email: String,
   userId: String,
-  name: { type: String, default: "" }
-})
+  name: { type: String, default: '' }
+});
 
 const User = mongoose.model('User', userSchema);
 

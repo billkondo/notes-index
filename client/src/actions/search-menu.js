@@ -45,12 +45,16 @@ export const startLoadingNotes = () => (dispatch, getState) => {
     .get('/api/notes')
     .then(res => {
       const notesData = res.data;
-      const notesToDelete = getState().searchMenu.notesToDelete;
+      const { notesToDelete } = getState().searchMenu;
 
       const notes = notesData.filter(note => {
-        for (const noteToDelete of notesToDelete) if (note.id === noteToDelete.id) return false;
+        let shouldDeleteNote = false;
 
-        return true;
+        notesToDelete.forEach(noteToDelete => {
+          if (note.id === noteToDelete.id) shouldDeleteNote = true;
+        });
+
+        return shouldDeleteNote;
       });
 
       dispatch({

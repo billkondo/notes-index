@@ -1,50 +1,63 @@
 import React from 'react';
-import { Button } from 'reactstrap'; 
+import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { array, func } from 'prop-types';
+import { func } from 'prop-types';
 
 import Note from './Note';
 
 import { enterSearchMenu } from '../../../actions/search-menu';
 
-const ChildrenHeader = ({ enterSearchMenu }) => (
+import { childrenArray } from '../../../propTypes/propTypes';
+
+const ChildrenHeader = ({ enterSearchMenuConnect }) => (
   <div className="collections-utils-children-header">
     <div className="title-box">
-        <i className="fas fa-folder-open" />
-        Children
+      <i className="fas fa-folder-open" />
+      Children
     </div>
 
     <div className="controls">
-      <Button color="info" className="button" onClick={enterSearchMenu} > +  Note</Button>
+      <Button color="info" className="button" onClick={enterSearchMenuConnect}>
+        {' '}
+        + Note
+      </Button>
     </div>
   </div>
 );
 
-const ChildrenContainer = ({ children }) => (
+ChildrenHeader.propTypes = {
+  enterSearchMenuConnect: func.isRequired
+};
+
+const ChildrenContainer = ({ arrayOfNotes }) => (
   <div className="collections-utils-children-container">
     <div className="notes">
-      {
-        children.map((child, index)  => <Note key={child.id} index={index%2} child={child}/>)
-      }
+      {arrayOfNotes.map((child, index) => (
+        <Note key={child.id} index={index % 2} child={child} />
+      ))}
     </div>
   </div>
 );
 
-const Children = ({ children, enterSearchMenu }) => (
+ChildrenContainer.propTypes = {
+  arrayOfNotes: childrenArray.isRequired
+};
+
+const Children = ({ children, enterSearchMenuConnect }) => (
   <div className="collections-utils-children">
-    <ChildrenHeader enterSearchMenu={enterSearchMenu} />
-    <ChildrenContainer children={children} />
+    <ChildrenHeader enterSearchMenuConnect={enterSearchMenuConnect} />
+    <ChildrenContainer arrayOfNotes={children} />
   </div>
 );
 
 Children.propTypes = {
-  children: array.isRequired, 
-  enterSearchMenu: func.isRequired
-}
+  children: childrenArray.isRequired,
+  enterSearchMenuConnect: func.isRequired
+};
 
 export default connect(
-  (state) => ({
+  state => ({
     children: state.collectionsOperations.children
-  }), 
-  { enterSearchMenu }
+  }),
+  { enterSearchMenuConnect: enterSearchMenu }
 )(Children);

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Dropdown, DropdownToggle } from 'reactstrap';
+import { func } from 'prop-types';
+
 import DropdownCustom from './Dropdown';
 
 import Fade from '../High_Order/Fade';
@@ -35,5 +37,13 @@ class Profile extends React.Component {
     );
   }
 }
+
+Profile.propTypes = {
+  profile: func.isRequired,
+  notes: func.isRequired,
+  collections: func.isRequired,
+  favorites: func.isRequired,
+  logout: func.isRequired
+};
 
 export default Action(Fade(Profile));

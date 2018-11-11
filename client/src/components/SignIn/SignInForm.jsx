@@ -12,38 +12,34 @@ import { setUser } from '../../actions/authentication';
 
 class SignInForm extends React.Component {
   state = {
-    user: "", 
-    password: "",
+    user: '',
+    password: '',
     isLoading: false
-  }
+  };
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   submit = () => {
     const { user, password } = this.state;
-    const { setErrors, setUser } = this.props;
+    const { setErrors, setUserConnect } = this.props;
     const info = { user, password };
 
     this.setState({ isLoading: true });
     setErrors({});
 
-    axios
-      .post('/api/auth/signin', info)
-      .then(res => {
-        const newErrors = res.data.errors;
-        const token = res.data.token;
+    axios.post('/api/auth/signin', info).then(res => {
+      const { newErrors, token } = res.data;
 
-        if (isEmpty(newErrors)) {
-          setHeader(token);
-          localStorage.setItem('jwtToken', token);
-          setUser(decode(token));          
-        }
-        else {
-          setErrors(newErrors);
-          this.setState({ isLoading: false });
-        }
-      });
-  }
+      if (isEmpty(newErrors)) {
+        setHeader(token);
+        localStorage.setItem('jwtToken', token);
+        setUserConnect(decode(token));
+      } else {
+        setErrors(newErrors);
+        this.setState({ isLoading: false });
+      }
+    });
+  };
 
   render() {
     const { user, password, isLoading } = this.state;
@@ -69,12 +65,8 @@ class SignInForm extends React.Component {
           error={errors.password}
         />
 
-        <button 
-          className="sign-in-button" 
-          onClick={this.submit}
-          disabled={isLoading}
-        > 
-          Sign In 
+        <button type="button" className="sign-in-button" onClick={this.submit} disabled={isLoading}>
+          Sign In
         </button>
       </div>
     );
@@ -84,10 +76,10 @@ class SignInForm extends React.Component {
 SignInForm.propTypes = {
   errors: propTypes.object.isRequired,
   setErrors: propTypes.func.isRequired,
-  setUser: propTypes.func.isRequired
-}
+  setUserConnect: propTypes.func.isRequired
+};
 
 export default connect(
-  null, 
-  { setUser }
+  null,
+  { setUserConnect: setUser }
 )(SignInForm);

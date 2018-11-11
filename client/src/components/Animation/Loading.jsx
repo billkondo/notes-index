@@ -12,16 +12,15 @@ const Loading = ({ positionStyle, iconStyle }) => (
 );
 
 Loading.propTypes = {
-  iconStyle: string.isRequired,
+  iconStyle: string,
   positionStyle: shape({
     positon: string
   })
 };
 
 Loading.defaultProps = {
-  positionStyle: {
-    positon: 'relative'
-  }
+  positionStyle: {},
+  iconStyle: ''
 };
 
 export default Fade(Loading);

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { func } from 'prop-types';
+import { func, bool } from 'prop-types';
 
 import { submitEditedCollection, deleteCollection } from '../../../actions/collections-operations';
 import { startModal } from '../../../actions/modal';
@@ -14,20 +14,25 @@ import {
   SaveMessageCollection
 } from '../../Modal/messages';
 
+import { historyObject } from '../../../propTypes/propTypes';
+
 class Footer extends React.Component {
-  updateURL = () => this.props.history.push('/Collections');
+  updateURL = () => {
+    const { history } = this.props;
+    history.push('/Collections');
+  };
 
   editAction = () => {
-    const { startModal, submitEditedCollection } = this.props;
-    startModal(saveButton, goBackButton, SaveMessageCollection, () =>
-      submitEditedCollection(this.updateURL)
+    const { startModalConnect, submitEditedCollectionConnect } = this.props;
+    startModalConnect(saveButton, goBackButton, SaveMessageCollection, () =>
+      submitEditedCollectionConnect(this.updateURL)
     );
   };
 
   deleteAction = () => {
-    const { startModal, deleteCollection } = this.props;
-    startModal(deleteButton, goBackButton, DeleteMessageCollection, () =>
-      deleteCollection(this.updateURL)
+    const { startModalConnect, deleteCollectionConnect } = this.props;
+    startModalConnect(deleteButton, goBackButton, DeleteMessageCollection, () =>
+      deleteCollectionConnect(this.updateURL)
     );
   };
 
@@ -59,9 +64,11 @@ class Footer extends React.Component {
 }
 
 Footer.propTypes = {
-  submitEditedCollection: func.isRequired,
-  deleteCollection: func.isRequired,
-  startModal: func.isRequired
+  submitEditedCollectionConnect: func.isRequired,
+  deleteCollectionConnect: func.isRequired,
+  startModalConnect: func.isRequired,
+  modalRender: bool.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
@@ -69,6 +76,10 @@ export default withRouter(
     state => ({
       modalRender: state.modal.modalRender
     }),
-    { submitEditedCollection, deleteCollection, startModal }
+    {
+      submitEditedCollectionConnect: submitEditedCollection,
+      deleteCollectionConnect: deleteCollection,
+      startModalConnect: startModal
+    }
   )(Footer)
 );

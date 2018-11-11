@@ -112,7 +112,7 @@ export const submitNote = updateURL => (dispatch, getState) => {
 
   axios
     .post('/api/notes', newNote)
-    .then(res => {
+    .then(() => {
       // TODO Error handling
       updateURL();
     })
@@ -133,7 +133,7 @@ export const submitEditedNote = updateURL => (dispatch, getState) => {
 
   axios
     .put('/api/notes', editedNote)
-    .then(res => {
+    .then(() => {
       // TODO Error handling
       updateURL();
     })
@@ -145,7 +145,7 @@ export const deleteNote = updateURL => (dispatch, getState) => {
 
   axios
     .delete('/api/notes', { params: note })
-    .then(res => {
+    .then(() => {
       // TODO Error handling
       updateURL();
     })

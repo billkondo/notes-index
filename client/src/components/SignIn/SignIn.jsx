@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
-import { object } from 'prop-types';
 
 import ErrorMessage from './ErrorMessage';
 import SignInForm from './SignInForm';
+
+import { historyObject } from '../../propTypes/propTypes';
 
 class SignIn extends React.Component {
   state = {
@@ -38,7 +39,7 @@ class SignIn extends React.Component {
 }
 
 SignIn.propTypes = {
-  history: object.isRequired
+  history: historyObject.isRequired
 };
 
 export default connect(state => ({

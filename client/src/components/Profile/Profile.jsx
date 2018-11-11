@@ -10,15 +10,11 @@ import Delete from './Delete';
     ? - send messages
 */
 
-class Profile extends React.Component {
-  render() {
-    return (
-      <div className="ProfilePage">
-        <Info />
-        <Delete />
-      </div>
-    );
-  }
-}
+const Profile = () => (
+  <div className="ProfilePage">
+    <Info />
+    <Delete />
+  </div>
+);
 
 export default Profile;

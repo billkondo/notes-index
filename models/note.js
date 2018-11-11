@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const noteSchema = new Schema({
-  title: String, 
-  tags: Array, 
-  commentaries: Array, 
+  title: String,
+  tags: Array,
+  commentaries: Array,
   description: String,
   id: String,
   userId: String,
@@ -14,6 +15,3 @@ const noteSchema = new Schema({
 const Note = mongoose.model('Note', noteSchema);
 
 export default Note;
-
-
-

@@ -12,20 +12,20 @@ import { setID } from '../../../actions/notes-data';
 class Card extends React.Component {
   state = {
     side: false
-  }
+  };
 
   edit = () => {
     const { id } = this.props.note;
-    
+
     this.props.history.push(`/Notes/Edit/${id}`);
-  }
+  };
 
   view = () => {
     const { id } = this.props.note;
     const { setID } = this.props;
-    
+
     setID(id);
-  }
+  };
 
   render() {
     const { note, noteIsLoading, idToLoad } = this.props;
@@ -34,33 +34,31 @@ class Card extends React.Component {
     return (
       <div className="notes-main-card">
         <div className="Notes-Card-Title">
-          {truncate(title, { 'length': 15 })}
-          { favorite && <i className="fas fa-star Favorite" /> }
+          {truncate(title, { length: 15 })}
+          {favorite && <i className="fas fa-star Favorite" />}
         </div>
 
-        <textarea 
-          className="description"
-          value={description}
-          readOnly
-          disabled
-        />
+        <textarea className="description" value={description} readOnly disabled />
 
         <div className="footer">
-          {
-            noteIsLoading && (idToLoad === id) && 
-            <Loading 
-              position={{
-                position: "absolute", 
-                fontSize: "0.9 rem",
+          {noteIsLoading && idToLoad === id && (
+            <Loading
+              positionStyle={{
+                position: 'absolute',
+                fontSize: '0.9 rem',
                 left: 0
               }}
-
-              icon={" font-size-1_2-rem"}
+              iconStyle=" font-size-1_2-rem"
             />
-          }
+          )}
 
-          <button className="icon edit" onClick={this.edit}> <i className="fas fa-edit" /> </button>
-          <button className="icon" onClick={this.view}> <i className="fas fa-eye" /> </button>
+          <button type="button" className="icon edit" onClick={this.edit}>
+            <i className="fas fa-edit" />
+          </button>
+
+          <button type="button" className="icon" onClick={this.view}>
+            <i className="fas fa-eye" />
+          </button>
         </div>
       </div>
     );
@@ -72,12 +70,14 @@ Card.propTypes = {
   setID: func.isRequired,
   noteIsLoading: bool.isRequired,
   idToLoad: string.isRequired
-}
+};
 
-export default withRouter(connect(
-  (state) => ({   
-    noteIsLoading: state.view.noteIsLoading,
-    idToLoad: state.notesData.idToLoad
-  }), 
-  { setID }
-)(Fade(Card)));
+export default withRouter(
+  connect(
+    state => ({
+      noteIsLoading: state.view.noteIsLoading,
+      idToLoad: state.notesData.idToLoad
+    }),
+    { setID }
+  )(Fade(Card))
+);

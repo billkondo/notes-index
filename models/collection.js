@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const noteSchema = new Schema({
-  title: String, 
-  tags: Array, 
+  title: String,
+  tags: Array,
   description: String,
   id: String,
   userId: String,
-  children: Array, 
+  children: Array,
   favorite: { type: Boolean, default: false }
 });
 

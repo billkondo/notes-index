@@ -10,7 +10,7 @@ import Footer from './Footer';
 import Fade from '../../High_Order/Fade';
 
 const EditUI = () => (
-  <div className="notes-edit-page"> 
+  <div className="notes-edit-page">
     <div className="notes-edit">
       <Header title="Edit Note" />
       <Title />

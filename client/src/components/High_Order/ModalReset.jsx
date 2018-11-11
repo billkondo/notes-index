@@ -8,12 +8,17 @@ import { viewCollectionExit, viewNoteExit } from '../../actions/view';
 export default Component => {
   class Modal extends React.Component {
     componentWillMount() {
-      const { resetModal, exitSearchMenu, viewCollectionExit, viewNoteExit } = this.props;
+      const {
+        resetModalConnect,
+        exitSearchMenuConnect,
+        viewCollectionExitConnect,
+        viewNoteExitConnect
+      } = this.props;
 
-      resetModal();
-      exitSearchMenu();
-      viewCollectionExit();
-      viewNoteExit();
+      resetModalConnect();
+      exitSearchMenuConnect();
+      viewCollectionExitConnect();
+      viewNoteExitConnect();
     }
 
     render() {
@@ -23,6 +28,11 @@ export default Component => {
 
   return connect(
     null,
-    { resetModal, exitSearchMenu, viewCollectionExit, viewNoteExit }
+    {
+      resetModalConnect: resetModal,
+      exitSearchMenuConnect: exitSearchMenu,
+      viewCollectionExitConnect: viewCollectionExit,
+      viewNoteExitConnect: viewNoteExit
+    }
   )(Modal);
 };

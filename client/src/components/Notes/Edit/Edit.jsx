@@ -11,7 +11,7 @@ import { notesIsLoaded, resetEdit } from '../../../actions/edit';
 
 class Edit extends React.Component {
   componentWillMount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
     const { loadNote: load, notesIsLoaded: finish, resetEdit: reset } = this.props;
 
     reset();
