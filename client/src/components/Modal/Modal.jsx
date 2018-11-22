@@ -4,39 +4,38 @@ import { CSSTransition } from 'react-transition-group';
 import { Button } from 'reactstrap';
 import { bool, string, func } from 'prop-types';
 
-import { endModal } from '../../actions/modal';
+import { endModal, startLoadingModalData, endLoadingModalData } from '../../actions/modal';
 
 class Modal extends React.Component {
-  state = {
-    isLoading: false
-  };
-
   componentWillUpdate(nextProps) {
-    if (!this.props.modalRender && nextProps.modalRender) {
+    const { modalRender, endLoadingModalDataConnect } = this.props;
+
+    if (!modalRender && nextProps.modalRender) {
       document.addEventListener('mousedown', this.handleClick, false);
-      this.setState({ isLoading: false });
+      endLoadingModalDataConnect();
     }
 
-    if (this.props.modalRender && !nextProps.modalRender)
+    if (modalRender && !nextProps.modalRender)
       document.removeEventListener('mousedown', this.handleClick, false);
   }
 
   handleClick = e => {
-    const { endModal } = this.props;
+    const { endModalConnect } = this.props;
     if (this.node.contains(e.target)) return;
-    endModal();
+    endModalConnect();
   };
 
   render() {
     const {
       modalRender,
-      endModal,
+      endModalConnect,
       exitFunction,
       redButton,
       greenButton,
-      WarningMessage
+      WarningMessage,
+      isLoading,
+      startLoadingModalDataConnect
     } = this.props;
-    const { isLoading } = this.state;
 
     return (
       <CSSTransition
@@ -54,7 +53,12 @@ class Modal extends React.Component {
         unmountOnExit
       >
         <div className="modal-page">
-          <div className="modal-box" ref={node => (this.node = node)}>
+          <div
+            className="modal-box"
+            ref={node => {
+              this.node = node;
+            }}
+          >
             <div className="modal-title"> Warning </div>
             <WarningMessage />
 
@@ -63,7 +67,7 @@ class Modal extends React.Component {
                 color="danger"
                 className="modal-button"
                 onClick={() => {
-                  this.setState({ isLoading: true });
+                  startLoadingModalDataConnect();
                   exitFunction();
                 }}
                 disabled={isLoading}
@@ -71,7 +75,7 @@ class Modal extends React.Component {
                 {redButton}
               </Button>
 
-              <Button color="success" className="modal-button" onClick={endModal}>
+              <Button color="success" className="modal-button" onClick={endModalConnect}>
                 {greenButton}
               </Button>
             </div>
@@ -84,11 +88,14 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   modalRender: bool.isRequired,
-  endModal: func.isRequired,
+  endModalConnect: func.isRequired,
   exitFunction: func.isRequired,
   redButton: string.isRequired,
   greenButton: string.isRequired,
-  WarningMessage: func.isRequired
+  WarningMessage: func.isRequired,
+  startLoadingModalDataConnect: func.isRequired,
+  endLoadingModalDataConnect: func.isRequired,
+  isLoading: bool.isRequired
 };
 
 export default connect(
@@ -97,7 +104,12 @@ export default connect(
     redButton: state.modal.redButton,
     greenButton: state.modal.greenButton,
     WarningMessage: state.modal.WarningMessage,
-    exitFunction: state.modal.exitFunction
+    exitFunction: state.modal.exitFunction,
+    isLoading: state.modal.isLoading
   }),
-  { endModal }
+  {
+    endModalConnect: endModal,
+    startLoadingModalDataConnect: startLoadingModalData,
+    endLoadingModalDataConnect: endLoadingModalData
+  }
 )(Modal);

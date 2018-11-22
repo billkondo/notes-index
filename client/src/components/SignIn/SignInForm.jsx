@@ -1,14 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import decode from 'jsonwebtoken/decode';
+import { func } from 'prop-types';
 
 import InputText from '../Input/InputText';
 
 import setHeader from '../../authentication/setHeader';
 import { setUser } from '../../actions/authentication';
+
+import { errorsObject } from '../../propTypes/propTypes';
 
 class SignInForm extends React.Component {
   state = {
@@ -74,9 +76,9 @@ class SignInForm extends React.Component {
 }
 
 SignInForm.propTypes = {
-  errors: propTypes.object.isRequired,
-  setErrors: propTypes.func.isRequired,
-  setUserConnect: propTypes.func.isRequired
+  errors: errorsObject.isRequired,
+  setErrors: func.isRequired,
+  setUserConnect: func.isRequired
 };
 
 export default connect(

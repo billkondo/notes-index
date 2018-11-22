@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { func, object } from 'prop-types';
+import { func, bool, string } from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 import Header from '../../View/Header';
@@ -11,6 +11,8 @@ import Tags from '../../View/Tags';
 import Controls from '../../View/Controls';
 
 import { setID } from '../../../actions/notes-data';
+
+import { noteObject, tagsArray, commentsArray } from '../../../propTypes/propTypes';
 
 const FrontView = ({ sideToView, description, commentaries }) => (
   <CSSTransition
@@ -33,6 +35,12 @@ const FrontView = ({ sideToView, description, commentaries }) => (
   </CSSTransition>
 );
 
+FrontView.propTypes = {
+  sideToView: bool.isRequired,
+  description: string.isRequired,
+  commentaries: commentsArray.isRequired
+};
+
 const BackView = ({ sideToView, tags }) => (
   <CSSTransition
     in={sideToView}
@@ -53,6 +61,11 @@ const BackView = ({ sideToView, tags }) => (
   </CSSTransition>
 );
 
+BackView.propTypes = {
+  sideToView: bool.isRequired,
+  tags: tagsArray.isRequired
+};
+
 class ViewUI extends React.Component {
   state = {
     sideToView: false
@@ -64,9 +77,9 @@ class ViewUI extends React.Component {
     }));
 
   exit = () => {
-    const { setID } = this.props;
+    const { setIDConnect } = this.props;
 
-    setID('');
+    setIDConnect('');
   };
 
   render() {
@@ -93,13 +106,13 @@ class ViewUI extends React.Component {
 }
 
 ViewUI.propTypes = {
-  setID: func.isRequired,
-  note: object.isRequired
+  setIDConnect: func.isRequired,
+  note: noteObject.isRequired
 };
 
 export default connect(
   state => ({
     note: state.notesOperations
   }),
-  { setID }
+  { setIDConnect: setID }
 )(ViewUI);

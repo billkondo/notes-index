@@ -2,13 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import { func } from 'prop-types';
 
-import { filterLoad } from '../../../actions/filter';
+import { enterFilterMenu } from '../../../actions/filter';
+
+import { historyObject } from '../../../propTypes/propTypes';
 
 const Functions = props => {
-  const { filterLoadConnect } = props;
-  const goToCollectionsAdd = () => props.history.push('/Collections/Add');
-  const startFilter = () => filterLoadConnect(0);
+  const { enterFilterMenuConnect, history } = props;
+  const goToCollectionsAdd = () => history.push('/Collections/Add');
+  const startFilter = () => enterFilterMenuConnect(0);
 
   return (
     <div className="collections-functions">
@@ -23,9 +26,14 @@ const Functions = props => {
   );
 };
 
+Functions.propTypes = {
+  enterFilterMenuConnect: func.isRequired,
+  history: historyObject.isRequired
+};
+
 export default withRouter(
   connect(
     null,
-    { filterLoadConnect: filterLoad }
+    { enterFilterMenuConnect: enterFilterMenu }
   )(Functions)
 );

@@ -17,40 +17,34 @@ export const collectionsAreLoaded = () => dispatch => {
   dispatch({ type: COLLECTIONS_ARE_LOADED });
 };
 
-export const loadFavoriteNotes = () => dispatch =>
-  new Promise((resolve, reject) => {
-    axios
-      .get('/api/notes/favorite')
-      .then(res => {
-        const { notes } = res.data;
+export const loadFavoriteNotes = () => dispatch => {
+  axios
+    .get('/api/notes/favorite')
+    .then(res => {
+      const { notes } = res.data;
 
-        dispatch({
-          type: LOAD_NOTES,
-          notes
-        });
+      dispatch({
+        type: LOAD_NOTES,
+        notes
+      });
 
-        dispatch({ type: NOTES_ARE_LOADED });
+      dispatch({ type: NOTES_ARE_LOADED });
+    })
+    .catch(error => console.log(error));
+};
 
-        resolve(notes);
-      })
-      .catch(error => reject(error));
-  });
+export const loadFavoriteCollections = () => dispatch => {
+  axios
+    .get('/api/collections/favorite')
+    .then(res => {
+      const { collections } = res.data;
 
-export const loadFavoriteCollections = () => dispatch =>
-  new Promise((resolve, reject) => {
-    axios
-      .get('/api/collections/favorite')
-      .then(res => {
-        const { collections } = res.data;
+      dispatch({
+        type: LOAD_COLLECTIONS,
+        collections
+      });
 
-        dispatch({
-          type: LOAD_COLLECTIONS,
-          collections
-        });
-
-        dispatch({ type: COLLECTIONS_ARE_LOADED });
-
-        resolve(collections);
-      })
-      .catch(error => reject(error));
-  });
+      dispatch({ type: COLLECTIONS_ARE_LOADED });
+    })
+    .catch(error => console.log(error));
+};

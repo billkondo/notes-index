@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { START_MODAL, END_MODAL, RESET_MODAL } from '../types/modal';
+import {
+  START_MODAL,
+  END_MODAL,
+  RESET_MODAL,
+  START_LOADING_MODAL_DATA,
+  END_LOADING_MODAL_DATA
+} from '../types/modal';
 
 const WarningMessageDefault = () => <div className="modal-text" />;
 
@@ -12,8 +18,7 @@ const defaultState = {
   greenButton: '',
   WarningMessage: WarningMessageDefault,
   exitFunction: exitFunctionDefault,
-  filterRender: false,
-  filterType: 0
+  isLoading: false
 };
 
 export default (state = defaultState, action) => {
@@ -36,6 +41,18 @@ export default (state = defaultState, action) => {
 
     case RESET_MODAL:
       return defaultState;
+
+    case START_LOADING_MODAL_DATA:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case END_LOADING_MODAL_DATA:
+      return {
+        ...state,
+        isLoading: false
+      };
 
     default:
       return state;

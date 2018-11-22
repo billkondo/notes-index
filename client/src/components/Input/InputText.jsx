@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 const InputText = ({ label, name, onChange, value, placeholder, type, error }) => (
   <div className="sign-up-input-text">
-    <div className={classnames('sign-up-label', { 'sign-up-invalid-label': error })}> {label} </div>
+    <div className={classnames('sign-up-label', { 'sign-up-invalid-label': error })}>{label}</div>
     <input
       className={classnames('sign-up-input', { 'sign-up-invalid-input': error })}
       name={name}
@@ -14,7 +14,7 @@ const InputText = ({ label, name, onChange, value, placeholder, type, error }) =
       type={type}
     />
 
-    {error && <div className="sign-up-error-message"> {error} </div>}
+    {error && <div className="sign-up-error-message">{error}</div>}
   </div>
 );
 
@@ -25,11 +25,12 @@ InputText.propTypes = {
   value: propTypes.string.isRequired,
   placeholder: propTypes.string,
   type: propTypes.string.isRequired,
-  error: propTypes.string.isRequired
+  error: propTypes.string
 };
 
 InputText.defaultProps = {
-  error: ''
+  error: '',
+  placeholder: ''
 };
 
 export default InputText;

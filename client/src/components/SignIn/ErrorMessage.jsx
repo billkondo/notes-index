@@ -24,8 +24,12 @@ const ErrorMessage = ({ message, shouldRender }) => (
 );
 
 ErrorMessage.propTypes = {
-  message: string.isRequired,
+  message: string,
   shouldRender: bool.isRequired
+};
+
+ErrorMessage.defaultProps = {
+  message: ''
 };
 
 export default ErrorMessage;

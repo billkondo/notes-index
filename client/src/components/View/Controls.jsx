@@ -3,8 +3,16 @@ import { bool, func } from 'prop-types';
 
 const Controls = ({ sideToView, flipView }) => (
   <div className="controls">
-    {!sideToView && <i className="fas fa-arrow-right right" onClick={flipView} />}
-    {sideToView && <i className="fas fa-arrow-left left" onClick={flipView} />}
+    {!sideToView && (
+      <button type="button" onClick={flipView} className="right reset">
+        <i className="fas fa-arrow-right" />
+      </button>
+    )}
+    {sideToView && (
+      <button type="button" onClick={flipView} className="left reset">
+        <i className="fas fa-arrow-left" />
+      </button>
+    )}
   </div>
 );
 

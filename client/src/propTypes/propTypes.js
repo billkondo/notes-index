@@ -11,7 +11,7 @@ const commentObject = shape({
   id: string.isRequired
 });
 
-const commentsArray = shape(commentObject);
+const commentsArray = arrayOf(commentObject);
 
 const noteObject = shape({
   title: string.isRequired,
@@ -38,6 +38,24 @@ const userObject = shape({
   name: string.isRequired
 });
 
+const errorsObject = shape({
+  password: string,
+  user: string
+});
+
+const matchObject = shape({
+  params: shape({
+    id: string.isRequired
+  })
+});
+
+const dropdownObject = shape({
+  label: string.isRequired,
+  onClick: func.isRequired
+});
+
+const dropdownArray = arrayOf(dropdownObject);
+
 export {
   collectionObject,
   collectionsArray,
@@ -46,5 +64,10 @@ export {
   tagsArray,
   notesArray,
   commentsArray,
-  userObject
+  userObject,
+  commentObject,
+  errorsObject,
+  matchObject,
+  dropdownArray,
+  dropdownObject
 };

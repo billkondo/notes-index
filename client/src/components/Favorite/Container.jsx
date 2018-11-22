@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup, Button } from 'reactstrap';
-import { bool, array } from 'prop-types';
+import { bool } from 'prop-types';
 
 import Loading from '../Animation/Loading';
 import Notes from './Notes';
 import Collections from './Collections';
+
+import { notesArray, collectionsArray } from '../../propTypes/propTypes';
 
 class Container extends React.Component {
   state = {
@@ -16,7 +18,7 @@ class Container extends React.Component {
 
   render() {
     const { option } = this.state;
-    const { notes, collections, notesLoaded, collectionsLoaded } = this.props;
+    const { notes, collections, areNotesLoaded, areCollectionsLoaded } = this.props;
 
     return (
       <div className="FavoriteContainer">
@@ -39,12 +41,12 @@ class Container extends React.Component {
           </Button>
         </ButtonGroup>
 
-        {option === 0 && !notesLoaded && <Loading />}
-        {option === 1 && !collectionsLoaded && <Loading />}
+        {option === 0 && !areNotesLoaded && <Loading />}
+        {option === 1 && !areCollectionsLoaded && <Loading />}
 
         <div className="Cards">
-          {option === 0 && notesLoaded && <Notes notes={notes} />}
-          {option === 1 && collectionsLoaded && <Collections collections={collections} />}
+          {option === 0 && areNotesLoaded && <Notes notes={notes} />}
+          {option === 1 && areCollectionsLoaded && <Collections collections={collections} />}
         </div>
       </div>
     );
@@ -52,15 +54,15 @@ class Container extends React.Component {
 }
 
 Container.propTypes = {
-  notesLoaded: bool.isRequired,
-  collectionsLoaded: bool.isRequired,
-  notes: array.isRequired,
-  collections: array.isRequired
+  areNotesLoaded: bool.isRequired,
+  areCollectionsLoaded: bool.isRequired,
+  notes: notesArray.isRequired,
+  collections: collectionsArray.isRequired
 };
 
 export default connect(state => ({
   notes: state.notesData.notes,
   collections: state.collectionsData.collections,
-  notesLoaded: state.favorite.notesLoaded,
-  collectionsLoaded: state.favorite.collectionsLoaded
+  areNotesLoaded: state.favorite.areNotesLoaded,
+  areCollectionsLoaded: state.favorite.areCollectionsLoaded
 }))(Container);

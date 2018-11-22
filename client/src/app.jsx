@@ -9,7 +9,7 @@ import store from './reducers/store';
 
 import enterApp from './authentication/enterApp';
 
-enterApp(store).then(res => {
+enterApp(store).then(() => {
   ReactDOM.render(
     <Provider store={store}>
       <App />

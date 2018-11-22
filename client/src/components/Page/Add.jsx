@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropdown, DropdownToggle } from 'reactstrap';
+import { func } from 'prop-types';
 
 import DropdownCustom from './Dropdown';
 import Fade from '../High_Order/Fade';
@@ -32,5 +33,10 @@ class Add extends React.Component {
     );
   }
 }
+
+Add.propTypes = {
+  addNote: func.isRequired,
+  addCollection: func.isRequired
+};
 
 export default Action(Fade(Add));

@@ -2,6 +2,8 @@ import React from 'react';
 
 import CardCollection from '../Collections/Main/Card';
 
+import { collectionsArray } from '../../propTypes/propTypes';
+
 const Collections = ({ collections }) => (
   <React.Fragment>
     {collections.map(value => (
@@ -9,5 +11,9 @@ const Collections = ({ collections }) => (
     ))}
   </React.Fragment>
 );
+
+Collections.propTypes = {
+  collections: collectionsArray.isRequired
+};
 
 export default Collections;

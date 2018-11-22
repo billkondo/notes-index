@@ -24,14 +24,15 @@ router.get('/filter', verify, (req, res) => {
       const { tags } = req.query;
       const filteredNotes = [];
 
-      for (const note of notes) {
-        for (const tag of tags) {
-          if (note.tags.indexOf(tag) !== -1) {
-            filteredNotes.push(note);
-            break;
-          }
-        }
-      }
+      notes.forEach(note => {
+        let selectNote = false;
+
+        tags.forEach(tag => {
+          if (note.tags.indexOf(tag) !== -1) selectNote = true;
+        });
+
+        if (selectNote) filteredNotes.push(note);
+      });
 
       res.status(200).json({ notes: filteredNotes });
     })

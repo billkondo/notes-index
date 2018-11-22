@@ -15,14 +15,15 @@ router.get('/filter', verify, (req, res) => {
       const { tags } = req.query;
       const filteredCollections = [];
 
-      for (const collection of collections) {
-        for (const tag of tags) {
-          if (collection.tags.indexOf(tag) !== -1) {
-            filteredCollections.push(collection);
-            break;
-          }
-        }
-      }
+      collections.forEach(collection => {
+        let selectCollection = false;
+
+        tags.forEach(tag => {
+          if (collection.tag.indexOf(tag) !== -1) selectCollection = true;
+        });
+
+        if (selectCollection) filteredCollections.push(collection);
+      });
 
       res.status(200).json({ collections: filteredCollections });
     })
@@ -104,7 +105,7 @@ router.delete('/', verify, (req, res) => {
       if (isEmpty(doc)) res.status(400).json({ database: 'Could not find collection to delete' });
       else res.status(200).json(doc);
     })
-    .catch(err => res.status(500).json({ database: 'Could not delete collection' }));
+    .catch(err => res.status(500).json({ database: 'Could not delete collection', err }));
 });
 
 export default router;

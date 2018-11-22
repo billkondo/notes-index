@@ -2,29 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import truncate from 'lodash/truncate';
-import { object, func, bool, string } from 'prop-types';
+import { func, bool, string } from 'prop-types';
 
 import Fade from '../../High_Order/Fade';
 import Loading from '../../Animation/Loading';
 
 import { setID } from '../../../actions/notes-data';
 
+import { noteObject, historyObject } from '../../../propTypes/propTypes';
+
 class Card extends React.Component {
-  state = {
-    side: false
-  };
-
   edit = () => {
-    const { id } = this.props.note;
+    const { note, history } = this.props;
+    const { id } = note;
 
-    this.props.history.push(`/Notes/Edit/${id}`);
+    history.push(`/Notes/Edit/${id}`);
   };
 
   view = () => {
-    const { id } = this.props.note;
-    const { setID } = this.props;
+    const { note } = this.props;
+    const { id } = note;
+    const { setIDConnect } = this.props;
 
-    setID(id);
+    setIDConnect(id);
   };
 
   render() {
@@ -66,10 +66,11 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  note: object.isRequired,
-  setID: func.isRequired,
+  note: noteObject.isRequired,
+  setIDConnect: func.isRequired,
   noteIsLoading: bool.isRequired,
-  idToLoad: string.isRequired
+  idToLoad: string.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
@@ -78,6 +79,6 @@ export default withRouter(
       noteIsLoading: state.view.noteIsLoading,
       idToLoad: state.notesData.idToLoad
     }),
-    { setID }
+    { setIDConnect: setID }
   )(Fade(Card))
 );

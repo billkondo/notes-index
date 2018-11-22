@@ -1,12 +1,18 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import { DropdownMenu, DropdownItem } from 'reactstrap';
+import { func } from 'prop-types';
+
+import { dropdownArray, dropdownObject } from '../../propTypes/propTypes';
 
 const Line = ({ item }) => (
   <DropdownItem className="page-dropdown-line" onClick={item.onClick}>
     {item.label}
   </DropdownItem>
 );
+
+Line.propTypes = {
+  item: dropdownObject.isRequired
+};
 
 const Dropdown = ({ items, close }) => (
   <DropdownMenu className="page-dropdown" onClick={close}>
@@ -17,7 +23,8 @@ const Dropdown = ({ items, close }) => (
 );
 
 Dropdown.propTypes = {
-  items: propTypes.array.isRequired
+  items: dropdownArray.isRequired,
+  close: func.isRequired
 };
 
 export default Dropdown;

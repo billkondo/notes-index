@@ -14,17 +14,26 @@ import {
   SaveMessage
 } from '../../Modal/messages';
 
+import { historyObject } from '../../../propTypes/propTypes';
+
 class Footer extends React.Component {
-  updateURL = () => this.props.history.push('/Notes/');
+  updateURL = () => {
+    const { history } = this.props;
+    history.push('/Notes/');
+  };
 
   editAction = () => {
-    const { startModal, submitEditedNote } = this.props;
-    startModal(saveButton, goBackButton, SaveMessage, () => submitEditedNote(this.updateURL));
+    const { startModalConnect, submitEditedNoteConnect } = this.props;
+    startModalConnect(saveButton, goBackButton, SaveMessage, () =>
+      submitEditedNoteConnect(this.updateURL)
+    );
   };
 
   deleteAction = () => {
-    const { startModal, deleteNote } = this.props;
-    startModal(deleteButton, goBackButton, DeleteMessage, () => deleteNote(this.updateURL));
+    const { startModalConnect, deleteNoteConnect } = this.props;
+    startModalConnect(deleteButton, goBackButton, DeleteMessage, () =>
+      deleteNoteConnect(this.updateURL)
+    );
   };
 
   render() {
@@ -55,10 +64,11 @@ class Footer extends React.Component {
 }
 
 Footer.propTypes = {
-  submitEditedNote: func.isRequired,
-  deleteNote: func.isRequired,
-  startModal: func.isRequired,
-  modalRender: bool.isRequired
+  submitEditedNoteConnect: func.isRequired,
+  deleteNoteConnect: func.isRequired,
+  startModalConnect: func.isRequired,
+  modalRender: bool.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
@@ -66,6 +76,10 @@ export default withRouter(
     state => ({
       modalRender: state.modal.modalRender
     }),
-    { submitEditedNote, deleteNote, startModal }
+    {
+      submitEditedNoteConnect: submitEditedNote,
+      deleteNoteConnect: deleteNote,
+      startModalConnect: startModal
+    }
   )(Footer)
 );

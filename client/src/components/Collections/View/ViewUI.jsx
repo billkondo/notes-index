@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { object, func } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 
 import ExitButton from '../../Buttons/ExitButton';
 import Header from '../../View/Header';
@@ -12,7 +12,9 @@ import Controls from '../../View/Controls';
 
 import { setID } from '../../../actions/collections-data';
 
-const FrontView = ({ sideToView, description, children }) => (
+import { collectionObject, tagsArray, notesArray } from '../../../propTypes/propTypes';
+
+const FrontView = ({ sideToView, description, notes }) => (
   <CSSTransition
     in={sideToView}
     timeout={{
@@ -28,10 +30,16 @@ const FrontView = ({ sideToView, description, children }) => (
   >
     <div>
       <Description flag={0} description={description} />
-      <Children children={children} />
+      <Children notes={notes} />
     </div>
   </CSSTransition>
 );
+
+FrontView.propTypes = {
+  sideToView: bool.isRequired,
+  description: string.isRequired,
+  notes: notesArray.isRequired
+};
 
 const BackView = ({ sideToView, tags }) => (
   <CSSTransition
@@ -53,6 +61,11 @@ const BackView = ({ sideToView, tags }) => (
   </CSSTransition>
 );
 
+BackView.propTypes = {
+  sideToView: bool.isRequired,
+  tags: tagsArray.isRequired
+};
+
 class ViewUI extends React.Component {
   state = {
     sideToView: false
@@ -64,8 +77,8 @@ class ViewUI extends React.Component {
     }));
 
   exit = () => {
-    const { setID } = this.props;
-    setID('');
+    const { setIDConnect } = this.props;
+    setIDConnect('');
   };
 
   render() {
@@ -78,7 +91,7 @@ class ViewUI extends React.Component {
         <div className="BigCard CollectionPageLarge">
           <ExitButton click={this.exit} styles={{ borderRadius: 0 }} />
           <Header title={title} favorite={favorite} />
-          <FrontView sideToView={!sideToView} description={description} children={children} />
+          <FrontView sideToView={!sideToView} description={description} notes={children} />
           <BackView sideToView={sideToView} tags={tags} />
           <Controls sideToView={sideToView} flipView={this.flipView} />
         </div>
@@ -88,13 +101,13 @@ class ViewUI extends React.Component {
 }
 
 ViewUI.propTypes = {
-  collection: object.isRequired,
-  setID: func.isRequired
+  collection: collectionObject.isRequired,
+  setIDConnect: func.isRequired
 };
 
 export default connect(
   state => ({
     collection: state.collectionsOperations
   }),
-  { setID }
+  { setIDConnect: setID }
 )(ViewUI);

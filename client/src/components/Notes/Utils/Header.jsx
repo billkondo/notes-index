@@ -8,16 +8,18 @@ import Favorite from '../../Buttons/FavoriteButton';
 
 import { favoriteFlip } from '../../../actions/notes-operations';
 
-const Header = props => {
-  const { favorite, favoriteFlip, title } = props;
+import { historyObject } from '../../../propTypes/propTypes';
 
-  const exit = () => props.history.push('/Notes');
+const Header = props => {
+  const { favorite, favoriteFlipConnect, title, history } = props;
+
+  const exit = () => history.push('/Notes');
 
   return (
     <div className="notes-header">
-      <div className="title"> {title} </div>
+      <div className="title">{title}</div>
       <ExitButton click={exit} />
-      <Favorite on={favorite} onClick={favoriteFlip} />
+      <Favorite on={favorite} onClick={favoriteFlipConnect} />
     </div>
   );
 };
@@ -25,7 +27,8 @@ const Header = props => {
 Header.propTypes = {
   title: string.isRequired,
   favorite: bool.isRequired,
-  favoriteFlip: func.isRequired
+  favoriteFlipConnect: func.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
@@ -33,6 +36,6 @@ export default withRouter(
     state => ({
       favorite: state.notesOperations.favorite
     }),
-    { favoriteFlip }
+    { favoriteFlipConnect: favoriteFlip }
   )(Header)
 );

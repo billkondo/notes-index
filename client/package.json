@@ -42,8 +42,8 @@
     "build:prod": "webpack -p --env production",
     "start": "webpack --mode development --watch",
     "dev-server": "webpack-dev-server --mode development --open",
-    "lint": "eslint --fix src",
-    "style": "prettier --write 'src/**/*.js'"
+    "lint": "eslint --fix 'src/**/*.jsx' && eslint -- fix src",
+    "style": "prettier --write 'src/**/*.js' && prettier --write 'src/**/*.jsx'"
   },
   "devDependencies": {
     "eslint": "^5.8.0",

@@ -1,8 +1,8 @@
 import { RESET_FAVORITE, NOTES_ARE_LOADED, COLLECTIONS_ARE_LOADED } from '../types/favorite';
 
 const defaultState = {
-  notesLoaded: false,
-  collectionsLoaded: false
+  areNotesLoaded: false,
+  areCollectionsLoaded: false
 };
 
 export default (state = defaultState, action) => {
@@ -10,13 +10,13 @@ export default (state = defaultState, action) => {
     case NOTES_ARE_LOADED:
       return {
         ...state,
-        notesLoaded: true
+        areNotesLoaded: true
       };
 
     case COLLECTIONS_ARE_LOADED:
       return {
         ...state,
-        collectionsLoaded: true
+        areCollectionsLoaded: true
       };
 
     case RESET_FAVORITE:

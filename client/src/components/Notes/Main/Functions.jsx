@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import { func } from 'prop-types';
 
 import { enterFilterMenu } from '../../../actions/filter';
 
+import { historyObject } from '../../../propTypes/propTypes';
+
 const Functions = props => {
-  const { enterFilterMenu } = props;
-  const goToNotesAdd = () => props.history.push('/Notes/Add');
-  const startFilter = () => enterFilterMenu(false);
+  const { enterFilterMenuConnect, history } = props;
+  const goToNotesAdd = () => history.push('/Notes/Add');
+  const startFilter = () => enterFilterMenuConnect(false);
 
   return (
     <div className="notes-functions">
@@ -25,12 +27,13 @@ const Functions = props => {
 };
 
 Functions.propTypes = {
-  enterFilterMenu: propTypes.func.isRequired
+  enterFilterMenuConnect: func.isRequired,
+  history: historyObject.isRequired
 };
 
 export default withRouter(
   connect(
     null,
-    { enterFilterMenu }
+    { enterFilterMenuConnect: enterFilterMenu }
   )(Functions)
 );
