@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon --exec babel-node server.js",
+    "server": "node --exec babel-node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build:prod"
   },
   "devDependencies": {
@@ -33,7 +33,6 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "nodemon": "^1.18.3",
     "prettier": "^1.15.1"
   },
   "proxy": "http://localhost:3000"
