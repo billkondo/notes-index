@@ -3,20 +3,16 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-import user from './routes/api/user';
-import notes from './routes/api/notes';
-import collections from './routes/api/collections';
-import signUp from './routes/api/authentication/signUp';
-import signIn from './routes/api/authentication/signIn';
-import verifyToken from './routes/api/authentication/verifyToken';
+import user from './routers/api/user';
+import notes from './routers/api/notes';
+import collections from './routers/api/collections';
+import verifyToken from './routers/api/authentication/verifyToken';
 
 const app = express();
 app.use(bodyParser.json());
 
 // Routers
 app.use('/api/user', user);
-app.use('/api/auth/signin', signIn);
-app.use('/api/auth/signUp', signUp);
 app.use('/api/auth/verify', verifyToken);
 app.use('/api/notes', notes);
 app.use('/api/collections', collections);

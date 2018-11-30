@@ -7,7 +7,8 @@ const userSchema = new Schema({
   passwordHash: String,
   email: String,
   userId: String,
-  name: { type: String, default: '' }
+  name: { type: String, default: '' },
+  isActive: { type: Boolean, default: false }
 });
 
 const User = mongoose.model('User', userSchema);

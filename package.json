@@ -16,12 +16,13 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "mongoose": "^5.2.5",
+    "nodemailer": "^4.7.0",
     "uuid": "^3.3.2",
     "validator": "^10.7.1"
   },
   "scripts": {
     "start": "node server.js",
-    "server": "node --exec babel-node server.js",
+    "server": "babel-node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build:prod"
   },
   "devDependencies": {
