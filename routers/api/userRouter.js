@@ -3,18 +3,17 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import isEmpty from 'lodash/isEmpty';
 import uuidv4 from 'uuid/v4';
-import User from '../../models/user';
+import User from '../../models/userModel';
 
-import verify from '../../validation/verifyMiddleware';
-import updateUserInfo from '../../middlewares/updateUserInfo';
-
-import SignUpValidationMiddleware from '../../middlewares/sign-up-validation-middleware';
-import SignInValidationMiddleware from '../../middlewares/sign-in-validation-middleware';
+import authenticationCheckerMiddleware from '../../middlewares/authentication-checker-middleware';
+import signUpValidationMiddleware from '../../middlewares/sign-up-validation-middleware';
+import signInValidationMiddleware from '../../middlewares/sign-in-validation-middleware';
+import newUserMiddleware from '../../middlewares/new-user-middleware';
 
 const router = express.Router();
 
 // Create an user for the App
-router.post('/signUp', SignUpValidationMiddleware, (req, res) => {
+router.post('/signUp', signUpValidationMiddleware, (req, res) => {
   // Errors is an JSON object with errors in user validation
   // Each field has a message explaining the error
   const { errors } = req;
@@ -43,12 +42,12 @@ router.post('/signUp', SignUpValidationMiddleware, (req, res) => {
 });
 
 // Authenticate user
-router.post('/signIn', SignInValidationMiddleware, (req, res) => {
+router.post('/signIn', signInValidationMiddleware, (req, res) => {
   const { token, errors } = req;
   res.status(200).json({ token, errors });
 });
 
-router.put('/update', verify, updateUserInfo, (req, res) => {
+router.put('/update', authenticationCheckerMiddleware, newUserMiddleware, (req, res) => {
   User.findOne({ userId: req.userId })
     .exec()
     .then(user => {

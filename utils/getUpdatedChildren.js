@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Note from '../models/note';
+import Note from '../models/noteModel';
 
 // Receive the notes from a collection
 // And get these notes from database

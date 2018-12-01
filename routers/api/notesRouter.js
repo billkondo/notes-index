@@ -1,13 +1,13 @@
 import express from 'express';
 import isEmpty from 'lodash/isEmpty';
-import Note from '../../models/note';
+import Note from '../../models/noteModel';
 
-import verify from '../../validation/verifyMiddleware';
-import newNoteMiddleware from '../../middlewares/newNoteMiddleware';
+import newNoteMiddleware from '../../middlewares/new-note-middleware';
+import authenticationCheckerMiddleware from '../../middlewares/authentication-checker-middleware';
 
 const router = express.Router();
 
-router.get('/favorite', verify, (req, res) => {
+router.get('/favorite', authenticationCheckerMiddleware, (req, res) => {
   Note.find({ userId: req.userId, favorite: true })
     .exec()
     .then(notes => {
@@ -17,7 +17,7 @@ router.get('/favorite', verify, (req, res) => {
 });
 
 // Filter Notes By Tags
-router.get('/filter', verify, (req, res) => {
+router.get('/filter', authenticationCheckerMiddleware, (req, res) => {
   Note.find({ userId: req.userId })
     .exec()
     .then(notes => {
@@ -40,7 +40,7 @@ router.get('/filter', verify, (req, res) => {
 });
 
 // Getting List of Notes from Database
-router.get('/', verify, (req, res) => {
+router.get('/', authenticationCheckerMiddleware, (req, res) => {
   Note.find({ userId: req.userId })
     .select('title tags commentaries description favorite id')
     .exec()
@@ -49,7 +49,7 @@ router.get('/', verify, (req, res) => {
 });
 
 // Getting a specific Note from Database
-router.get('/:id', verify, (req, res) => {
+router.get('/:id', authenticationCheckerMiddleware, (req, res) => {
   Note.findOne({ id: req.params.id, userId: req.userId })
     .exec()
     .then(note => {
@@ -72,7 +72,7 @@ router.get('/:id', verify, (req, res) => {
 });
 
 // Adding Note To Database
-router.post('/', verify, newNoteMiddleware, (req, res) => {
+router.post('/', authenticationCheckerMiddleware, newNoteMiddleware, (req, res) => {
   const newNote = new Note(req.newNote);
 
   newNote
@@ -82,7 +82,7 @@ router.post('/', verify, newNoteMiddleware, (req, res) => {
 });
 
 // Updating Note from Database
-router.put('/', verify, newNoteMiddleware, (req, res) => {
+router.put('/', authenticationCheckerMiddleware, newNoteMiddleware, (req, res) => {
   Note.findOne({ id: req.body.id, userId: req.userId })
     .exec()
     .then(note => {
@@ -96,7 +96,7 @@ router.put('/', verify, newNoteMiddleware, (req, res) => {
 });
 
 // Deleting Note from Database
-router.delete('/', verify, (req, res) => {
+router.delete('/', authenticationCheckerMiddleware, (req, res) => {
   Note.findOneAndRemove({ id: req.query.id, userId: req.userId })
     .exec()
     .then(doc => {

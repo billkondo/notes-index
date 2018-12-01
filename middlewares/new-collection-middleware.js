@@ -1,3 +1,10 @@
+/*
+  Middleware for creating a new collection object.
+
+  INPUT: body object that contains the data of the new collection
+  OUTPUT: newCollection object in request
+*/
+
 export default (req, res, next) => {
   const newCollection = {
     title: req.body.title,

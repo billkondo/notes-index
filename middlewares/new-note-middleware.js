@@ -1,3 +1,10 @@
+/*
+  Middleware for creating a new note object.
+
+  INPUT: body object that contains the data of the new note
+  OUTPUT: newNote object in request
+*/
+
 export default (req, res, next) => {
   const newNote = {
     title: req.body.title,

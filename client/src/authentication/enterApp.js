@@ -10,7 +10,7 @@ export default store =>
       setHeader(localStorage.jwtToken);
 
       axios
-        .get('/api/auth/verify')
+        .get('/api/authentication')
         .then(res => {
           if (res.data.success) store.dispatch(setUser(decode(localStorage.jwtToken)));
 

@@ -1,14 +1,14 @@
 import express from 'express';
 import isEmpty from 'lodash/isEmpty';
-import Collection from '../../models/collection';
+import Collection from '../../models/collectionModel';
 
-import verify from '../../validation/verifyMiddleware';
-import newCollectionMiddleware from '../../middlewares/newCollectionMiddleware';
+import authenticationCheckerMiddleware from '../../middlewares/authentication-checker-middleware';
+import newCollectionMiddleware from '../../middlewares/new-collection-middleware';
 import { getUpdatedChildren } from '../../utils/getUpdatedChildren';
 
 const router = express.Router();
 
-router.get('/filter', verify, (req, res) => {
+router.get('/filter', authenticationCheckerMiddleware, (req, res) => {
   Collection.find({ userId: req.userId })
     .exec()
     .then(collections => {
@@ -30,7 +30,7 @@ router.get('/filter', verify, (req, res) => {
     .catch(err => res.status(500).json({ database: 'Filter Collections Problems', err }));
 });
 
-router.get('/favorite', verify, (req, res) => {
+router.get('/favorite', authenticationCheckerMiddleware, (req, res) => {
   Collection.find({ userId: req.userId, favorite: true })
     .exec()
     .then(collections => {
@@ -40,7 +40,7 @@ router.get('/favorite', verify, (req, res) => {
 });
 
 // Getting list of Collections from Database
-router.get('/', verify, (req, res) => {
+router.get('/', authenticationCheckerMiddleware, (req, res) => {
   Collection.find({ userId: req.userId })
     .select('title description tags children favorite id')
     .exec()
@@ -48,7 +48,7 @@ router.get('/', verify, (req, res) => {
 });
 
 // Getting a specific Collection from Database
-router.get('/:id', verify, (req, res) => {
+router.get('/:id', authenticationCheckerMiddleware, (req, res) => {
   Collection.findOne({ id: req.params.id, userId: req.userId })
     .exec()
     .then(collection => {
@@ -74,7 +74,7 @@ router.get('/:id', verify, (req, res) => {
 });
 
 // Adding a collection to Database
-router.post('/', verify, newCollectionMiddleware, (req, res) => {
+router.post('/', authenticationCheckerMiddleware, newCollectionMiddleware, (req, res) => {
   const newCollection = new Collection(req.newCollection);
 
   newCollection
@@ -84,7 +84,7 @@ router.post('/', verify, newCollectionMiddleware, (req, res) => {
 });
 
 // Updating Collection from Database
-router.put('/', verify, newCollectionMiddleware, (req, res) => {
+router.put('/', authenticationCheckerMiddleware, newCollectionMiddleware, (req, res) => {
   Collection.findOne({ id: req.body.id, userId: req.userId })
     .exec()
     .then(collection => {
@@ -98,7 +98,7 @@ router.put('/', verify, newCollectionMiddleware, (req, res) => {
 });
 
 // Delete Collection from Database
-router.delete('/', verify, (req, res) => {
+router.delete('/', authenticationCheckerMiddleware, (req, res) => {
   Collection.findOneAndRemove({ id: req.query.id, userId: req.userId })
     .exec()
     .then(doc => {

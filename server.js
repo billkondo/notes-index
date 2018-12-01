@@ -3,19 +3,19 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-import user from './routers/api/user';
-import notes from './routers/api/notes';
-import collections from './routers/api/collections';
-import verifyToken from './routers/api/authentication/verifyToken';
+import userRouter from './routers/api/userRouter';
+import notesRouter from './routers/api/notesRouter';
+import collectionsRouter from './routers/api/collectionsRouter';
+import authenticationRouter from './routers/api/authenticationRouter';
 
 const app = express();
 app.use(bodyParser.json());
 
 // Routers
-app.use('/api/user', user);
-app.use('/api/auth/verify', verifyToken);
-app.use('/api/notes', notes);
-app.use('/api/collections', collections);
+app.use('/api/user', userRouter);
+app.use('/api/authentication', authenticationRouter);
+app.use('/api/notes', notesRouter);
+app.use('/api/collections', collectionsRouter);
 
 const db = require('./config/keys').mongoURI;
 

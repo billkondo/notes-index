@@ -1,4 +1,4 @@
-import User from '../models/user';
+import User from '../models/userModel';
 
 /*
   Promises that returns one username in database. 
