@@ -26,15 +26,11 @@
 
 @import './components/Input/InputText';
 
- 
 @import './components/SignIn/ErrorMessage';
 @import './components/SignIn/SignIn';
 
-
 @import './components/SignUp/SignUp';
 @import './components/SignUp/SignUpForm';
-@import './components/SignUp/Welcome';
-
 
 @import './components/Page/Dropdown';
 @import './components/Page/Header';
@@ -45,19 +41,15 @@
 @import './components/Modal/Search/Notes';
 @import './components/Modal/Search/Search';
 
-
 @import './components/Notes/Main/Card';
 @import './components/Notes/Main/Container';
 @import './components/Notes/Main/Filter';
 @import './components/Notes/Main/FilterTag';
 @import './components/Notes/Main/Functions';
 
-
-
 @import './components/Buttons/AddButton';
 @import './components/Buttons/ExitButton';
 @import './components/Buttons/FavoriteButton';
-
 
 @import './components/Editor/CustomEditor';
 
@@ -65,8 +57,6 @@
 @import './components/Notes/Utils/Description';
 @import './components/Notes/Utils/Tags';
 @import './components/Notes/Utils/Title';
-
-
 
 @import './components/Notes/Edit/Footer';
 

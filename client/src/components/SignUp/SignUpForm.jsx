@@ -27,7 +27,7 @@ class SignUpFrom extends React.Component {
 
     const info = { username, email, password, passwordConfirmation };
 
-    axios.post('/api/auth/signup', info).then(res => {
+    axios.post('/api/user/signUp', info).then(res => {
       const newErrors = res.data.errors;
 
       if (isEmpty(newErrors)) {

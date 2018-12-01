@@ -1,5 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const GetStarted = () => <div className="GetStartedPage" />;
+import { largeFont, defaultFont, colorBlack } from '../../styles/defaultStyles';
 
-export default GetStarted;
+const GetStarted = styled.div`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+`;
+
+const Title = styled.div`
+  color: white;
+  font-size: ${largeFont};
+  font-family: ${defaultFont};
+  color: ${colorBlack};
+`;
+
+export default () => (
+  <GetStarted>
+    <Title> GETTING STARTED </Title>
+  </GetStarted>
+);

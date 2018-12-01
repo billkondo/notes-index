@@ -29,15 +29,15 @@ class SignInForm extends React.Component {
     this.setState({ isLoading: true });
     setErrors({});
 
-    axios.post('/api/auth/signin', info).then(res => {
-      const { newErrors, token } = res.data;
+    axios.post('/api/user/signIn', info).then(res => {
+      const { errors, token } = res.data;
 
-      if (isEmpty(newErrors)) {
+      if (isEmpty(errors)) {
         setHeader(token);
         localStorage.setItem('jwtToken', token);
         setUserConnect(decode(token));
       } else {
-        setErrors(newErrors);
+        setErrors(errors);
         this.setState({ isLoading: false });
       }
     });
