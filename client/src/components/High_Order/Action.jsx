@@ -22,6 +22,14 @@ export default Component => {
       }
     });
 
+    getStarted = () => ({
+      label: 'Get Started',
+      onClick: () => {
+        const { history } = this.props;
+        history.push('/');
+      }
+    });
+
     profile = () => ({
       label: 'Profile',
       onClick: () => {
@@ -75,6 +83,7 @@ export default Component => {
           collections={this.collections}
           favorites={this.favorites}
           logout={this.logout}
+          getStarted={this.getStarted}
           {...this.props}
         />
       );

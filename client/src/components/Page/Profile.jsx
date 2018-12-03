@@ -18,7 +18,7 @@ class Profile extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { profile, notes, collections, favorites, logout } = this.props;
+    const { getStarted, profile, notes, collections, favorites, logout } = this.props;
 
     return (
       <Dropdown id="page-profile" isOpen={isOpen} toggle={this.toggle}>
@@ -31,7 +31,7 @@ class Profile extends React.Component {
 
         <DropdownCustom
           close={this.close}
-          items={[profile(), notes(), collections(), favorites(), logout()]}
+          items={[getStarted(), profile(), notes(), collections(), favorites(), logout()]}
         />
       </Dropdown>
     );
@@ -39,6 +39,7 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
+  getStarted: func.isRequired,
   profile: func.isRequired,
   notes: func.isRequired,
   collections: func.isRequired,

@@ -1,13 +1,46 @@
 import React from 'react';
+import { string, arrayOf, number, shape } from 'prop-types';
 
 import styled from 'styled-components';
+import { mediumSpacing } from '../../../styles/defaultStyles';
 
-const Block = styled.div``;
+import Title from './Title';
+import Topic from './Topic';
 
-const Title = styled.div``;
+const StyledBlock = styled.div`
+  justify-self: start;
 
-export default ({ number, title }) => (
-  <Block>
-    <Title />
-  </Block>
+  display: grid;
+  justify-items: start;
+
+  margin-left: ${mediumSpacing};
+  margin-right: ${mediumSpacing};
+
+  width: 100%;
+`;
+
+const ContainerTopics = styled.div`
+  padding: ${mediumSpacing};
+`;
+
+const Block = ({ data }) => (
+  <StyledBlock>
+    <Title index={data.index} title={data.title} />
+
+    <ContainerTopics>
+      {data.topics.map(topic => (
+        <Topic key={topic} topic={topic} />
+      ))}
+    </ContainerTopics>
+  </StyledBlock>
 );
+
+Block.propTypes = {
+  data: shape({
+    index: number.isRequired,
+    title: string.isRequired,
+    topics: arrayOf(string).isRequired
+  }).isRequired
+};
+
+export default Block;
