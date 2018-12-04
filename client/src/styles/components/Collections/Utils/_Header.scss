@@ -1,14 +1,15 @@
 .collections-add-header {
   position: relative;
-  height: 4rem; 
+  height: 4rem;
 
   display: grid;
   align-items: center;
   justify-items: center;
   color: $white;
-  
+
   .title {
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
     font-size: $medium-font;
+    color: $white;
   }
 }

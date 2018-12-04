@@ -4,6 +4,7 @@
   .collections-utils-tags-header {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    color: $white;
 
     .title-box {
       font-size: 1rem;
@@ -12,21 +13,24 @@
       grid-template-columns: 1.5rem auto;
       align-items: center;
       justify-items: start;
-      font-family: "Baloo Bhai";
+      font-family: 'Baloo Bhai';
       color: $white;
 
+      .icon {
+        color: $white;
+      }
     }
-    
+
     .collections-utils-tags-controls {
       display: grid;
       grid-template-columns: auto 2rem;
       align-items: center;
       justify-items: start;
-      font-family: "Baloo Bhai";
-      
+      font-family: 'Baloo Bhai';
+
       .Blue {
         color: $black;
-        background: linear-gradient(#a7c6eb,#78adc2);
+        background: linear-gradient(#a7c6eb, #78adc2);
         border: none;
       }
     }
@@ -37,7 +41,7 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
 
     display: grid;
     grid-gap: 0.5rem;

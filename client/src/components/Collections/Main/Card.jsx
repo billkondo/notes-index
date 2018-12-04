@@ -2,12 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import truncate from 'lodash/truncate';
-import { func, bool, string } from 'prop-types';
-
 import Fade from '../../High_Order/Fade';
-import Loading from '../../Animation/Loading';
-
-import { setID } from '../../../actions/collections-data';
 
 import { collectionObject, historyObject } from '../../../propTypes/propTypes';
 
@@ -20,16 +15,15 @@ class Card extends React.Component {
   };
 
   view = () => {
-    const { collection } = this.props;
+    const { collection, history } = this.props;
     const { id } = collection;
-    const { setIDConnect } = this.props;
 
-    setIDConnect(id);
+    history.push(`/Collections/View/${id}`);
   };
 
   render() {
-    const { collection, collectionIsLoading, idToLoad } = this.props;
-    const { title, description, favorite, id } = collection;
+    const { collection } = this.props;
+    const { title, description, favorite } = collection;
 
     return (
       <div className="collections-main-card">
@@ -41,17 +35,6 @@ class Card extends React.Component {
         <textarea className="description" readOnly value={description} disabled />
 
         <div className="footer">
-          {collectionIsLoading && idToLoad === id && (
-            <Loading
-              positionStyle={{
-                position: 'absolute',
-                fontSize: '0.9 rem',
-                left: 0
-              }}
-              iconStyle=" font-size-1_2-rem"
-            />
-          )}
-
           <button type="button" className="icon edit" onClick={this.edit}>
             <i className="fas fa-edit" />
           </button>
@@ -67,18 +50,11 @@ class Card extends React.Component {
 
 Card.propTypes = {
   collection: collectionObject.isRequired,
-  setIDConnect: func.isRequired,
-  collectionIsLoading: bool.isRequired,
-  idToLoad: string.isRequired,
   history: historyObject.isRequired
 };
 
 export default withRouter(
-  connect(
-    state => ({
-      collectionIsLoading: state.view.collectionIsLoading,
-      idToLoad: state.collectionsData.idToLoad
-    }),
-    { setIDConnect: setID }
-  )(Fade(Card))
+  connect(state => ({
+    idToLoad: state.collectionsData.idToLoad
+  }))(Fade(Card))
 );

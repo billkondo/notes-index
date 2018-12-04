@@ -1,19 +1,43 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import { tagsArray } from '../../propTypes/propTypes';
+import { mediumSpacing, smallSpacing, smallFont } from '../../styles/defaultStyles';
+
+const StyledTags = styled.div`
+  width: 100%;
+  margin-top: ${mediumSpacing};
+`;
+
+const Icon = styled.div`
+  color: white;
+  font-size: ${smallFont};
+  margin-bottom: ${smallSpacing};
+`;
+
+const ContainerTags = styled.div`
+  padding: ${smallSpacing};
+`;
+
+const Tag = styled.div`
+  color: white;
+  font-size: ${smallFont};
+  margin-bottom: ${smallSpacing};
+`;
 
 const Tags = ({ tags }) => (
-  <div className="tags">
-    <i className="fas fa-hashtag" />
+  <StyledTags>
+    <Icon>
+      <i className="fas fa-hashtag" />
+    </Icon>
 
-    <div className="container-tags">
+    <ContainerTags>
       {tags.map(tag => (
-        <div key={tag} className="tag">
-          {tag}
-        </div>
+        <Tag key={tag}>{tag}</Tag>
       ))}
-    </div>
-  </div>
+    </ContainerTags>
+  </StyledTags>
 );
 
 Tags.propTypes = {

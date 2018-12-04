@@ -13,8 +13,8 @@ const StyledBlock = styled.div`
   display: grid;
   justify-items: start;
 
-  margin-left: ${mediumSpacing};
-  margin-right: ${mediumSpacing};
+  padding-left: ${mediumSpacing};
+  padding-right: ${mediumSpacing};
 
   width: 100%;
 `;

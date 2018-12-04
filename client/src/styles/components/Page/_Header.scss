@@ -1,16 +1,14 @@
 #page-header {
   display: grid;
   background: $black;
-  color: white;
 
-  grid-template-columns: 2fr 8fr 2fr;
+  padding-left: 20vw;
+  padding-right: 20vw;
 
   height: 4rem;
   width: 100vw;
 
   #page-middle {
-    grid-column: 2/3;
-
     display: grid;
 
     grid-template-columns: 1fr 1fr;
@@ -22,6 +20,7 @@
       font-size: 1.5rem;
       font-family: 'Baloo Bhai';
       word-spacing: 0.5rem;
+      color: $white;
     }
 
     #page-user {
@@ -48,6 +47,7 @@
 
         grid-template-columns: 1fr 1fr;
         grid-gap: 0.2rem;
+        color: $white;
 
         cursor: pointer;
       }

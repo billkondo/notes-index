@@ -1,11 +1,12 @@
 .collections-add-page {
-  position: relative; 
-    
+  position: relative;
+
   .collections-add {
     position: relative;
     min-height: $big-card-height;
     width: $big-card-width;
-    background: linear-gradient(#122b3e,#172035);
+    background: linear-gradient(#122b3e, #172035);
     border-radius: 0.2rem;
+    color: $white;
   }
 }

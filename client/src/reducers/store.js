@@ -10,8 +10,10 @@ import modal from './modal';
 import searchMenu from './search-menu';
 import favorite from './favorite';
 import edit from './edit';
-import view from './view';
 import filter from './filter';
+
+import collectionsViewReducer from '../components/Collections/View/duck';
+import notesViewReducer from '../components/Notes/View/duck';
 
 const store = createStore(
   combineReducers({
@@ -24,8 +26,9 @@ const store = createStore(
     searchMenu,
     favorite,
     edit,
-    view,
-    filter
+    filter,
+    notesView: notesViewReducer,
+    collectionsView: collectionsViewReducer
   }),
   applyMiddleware(thunk)
 );

@@ -17,7 +17,8 @@
       align-items: center;
       font-size: 1rem;
       font-weight: bold;
-      font-family: "Baloo Bhai";;
+      font-family: 'Baloo Bhai';
+      color: $white;
     }
 
     .button {
@@ -34,10 +35,10 @@
       textarea {
         color: $black;
         resize: none;
-        font-family: "Baloo Bhai";
-        background: linear-gradient(#5f88c1,#78adc2);
+        font-family: 'Baloo Bhai';
+        background: linear-gradient(#5f88c1, #78adc2);
         border: none;
-        padding-right: $medium-font; 
+        padding-right: $medium-font;
       }
     }
   }

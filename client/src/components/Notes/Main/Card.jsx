@@ -2,12 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import truncate from 'lodash/truncate';
-import { func, bool, string } from 'prop-types';
 
 import Fade from '../../High_Order/Fade';
-import Loading from '../../Animation/Loading';
-
-import { setID } from '../../../actions/notes-data';
 
 import { noteObject, historyObject } from '../../../propTypes/propTypes';
 
@@ -20,16 +16,15 @@ class Card extends React.Component {
   };
 
   view = () => {
-    const { note } = this.props;
+    const { note, history } = this.props;
     const { id } = note;
-    const { setIDConnect } = this.props;
 
-    setIDConnect(id);
+    history.push(`/Notes/View/${id}`);
   };
 
   render() {
-    const { note, noteIsLoading, idToLoad } = this.props;
-    const { title, description, favorite, id } = note;
+    const { note } = this.props;
+    const { title, description, favorite } = note;
 
     return (
       <div className="notes-main-card">
@@ -41,17 +36,6 @@ class Card extends React.Component {
         <textarea className="description" value={description} readOnly disabled />
 
         <div className="footer">
-          {noteIsLoading && idToLoad === id && (
-            <Loading
-              positionStyle={{
-                position: 'absolute',
-                fontSize: '0.9 rem',
-                left: 0
-              }}
-              iconStyle=" font-size-1_2-rem"
-            />
-          )}
-
           <button type="button" className="icon edit" onClick={this.edit}>
             <i className="fas fa-edit" />
           </button>
@@ -67,18 +51,11 @@ class Card extends React.Component {
 
 Card.propTypes = {
   note: noteObject.isRequired,
-  setIDConnect: func.isRequired,
-  noteIsLoading: bool.isRequired,
-  idToLoad: string.isRequired,
   history: historyObject.isRequired
 };
 
 export default withRouter(
-  connect(
-    state => ({
-      noteIsLoading: state.view.noteIsLoading,
-      idToLoad: state.notesData.idToLoad
-    }),
-    { setIDConnect: setID }
-  )(Fade(Card))
+  connect(state => ({
+    idToLoad: state.notesData.idToLoad
+  }))(Fade(Card))
 );

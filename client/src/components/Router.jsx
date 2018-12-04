@@ -10,11 +10,11 @@ import Page from './Page/Page';
 import NotesMenu from './Notes/Main/Menu';
 import NotesAdd from './Notes/Add/Add';
 import NotesEdit from './Notes/Edit/Edit';
-import NotesView from './Notes/View/View';
+import NotesView from './Notes/View/ViewContainer';
 import CollectionsMenu from './Collections/Main/Menu';
 import CollectionsAdd from './Collections/Add/Add';
 import CollectionsEdit from './Collections/Edit/Edit';
-import CollectionsView from './Collections/View/View';
+import CollectionsView from './Collections/View/ViewContainer';
 import Favorite from './Favorite/Favorite';
 import SignIn from './SignIn/SignIn';
 import Modal from './Modal/Modal';
@@ -28,8 +28,6 @@ const AppRouter = () => (
       <Route path="/" component={Header} />
       <Modal />
       <Search />
-      <NotesView />
-      <CollectionsView />
       <Filter />
 
       <div id="app-body">
@@ -39,6 +37,7 @@ const AppRouter = () => (
             <Route exact path="/Notes" component={ModalReset(Fade(Auth(NotesMenu)))} />
             <Route exact path="/Notes/Add" component={ModalReset(Fade(Auth(NotesAdd)))} />
             <Route exact path="/Notes/Edit/:id" component={ModalReset(Auth(NotesEdit))} />
+            <Route exact path="/Notes/View/:id" component={ModalReset(Fade(Auth(NotesView)))} />
             <Route exact path="/Collections" component={ModalReset(Fade(Auth(CollectionsMenu)))} />
             <Route
               exact
@@ -49,6 +48,11 @@ const AppRouter = () => (
               exact
               path="/Collections/Edit/:id"
               component={ModalReset(Fade(Auth(CollectionsEdit)))}
+            />
+            <Route
+              exact
+              path="/Collections/View/:id"
+              component={ModalReset(Fade(Auth(CollectionsView)))}
             />
             <Route exact path="/Favorite" component={ModalReset(Fade(Auth(Favorite)))} />
             <Route exact path="/SignIn" component={ModalReset(Fade(SignIn))} />

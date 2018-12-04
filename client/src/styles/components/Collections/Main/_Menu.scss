@@ -2,14 +2,13 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  color: white;
 
   .collections-title {
     display: grid;
     grid-template-columns: 3rem auto;
     align-items: center;
-    color: white;
+    color: $black;
     font-size: 2rem;
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
   }
 }
