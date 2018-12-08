@@ -7,13 +7,13 @@
 
     display: grid;
     grid-template-rows: 10rem 3rem 20rem;
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
 
     .sign-in-logo {
       grid-row: 1/2;
       font-size: 2rem;
-      font-family: "Baloo Bhai"; 
-      color: white;
+      font-family: 'Baloo Bhai';
+      color: $black;
       font-weight: bold;
 
       height: 10rem;
@@ -29,7 +29,7 @@
       display: grid;
       align-items: center;
       justify-items: center;
-      font-family: "Baloo Bhai";
+      font-family: 'Baloo Bhai';
       color: $black;
 
       .sign-in-form {
@@ -43,7 +43,9 @@
         width: 22.5rem;
 
         padding: 2rem;
-        font-family: "Baloo Bhai";
+        font-family: 'Baloo Bhai';
+
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
       }
     }
 
@@ -51,7 +53,7 @@
       background: #28a745;
       color: white;
       font-weight: bold;
-      font-family: "Baloo Bhai";
+      font-family: 'Baloo Bhai';
       border-radius: 0.2rem;
       cursor: pointer;
       height: 2rem;

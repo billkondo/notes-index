@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { mediumSpacing } from '../../../styles/defaultStyles';
+import { mediumSpacing, shadowOne } from '../../../styles/defaultStyles';
 
 import { noteObject } from '../../../propTypes/propTypes';
 
@@ -15,6 +15,8 @@ const StyledView = styled.div`
   width: 50vw;
   padding: ${mediumSpacing};
   background: linear-gradient(#1f3057, #2a283d);
+
+  box-shadow: ${shadowOne};
 
   @media (max-width: 700px) {
     width: 95vw;

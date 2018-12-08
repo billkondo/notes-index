@@ -17,3 +17,7 @@ export const defaultFont = 'Baloo Bhai';
 export const smallSpacing = '1rem';
 export const mediumSpacing = '2rem';
 export const largeSpacing = '3rem';
+
+// Shadows
+export const shadowOne = '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)';
+export const shadowThree = '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)';

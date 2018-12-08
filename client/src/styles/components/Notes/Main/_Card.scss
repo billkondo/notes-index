@@ -1,39 +1,40 @@
-.notes-main-card{
+.notes-main-card {
   height: 20rem;
   width: 13.5rem;
-  
-  background: linear-gradient(#1f3057,#2a283d);
+
+  background: linear-gradient(#1f3057, #2a283d);
 
   display: grid;
   grid-template-rows: 2rem 16rem 2rem;
   border-radius: 0.2rem;
 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
   .Notes-Card-Title {
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
     font-size: $medium-font;
     display: grid;
     align-items: center;
     justify-items: start;
-    padding-top: $small-font; 
+    padding-top: $small-font;
     padding-left: $medium-font;
     padding-right: $medium-font;
-    padding-bottom: 0; 
+    padding-bottom: 0;
     color: $white;
     grid-template-columns: auto $small-font;
-    
+
     .Favorite {
       font-size: $small-font;
       justify-self: end;
     }
   }
 
-  
   .description {
-    background: linear-gradient(#5f88c1,#78adc2);
+    background: linear-gradient(#5f88c1, #78adc2);
     margin: $medium-font;
     margin-bottom: $small-font;
     padding: $medium-font;
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
     font-size: 0.9rem;
     text-align: justify;
     text-justify: auto;
@@ -45,7 +46,7 @@
   .footer {
     position: relative;
     color: $white;
-    font-family: "Baloo Bhai";
+    font-family: 'Baloo Bhai';
     margin-left: $medium-font;
     margin-right: $medium-font;
     font-size: 0.9rem;

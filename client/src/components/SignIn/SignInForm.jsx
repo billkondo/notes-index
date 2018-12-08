@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import decode from 'jsonwebtoken/decode';
 import { func } from 'prop-types';
 
+import { Form, FormGroup } from 'reactstrap';
 import InputText from '../Input/InputText';
 
 import setHeader from '../../authentication/setHeader';
@@ -49,27 +50,34 @@ class SignInForm extends React.Component {
 
     return (
       <div className="sign-in-form">
-        <InputText
-          label="Username or email address"
-          name="user"
-          value={user}
-          onChange={this.onChange}
-          type="text"
-          error={errors.user}
-        />
-
-        <InputText
-          label="Password"
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          error={errors.password}
-        />
-
-        <button type="button" className="sign-in-button" onClick={this.submit} disabled={isLoading}>
-          Sign In
-        </button>
+        <Form>
+          <FormGroup>
+            <InputText
+              label="Username or email address"
+              name="user"
+              value={user}
+              onChange={this.onChange}
+              type="text"
+              error={errors.user}
+            />
+            <InputText
+              label="Password"
+              name="password"
+              value={password}
+              onChange={this.onChange}
+              type="password"
+              error={errors.password}
+            />
+            <button
+              type="button"
+              className="sign-in-button"
+              onClick={this.submit}
+              disabled={isLoading}
+            >
+              Sign In
+            </button>
+          </FormGroup>
+        </Form>
       </div>
     );
   }

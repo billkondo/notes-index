@@ -7,21 +7,23 @@
   padding: $small-font;
 
   display: grid;
-  font-family: "Baloo Bhai"; 
+  font-family: 'Baloo Bhai';
   color: $black;
+
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 
   .Alert {
     position: absolute;
     top: 0;
-    margin-top: -4rem; 
+    margin-top: -4rem;
     width: 100%;
   }
 
   .sign-up-button {
-    background: #28a745;;
+    background: #28a745;
     color: white;
     font-weight: bold;
-    font-family: "Baloo Bhai"; 
+    font-family: 'Baloo Bhai';
     border-radius: 0.2rem;
     margin: $extra-small-font;
     height: 2rem;

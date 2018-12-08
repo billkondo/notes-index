@@ -4,12 +4,19 @@
   grid-gap: 3rem;
   padding: 3rem;
   font-size: $medium-font;
-  font-family: "Baloo Bhai";
-  
+  font-family: 'Baloo Bhai';
+
   .functions-button {
     font-size: $medium-font;
     letter-spacing: 0.1rem;
     padding: $small-font;
     width: 6rem;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .functions-button:hover {
+    transform: scale(1.1);
+    transition: all 500ms ease-out;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { largeFont, smallFont, defaultFont } from '../../styles/defaultStyles';
+import { largeFont, smallFont, defaultFont, colorBlack } from '../../styles/defaultStyles';
 
 const Welcome = styled.div`
   margin: ${largeFont};
@@ -10,7 +10,7 @@ const Welcome = styled.div`
 `;
 
 const Title = styled.h1`
-  color: white;
+  color: ${colorBlack};
   font-size: ${largeFont};
   text-align: center;
   margin-bottom: ${smallFont};
@@ -19,7 +19,7 @@ const Title = styled.h1`
 const Paragraph = styled.p`
   margin: ${smallFont};
   font-size: 1.5rem;
-  color: lightgray;
+  color: ${colorBlack};
 
   text-align: justify;
   text-justify: inter-word;
