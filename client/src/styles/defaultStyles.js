@@ -2,6 +2,7 @@
 export const largeFont = 'calc(2rem + 0.5vh)';
 export const mediumFont = 'calc(1.5rem + 0.5vh)';
 export const smallFont = 'calc(1rem + 0.5vh)';
+export const extraSmallFont = 'calc(0.7rem + 0.5vh)';
 
 // Colors
 export const colorBlack = 'rgba(0, 0, 0, 0.7)';

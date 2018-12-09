@@ -2,7 +2,7 @@ import React from 'react';
 import { string, arrayOf, number, shape } from 'prop-types';
 
 import styled from 'styled-components';
-import { mediumSpacing } from '../../../styles/defaultStyles';
+import { mediumSpacing, extraSmallFont } from '../../../styles/defaultStyles';
 
 import Title from './Title';
 import Topic from './Topic';
@@ -17,10 +17,18 @@ const StyledBlock = styled.div`
   padding-right: ${mediumSpacing};
 
   width: 100%;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `;
 
 const ContainerTopics = styled.div`
   padding: ${mediumSpacing};
+
+  @media (max-width: 700px) {
+    padding: ${extraSmallFont};
+  }
 `;
 
 const Block = ({ data }) => (

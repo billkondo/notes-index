@@ -1,7 +1,13 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { smallFont, mediumFont, smallSpacing, mediumSpacing } from '../../styles/defaultStyles';
+import {
+  smallFont,
+  mediumFont,
+  smallSpacing,
+  mediumSpacing,
+  extraSmallFont
+} from '../../styles/defaultStyles';
 
 const StyledDescription = styled.div`
   margin: ${mediumSpacing};
@@ -14,6 +20,11 @@ const StyledDescription = styled.div`
   font-size: ${smallFont};
   p {
     padding-bottom: ${smallSpacing};
+  }
+
+  @media (max-width: 700px) {
+    font-size: ${extraSmallFont};
+    margin: 0;
   }
 `;
 
