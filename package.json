@@ -18,12 +18,15 @@
     "mongoose": "^5.2.5",
     "nodemailer": "^4.7.0",
     "uuid": "^3.3.2",
-    "validator": "^10.7.1"
+    "validator": "^10.7.1",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "node server.js",
     "server": "babel-node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build:prod"
+    "heroku-postbuild": "cd client && npm install && npm run build:prod",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -36,5 +39,6 @@
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.15.1"
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3000",
+  "snyk": true
 }
