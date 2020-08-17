@@ -14,7 +14,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.20",
     "mongoose": "^5.2.5",
     "nodemailer": "^4.7.0",
     "uuid": "^3.3.2",
