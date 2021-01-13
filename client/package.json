@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "mini-css-extract-plugin": "^0.4.1",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-autosize-textarea": "^5.0.1",
